@@ -1,0 +1,19 @@
+Alternate Data Streams (ADS) ###
+
+An alternate data stream (ADS) is a feature of Windows New Technology File System (NTFS) that contains metadata for locating a specific file by author or title. ADS is supported by all versions of Windows beginning with Windows NT through the current version, Windows 7.
+
+
+* was made to store Mac Files as mac store file with 2 parts(Data and resource)
+* ADS data will not show increase in file size no matter how big it is
+* ADS data will get lost once transferred to another Filesyste like FAT,EXT5 etc
+
+##################### Creating a ADS using cmd ###########################
+
+
+echo "normal File" > file1.txt			//file1.txt is going to be our host file for storing our ADS File
+echo "Alternate data stream Data" > file1.txt:ADS.txt			//ADS.txt is stored in file1.txt's Alternate Data Stream
+
+##################### Reading and finding Files with ADS #################
+
+dir /R 			//this will print Files along with ADS's if Avilable
+more <file1.txt:ADS.txt> output.txt			// this will extract ADS data from the file1.txt and will store into output.txt

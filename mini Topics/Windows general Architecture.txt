@@ -1,0 +1,66 @@
+######	Windows general Architecture	#######
+
+Core Kernel
+	Device and Bus Drivers (*.sys)
+	Windowing and Graphics Driver (win32k.sys)
+	Hardware Abstraction Layer (Hal.dll)
+
+user-mode Processes
+	System support processes
+		Logon process, session manager, etc.
+	Services processes
+		Windows services independent of user logon
+		Task Scheduler, printer spooler, etc.
+	User applications
+		graphical identification and authentication (GINA) 
+		Windows 32-bit, 64-bit, POSIX
+	Environment subsystems
+		OS environment a.k.a. personalities
+		Windows, POSIX, OS/2 (dropped after Windows 2000)
+
+File System
+	FileSystem Filters
+	File System Drivers
+	Partition/Voluume Storage Managger
+	Disk Class Manager
+	Cache Manager
+	Virtual Memory managment
+	NTFS
+		Master File Table (MFT)
+		oplocks
+		Quotas
+		Journaling
+		Objectids
+		encryption
+		Compression
+		sparse Files
+		Reparse points
+		Volume Shadow Copy
+		Transactional NTFS (TxF)
+		$Index streams
+		system access control list (SACL)
+		metadata based on transaction logging
+		Microsoft's CryptoAPI and the EFS File System Run-Time Library (FSRTL)
+		Supports legacy – short names, attribute tunneling, Posix, hard links, symlinks
+
+Scheduling Classes
+	Symmetric Multiprocessing (SMP)
+	Hyperthreading
+	NUMA (non uniform memory architecture) systems
+	Virtual Address Translation (VAT)
+
+
+
+SubSysstem DLLs
+	Windows API (originally 32-bit, now also 64-bit)
+	App calls Subsystem
+	Environment subsystem process (CSRSS.EXE)
+	Subsystem DLLs (such as USER32.DLL, ADVAPI32.DLL, GDI32.DLL, and KERNEL32.DLL)
+
+
+
+Loadable System Calls
+
+Services
+
+Executable Formats

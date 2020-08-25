@@ -1,0 +1,15 @@
+Simple ICMP Messege: 
+send(IP(src="192.168.1.1",dst="192.168.1.100")/ICMP()/"Helloww World")
+-----------------------------------------------------------------------
+Network Sniffing:
+sniff(iface="wlan0", prn=lambda x:x.summary)
+_____________________________________________________________________
+ARP Ping
+
+arping("192.168.1.1")
+_____________________________________________________________________
+Dos:
+send(IP(src="192.168.1.1",dst="192.168.1.100")/TCP(sport=80,dport=80), count=10000)
+
+
+ans,unans = srloop(IP(dst="192.168.1.1")/TCP(dport=80,flags="S"))
