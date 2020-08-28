@@ -1,0 +1,57 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/get-authenticodesignature.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Get-AuthenticodeSignature - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Get-AuthenticodeSignature</h1> 
+<p>Get the signature object associated with a file, if the file is not signed, then blank fields will be retrieved.</p>
+<pre>Syntax
+      Get-AuthenticodeSignature [-filePath] <i>string</i>[] [<a href="common.html"><i>CommonParameters</i></a>]
+
+Key
+   -filePath <i>path</i>
+      The path to the item {may be piped}
+
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer -OutVariable.</pre>
+<p>
+  <b>Examples</b></p>
+<p>Get   information about the Authenticode signature in  NewScript.ps1:</p>
+<p><span class="code">PS C:\&gt;get-AuthenticodeSignature -filepath C:\NewScript.ps1</span><br>
+  <br>
+  Get   information about the Authenticode signature for two files:</p>
+<p class="code">PS C:\&gt;get-AuthenticodeSignature  C:\NewScript.ps1 E:\OtherScript.ps1</p>
+<p class="quote"><i>&ldquo;It's the Real Thing&rdquo; - Coca Cola campaign 1969-1975 </i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="set-authenticodesignature.html">Set-AuthenticodeSignature</a> - Place a signature in a PowerShell script or other file<br>
+<a href="get-executionpolicy.html">Get-ExecutionPolicy</a> - Get the execution policy for the shell <a href="set-executionpolicy.html"><br>
+Set-ExecutionPolicy</a> - Change the execution policy (user preference)<br>
+Get-Help about_signing<br>
+Equivalent bash command: <a href="http://www.openssl.org/docs/apps/openssl.html">OpenSSL</a> - Open Secure Sockets Layer</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/get-authenticodesignature.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:25 GMT -->
+</html>

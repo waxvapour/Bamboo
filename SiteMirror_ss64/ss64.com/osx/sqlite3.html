@@ -1,0 +1,90 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/sqlite3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>sqlite3 Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>sqlite3</h1> 
+<p>SQLite is a public domain zero-configuration, transactional SQL database engine. Used by macOS, Firefox web browser, WIndows 10, Dropbox,  Skype and many other client programs.</p>
+<pre>Syntax
+      sqlite3 [<i>OPTIONS</i>] <i>FILENAME</i> [<i>SQL</i>_Command] 
+
+      Create a new database called demo64:
+      sqlite3 demo64
+
+      Display help/syntax:
+      sqlite3 --help
+
+      Interactive mode:
+      sqlite3
+
+      List the <a href="http://www.sqlite.org/cli.html">.dot commands</a> available:<br>      sqlite&gt; .help
+
+Key
+   <i>FILENAME</i>       The name of an SQLite database.
+                  A new database is created if the file does not previously exist.</pre>
+<pre>   -ascii               set output mode to 'ascii'
+   -bail                stop after hitting an error
+   -batch               force batch I/O  
+   -column              set output mode to 'column'  
+   -cmd <i>COMMAND</i>         run &quot;COMMAND&quot; before reading stdin  
+   -csv                 set output mode to 'csv'
+   -echo                print commands before execution
+   -init <i>FILENAME</i>       read/process named file
+   -[no]header          turn headers on or off
+   -help                show this message
+   -html                set output mode to HTML
+   -interactive         force interactive I/O
+   -line                set output mode to 'line'
+   -list                set output mode to 'list'
+   -lookaside <i>SIZE N</i>    use <i>N</i> entries of SZ bytes for lookaside memory
+   -mmap N              default mmap size set to N
+   -newline <i>SEP</i>         set output row separator. Default: '\n'
+   -nullvalue <i>TEXT</i>      set text string for NULL values. Default ''
+   -pagecache <i>SIZE N </i>   use <i>N</i> slots of SZ bytes each for page cache memory
+   -scratch <i>SIZE N</i>      use <i>N</i> slots of SZ bytes each for scratch memory
+   -separator <i>SEP</i>       set output column separator. Default: '|'
+   -stats               print memory stats before each finalize
+   -version             show SQLite version
+   -vfs <i>NAME</i>            use NAME as the default VFS</pre>
+<p><b>Examples</b> </p>
+<p>Run a select command against database demo64:<br>
+<span class="code">$ sqlite3 demo64.db &quot;SELECT * FROM Sales;&quot;</span><br>
+<br>
+On macOS list  the full download history from all applications:<br>
+<span class="code">$ sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineAgentName, LSQuarantineDataURLString, date(LSQuarantineTimeStamp + 978307200, &quot;unixepoch&quot;) as downloadedDate from LSQuarantineEvent order by LSQuarantineTimeStamp' | sort | grep '|' --color</span></p>
+<p>Delete the macOS download history from all applications:<br>
+<span class="code">$ sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent' </span></p>
+<p>Then rebuild the DB to confirm full deletion (via <a href="https://www.zoharbabin.com/hey-mac-i-dont-appreciate-you-spying-on-me-hidden-downloads-log-in-os-x/">zoharbabin.com</a>):<br>
+<span class="code">$ sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'vacuum'</span><br>
+</p>
+<p class="quote"><i>&ldquo;Effective management always means asking the right question&rdquo; ~ Robert Heller </i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="http://www.sqlite.org/cli.html">Command Line shell for SQLite</a> - sqlite.org<br>
+<a href="https://www.sqlite.org/lang.html">SQL as understood by SQLite</a> - sqlite.org</p>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/sqlite3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:25 GMT -->
+</html>

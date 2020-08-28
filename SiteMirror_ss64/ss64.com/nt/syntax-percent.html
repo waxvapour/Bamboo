@@ -1,0 +1,97 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-percent.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Percent symbols - % - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Double %% symbols why are they needed in a batch file?</h1>
+<p>A common question asked by new batch file programmers is &quot;<i>why do we need to double the percent symbols when writing a FOR command?</i>&quot;. On the command line <span class="code">%A</span> works fine, so why does a batch need <span class="code">%%A</span>? </p>
+<p>To answer this we need to consider all the  things in the batch language which use the % symbol:</p>
+<ul>
+<li>Firstly <a href="syntax-args.html">command line parameters</a> <span class="code">%0 %1 %2 %3 ...</span><br>
+&nbsp;</li>
+<li>Next the <a href="for.html">FOR</a> command, while most people will sensibly choose parameter letters like  <span class="code">%A</span> or <span class="code">%F</span> or <span class="code">%Z</span>, it is perfectly possible to choose numbers <span class="code">%1 %2 %3 ...</span><br>
+<br>
+Try this at the command line: <br>
+<span class="code"><br>
+FOR /L %6 in (1,1,5) Do Echo %6 </span><br>
+<br>
+It will work and give you a nice list of numbers from 1 to 5.<br>
+</li>
+</ul>
+<p>Now you see the problem this presents, you can have  two different types of variablewith identical names and  the CMD command shell parser needs a way to separate them.</p>
+<h2>How the CMD shell command line parser evaluates variables:</h2>
+<p>The CMD shell reads through each line of a batch file once from left to right, when it finds a percent sign it checks the next character and proceeds as follows:</p>
+<ul>
+<li> If the next character is  another percent sign (<span class="code">%</span>), CMD replaces the two with a single percent sign and then reads the third character evaluating it either as a FOR parameter or, if not in a <a href="for.html">FOR</a> loop, just treating it as the plain character '%'.<br>
+<span class="code">%%G =&gt; 
+somevalue<br>
+%%Hello =&gt; %Hello<br>
+&nbsp;</span></li>
+<li>If the next character is a digit (<span class="code">0-9</span>) CMD replaces the percent sign and digit with the value of the corresponding command line <a href="syntax-args.html">parameter</a>. Also if the character is a tilde (<span class="code">~</span>) then <a href="syntax-args.html">Parameter Extensions</a> will be applied.<br>
+<span class="code">%1 =&gt; somevalue</span><br>
+&nbsp;</li>
+<li>  If the next character is anything else (so not a number or a % symbol) CMD treats everything up to the next percent sign as the name of a <a href="syntax-variables.html">variable</a> and replaces it with the value of that variable.<br>
+<span class="code">%_somevariable% </span><span class="code">=&gt; somevalue</span></li>
+</ul>
+<p>When working at the command line (not in a batch script) there is no possibility of any batch file parameters %1, %2 etc so the logic above is not followed and hence FOR parameters on the command line only need a single %.</p>
+<p>One other place where a percent character is used is as the modulus operator in the <a href="set.html">SET /A</a> command,  in a batch file this should always be passed as a pair of double %%'s.</p>
+<p>It is worth also considering how this affects normal variables -  this does not make for readable code, but just to prove a point, lets try to create a standard variable with a variable name that is purely numeric:<br>
+<br>
+<span class="code">SET 1=Hello</span></p>
+<p>You might expect that to  create the variable <span class="code">%1%</span>, but in a batch file it will Fail.</p>
+<p>Even if the script was called without passing any parameter %1, the parameters  take precedence, so <span class="code">%1%</span> is evaluated as <span class="code">%1</span> plus an extra <span class="code">%</span> at the end.
+Remember the command line is parsed left to right only once, so the %1 is evaluated before the second % is even read.
+<br>
+You can of course do this at the command line and it will work!</p>
+<p>So what have we learned from all this:</p>
+<ul>
+<li>Never try to start a variable name with a number, a common practice is to prefix all variables with an _underscore, if you make a habit of that you will never be bitten by the invalid numeric name issue.<br>
+&nbsp;</li>
+<li>Don't use numbers as FOR parameter variables, it may work but it will confuse people (and is undocumented).<br>
+&nbsp;</li>
+<li>If you want to use a plain % symbol <i>anywhere</i> in a batch file, you need to double the %'s<br>
+<br>
+<span class="code">Echo &quot;This includes a 50%% discount&quot;<br>
+&gt; This includes a 50% discount<br>
+<br>
+</span>This includes references to filenames, the % is a legal character for a filename, but to access it from a batch file you need to double it:<br>
+<br>
+<span class="code">Start &quot;C:\my work\Demo %% calc.xlsx&quot; </span><br>
+Will open the file 
+<span class="code">Demo % calc.xlsx</span><br>
+&nbsp;</li>
+<li>If you are aghast at the insanity of all these arcane rules, you should be learning <a href="../ps/index.html">PowerShell</a>, it's awesome!</li>
+</ul>
+<p><b>Related</b></p>
+<p>The <a href="syntax-esc.html">caret symbol</a><span class="code"> ^ </span>as  the CMD Escape character, has to be doubled both within Batch files and at the command line.<br>
+<a href="https://stackoverflow.com/a/4095133/1720814">The Batch Line Parser</a> explained on Stack Overflow by Jan Erik (jeb) and Dave Benham, also more on <a href="https://stackoverflow.com/a/7970912/1720814">% Expansion</a> (same thread)<br>
+<a href="syntax-args.html">Parameters</a> - Command Line Arguments  <span class="code">%1  %~f1</span><br>
+<a href="syntax-variables.html">Env. Variables</a> - Create/read environment variables.</p>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-percent.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:56 GMT -->
+</html>

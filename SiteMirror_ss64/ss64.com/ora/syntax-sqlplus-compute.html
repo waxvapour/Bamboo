@@ -1,0 +1,62 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ora/syntax-sqlplus-compute.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>compute - Oracle - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_orasyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Oracle</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>SQL*PLUS - COMPUTE Statement</h1> 
+<p>Calculate an aggregate or summary value for row(s). <br>
+  <br>
+  Syntax:</p>
+<pre>   COMP[UTE] [function … 
+      OF {expr|column|alias}…
+         ON {expr|column|alias|REPORT|ROW}] 
+
+options:
+
+ OF        The source of the data used in the calculation.
+ ON        The event SQL*Plus will use as a break.
+
+functions:
+
+ AVG       Average of non-null values
+ COU[NT]   Count of non-null values 
+ MAX[IMUM] Maximum value
+ MIN[IMUM] Minimum value
+ NUM(BER)  Count of rows
+ STD       Standard deviation of non-null values
+ SUM       Sum of non-null values
+ VAR(IANCE)Variance
+
+Entering COMPUTE without any options will list the current definitions.</pre>
+<p><b>Related Oracle Commands:</b></p>
+<p><a href="syntax-to_char.html">to_char</a><br>
+  SET NUMWIDTH - default width for Number columns<br>
+  SET LONG - default width for LONG columns<br>
+  SET LONGCHUNKSIZE - default width for LONG columns<br>
+  SET MAXDATA - Max width for columns</p><!-- #BeginLibraryItem "/Library/foot_ora.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- oracle-footer -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4275490898"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ora/syntax-sqlplus-compute.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:39 GMT -->
+</html>

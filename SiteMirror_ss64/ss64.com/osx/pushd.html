@@ -1,0 +1,48 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/pushd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>pushd Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>pushd</h1> 
+<p>Save the value of the current directory. </p>
+<pre>Syntax
+      pushd [-n] [<i>dir</i>]<br>      pushd [-n] [+<i>N</i>] [-<i>N</i>]
+
+Key
+   +<i>N</i>   Rotate the stack so that the nth directory (counting from the left of the list shown<br>        by <a href="dirs.html">dirs</a>, starting with zero) is at the top.
+<br>   -<i>N</i>   Rotate the stack so that the nth directory (counting from the right of the list shown<br>        by <a href="dirs.html">dirs</a>, starting with zero) is at the top.
+
+   -n   Suppresses the normal change of directory when adding directories to the stack, so that<br>        only the stack is manipulated.
+<br>  <i>dir</i>   Add <i>dir</i> to the directory stack at the top, making it the new current working directory.</pre>
+<p>If the pushd command is successful, a <a href="dirs.html">dirs</a> is performed as well. If the first form is used, pushd returns 0 unless the cd to dir fails. With the second form, pushd returns 0 unless the directory stack is empty, a non-existent directory stack element is specified, or the directory change to the specified new current directory fails.</p>
+<p>This is a BASH shell builtin, to display your local syntax from the bash prompt type: <span class="code">help pushd</span></p>
+<p class="quote"><i>  "Fear is the greatest salesman" ~ Robert 
+  Klein </i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="popd.html">popd</a> - Restore the previous directory </p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/pushd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:18 GMT -->
+</html>

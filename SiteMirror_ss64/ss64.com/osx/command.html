@@ -1,0 +1,66 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/command.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>command Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>command</h1> 
+<p>Run <i>command</i> with <i>args</i> suppressing the normal shell function lookup.</p>
+<pre>Syntax
+      command [-pVv] <i>command</i> [<i>arg</i>...]
+
+Key
+    -p   Use a default value for PATH that will find all the standard utilities.
+
+    -v   Print a description of <i>command</i>
+
+    -V   Print a verbose description of <i>command</i></pre>
+<p>Only builtin commands or commands found in the PATH are executed.  </p>
+<p>Exit Status<br>
+If the -V or -v option is  supplied, the exit status is 0 if command was found, and 1 if not.  <br>
+If neither option is supplied
+and an error occurred or command cannot be found, the exit status is 127.  <br>
+Otherwise, the exit
+status of the command builtin is the exit status of <i>command</i>.</p>
+<p>This is a BASH shell builtin, to display your local syntax from the bash prompt type: <span class="code">help command</span><br>
+</p>
+<p><b>Example</b></p>
+<pre>$ command ls
+</pre>
+<p class="quote"><i>&ldquo;I'm not dumb. I just have a command of thoroughly useless information&rdquo; - Bill Watterson</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="builtin.html">builtin</a> - Run a shell builtin.<br>
+<a href="chroot.html">chroot</a> - Run a command with a different root directory.<a href="crontab.html"><br>
+crontab</a> - Schedule a command to run at a later time.<br>
+<a href="exec.html">exec</a> - Execute a command.<br>
+<a href="if.html">if</a> - Conditionally perform a command.<br>
+<a href="nohup.html">nohup</a> - Run a command immune to hangups.<br>
+<a href="source.html">.source</a> - Run commands from a file.<br>
+<a href="su.html">su</a> - Run a command with substitute user and group id.<br>
+<a href="type.html">type</a> - Describe a command.</p>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/command.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:06 GMT -->
+</html>

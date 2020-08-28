@@ -1,0 +1,63 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/winmsd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Winmsd - Microsoft diagnostics - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>WINMSD.exe</h1> 
+<p>Microsoft Windows  diagnostics<br>
+  Reports: Memory use, Services, Devices, IRQ's Ports, Environment variables, 
+  
+Network (rights, transport, stats), Hardware, Display.</p>
+<pre>Syntax
+      WINMSD [\\<i>computername</i>] <i>options</i>
+
+Options:
+       /a     All details
+       /s     Summary details only
+       /f     Send output to a file &lt;computername.txt&gt; in the current directory 
+       /p     Send output to a printer
+
+      WINMSD with no switches will open the GUI with details of the computer you are logged into. 
+
+When a remote computername is specified then less info will be reported
+e.g. Diskspace and Memory won't be listed</pre>
+<p> Hot keys within the GUI:<br>
+  <br>
+  <b>SHIFT - F2</b> copies the current tab to the clipboard, <br>
+  <b>F2</b> copies a summary of the current tab to the clipboard<br>
+  <br>
+ WINMSDP requires the SERVER <a href="syntax-services.html">service</a> to be running.<br>
+</p>
+<p class="quote"><i>&ldquo;It's a poor sort of memory that only works backwards&rdquo; ~ The White Queen (Through the Looking Glass)</i></p>
+<p><b>Related:</b><br><br>
+<a href="msinfo32.html">MSINFO</a> - Windows  diagnostics<br>
+<a href="https://docs.microsoft.com/en-gb/windows-hardware/drivers/devtest/devcon">DevCon</a> - Device Manager Command Line Utility <br>
+<a href="fsutil.html">FSUTIL</a> - File and Volume utilities <br>
+<a href="systeminfo.html">SYSTEMINFO</a> - List system configuration<br>
+<a href="https://forums.majorgeeks.com/threads/vista-windows-7-8-10-malware-removal-cleaning-procedure.139681/">Malware Removal Guide</a> - majorgeeks.com</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/winmsd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:00 GMT -->
+</html>

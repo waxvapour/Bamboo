@@ -1,0 +1,400 @@
+<!doctype html><html>
+
+<!-- Mirrored from ss64.com/convert.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:39:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<META NAME="Description" CONTENT="A simple online conversion page which can quickly convert values between Bytes,KB,MB,GB,TB and also between Bits KiB,MiB,GiB and TiB">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="main.css" type="text/css">
+<title>Convert between KB MB GB and TB | SS64.com</title>
+<style type="text/css">
+.tblhead{ text-align: center; padding-top: 15px;}
+.raised {padding-left:1px; color:windowtext; font-weight:400; text-decoration:none; vertical-align:bottom; border:none; padding-top: 1px; padding-right: 1px;}
+.smallnotes {font-size: smaller}
+
+.notes {
+font-size: 100%;
+font-family:Helvetica,Arial,Verdana,sans-serif;}
+.b--tn{
+   -webkit-appearance: none;
+	background-color:#CFD2D7;
+   border-radius: 4px;
+   white-space: nowrap;
+   font-size: 14px;
+   width: 125px;
+   height: 45px;
+}
+.btn {
+   -webkit-appearance: none;
+  width: 125px;
+  height: 40px;
+	border: 1px solid #777;
+	border-radius: 2px 2px 2px 2px;
+	color: #333;
+	cursor: pointer;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center;
+	background: #eee;
+	background-image: -moz-linear-gradient(top , #eee, #ccc);
+	background-image: -webkit-linear-gradient(top , #eee, #ccc);
+	background-image: -ms-linear-gradient(top, #eee, #ccc);
+	background-image: -o-linear-gradient(top, #eee, #ccc);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc'); /* IE6+7 */  
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc')"; /* IE8+ */ 
+	background-image: linear-gradient(top , #eee, #ccc);
+}
+
+.btn:hover {
+background-image: -moz-linear-gradient(top , #eee, #bbb);
+background-image: -webkit-linear-gradient(top , #eee, #bbb);
+background-image: -ms-linear-gradient(top, #eee, #bbb);
+background-image: -o-linear-gradient(top, #eee, #bbb);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#bbbbbb'); /* IE6+7 */  
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#bbbbbb')"; /* IE8+ */ 
+background-image: linear-gradient(top , #eee, #bbb);
+}
+.btn:active,btn:focus{color: #666; border: 1px solid #4B8DF8;}
+
+.in, .cleo{
+	border-top: 1px solid #7c7c7c;
+  border-left: 1px solid #ACB5BE;
+  border-right: 1px solid #ACB5BE;
+  border-bottom: 1px solid #ddd;
+  background: #fff url(images/fieldbg.gif) repeat-x top;
+	box-shadow:0 0 2px #ccc;
+  height: 25px;
+  padding: 6px;
+	font-size: 14px;
+}
+.cleo{
+  height: 10px;
+}
+.in:focus, .cleo:focus{
+   outline:none; /*or outline-color:#FFFFFF; if the first doesn't work*/
+    border:1px solid #4D90FE;
+    -webkit-box-shadow: 0px 0px 4px 0px #4D90FE;
+    box-shadow: 0px 0px 4px 0px #4D90FE;
+
+}
+.btn1 {   -webkit-appearance: none;
+  width: 125px;
+  height: 40px;
+	border: 1px solid #777;
+	border-radius: 2px 2px 2px 2px;
+	color: #333;
+	cursor: pointer;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center;
+	background: #eee;
+	background-image: -moz-linear-gradient(top , #eee, #ccc);
+	background-image: -webkit-linear-gradient(top , #eee, #ccc);
+	background-image: -ms-linear-gradient(top, #eee, #ccc);
+	background-image: -o-linear-gradient(top, #eee, #ccc);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc'); /* IE6+7 */  
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc')"; /* IE8+ */ 
+	background-image: linear-gradient(top , #eee, #ccc);
+}
+</style>
+<script type="text/javascript">
+function convert1(f) {
+  f.byte2.value=f.byte.value
+  f.kib.value=Math.round(f.byte.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte.value/1048576*100000)/100000
+  f.gib.value=Math.round(f.byte.value/1073741824*100000)/100000
+  f.tib.value=Math.round(f.byte.value/1099511627776*100000)/100000
+
+  f.kb.value=Math.round(f.byte.value/1000*100000)/100000
+  f.mb.value=Math.round(f.byte.value/1000000*100000)/100000
+  f.gb.value=Math.round(f.byte.value/1000000000*100000)/100000
+  f.tb.value=Math.round(f.byte.value/1000000000000*100000)/100000
+}
+function convert2(f) {
+  f.byte.value=f.byte2.value
+  f.kib.value=Math.round(f.byte2.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte2.value/1048576*100000)/100000
+  f.gib.value=Math.round(f.byte2.value/1073741824*100000)/100000
+  f.tib.value=Math.round(f.byte2.value/1099511627776*100000)/100000
+
+  f.kb.value=Math.round(f.byte2.value/1000*100000)/100000
+  f.mb.value=Math.round(f.byte2.value/1000000*100000)/100000
+  f.gb.value=Math.round(f.byte2.value/1000000000*100000)/100000
+  f.tb.value=Math.round(f.byte2.value/1000000000000*100000)/100000
+}
+function convertkib(f) {
+  f.byte.value=Math.round(f.kib.value*1024*100000)/100000
+  f.byte2.value=Math.round(f.kib.value*1024*100000)/100000
+  f.mib.value=Math.round(f.kib.value/1024*100000)/100000
+  f.gib.value=Math.round(f.kib.value/1048576*100000)/100000
+  f.tib.value=Math.round(f.kib.value/1073741824*100000)/100000
+
+  f.kb.value=Math.round(f.byte2.value/1000*100000)/100000
+  f.mb.value=Math.round(f.kb.value/1000*100000)/100000
+  f.gb.value=Math.round(f.kb.value/1000000*100000)/100000
+  f.tb.value=Math.round(f.kb.value/1000000000*100000)/100000
+}
+function convertkb(f) {
+  f.byte.value=Math.round(f.kb.value*1000*100000)/100000
+  f.byte2.value=Math.round(f.kb.value*1000*100000)/100000
+  f.mb.value=Math.round(f.kb.value/1000*100000)/100000
+  f.gb.value=Math.round(f.kb.value/1000000*100000)/100000
+  f.tb.value=Math.round(f.kb.value/1000000000*100000)/100000
+
+  f.kib.value=Math.round(f.byte2.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte2.value/1048576*100000)/100000
+  f.gib.value=Math.round(f.mib.value/1024*100000)/100000
+  f.tib.value=Math.round(f.mib.value/1048576*100000)/100000
+}
+function convertmib(f) {
+  f.byte.value=Math.round(f.mib.value*1048576*100000)/100000
+  f.byte2.value=Math.round(f.mib.value*1048576*100000)/100000
+  f.kib.value=Math.round(f.mib.value*1024*100000)/100000
+  f.gib.value=Math.round(f.mib.value/1024*100000)/100000
+  f.tib.value=Math.round(f.mib.value/1048576*100000)/100000
+
+  f.mb.value=Math.round(f.byte2.value/1000000*100000)/100000
+  f.kb.value=Math.round(f.mb.value*1000*100000)/100000
+  f.gb.value=Math.round(f.mb.value/1000*100000)/100000
+  f.tb.value=Math.round(f.mb.value/1000000*100000)/100000
+}
+function convertmb(f) {
+  f.byte.value=Math.round(f.mb.value*1000000*100000)/100000
+  f.byte2.value=Math.round(f.mb.value*1000000*100000)/100000
+  f.kb.value=Math.round(f.mb.value*1000*100000)/100000
+  f.gb.value=Math.round(f.mb.value/1000*100000)/100000
+  f.tb.value=Math.round(f.mb.value/1000000*100000)/100000
+
+  f.kib.value=Math.round(f.byte2.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte2.value/1048576*100000)/100000
+  f.gib.value=Math.round(f.mib.value/1024*100000)/100000
+  f.tib.value=Math.round(f.mib.value/1048576*100000)/100000
+}
+
+function convertgib(f) {
+  f.byte.value=Math.round(f.gib.value*1073741824*100000)/100000
+  f.byte2.value=Math.round(f.gib.value*1073741824*100000)/100000
+  f.kib.value=Math.round(f.byte2.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte2.value/1048576*100000)/100000
+  f.tib.value=Math.round(f.mib.value/1048576*100000)/100000
+
+  f.kb.value=Math.round(f.byte2.value/1000*100000)/100000
+  f.mb.value=Math.round(f.byte2.value/1000000*100000)/100000
+  f.gb.value=Math.round(f.byte2.value/1000000000*100000)/100000
+  f.tb.value=Math.round(f.byte2.value/1000000000000*100000)/100000
+}
+function convertgb(f) {
+  f.byte.value=Math.round(f.gb.value*1000000000*100000)/100000
+  f.byte2.value=Math.round(f.gb.value*1000000000*100000)/100000
+  f.kb.value=Math.round(f.gb.value*1000000*100000)/100000
+  f.mb.value=Math.round(f.gb.value*1000*100000)/100000
+  f.tb.value=Math.round(f.byte2.value/1000000000000*100000)/100000
+
+  f.kib.value=Math.round(f.byte2.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte2.value/1048576*100000)/100000
+  f.gib.value=Math.round(f.mib.value/1024*100000)/100000
+  f.tib.value=Math.round(f.mib.value/1048576*100000)/100000
+}
+function converttib(f) {
+  f.byte.value=Math.round(f.tib.value*1099511627776*100000)/100000
+  f.byte2.value=Math.round(f.tib.value*1099511627776*100000)/100000
+  f.kib.value=Math.round(f.tib.value*1073741824*100000)/100000
+  f.mib.value=Math.round(f.tib.value*1048576*100000)/100000
+  f.gib.value=Math.round(f.tib.value*1024*100000)/100000
+
+  f.kb.value=Math.round(f.byte2.value/1000*100000)/100000
+  f.mb.value=Math.round(f.byte2.value/1000000*100000)/100000
+  f.gb.value=Math.round(f.byte2.value/1000000000*100000)/100000
+  f.tb.value=Math.round(f.byte2.value/1000000000000*100000)/100000
+}
+function converttb(f) {
+  f.byte.value=Math.round(f.tb.value*1000000000000*100000)/100000
+  f.byte2.value=Math.round(f.tb.value*1000000000000*100000)/100000
+  f.kb.value=Math.round(f.tb.value*1000000000*100000)/100000
+  f.mb.value=Math.round(f.tb.value*1000000*100000)/100000
+  f.gb.value=Math.round(f.tb.value*1000*100000)/100000
+
+  f.kib.value=Math.round(f.byte2.value/1024*100000)/100000
+  f.mib.value=Math.round(f.byte2.value/1048576*100000)/100000
+  f.gib.value=Math.round(f.mib.value/1024*100000)/100000
+  f.tib.value=Math.round(f.mib.value/1048576*100000)/100000
+}
+</script>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_home.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Convert Bits and Bytes, KB, MB, GB and TB</h1>
+<div>  <blockquote>
+<form action="#">
+<table id="example">
+<tr> 
+<td class="tblhead">Bytes</td>
+<td class="tblhead">KiB</td>
+<td class="tblhead">MiB</td>
+<td class="tblhead"> GiB</td>
+<td class="tblhead"> TiB</td>
+<td>&nbsp;</td>
+</tr>
+<tr> 
+<td ><input type="text" size="20" name="byte" value="1073741824" class="in" tabindex=10 onblur="return convert1(this.form)"></td>
+<td ><input type="text" size="20" name="kib" value="1048576" class="in" tabindex=9 onblur="return convertkib(this.form)"></td>
+<td ><input type="text" size="10" name="mib" value="1024" class="in" tabindex=8 onblur="return convertmib(this.form)"></td>
+<td ><input type="text" size="10" name="gib" value="1" class="in" tabindex=7 onblur="return convertgib(this.form)"></td>
+<td ><input type="text" size="10" name="tib" value="0.00098" class="in" tabindex=6 onblur="return converttib(this.form)"></td>
+<td >&nbsp;</td>
+</tr>
+
+<tr> 
+<td class="tblhead">Bytes</td>
+<td class="tblhead">KB</td>
+<td class="tblhead">MB</td>
+<td class="tblhead"> GB</td>
+<td class="tblhead"> TB</td>
+<td><input type="button" name="B2" value="Convert" class="btn1"></td>
+<tr> 
+<td ><input type="text" size="20" name="byte2" value="1073741824" class="in" tabindex=5 onblur="return convert2(this.form)"></td>
+<td ><input type="text" size="20" name="kb" value="1073741.824" class="in" tabindex=4 onblur="return convertkb(this.form)"></td>
+<td ><input type="text" size="10" name="mb" value="1073.74182" class="in" tabindex=3 onblur="return convertmb(this.form)"></td>
+<td ><input type="text" size="10" name="gb" value="1.07374" class="in" tabindex=2 onblur="return convertgb(this.form)"></td>
+<td ><input type="text" size="10" name="tb" value="0.00107" class="in" tabindex=1 onblur="return converttb(this.form)"></td>
+<td >&nbsp;</td>
+</tr>
+</table>
+</form></blockquote></div>
+<blockquote>
+<p class="notes">Computer storage disks and RAM are manufactured in <a href="https://www.youtube.com/watch?v=b6vHZ95XDwU">binary units</a> (<a href="https://en.wikipedia.org/wiki/Power_of_two">power of 2</a>) Bytes, <span class="code">KiB, MiB, GiB</span>&hellip;<br>
+The <a href="https://en.wikipedia.org/wiki/Binary_prefix">binary prefix</a> convention allows common numbers such as 2048 bytes to display as round numbers, so 2 <a href="docs/bytes.html">KiB</a><br><br>
+Power of <a href="https://en.wikipedia.org/wiki/Power_of_10">10</a> numbers are also calculated above (<span class="code">KB, MB, GB</span>&hellip;) these are used by <a href="https://support.apple.com/kb/TS2419">Apple</a> and some hard drive manufacturers.<br>
+</p>
+<p class="notes">Many documents still incorrectly use the old-style : <span class="code"> KB,MB,GB&hellip;</span> prefixes to refer to a power of 2 value.<br>  
+The <span class="code">'B'</span> character for Bytes is case sensitive and easily confused with <span class="code">'b'</span> for bits: <span class="code"> Kb,Mb,Gb&hellip;<br>
+&nbsp;&nbsp;1 Byte = 8 bits</span><br>
+<b>Bytes</b> are used to measure disc/file sizes.<br>
+<b>bits</b> are used to measure network or download speeds.</p>
+
+</blockquote>
+
+<h1>Convert Binary to Decimal to Hex</h1>
+<blockquote>
+<table border="0">
+<tr>
+<td>Decimal:</td>
+<td>Binary:</td>
+<td>Hex:</td>
+</tr>
+<tr>
+<td><input type="text" size=16 id="inDec" class="cleo" onkeyup="convertDec2Bin()" value="1024" /></td>
+<td><input type="text" size=40 id="inBin" class="cleo" onkeyup="convertBin2Dec()" value="10000000000" /></td>
+<td><input type="text" size=20 id="inHex" class="cleo" onkeyup="convertHex2Dec()" value="400" /></td>
+</tr>
+</table>
+</blockquote>
+<p class="notes"><i><br>
+Typical throughputs:</i><br>
+Hard disk = 30 MiB per second. (x8 = 240 Mb/Sec) <br>
+Gigabit Ethernet = 125 MiB per second. (x8 = 1,000 Mb/Sec) <br>
+Solid state disc = 250 MiB per second. (x8 = 2,000 Mb/Sec) <br>
+Fibre Channel = 2,550 MiB per second. (x8 = 20,400 Mb/Sec) <br>
+</p>
+<script type="text/javascript">
+
+// Restrict binary input to 1,0 and navigation keys
+document.getElementById('inBin').addEventListener('keydown', function(ev) {
+// 48=0 49=1 8=backspace 224=command 86=v 37=left 39=right
+// 46=delete 17=control 67=c
+  if(ev.keyCode != 48 && ev.keyCode != 49 && ev.keyCode != 8 && ev.keyCode != 224 && ev.keyCode != 86 && ev.keyCode != 37 && ev.keyCode != 39 && ev.keyCode != 46  && ev.keyCode != 17 && ev.keyCode != 67) {
+    ev.preventDefault();
+  }
+});
+
+// Restrict Hex input to 0-9 A-F
+document.getElementById('inHex').addEventListener('keydown', function(ev) {
+// 0=48 90=z 70=F 8=backspace 224=command 86=v 37=left 39=right
+// 46=delete 17=control 67=c
+  if(!(ev.keyCode > 47 && ev.keyCode < 71) && ev.keyCode != 8 && ev.keyCode != 224 && ev.keyCode != 86 && ev.keyCode != 37 && ev.keyCode != 39 && ev.keyCode != 46  && ev.keyCode != 17 && ev.keyCode != 67) {
+    ev.preventDefault();
+  }
+});
+
+// Conversion script from
+//https://gist.github.com/faisalman/4213592
+var convertBase = function () {
+
+    function convertBase(baseFrom, baseTo) {
+        return function (num) {
+            return parseInt(num, baseFrom).toString(baseTo);
+
+        };
+    }
+
+    // binary to decimal
+    convertBase.bin2dec = convertBase(2, 10);
+
+    // binary to hexadecimal
+    convertBase.bin2hex = convertBase(2, 16);
+
+    // decimal to binary
+    convertBase.dec2bin = convertBase(10, 2);
+
+    // decimal to hexadecimal
+    convertBase.dec2hex = convertBase(10, 16);
+
+    // hexadecimal to binary
+    convertBase.hex2bin = convertBase(16, 2);
+
+    // hexadecimal to decimal
+    convertBase.hex2dec = convertBase(16, 10);
+
+    return convertBase;
+}();
+
+
+
+// Decimal to Binary/Hex
+function convertDec2Bin() {
+ var inputDecimal = document.getElementById("inDec").value;
+ document.getElementById('inBin').value =  convertBase.dec2bin(inputDecimal);
+ document.getElementById('inHex').value =  convertBase.dec2hex(inputDecimal);
+}
+// Binary to Decimal/Hex
+function convertBin2Dec() {
+ var inputBin = document.getElementById("inBin").value;
+ document.getElementById('inDec').value =  convertBase.bin2dec(inputBin);
+ document.getElementById('inHex').value =  convertBase.bin2hex(inputBin);
+}
+
+// Hex to Binary/Decimal
+function convertHex2Dec() {
+ var inputHex = document.getElementById("inHex").value;
+ document.getElementById('inDec').value =  convertBase.hex2dec(inputHex);
+ document.getElementById('inBin').value =  convertBase.hex2bin(inputHex);
+}
+</script>
+
+<p class="quote">&ldquo;Kilted Men Given Testosterone Perform Exceedingly Zealous Yoga - Mnemonic for Kilo, Mega, Giga, Tera, Peta, Exa, Zeta, Yotta&rdquo; ~ David Wu</p>
+<p><b>Related:</b></p>
+<p><a href="ascii.html">ASCII Table</a><br>
+<a href="nt/certutil.html">CERTUTIL</a> - Convert to Base64<br>
+</p><!-- #BeginLibraryItem "/Library/foot_root.lbi" --><p><script async src="../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- General300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7010419507"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div>
+<!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/convert.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:39:03 GMT -->
+</html>

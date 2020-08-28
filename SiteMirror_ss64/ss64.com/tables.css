@@ -1,0 +1,15 @@
+﻿table {
+border: 2px;
+border-collapse: collapse;
+}
+td, th{
+border: 1px solid #999;
+padding: 6px 8px;
+margin: 0;
+}
+th{ background-color: #aaa;;}
+
+/* lighten alt rows from d1 to d4 */
+tr:nth-child(even) td{
+background-color: #D4D4D4;
+}

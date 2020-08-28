@@ -1,0 +1,185 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-ntlm.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+
+<style type="text/css">
+.low { background-color: #C00000;
+text-align: center;
+}
+.med { background-color: #95B3D7;
+text-align: center;
+}
+.high {  background-color: #92D050;
+text-align: center;
+}
+.na {  
+text-align: center;
+}
+table {
+border: 2px;
+border-collapse: collapse;
+}
+td, th{
+border: 1px solid #999;
+padding: 6px 8px;
+margin: 0;
+}
+th{ background-color: #aaa;
+vertical-align: top;}
+</style>
+<title>NTLM - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Windows LAN Manager authentication level</h1>
+<p>This setting affects how a Windows computer handles NTLM authentication both as a client and as an authenticating server.</p>
+<p>The default level of (3) for current OS's allows Domain Controllers to be compatable with old clients going back to Windows&nbsp;2000.</p>
+
+<table>
+<colgroup width="120">
+</colgroup>
+<colgroup span="4" width="100">
+</colgroup>
+<colgroup width="120">
+</colgroup>
+<colgroup span="2" width="100">
+</colgroup>
+<tr>
+<th><p>LMCompatibilityLevel:</p></th>
+<th><br></th>
+<th><p>0<br>
+Send LM &amp; NTLM responses<br>
+</p></th>
+<th><p>1<br>
+Send LM &amp; NTLM - use NTLMv2 session security if negotiated.</p></th>
+<th><p>2<br>
+Send NTLM response only<br>
+</p></th>
+<th><p><b>3<br>
+Send NTLMv2 response only</b><br>
+</p></th>
+<th><p>4<br>
+Send NTLMv2 response only/refuse LM<br>
+</p></th>
+<th><p>5<br>
+Send NTLMv2 response only/refuse LM &amp; NTLM</p></th>
+</tr>
+<tr>
+<td>Clients Receive:</td>
+<td >LM</td>
+<td class="low">Yes<br></td>
+<td class="low">Yes<br></td>
+<td class="high">No</td>
+<td class="high">No<br></td>
+<td class="high">No<br></td>
+<td class="high">No<br></td>
+</tr>
+<tr>
+<td><br></td>
+<td>NTLM</td>
+<td class="med">Yes<br></td>
+<td class="med">Yes<br></td>
+<td class="med">Yes<br></td>
+<td class="high">No</td>
+<td class="high">No</td>
+<td class="high">No</td>
+</tr>
+<tr>
+<td></td>
+<td>NTLMv2</td>
+<td class="na">No</td>
+<td class="high">Negotiated</td>
+<td class="high">Negotiated</td>
+<td class="high">Yes + Session Security<br></td>
+<td class="high">Yes + Session Security</td>
+<td class="high">Yes + Session Security<br></td>
+</tr>
+<tr>
+<th><br></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+<tr>
+<td>DCs accept:</td>
+<td>LM</td>
+<td class="low">Yes<br></td>
+<td class="low">Yes</td>
+<td class="low">Yes</td>
+<td class="low">Yes</td>
+<td class="high">No</td>
+<td class="high">No</td>
+</tr>
+<tr>
+<td height="20" align="left" valign="bottom"><br></td>
+<td>NTLM</td>
+<td class="med">Yes<br></td>
+<td class="med">Yes<br></td>
+<td class="med">Yes<br></td>
+<td class="med">Yes<br></td>
+<td class="med">Yes<br></td>
+<td class="high">No</td>
+</tr>
+<tr>
+<td height="20" align="left" valign="bottom"><br></td>
+<td align="left" valign="middle">NTLMv2</td>
+<td class="high">Yes<br></td>
+<td class="high">Yes<br></td>
+<td class="high">Yes<br></td>
+<td class="high">Yes<br></td>
+<td class="high">Yes<br></td>
+<td class="high">Yes<br></td>
+</tr>
+<tr>
+<td><p>This level is the default for these OS's:</p></td>
+<td></td>
+<td><p>Windows&nbsp;2000/XP</p></td>
+<td></td>
+<td><p>Windows 2003</p></td>
+<td>Windows&nbsp;7 / 2008<br>
+and above.<br></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<p>Best practices are dependent on your specific security and authentication requirements.</p>
+<p>If <span class="code">LMCompatibilityLevel</span> on a server is increased to 4 or 5 for better security, any Windows XP/2000 user who tries to authenticate will experience a logon failure that has a bad password and  increments the bad password count. If account lock-out is configured, the user will eventually be locked out. </p>
+<p>Increasing the <span class="code">LMCompatibilityLevel</span>above 3 on a client will make no difference, but it can be lowered if there is a need to communicate with very old servers.</p>
+<p>The NTLM version (0-5) is stored in the registry: <br>
+<span class="code">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA\LMCompatibilityLevel</span><br>
+<br>
+or it  can be set in the local Security policy (<span class="code">secpol.msc</span>) <br>
+under: Local policies\Security Options\Network Security: LAN Manager Authentication level</p>
+<p><i class="quote">&ldquo;When a deep injury is done us, we never recover until we forgive&rdquo; ~ Alan Paton</i></p>
+<p><b>Related:</b>
+<p><a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-security-lan-manager-authentication-level">LAN Manager authentication level</a> - Docs.Microsoft.com<br>
+<a href="https://technet.microsoft.com/en-us/magazine/2006.08.securitywatch.aspx">NTLM authentication</a> - The most misunderstood Windows security setting of all time by Jesper Johansson<br>
+<a href="http://davenport.sourceforge.net/ntlm.html">NTLM protocol </a> - In depth detail of the protocol and related Security Support Provider (SSP ) - Eric Glass<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-ntlm.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

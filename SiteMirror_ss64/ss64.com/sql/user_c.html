@@ -1,0 +1,75 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/user_c.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>CREATE USER - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>CREATE USER</h1>
+<p>Add a user to the current database.</p>
+<pre>Syntax
+      CREATE USER <i>user</i> 
+         [{ FOR | FROM } LOGIN <i>login_name</i>] [WITH DEFAULT_SCHEMA = <i>schema</i>]
+
+      CREATE USER <i>user</i> 
+         [{ FOR | FROM } CERTIFICATE <i>certificate</i>] [WITH DEFAULT_SCHEMA = <i>schema</i>]
+
+      CREATE USER <i>user</i> 
+         [{ FOR | FROM } ASYMMETRIC KEY <i>asym_key</i>] [WITH DEFAULT_SCHEMA = <i>schema</i>]
+
+      CREATE USER <i>user</i> WITHOUT LOGIN
+
+
+Key<i>
+   </i>user          Name for the user in this database, up to 128 characters.
+
+   login_name    A valid SQL Server login. When this SQL Server login enters the
+                 database it will acquire the name and ID of <i>user</i>.
+                 By default <i>user </i>will be mapped to the SQL Server login with the same name.
+
+   <i>certificate</i>   The certificate for which the database user is being created.
+
+   asym_key      The asymmetric key for which the database user is being created.
+
+   schema        The first schema that will used to resolve object names for <i>user</i>.
+                 default schema = dbo
+
+   WITHOUT LOGIN Don't map <i>user </i>to an existing login.
+
+</pre>
+<p>    All members of the sysadmin fixed server role have a default schema of dbo.</p>
+<p>A user that is not mapped to a SQL Server login may connect to other databases as guest, this just requires GRANT CONNECT TO guest;</p>
+<p>Examples</p>
+<pre>CREATE LOGIN user86<br>    WITH PASSWORD = 'pa$$word';<br>USE MyDatabase;<br>CREATE USER user86 FOR LOGIN user86;<br>GO
+
+CREATE LOGIN user87<br>    WITH PASSWORD = 'pa$$word';<br>USE MyDatabase;<br>CREATE USER user87 FOR LOGIN user87<br>    WITH DEFAULT_SCHEMA = Marketing;<br>GO</pre>
+<p class="quote"><i>&quot;My friend, there are two kinds of people in the world, Those with guns and those who dig.&quot; - The Good, The Bad, and The Ugly</i></p>
+<p><b>Related commands:</b></p>
+<p>  <a href="login_c.html">CREATE LOGIN</a><br>
+  <a href="user_a.html">ALTER USER</a><br>
+  <a href="user_d.html">DROP USER</a><br>
+Equivalent Oracle command:  <a href="../ora/user_c.html">CREATE USER</a></p><!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/user_c.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:33 GMT -->
+</html>

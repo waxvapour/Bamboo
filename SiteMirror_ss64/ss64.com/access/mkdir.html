@@ -1,0 +1,54 @@
+<!DOCTYPE HTML><html lang="en">
+
+<!-- Mirrored from ss64.com/access/mkdir.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:43:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name="Description" content="Create a directory.">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>MkDir function - Access - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_access.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Access</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/access/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>MkDir</h1>
+<p> Create a directory. </p>
+<pre>Syntax
+      MkDir <i>path</i>
+
+Key
+   <i>path</i>   The directory to create.</pre>
+<p>Any higher-level directories must already exist or MkDir will fail. </p>
+<p>UNC paths are not supported, but MkDir will work against mapped drives, alternatively, shell out and run an <a href="../nt/md.html">MD</a> command from the OS:</p>
+<p><span class="code">Dim strPath as String</span><br>
+<span class="code">Const DQ As String =&quot;&quot;&quot;&quot;<br>
+strPath = DQ &amp; &quot;\\Server64\folder1&quot; &amp; DQ<br>
+</span><span class="code">Shell &quot;cmd.exe /c IF NOT EXIST &quot; &amp; strPath &amp; &quot; MD &quot; &amp; strPath, vbNormalFocus</span></p>
+<p><b>Examples</b></p>
+<p><span class="code">MkDir &quot;D:\test folder&quot;</span><br>
+<br>
+'Create only if the folder does not already exist:<br>
+<span class="code">If Len(Dir(&quot;C:\demo\folder&quot;, vbDirectory)) = 0 Then MkDir &quot;C:\demo\folder&quot;</span></p>
+<p class="quote"><i>&ldquo;Is not the whole world a vast house of assignation of which the filing system has been lost?&rdquo; ~ Quentin Crisp</i></p>
+<p><b>Related:</b></p>
+<p><a href="dir.html">Dir</a> - List directory<br>
+Windows CMD shell: <a href="../nt/md.html">MKDIR</a> </p><!-- #BeginLibraryItem "/Library/foot_access.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- access -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4313908313"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/access/mkdir.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:43:26 GMT -->
+</html>

@@ -1,0 +1,117 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/fltmc.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>FLTMC - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>FLTMC.exe</h1> 
+<p> Manage MiniFilter drivers. <b>Load</b> a Filter driver, <b>Unload</b> a Filter driver, List <b>filter </b>information, List all <b>instances</b> or the instances associated with a                  Filter or Volume<b>, </b>List all <b>volumes</b> (including the network redirectors), <b>Attach </b>or<b> <b>Detach</b></b> a filter  from a  Volume.</p>
+<pre>Syntax
+      FLTMC load [ <i>driverName</i> ]
+      FLTMC unload [ <i>driverName</i> ]
+      FLTMC filters
+      FLTMC instances [-f <i>filterName</i> ]|[-v <i>volumeName</i> ]
+      FLTMC volumes
+      FLTMC attach [ <i>filterName</i> ] [ <i>volumeName</i> ] [[-i <i>instanceName</i> ][-a <i>altitude</i>]]
+      FLTMC detach [ <i>filterName</i> ] [ <i>volumeName</i> ] [ <i>instanceName</i> ]
+
+Key
+
+   <i>driverName</i>  The full path to the sys file for the Filter driver.
+
+   <i>filterName</i>  The name for the Filter used by the driver to register and
+               to load the Filter using this command line.
+
+   <i>volumeName</i>  The name of the volume, such as c: or d:
+
+   <i>instanceName</i> The name for the instance to be attached or detached.
+
+   -f          List the instances associated with the filter identified by <i>filterName</i>.
+
+   -v          List the instances associated with the volume identified by <i>volumeName</i>.
+</pre>
+<p>FLTMC requires an <a href="syntax-elevate.html">Elevated</a> command prompt (either CMD or PowerShell)</p>
+<h2>File System Minifilter Drivers</h2>
+<blockquote>
+<p>A file system filter driver (Minifilter) is an optional driver that adds value to or modifies the behavior of a file system. </p>
+<p> These filter drivers process all filesystem activity including background processes. Typical uses are:  encryption software transparently encrypting new files. Enforcing file quotas and most commonly anti-virus software scanning  file activity.</p>
+<p>A malicious rootkit infection, may obfuscate its presence by installing a minifilter driver which intercepts and filters calls between other (legitimate) drivers and the system. It is therefore good practice to document the known minidrivers installed on your key systems.</p>
+<p>The FLTMC command allows the option to display existing filters and delete malicious ones.</p>
+</blockquote>
+<h2>Attaching a filter to a Volume </h2>
+<blockquote>
+<p>The
+<span class="code">instanceName</span> is optional if an <span class="code">altitude</span> is provided If no altitude is provided, the necessary keys must already exist in the registry to describe the altitude for the given name.</p>
+<p>The <span class="code">altitude</span> is optional if an <span class="code">instanceName</span> is provided. If specified, this new instance is placed at this explicit altitude. If a name is specified as well, the new instance will be given the name specified.</p>
+<p> If the attachment is successful, an Instance Name will be displayed to identify the instance created by this attachment.</p>
+</blockquote>
+<h2>Detaching a filter from a Volume </h2>
+<blockquote>
+<p>The <span class="code">filterName</span> is the name for the Filter that is used        by the driver to register and to load the Filter using this command line.</p>
+<p>The <span class="code">instanceName</span> is the identifier returned by the attach command.<br>
+If no instanceName is given, the default instance for the Volume        specified will be removed.</p>
+</blockquote>
+<h2>Altitude</h2>
+<blockquote>
+<p>Minifilters are assigned a specific altitude by Microsoft. This will sit within a range  that is specific to the function of the minifilter. <br>
+e.g. Anti-Virus minifilters are assigned an altitude between 320,000 and 329,999. <br>
+and encryption minifilters are assigned an altitude between 140,000 and 149,999.</p>
+<p>For file <b>Writes</b>, Altitudes are processed in descending order.<br>
+For file <b>Reads</b>, Altitudes are processed in ascending order. </p>
+<p>So when writing anti-virus is handled before encryption, but when reading decryption is handled before anti-virus.</p>
+<p>Legacy filter drivers do not use the minifilter model, this means they don’t slot into place based on their altitude. For interoperability with legacy filter drivers, the filter manager can <a href="https://docs.microsoft.com/en-gb/windows-hardware/drivers/ifs/filter-manager-concepts">attach filter device objects</a> to a file system I/O stack in more than one location [<a href="https://blogs.msdn.microsoft.com/ntdebugging/2013/03/25/understanding-file-system-minifilter-and-legacy-filter-load-order/">example</a>]. However you should still consider replacing legacy filters with minifilters.</p>
+</blockquote>
+<h2>Offloading Reads and/or Writes on NTFS drives</h2>
+<blockquote>
+<p>Starting with Windows 8, a filter may specify <a href="https://docs.microsoft.com/en-gb/windows-hardware/drivers/ifs/offloaded-data-transfers">offload</a> capability .<br>
+<span class="code">FLTMC instances</span> will display the Supported Features (SprtFtrs)<br>
+1 	= FSCTL_OFFLOAD_READ<br>
+2 	= FSCTL_OFFLOAD_WRITE<br>
+So 3 = Offload Read + Write are supported.</p>
+</blockquote>
+<h2>Common minifilters (\System32\Drivers)</h2>
+<blockquote>
+<p>WdFilter.sys – Windows Defender<br>
+storqosflt.sys - Storage QoS Filter Driver<br>
+ luafv.sys – UAC File Virtualization<br>
+npsvctrig.sys – Named Pipe Service Trigger Provider<br>
+ FileCrypt.sys - Windows sandboxing and encryption
+<br>
+FileInfo.sys – FileInfo Filter Driver (SuperFetch / ReadyBoost)<br>
+wcifs.sys - File System Filter<br>
+Wof.sys – Windows Image File Boot
+</p>
+</blockquote>
+<p><b>Examples</b></p>
+<p>Display the installed filters:</p>
+<p class="code">C:\&gt; FLTMC</p>
+<p>Display the instance names, altitude and supported features: </p>
+<p class="code">C:\&gt; FLTMC instances</p>
+<p class="quote"><i>&ldquo;A complex system that works is invariably found to have evolved from a simple system that worked. The inverse proposition also appears to be true: A complex system designed from scratch never works and cannot be made to work.&quot; ~ John Gall</i></p><p>  <b>Related:</b></p>
+<p><a href="https://docs.microsoft.com/en-gb/windows-hardware/drivers/ifs/load-order-groups-and-altitudes-for-minifilter-drivers">Load Order Groups and Altitudes for Minifilter Drivers</a> - Docs.Microsoft.com<br>
+<a href="fsutil.html">FSUTIL</a> - File and Volume utilities</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/fltmc.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:15 GMT -->
+</html>

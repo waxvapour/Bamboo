@@ -1,0 +1,64 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/hostname.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>hostname Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>hostname</h1> 
+<p>Print or Set (temporarily) the name of current host system.</p>
+<pre>Syntax
+   hostname [-fs] [<i>name-of-host</i>]
+
+Key
+   -f    Include domain information in the printed name.
+         This is the default behavior.
+
+   -s    Trim off any domain information from the printed name.</pre>
+<p> The super-user      can set the hostname by supplying a hostname argument.  </p>
+<p>When you open a new Terminal window, the prompt will begin with the <span class="code">hostname</span> and this may appear differently if you are connected to a WiFi network compared to opening a new Terminal when disconnected.</p>
+<p>A DHCP server can provide a hostname to a client, along with an IP address, and the client system hostname will be changed to whatever the DHCP server sends.</p>
+<p>If a NetBIOSName has been configured, (it is typically set to = the hostname) the value is stored in a preference file:<br>
+<span class="code">$ defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName</span></p>
+<p>You can set the NetBIOS name with <a href="defaults.html">defaults</a> or in System Preferences &gt; Network &gt;  active network port &gt; Advanced &gt;  WINS tab.</p>
+<p> To keep the hostname      between reboots, run <span class="code"><a href="scutil.html">scutil</a> --set HostName <i>name-of-host</i></span>.</p>
+<p><b>Examples</b></p>
+<p>Display the current hostname:</p>
+<p><span class="code">$ hostname</span><br>
+<span class="code">ss64.local</span></p>
+<p>The hostname is also stored in a system variable named HOSTNAME:</p>
+<p><span class="code">$ echo $HOSTNAME<br>
+ss64.local</span></p>
+<p>Set a new hostname:</p>
+<p><span class="code">$ sudo hostname FancyNewName</span></p>
+<p><span class="code">$ <a href="scutil.html">scutil</a> --set HostName FancyNewName</span><br>
+</p>
+<p class="quote"><i>&ldquo; One thing you don't want to do as a host is be running around all evening. Do as much as you can ahead of time, so all you have to do is grill the main ingredients&rdquo; ~ Bobby Flay</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="scutil.html">scutil</a> - Manage system configuration parameters, including hostname<br>
+<a href="dscacheutil.html">dscacheutil</a> -flushcache<br>
+</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/hostname.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:15 GMT -->
+</html>

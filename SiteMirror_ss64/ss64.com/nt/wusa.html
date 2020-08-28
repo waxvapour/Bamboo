@@ -1,0 +1,88 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/wusa.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>wusa - Windows Update - Windows CMD - SS64.com</title></head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>WUSA.exe</h1>  
+<p>Windows Update Standalone Installer. </p>
+<pre>Syntax
+      WUSA <i>options
+</i>
+Options:
+   /extract    Extract the package contents to a destination folder.
+               This option was removed from Windows 10 due to a security issue, privilege elevation
+               would allow executables to be extracted to C:\windows\system32 [<a href="https://msitpros.com/?p=3100">x</a>].
+
+   /kb	        uninstall a package led by using its KB number. Use only together with /uninstall.
+
+   /quiet	    Run Wusa.exe in quiet mode without user interaction. When the tool runs in quiet mode,
+               it runs without user interaction. The computer restarts if this is required.
+
+               For example, if the Windows6.0-KB934307-x86.msu file is in the D:\934307 folder,
+               type the following command at a command prompt to install the update package without
+               user interaction:
+
+               wusa.exe d:\934307\Windows6.0-KB934307-x86.msu /quiet
+
+               When you use this switch, the Microsoft Software License Terms do not appear.
+
+   /norestart	Prevent Wusa.exe from restarting the computer.
+               The /norestart switch is ignored if the /quiet switch is not present.
+               If you run Wusa.exe together with these two switches, you must manually restart the
+               operating system after the installation is complete (if the installation requires a restart)
+
+               For example, if the Windows6.0-KB934307-x86.msu file is in the D:\934307 folder, type
+               the following command to install the update package:
+
+               wusa.exe D:\934307\Windows6.0-KB934307-x86.msu /quiet /norestart
+
+   /warnrestart
+               When this switch is combined with the /quiet switch, Wusa.exe prompts you before it
+               begins a restart for install and uninstall operations.
+
+   /forcerestart
+               When this switch is combined with the /quiet switch, Wusa.exe forcibly closes
+               applications and then begins a restart.
+
+   /?, /h, /help	  View help.</pre>
+<p><b>Examples:</b></p>
+<p><span class="code">C:\&gt; WUSA d:\934307\Windows6.0-KB934307-x86.msu /quiet</span></p>
+<p><span class="code">C:\&gt; WUSA D:\934307\Windows6.0-KB934307-x86.msu /quiet /norestart</span></p>
+<p><span class="code">C:\&gt; WUSA /uninstall /kb:934307 /quiet /norestart</span></p>
+<p><i class="quote">“A scar does not form on the dying. A scar means I survived” ~ Chris Cleave</i><br>
+<br>
+<b>Related:</b></p>
+<p><a href="expand.html">EXPAND</a> - Uncompress CAB/MSU files.<br>
+<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825265(v=win.10)">DISM</a> - Operating System Package Servicing<br>
+<a href="wuauclt.html">WUAUCLT</a> - Windows Update Agent<br>
+ %systemroot%<span class="code">\WindowsUpdate.log</span><br>
+<a href="https://support.microsoft.com/en-gb/help/934307/">Q934307</a> - Description of the Windows Update Standalone Installer.<br>
+<a href="https://support.microsoft.com/en-us/help/824687/">Q824687</a> - Command-line switches for Microsoft software update packages.</p>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/wusa.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:43 GMT -->
+</html>

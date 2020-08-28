@@ -1,0 +1,184 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/bash/syntax-substitution.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Command Substitution - Linux - SS64.com</title>
+</head><!-- #BeginLibraryItem "/Library/head_bashsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Linux</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/bash/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Command, filename and directory stack substitution</h1>
+<p> Substitution allows the output of a command to replace the command 
+itself.</p>
+<h2>Command substitution</h2>
+<blockquote>
+<p>Command substitution occurs when a command is enclosed as follows:</p>
+<pre>$(command) 
+or 
+`command`</pre>
+<p>The
+output from such a command is broken into  separate  words  at  blanks,
+tabs  and  newlines, and null words are discarded. <br>
+The output is variable and command substituted and put in place of the original string with any trailing newlines 
+  deleted.<br>
+The <span class="code">$()</span> form is the modern way and has more clarity and readability.<br>
+<br>
+Command substitutions inside double  quotes  (<span class="code">"</span>)  retain  blanks  and       
+tabs; only newlines force new words.  The single final newline does not       
+force a new word in any case.  It is thus possible for a  command  substitution  to  yield only part of a word, even if the command outputs a       
+complete line.</p>
+<p> Embedded newlines are not deleted, but they can be removed during word splitting. <br>
+The command substitution <span class="code">$(cat file)</span> can be replaced by the equivalent but faster <span class="code">$(< file)</span>. <br>
+<br>
+When the older `backtick` form of substitution is used, it will substitute <b>Standard Output</b> only, not <b>Standard Error</b>.<br>
+Also when parsing the <span class="code">command</span>, a backslash will retain 
+  its literal meaning except when followed by <span class="code">$</span>, <span class="code">`</span> or <span class="code">\</span>. <br>
+The first backquote 
+not preceded by a backslash terminates the command substitution. </p>
+<p>When using 
+  the <span class="code">$(command)</span> form, all characters between the parentheses make up the command; 
+  none are treated specially. <br>
+<br>
+Command substitutions can be nested. To nest when using the backquoted form, 
+  escape the inner backquotes with backslashes. If you are nesting substitutions the <span class="code">$(command)</span> form is much easier to read: <span class="code">$(echo $(echo inside))</span><br>
+<br>
+If the substitution appears within double quotes, word splitting and filename 
+expansion are not performed on the results.</p>
+</blockquote>
+<h2>Process substitution operators:</h2>
+<blockquote>
+<p> <span class="code">&nbsp;&lt;(<i>command</i>) </span></p>
+<p> <span class="code"> &nbsp;&gt;(<i>command</i>) </span></p>
+<p><i>command</i>  can be any command that produces output on stdout. Bash execs the command, creates a named pipe from the output, and replaces the operator with the name of that pipe. You can then read stdout from that pipe as you would from a regular file. When execution is finished,  the named pipe is removed automatically.</p>
+</blockquote>
+<h2>Filename substitution</h2>
+<blockquote>
+<p> If a word contains any of the characters <span class="code">*, ?, [ or { </span>or begins       
+with  the  character <span class="code">~</span> it is a candidate for filename substitution,       
+also known as `globbing'.  This word is then regarded as a pattern       
+(`glob-pattern'),  and replaced with an alphabetically sorted list of       
+file names which match the pattern.<br>
+<br>
+In matching filenames, the character<span class="code"> . </span>at the beginning of a filename       
+or  immediately following  a<span class="code"> / </span>, as well as the character<span class="code"> / </span>must be       
+matched explicitly. <br>
+The character<span class="code"> * </span>matches any  string  of  characters,  including the null string. <br>
+The character<span class="code"> ? </span>matches any single       
+character. <br>
+The sequence <span class="code">[...]</span> matches  any  one  of  the  characters       
+enclosed.   Within <span class="code">[...]</span>,  a pair  of  characters  separated by -       
+matches any character lexically between the two.<br>
+<br>
+(+) Some glob-patterns can be negated: The  sequence <span class="code">[^...]</span> matches       
+any  single  character <i>not</i> specified by the characters and/or ranges of       
+characters in the braces.<br>
+<br>
+An entire glob-pattern can also be negated with <span class="code">^</span>:</p>
+<pre>
+    &gt; echo *
+    bang crash crunch ouch
+    &gt; echo ^cr*
+    bang ouch
+
+    Glob-patterns which do not use ?, *, or [] or which use  {}  or
+       ~ (below) are not negated correctly.</pre>
+<p>The  metanotation <span class="code">`a{b,c,d}e'</span> is a shorthand for <span class="code">`abe ace ade'</span>.  Left-
+to-right order is preserved: <span class="code">`/usr/source/s1/{oldls,ls}.c'</span> expands  to <span class="code">`/usr/source/s1/oldls.c /usr/source/s1/ls.c'</span>. The results of matches
+are  sorted  separately at  a  low  level  to  preserve  this order:<br>
+`../{memo,*box}'  might expand to `../memo ../box ../mbox'.  (Note that
+`memo' was not sorted with the results of matching `*box'.)  It is  not
+an  error  when this construct expands to files which do not exist, but
+it is possible to get an error from a command  to  which  the  expanded
+list  is  passed.  This construct may be nested.  As a special case the
+words `{', `}' and `{}' are passed undisturbed.<br>
+<br>
+The character<span class="code"> ~ </span>at the beginning of a filename refers to home directories.  Standing  alone,  i.e.,<span class="code"> ~ </span>, it expands to the invoker's home
+directory as reflected in the value of the <b>home</b> shell  variable.   When
+followed by a name consisting of letters, digits and - characters the
+shell searches for a user with that name  and  substitutes  their  home
+directory;  thus `<span class="code">~ken</span>' might expand to `<span class="code">/usr/ken</span>' and `<span class="code">~ken/chmach</span>' to
+`<span class="code">/usr/ken/chmach</span>'.  If the character<span class="code"> ~ </span>is  followed  by  a  character
+other  than  a letter or<span class="code"> / </span>or appears elsewhere than at the beginning
+of a word, it is left undisturbed.   A  command like  `setenv  MANPATH
+/usr/man:/usr/local/man:~/lib/man'  does not, therefore, do home directory substitution as one might hope.<br>
+<br>
+It is an error for a glob-pattern containing <span class="code">*, ?, [ or ~</span>, with
+or without <span class="code">^</span>, not to match any files. However, only one pattern in a
+list of glob-patterns must match a file (so that,  e.g.,  `rm  *.a  *.c
+*.o'  would  fail  only if there were no files in the current directory
+ending in <span class="code">.a, .c, or .o</span>), and if the <b>nonomatch</b> shell variable  is
+set  a  pattern (or  list  of  patterns) which matches nothing is left
+unchanged rather than causing an error.<br>
+<br>
+The <b>noglob</b> shell variable can be set to prevent filename  substitution,
+and  the <i>expand-glob</i> editor command, normally bound to `^X-*', can be
+used to interactively expand individual filename substitutions.</p>
+</blockquote>
+<h2>Directory stack substitution (+)</h2>
+<blockquote>
+<p> The directory stack is a list of directories, numbered from zero,  used
+by  the <i>pushd</i>, <i>popd</i> and <i>dirs</i> builtin commands (q.v.). <i>dirs</i> can print,
+store in a file, restore and clear the directory stack at any time, and
+the <b>savedirs</b> and <b>dirsfile</b> shell  variables  can be set to store the
+directory stack automatically on logout and restore it on  login.   The<br>
+<b>dirstack</b> shell variable can be examined to see the directory stack and
+set to put arbitrary directories into the directory stack.<br>
+<br>
+The character<span class="code"> = </span>followed by one or more digits expands to an entry in
+the  directory stack.  The special case<span class="code"> =- </span>expands to the last directory in the stack.  For example,</p>
+<pre>    &gt; dirs -v
+    0    /usr/bin
+    1    /usr/spool/uucp
+    2    /usr/accts/sys
+    &gt; echo =1
+    /usr/spool/uucp
+    &gt; echo =0/calendar
+    /usr/bin/calendar
+    &gt; echo =-
+    /usr/accts/sys</pre>
+<p>The <b>noglob</b> and <b>nonomatch</b> shell variables  and  the <i>expand-glob</i> editor
+command apply to directory stack as well as filename substitutions.</p>
+</blockquote>
+<h2> Other substitutions (+)</h2>
+<blockquote>
+<p> There are several more transformations involving filenames, not strictly related to the above but mentioned here for completeness. <i>Any</i> filename  can be  expanded  to a full path when the <b>symlinks</b> variable
+(q.v.) is set to `expand'.  Quoting prevents this  expansion,  and  the <i>normalize-path</i> editor command does it on demand.  The <i>normalize-command</i> editor command expands commands in PATH into  full  paths  on  demand.<br>
+Finally, <i>cd</i> and <i>pushd</i> interpret  `-'  as  the old working directory
+(equivalent to the shell variable <b>owd</b>). This is not a substitution  at
+all,  but  an abbreviation recognized by only those commands.  Nonetheless, it too can be prevented by quoting.</p>
+</blockquote>
+<p><b>Examples</b></p>
+<p>To diff two files, you may often see this:</p>
+<p class="code">$ grep somestring file1 &gt; /tmp/a<br>
+$ grep somestring file2 &gt; /tmp/b<br>
+$ diff /tmp/a /tmp/b</p>
+<p>With process substitution this can be simplified into a one liner:</p>
+<p class="code">$ diff <b>&lt;(</b>file1<b>) &lt;(</b>file2<b>)</b></p>
+<p>Merge and sort a selection of files:</p>
+<pre>$ sort -m <b>&lt;(</b>zcat file.1.gz<b>) &lt;(</b>zcat file.2.gz<b>) &lt;(</b>zcat file.3.gz<b>)</b> ... | gzip -c &gt; merged.gz</pre>
+<p><b>Related linux commands:</b></p>
+<p><a href="syntax.html">BASH Syntax</a><br>
+<a href="https://en.wikipedia.org/wiki/Process_substitution">Wikipedia: Process substitution</a><br>
+<a href="http://www.linuxjournal.com/article/2156?page=0,0">Introduction to Named Pipes</a> - Linux Journal<br>
+</p><!-- #BeginLibraryItem "/Library/foot_bash.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- bash300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4615356305"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+<!-- Mirrored from ss64.com/bash/syntax-substitution.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:44 GMT -->
+</html>

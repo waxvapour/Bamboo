@@ -1,0 +1,56 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ora/profile_d.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:49:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Drop Profile - Oracle - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ora.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Oracle</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>DROP PROFILE</h1> 
+<p>Drop a user profile<br>
+  <br>
+  Syntax:</p>
+<pre>   DROP PROFILE <i>profile_name</i> [CASCADE]</pre>
+<p>If a user is currently assigned to a profile, then the profile cannot be dropped, specifying CASCADE will remove all such profile assignments 
+  before dropping the profile itself.</p>
+<p>If you do manage to disconnect a user account from it's assigned profile e.g. via export and import, you will then find the account is unable to login (invalid username/password) to resolve this, recreate the profile or assign the user to a different profile (ALTER USER…)<br>
+<span class="quote"><br>
+<i>"I would rather train someone and lose them, then not train them and 
+  keep them" ~ Zig Ziglar</i></span><b><br>
+  <br>
+  Related Oracle Commands:<br>
+  <br>
+  </b>PROFILE - <a href="profile_c.html">CREATE PROFILE</a> <br>
+  PROFILE - <a href="profile_a.html">ALTER PROFILE</a><br>
+ROLE - <a href="role_d.html">DROP ROLE</a></p>
+<p><b>Related Views:</b></p>
+<p class="code">&nbsp;<a href="../orad/DBA_PROFILES.html">DBA_PROFILES</a><br> 
+&nbsp;<a href="../orad/DBA_SYS_PRIVS.html">DBA_SYS_PRIVS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../orad/USER_SYS_PRIVS.html">USER_SYS_PRIVS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../orad/ROLE_SYS_PRIVS.html">ROLE_SYS_PRIVS</a> <br>
+  <br> 
+&nbsp;<a href="../orav/V%24SESSION.html">V$SESSION</a><br> 
+&nbsp;<a href="../orav/V%24SESSION_CONNECT_INFO.html">V$SESSION_CONNECT_INFO</a><br> 
+&nbsp;<a href="../orav/V%24SESSTAT.html">V$SESSTAT</a><br> 
+&nbsp;<a href="../orav/V%24SESS_IO.html">V$SESS_IO</a></p><!-- #BeginLibraryItem "/Library/foot_ora.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- oracle-footer -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4275490898"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ora/profile_d.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:49:52 GMT -->
+</html>

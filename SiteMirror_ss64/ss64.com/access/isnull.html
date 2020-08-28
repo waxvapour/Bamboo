@@ -1,0 +1,57 @@
+<!DOCTYPE HTML><html lang="en">
+
+<!-- Mirrored from ss64.com/access/isnull.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:43:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name="Description" content="Return TRUE if the expression is NULL, otherwise return FALSE.">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>IsNull function - Access - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_access.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Access</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/access/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>IsNull</h1>
+<p>  Return  TRUE if the expression is <a href="syntax-null.html">NULL</a>, otherwise return FALSE.</p>
+<pre>Syntax
+      IsNull(<i>expression</i>)
+
+Key
+   <i>expression</i>    A string or numeric expression.</pre>
+<p>The IsNull() function can be used in VBA or in an <a href="syntax-functions.html">SQL query</a>.</p>
+<p>MS Access makes a distinction between an empty string &quot;&quot; and a NULL value. If you type something into a field and then delete it, you will be left with a zero length string, in contrast if nothing has ever been entered into a field it will be NULL. IsNull() will only detect NULLs. </p>
+<p><b>Examples</b></p>
+<p>In a query:</p>
+<blockquote>
+<p><img src="isnull.png" width="439" height="104" alt="IsNull"></p>
+<p>In SQL queries  it is also useful to use the SQL <span class="code">IS</span> operator with <span class="code">Null</span> to find Null values:</p>
+<p><img src="null.png" width="248" height="106" alt="Is NULL"></p>
+</blockquote>
+<p>In VBA:</p>
+<p><span class="code">Dim boolDemo as Boolean<br>
+boolDemo = <b>IsNull(</b>Me!txtDescription<b>)</b><br>
+
+If boolDemo = True Then Msgbox &quot;A required value is missing!&quot;</span></p>
+<p class="quote"><i>&ldquo;Art is the elimination of the unnecessary&rdquo; ~ Pablo Picasso</i></p>
+<p><b>Related:</b></p>
+<p><a href="nz.html">Nz</a> - Detect a NULL or   a Zero Length string.<br>
+<a href="isempty.html">IsEmpty</a> - Test if an expression is Empty (unassigned).</p><!-- #BeginLibraryItem "/Library/foot_access.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- access -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4313908313"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/access/isnull.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:43:26 GMT -->
+</html>

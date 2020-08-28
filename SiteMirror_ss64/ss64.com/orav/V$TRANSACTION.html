@@ -1,0 +1,96 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/orav/V$TRANSACTION.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>V$TRANSACTION - Oracle - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_orav.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="../ora/index.html">Oracle</a></li>
+<li class="tbtn"><a href="index-2.html">V$ Views</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>V$TRANSACTION </h1>  
+ <p> Data Dictionary View </p> 
+ 
+<pre>Columns
+   ___________________________
+ 
+   ADDR
+   CR_CHANGE
+   CR_GET
+   DSCN-B
+   DSCN-W
+   FLAG
+   LOG_IO
+   NAME
+   NOUNDO
+   PHY_IO
+   PRV_XIDSLT
+   PRV_XIDSQN
+   PRV_XIDUSN
+   PTX
+   PTX_XIDSLT
+   PTX_XIDSQN
+   PTX_XIDUSN
+   RECURSIVE
+   SES_ADDR
+   SPACE
+   START_SCNB
+   START_SCNW
+   START_TIME
+   START_UBABLK
+   START_UBAFIL
+   START_UBAREC
+   START_UBASQN
+   START_UEXT
+   STATUS
+   UBABLK
+   UBAFIL
+   UBAREC
+   UBASQN
+   USED_UBLK      (UNDO Blocks)
+   USED_UREC      (UNDO records)
+   XIDSLOT
+   XIDSQN
+   XIDUSN</pre>
+<p>List the Undo per session</p>
+<p class="code">SELECT<br>
+s.sid, <br>
+s.username,<br>
+r.name &quot;RBS name&quot;, <br>
+tx.start_time,<br>
+tx.used_ublk &quot;Undo blocks&quot;,<br>
+tx.used_urec &quot;Undo recs&quot;<br> 
+FROM
+<br>
+v$session s,<br>
+v$transaction tx,<br>
+v$rollname r<br> 
+WHERE
+<br>
+tx.addr = s.taddr and<br>
+r.usn = tx.xidusn;</p>
+<p><b>Related:</b></p>
+<p><span class="code"><a href="V%24SESSION.html">V$SESSION</a><br>
+<a href="V%24ROLLNAME.html">V$ROLLNAME</a>.usn &nbsp;&nbsp;= v$transaction</span>.<span class="code">xidusn</span></p><!-- #BeginLibraryItem "/Library/foot_orad.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- oracle-footer -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4275490898"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div>
+<!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/orav/V$TRANSACTION.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:11 GMT -->
+</html>

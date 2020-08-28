@@ -1,0 +1,113 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/pico.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>pico Man Page - macOS - SS64.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1> pico</h1> 
+<p>Simple text editor, in the style of the Pine Composer. commands 
+  are displayed at the bottom of the screen, and context- sensitive help is provided. 
+As characters are typed they are immediately inserted into the text. </p>
+<pre>Syntax
+      pico [<i>options</i>] [<i>file</i>]
+
+Options
+       -f     Use  function  keys for commands.	 This option sup-
+	      ported only in conjunction with  UW  Enhanced  NCSA
+	      telnet.
+
+       +n     Causes pico to be started with the cursor located n
+	      lines into the file. (Note: no  space  between  "+"
+	      sign and number)
+
+       -nn    The  -nn option enables new mail notification.  The
+	      n argument is optional, and specifies how often, in
+	      seconds, your mailbox is checked for new mail.  For
+	      example, -n60 causes pico to  check  for	new  mail
+	      once  every  minute.   The  default interval is 180
+	      seconds, while the minimum allowed is 30. (Note: no
+	      space between "n" and the number)
+
+       -t     Enable "tool" mode.  Intended for when pico is used
+	      as  the  editor  within  other  tools  (e.g.,  Elm,
+	      Pnews).  Pico will not prompt for save on exit, and
+	      will not rename the buffer during the  "Write  Out"
+	      command.
+
+       -v     View the file only, disallowing any editing.
+
+       -w     Disable  word  wrap  (thus  allow	 editing  of long
+	      lines).
+
+       -z     Enable ^Z suspension of pico.</pre>
+<p>Editing commands are entered using control-key combinations. As 
+  a work-around for communications programs that swallow certain control characters, 
+  you can emulate a control key by pressing ESCAPE twice, followed by the desired 
+  control character, e.g. "ESC ESC c" would be equivalent to entering a ctrl-c. 
+  The editor has five basic features: paragraph justification, searching, block 
+  cut/paste, a spelling checker, and a file browser. </p>
+<p>Paragraph justification (or filling) takes place in the paragraph 
+  that contains the cursor, or, if the cursor is between lines, in the paragraph 
+  immediately below. Paragraphs are delimited by blank lines, or by lines beginning 
+  with a space or tab. Unjustification can be done immedi- ately after justification 
+  using the control-U key combination. </p>
+<p>String searches are not sensitive to case. A search begins at 
+  the current cursor position and wraps around the end of the text. The most recent 
+  search string is offered as the default in subsequent searches. </p>
+<p>Blocks of text can be moved, copied or deleted with creative use 
+  of the command for mark (ctrl-underscore), delete (ctrl-k) and undelete (ctrl-u). 
+  The delete command will remove text between the "mark" and the current cursor 
+  position, and place it in the "cut" buffer. The undelete command effects a "paste" 
+  at the current cursor position. </p>
+<p>The spell checker examines all words in the text. It then offers, 
+  in turn, each misspelled word for correction while highlighting it in the text. 
+  Spell checking can be cancelled at any time. Alternatively, pico will substitute 
+  for the default spell checking routine a routine defined by the SPELL environment 
+  variable. The replacement routine should read standard input and write standard 
+  output. </p>
+<p>The file browser is offered as an option in the "Read File" and 
+  "Write Out" command prompts. It is intended to help in searching for specific 
+  files and navigating directory hierarchies. Filenames with sizes and names of 
+  directories in the current working directory are presented for selection. The 
+  current working directory is displayed on the top line of the display while 
+  the list of available commands takes up the bottom two. Several basic file manipulation 
+  functions are supported: file renaming, copying, and deletion. </p>
+<p>When a running pico is disconnected (i.e., receives a SIGHUP), 
+  pico will save the current work if needed before exiting. Work is saved under 
+  the current filename with ".save" appended. If the current work is unnamed, 
+  it is saved under the filename "pico.save".</p>
+<p>More specific help is available in pico's online help.<b><br>
+  <br>
+  </b><i class="quote">"True Ease in Writing comes from Art, not Chance, As those move easiest 
+  who have learned to dance" ~ Alexander 
+  Pope</i></p>
+<p><b>Related macOS comands:</b></p>
+<p>
+<a href="nano.html">Nano</a> - basic GNU editor with colour syntax highlighting.<br>
+pine(1) - Source distribution</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/pico.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:51 GMT -->
+</html>

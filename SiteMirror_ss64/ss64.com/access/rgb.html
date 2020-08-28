@@ -1,0 +1,60 @@
+<!DOCTYPE HTML><html lang="en">
+
+<!-- Mirrored from ss64.com/access/rgb.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:43:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name="Description" content="RGB() is a function that returns a Long whole number representing an RGB color value.">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>RGB function - Access - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_access.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Access</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/access/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>RGB</h1>
+<p>Return a Long whole number representing an RGB color value. </p>
+<pre>Syntax<span class="code">
+      RGB (<i>red,green,blue</i>)
+
+Key
+   red    Red component Variant(integer) 0-255
+   green  green component Variant(integer) 0-255
+   blue   blue component Variant(integer) 0-255</pre>
+<p>Convert a hex-format color  to RGB Long:</p>
+<pre>Function HexToLongRGB(strHexVal As String) As Long
+    Dim intRed As Integer
+    Dim intGreen As Integer
+    Dim intBlue As Integer
+
+    intRed = CLng("&amp;H" &amp; Left$(strHexVal, 2))
+    intGreen = CLng("&H" & Mid$(strHexVal, 3, 2))
+    intBlue = CLng("&H" & Right$(strHexVal, 2))
+
+    HexToLongRGB = RGB(intRed, intGreen, intBlue)
+
+End Function</pre>
+<p>The RGB() function can be used to create variables representing all the <a href="css-colours.txt">standard named CSS colours</a>.</p>
+<p class="quote"><i>&ldquo;You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit-hole goes&rdquo; ~ The Matrix</i></p>
+<p> <b>Related:</b></p>
+<p> <a href="syntax-color.html">Syntax - color</a> - Convert RGB to Microsoft Access colour codes.<br>
+<a href="https://emw3.com/colour.html">Average (mix) colours</a> - EMW3</p>
+<!-- #BeginLibraryItem "/Library/foot_access.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- access -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4313908313"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/access/rgb.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:43:36 GMT -->
+</html>

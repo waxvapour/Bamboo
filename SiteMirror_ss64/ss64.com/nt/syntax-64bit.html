@@ -1,0 +1,175 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-64bit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<link rel="STYLESHEET" href="../tables.css" type="text/css">
+<title>Detect 64 vs 32 bit OS or Process - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Detecting 64 bit vs 32 bit </h1>
+<p>Before starting to look at this, its important to be clear about what you mean by &quot;64 bit&quot;. <br>
+You can have a 64 bit CPU, a 64 bit operating system and a 64 bit process running. <br>
+It is equally possible to have 64 bit CPU, a 32 bit operating system installed and a 16 bit process running.</p>
+<p>The table below shows a few of the combinations you  need to account for:</p>
+<table>
+<tr>
+<td>&nbsp;</td>
+<td>CPU Hardware</td>
+<td>Operating System </td>
+<td>Process</td>
+</tr>
+<tr>
+<td>Windows 3.1</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+</tr>
+<tr>
+<td><b>Windows 95/NT </b></td>
+<td><b>32</b></td>
+<td><b>32</b></td>
+<td><b>32</b></td>
+</tr>
+<tr>
+<td>Windows XP (16 bit compatibility)</td>
+<td>32</td>
+<td>32</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Windows XP</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td><b>Windows XP on new hardware</b></td>
+<td><b>64</b></td>
+<td><b>32</b></td>
+<td><b>32</b></td>
+</tr>
+<tr>
+<td>Windows 7+ on old hardware</td>
+<td>32</td>
+<td>32</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Windows 7+ (32 bit compatibility)</td>
+<td>64</td>
+<td>64</td>
+<td>32 (WOW) </td>
+</tr>
+<tr>
+<td><b>Windows 7+</b></td>
+<td><b>64</b></td>
+<td><b>64</b></td>
+<td><b>64</b></td>
+</tr>
+</table>
+<h2>Detect 64 bit processor hardware</h2>
+<blockquote>
+<p> In Vista and greater, you can use <span class="code">WMIC os get osarchitecture</span>, or in WMI <span class="code">Win32_ComputerSystem/OSArchitecture</span><br> 
+There are a number of promising looking  options in WMI and Systeminfo, but they all pertain to the OS not the CPU.</p>
+</blockquote>
+<h2>Detect a 64 bit Operating System </h2>
+<blockquote>
+<p><span class="code">:: Installed OS<br>
+Set _os_bitness=64<br>
+IF %PROCESSOR_ARCHITECTURE% == x86 (<br>
+&nbsp;&nbsp;IF NOT DEFINED PROCESSOR_ARCHITEW6432 Set _os_bitness=32<br>
+&nbsp;&nbsp;)<br>
+Echo Operating System is %_os_bitness% bit</span></p>
+<p>Via David Wang&rsquo;s blog post: <a href="https://blogs.msdn.com/b/david.wang/archive/2006/03/26/howto-detect-process-bitness.aspx">Detect OS Bitness</a></p>
+<p><a href="https://www.howtogeek.com/346905/windows-on-arm-doesnt-make-any-sense-yet/">Windows 10 on ARM</a> includes an x86-on-ARM64 emulation, so the possible values for <span class="code">PROCESSOR_ARCHITECTURE</span> are: <span class="code">AMD64</span> or <span class="code">IA64</span> or <span class="code">ARM64</span> or (for 32 bit) <span class="code">x86</span></p>
+</blockquote>
+<h2>Detect a 64 bit Process</h2>
+<blockquote>
+<p>Running <span class="code">C:\windows\SysWOW64\cmd.exe</span> will launch a 32 bit instance of CMD.exe even if the OS is 64 bit. <br>
+Applications that are compiled for a 32 bit processor will run in a similar way. </p>
+<p>We can detect this with the <span class="code">PROCESSOR_ARCHITEW6432</span> variable, <span class="code">AMD64</span> = a 32 bit process under WOW64 mode:</p>
+<p class="code">If &quot;%PROCESSOR_ARCHITEW6432%&quot; == &quot;AMD64&quot; ECHO 32 bit process</p>
+<p>Or in PowerShell:<br>
+<span class="code">if ($env:PROCESSOR_ARCHITEW6432 -eq &quot;AMD64&quot;) {&quot;32 bit process&quot;}<br>
+</span></p>
+</blockquote>
+<h2>System Folders</h2>
+<blockquote>
+<p><span class="body">64 bit</span> versions of Windows have dynamic system folders <span class="code">C:\Windows\sys*</span> to support both 64 and 32 bit programs. <br>
+PowerShell.exe,  CMD.exe and many other programs are available as both 32 bit or 64 bit.</p>
+<p> The dynamic sys folders will appear differently to a 32 bit session and a 64 bit session:</p>
+<table>
+<tr>
+<th scope="col">&nbsp;</th>
+<th scope="col">32 bit folder</th>
+<th scope="col">64 bit folder</th>
+</tr>
+<tr>
+<td>32 bit session</td>
+<td>C:\Windows\system32\</td>
+<td>C:\Windows\sysNative\</td>
+</tr>
+<tr>
+<td>64 bit session</td>
+<td>C:\Windows\sysWOW64\</td>
+<td>C:\Windows\system32\</td>
+</tr>
+</table>
+<p><br>
+By default a 32 bit session will launch 32bit executables from <span class="code">C:\Windows\System32\</span> but you can still choose to launch 64 bit executables by specifying SysNative</p>
+<p>By default a 64 bit session will launch 64bit executables also from <span class="code">C:\Windows\System32\</span> but you can still choose to launch 32 bit executables by specifying sysWOW64.</p>
+<p>The 
+sysNative folder is not visible to 64 bit processes or programs and  cannot been seen in Windows Explorer. </p>
+<p>The <span class="code">PROCESSOR_ARCHITEW6432</span> environment variable. If it’s set, then you’re in a 32-bit process on 64-bit Windows, and must use SysNative. If it’s not set, then you’re either in a 32-bit process on 32-bit Windows, or in a 64-bit process on 64-bit Windows. In that case, you can use System32.</p>
+</blockquote>
+<h2>File location environment variables</h2>
+<blockquote>
+<pre>%ProgramFiles%     <span class="body"> = 32 bit programs on 32 bit systems </span>&quot;C:\Program Files&quot;
+%ProgramFiles%     <span class="body"> = 64 bit programs on 64 bit systems </span>&quot;C:\Program Files&quot;
+%ProgramFiles(x86)%<span class="body"> = 32 bit programs on 64 bit systems </span>&quot;C:\Program Files (x86)&quot;
+</pre>
+</blockquote>
+<h2>Run a 32 bit program</h2>
+<blockquote>
+<p> To run a 32 bit program or utility on a 64 bit OS, the 32 bit executable file must be called from <span class="code">C:\Windows\SysWOW64\</span></p>
+<p> if you run a 32 bit shell (such as <span class="code">C:\windows\syswow64\cmd.exe</span>) and then try to launch a command, it will <b>always</b> look for a 32 bit version of the command, even if you explicitly use a full path to system32, the 32 bit shell will redirect to the 32 bit equivalent  in <span class="code">syswow64</span> (if no 32 bit version of the command is found, then the new process will fail to launch.)</p>
+</blockquote>
+<h2>Run a 64 bit program from a 32 bit process</h2>
+<blockquote>
+<p>To run a 64 bit program from a 32 bit process use the virtual folder <span class="code">C:\Windows\sysnative</span><br>
+</p>
+<p>In many cases this is not needed as most utilities (e.g. ping.exe) have both a 32 bit and 64 bit version, however a few utilities (nbtstat, bcdedit) are only  available as a 64-bit executable.<br>
+</p>
+</blockquote>
+<p>By default, running CMD from the start menu will launch a 64 bit process (<span class="code">C:\Windows\System32\cmd.exe</span>)</p>
+<p><i class="quote">&ldquo;It's not so much that we're afraid of change or so in love with the old ways, but it's that place in between that we fear... it's like being between trapezes&rdquo; ~ Marilyn Ferguson</i><br>
+<br>
+<b>Related:</b></p>
+<p><a href="https://support.microsoft.com/en-gb/help/556009">Q556009</a> - How to check if a computer is running a 32 bit or 64 bit Operating System.<br>
+<a href="https://support.microsoft.com/en-us/help/896458/">Q896458</a> - 64-bit Windows does not support 16-bit applications.<br>
+<span class="code"><a href="wmic.html">WMIC</a> OS Get OSArchitecture</span></p>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-64bit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:59 GMT -->
+</html>

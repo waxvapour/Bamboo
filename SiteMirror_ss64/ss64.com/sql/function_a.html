@@ -1,0 +1,54 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/function_a.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>ALTER FUNCTION - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>ALTER FUNCTION</h1>
+<p>Alter a user-defined function.</p>
+<pre>Syntax
+      ALTER FUNCTION [<i>schema</i>.] <i>function
+         </i>( [@<i>parameter</i> [ AS ][<i>type_schema</i>.] <i>parameter_data_type</i>  [= default ]
+            [ ,...n ]
+           ])
+      RETURNS
+          <i>r</i><i>eturn_clause...
+      </i>[;]
+
+Key:
+    <i>function</i>            Name of the function(s) to add.
+    <i>schema</i>              The schema to which the user-defined function belongs.
+    parameter_data_type The data type of the function (not timestamp) 
+                        CLR functions, accept a limited range of data types.</pre> 
+<p>The details of the return clause will vary for Scalar, Inline/Multistatement Table-valued,  or CLR functions.<br>
+See SQL Server books online or the resources on the<a href="../links/sql.html"> SQL Links</a> page </p>
+<p class="quote"><i>Form follows function ~ Louis H. Sullivan </i></p>
+<p><b>Related commands:</b></p>
+<p>  <a href="function_c.html">CREATE FUNCTION</a><br>
+  <a href="function_d.html">DROP FUNCTION</a>  <br>
+Equivalent Oracle commands:  <a href="../ora/function_a.html">ALTER FUNCTION </a></p><!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/function_a.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:30 GMT -->
+</html>

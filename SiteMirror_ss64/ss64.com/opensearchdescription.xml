@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OpenSearchDescription xmlns="https://a9.com/-/spec/opensearch/1.1/">
+ <ShortName>SS64.com</ShortName>
+ <Description>Google search SS64.com</Description>
+ <Tags>SS64</Tags>
+ <Url type="text/html" 
+      template="https://www.google.com/search?q=site:ss64.com {searchTerms}"/>
+</OpenSearchDescription>

@@ -1,0 +1,101 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/deltree.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Deltree - Delete files and folders - Windows CMD - SS64.com</title>
+
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>DELTREE - Delete all subfolders and files.</h1>
+<p> Very old versions of Windows (Windows 95 and earlier) had the DELTREE command to delete all sub-folders and files. Newer versions of Windows do not have this command, but we can easily write a short batch script to do the same thing.</p>
+<p>Deleting from the command line is significantly faster than using Windows Explorer, often seconds instead of minutes,  there is no running calculation of file sizes and no recycle bin. This does mean there is no possibility of an undo other than restoring a backup.
+</p>
+<p>The two key commands required are <span class="code">DEL /s</span> to delete all files including hidden and system files, followed by 
+<span class="code">RD /s</span> to remove the now empty folders.</p>
+<blockquote>
+<p> When iterating through thousands of files, supressing the output of DEL *.* by redirecting it to NUL, will make the process run a little faster.
+</p>
+<pre>:: DelTree.cmd
+:: Delete a folder plus all files and subfolders
+@Echo Off
+Set _folder=%1
+if [%_folder%]==[] goto:eof
+Pushd %_folder%
+Del /f /q /s *.* >NUL
+CD \
+RD /s /q %_folder%
+:: repeat because RD is sometimes buggy 
+if exist %_folder% RD /s /q %_folder%
+Popd</pre>
+<p><b>Example</b></p>
+<p>Supply the full path to the folder to be deleted surrounded in quotes:<br>
+ <span class="code">deltree.cmd &quot;c:\demo\sample files&quot;</span></p>
+</blockquote>
+<h2> Delete only Empty folders</h2>
+<blockquote>
+<p>Delete all  folders and subfolders below the <i>current</i> folder. <br>
+Copy the script below to a folder and simply double click it.</p>
+<p class="code">:: DelEmpty.cmd<br>
+:: Remove all empty folders and subfolders<br>
+@Echo off<br>
+Set _folder=&quot;%~dp0&quot;<br>
+pushd %_folder%<br>
+Echo remove empty folders from %_folder% ?<br>
+pause<br>
+For /f &quot;delims=&quot; %%d in ('dir /s /b /ad %_folder% ^| sort /r') do RD &quot;%%d&quot; 2&gt;nul</p>
+<p>Alternative <a href="../ps/remove-item.html">PowerShell</a> one-liner to delete empty folders:<span class="code"><br>
+PS C:\&gt; Get-ChildItem -Recurse . | where { $_.PSISContainer -and @( $_ | Get-ChildItem ).Count -eq 0 } | Remove-Item</span></p>
+</blockquote>
+<h2>Delete the Current Folder &amp; subfolders</h2>
+<blockquote>
+<p>This script deletes all  contents of the <i>current</i> folder. Copy the script to a folder and simply double click it. <br>
+ This version also does not delete the root folder itself. The script  sets the read-only  <a href="attrib.html">Attribute</a> on itself.<br>
+</p>
+<pre>:: FastDel.cmd
+:: Remove all files and subfolders
+@Echo Off
+cls
+Set _folder="%~dp0"
+Attrib +R %0
+pushd %_folder%
+ECHO Delete all contents of the folder: %_folder% ?
+Pause
+:: Delete the files
+Del /f /q /s /a:-R %_folder% >NUL
+:: Delete the folders
+For /d %%G in (%_folder%\*) do RD /s /q &quot;%%G&quot;
+Attrib -R %0
+Popd</pre>
+<p> If you use this on a UNC path like \\Server64\share1\somefolder the CMD shell will not be able to set a current directory. To avoid an automatic fallback to C:\Windows\ the script uses <span class="code">%~dp0</span> to grab the location and then <a href="pushd.html">pushd</a> will, if needed, map a temporary drive.</p>
+</blockquote>
+<p class="quote"><i>&ldquo;However beautiful the strategy, you should occasionally look at the results&rdquo; ~ Sir Winston Churchill</i></p><p><b>Related:</b><br>
+<br>
+<a href="rd.html">RD</a> - Delete folders or entire folder trees <br>
+<a href="delprof.html">DELPROF</a> Delete NT user profiles<br>
+<a href="del.html">DEL</a> - Delete files<br>
+PowerShell: <a href="../ps/remove-item.html">Remove-Item</a> - Delete the specified items.<br>
+Equivalent bash command (Linux): <a href="../bash/rmdir.html">rmdir</a> / <a href="../bash/rm.html">rm</a> - Remove folders/ files</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/deltree.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:00 GMT -->
+</html>

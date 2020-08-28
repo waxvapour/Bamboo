@@ -1,0 +1,281 @@
+The RGB() function can be used to create variables representing the standard named CSS colours.
+
+Dim lngAliceblue As Long
+Dim lngAntiquewhite As Long
+Dim lngAqua As Long
+Dim lngAqua As Long
+Dim lngAquamarine As Long
+Dim lngAzure As Long
+Dim lngBeige As Long
+Dim lngBisque As Long
+Dim lngBlack As Long
+Dim lngBlanchedalmond As Long
+Dim lngBlue As Long
+Dim lngBlueviolet As Long
+Dim lngBrown As Long
+Dim lngBurlywood As Long
+Dim lngCadetblue As Long
+Dim lngChartreuse As Long
+Dim lngChocolate As Long
+Dim lngCoral As Long
+Dim lngCornflowerblue As Long
+Dim lngCornsilk As Long
+Dim lngCrimson As Long
+Dim lngDarkblue As Long
+Dim lngDarkcyan As Long
+Dim lngDarkgoldenrod As Long
+Dim lngDarkgray As Long
+Dim lngDarkgreen As Long
+Dim lngDarkkhaki As Long
+Dim lngDarkmagenta As Long
+Dim lngDarkolivegreen As Long
+Dim lngDarkorange As Long
+Dim lngDarkorchid As Long
+Dim lngDarkred As Long
+Dim lngDarksalmon As Long
+Dim lngDarkseagreen As Long
+Dim lngDarkslateblue As Long
+Dim lngDarkslategray As Long
+Dim lngDarkturquoise As Long
+Dim lngDarkviolet As Long
+Dim lngDeeppink As Long
+Dim lngDeepskyblue As Long
+Dim lngDimgray As Long
+Dim lngDodgerblue As Long
+Dim lngFirebrick As Long
+Dim lngFloralwhite As Long
+Dim lngForestgreen As Long
+Dim lngFuchsia As Long
+Dim lngGainsboro As Long
+Dim lngGhostwhite As Long
+Dim lngGold As Long
+Dim lngGoldenrod As Long
+Dim lngGray As Long
+Dim lngGreen As Long
+Dim lngGreenyellow As Long
+Dim lngHoneydew As Long
+Dim lngHotpink As Long
+Dim lngIndianred As Long
+Dim lngIndigo As Long
+Dim lngIvory As Long
+Dim lngKhaki As Long
+Dim lngLavender As Long
+Dim lngLavenderblush As Long
+Dim lngLawngreen As Long
+Dim lngLemonchiffon As Long
+Dim lngLightblue As Long
+Dim lngLightcoral As Long
+Dim lngLightcyan As Long
+Dim lngLightgoldenrodyellow As Long
+Dim lngLightgreen As Long
+Dim lngLightgrey As Long
+Dim lngLightpink As Long
+Dim lngLightsalmon As Long
+Dim lngLightseagreen As Long
+Dim lngLightskyblue As Long
+Dim lngLightslategray As Long
+Dim lngLightsteelblue As Long
+Dim lngLightyellow As Long
+Dim lngLime As Long
+Dim lngLimegreen As Long
+Dim lngLinen As Long
+Dim lngMaroon As Long
+Dim lngMediumaquamarine As Long
+Dim lngMediumblue As Long
+Dim lngMediumorchid As Long
+Dim lngMediumpurple As Long
+Dim lngMediumseagreen As Long
+Dim lngMediumslateblue As Long
+Dim lngMediumspringgreen As Long
+Dim lngMediumturquoise As Long
+Dim lngMediumvioletred As Long
+Dim lngMidnightblue As Long
+Dim lngMintcream As Long
+Dim lngMistyrose As Long
+Dim lngMoccasin As Long
+Dim lngNavajowhite As Long
+Dim lngNavy As Long
+Dim lngOldlace As Long
+Dim lngOlive As Long
+Dim lngOlivedrab As Long
+Dim lngOrange As Long
+Dim lngOrangered As Long
+Dim lngOrchid As Long
+Dim lngPalegoldenrod As Long
+Dim lngPalegreen As Long
+Dim lngPaleturquoise As Long
+Dim lngPalevioletred As Long
+Dim lngPapayawhip As Long
+Dim lngPeachpuff As Long
+Dim lngPeru As Long
+Dim lngPink As Long
+Dim lngPlum As Long
+Dim lngPowderblue As Long
+Dim lngPurple As Long
+Dim lngRed As Long
+Dim lngRosybrown As Long
+Dim lngRoyalblue As Long
+Dim lngSaddlebrown As Long
+Dim lngSalmon As Long
+Dim lngSandybrown As Long
+Dim lngSeagreen As Long
+Dim lngSeashell As Long
+Dim lngSienna As Long
+Dim lngSilver As Long
+Dim lngSkyblue As Long
+Dim lngSlateblue As Long
+Dim lngSlategray As Long
+Dim lngSnow As Long
+Dim lngSpringgreen As Long
+Dim lngSteelblue As Long
+Dim lngTan As Long
+Dim lngTeal As Long
+Dim lngThistle As Long
+Dim lngTomato As Long
+Dim lngTurquoise As Long
+Dim lngViolet As Long
+Dim lngWheat As Long
+Dim lngWhite As Long
+Dim lngWhitesmoke As Long
+Dim lngYellow As Long
+Dim lngYellowgreen As Long
+
+lngAliceblue = RGB(240,248,255)
+lngAntiquewhite = RGB(250,235,215)
+lngAqua = RGB(0,255,255)
+lngAqua = RGB(0,255,255)
+lngAquamarine = RGB(127,255,212)
+lngAzure = RGB(240,255,255)
+lngBeige = RGB(245,245,220)
+lngBisque = RGB(255,228,196)
+lngBlack = RGB(0,0,0)
+lngBlanchedalmond = RGB(255,235,205)
+lngBlue = RGB(0,0,255)
+lngBlueviolet = RGB(138,43,226)
+lngBrown = RGB(165,42,42)
+lngBurlywood = RGB(222,184,135)
+lngCadetblue = RGB(95,158,160)
+lngChartreuse = RGB(127,255,0)
+lngChocolate = RGB(210,105,30)
+lngCoral = RGB(255,127,80)
+lngCornflowerblue = RGB(100,149,237)
+lngCornsilk = RGB(255,248,220)
+lngCrimson = RGB(220,20,60)
+lngDarkblue = RGB(0,0,139)
+lngDarkcyan = RGB(0,139,139)
+lngDarkgoldenrod = RGB(184,134,11)
+lngDarkgray = RGB(169,169,169)
+lngDarkgreen = RGB(0,100,0)
+lngDarkkhaki = RGB(189,183,107)
+lngDarkmagenta = RGB(139,0,139)
+lngDarkolivegreen = RGB(85,107,47)
+lngDarkorange = RGB(255,140,0)
+lngDarkorchid = RGB(153,50,204)
+lngDarkred = RGB(139,0,0)
+lngDarksalmon = RGB(233,150,122)
+lngDarkseagreen = RGB(143,188,143)
+lngDarkslateblue = RGB(72,61,139)
+lngDarkslategray = RGB(47,79,79)
+lngDarkturquoise = RGB(0,206,209)
+lngDarkviolet = RGB(148,0,211)
+lngDeeppink = RGB(255,20,147)
+lngDeepskyblue = RGB(0,191,255)
+lngDimgray = RGB(105,105,105)
+lngDodgerblue = RGB(30,144,255)
+lngFirebrick = RGB(178,34,34)
+lngFloralwhite = RGB(255,250,240)
+lngForestgreen = RGB(34,139,34)
+lngFuchsia = RGB(255,0,255)
+lngGainsboro = RGB(220,220,220)
+lngGhostwhite = RGB(248,248,255)
+lngGold = RGB(255,215,0)
+lngGoldenrod = RGB(218,165,32)
+lngGray = RGB(128,128,128)
+lngGreen = RGB(0,128,0)
+lngGreenyellow = RGB(173,255,47)
+lngHoneydew = RGB(240,255,240)
+lngHotpink = RGB(255,105,180)
+lngIndianred = RGB(205,92,92)
+lngIndigo = RGB(75,0,130)
+lngIvory = RGB(255,255,240)
+lngKhaki = RGB(240,230,140)
+lngLavender = RGB(230,230,250)
+lngLavenderblush = RGB(255,240,245)
+lngLawngreen = RGB(124,252,0)
+lngLemonchiffon = RGB(255,250,205)
+lngLightblue = RGB(173,216,230)
+lngLightcoral = RGB(240,128,128)
+lngLightcyan = RGB(224,255,255)
+lngLightgoldenrodyellow = RGB(250,250,210)
+lngLightgreen = RGB(144,238,144)
+lngLightgrey = RGB(211,211,211)
+lngLightpink = RGB(255,182,193)
+lngLightsalmon = RGB(255,160,122)
+lngLightseagreen = RGB(32,178,170)
+lngLightskyblue = RGB(135,206,250)
+lngLightslategray = RGB(119,136,153)
+lngLightsteelblue = RGB(176,196,222)
+lngLightyellow = RGB(255,255,224)
+lngLime = RGB(0,255,0)
+lngLimegreen = RGB(50,205,50)
+lngLinen = RGB(250,240,230)
+lngMaroon = RGB(128,0,0)
+lngMediumaquamarine = RGB(102,205,170)
+lngMediumblue = RGB(0,0,205)
+lngMediumorchid = RGB(186,85,211)
+lngMediumpurple = RGB(147,112,219)
+lngMediumseagreen = RGB(60,179,113)
+lngMediumslateblue = RGB(123,104,238)
+lngMediumspringgreen = RGB(0,250,154)
+lngMediumturquoise = RGB(72,209,204)
+lngMediumvioletred = RGB(199,21,133)
+lngMidnightblue = RGB(25,25,112)
+lngMintcream = RGB(245,255,250)
+lngMistyrose = RGB(255,228,225)
+lngMoccasin = RGB(255,228,181)
+lngNavajowhite = RGB(255,222,173)
+lngNavy = RGB(0,0,128)
+lngOldlace = RGB(253,245,230)
+lngOlive = RGB(128,128,0)
+lngOlivedrab = RGB(107,142,35)
+lngOrange = RGB(255,165,0)
+lngOrangered = RGB(255,69,0)
+lngOrchid = RGB(218,112,214)
+lngPalegoldenrod = RGB(238,232,170)
+lngPalegreen = RGB(152,251,152)
+lngPaleturquoise = RGB(175,238,238)
+lngPalevioletred = RGB(219,112,147)
+lngPapayawhip = RGB(255,239,213)
+lngPeachpuff = RGB(255,218,185)
+lngPeru = RGB(205,133,63)
+lngPink = RGB(255,192,203)
+lngPlum = RGB(221,160,221)
+lngPowderblue = RGB(176,224,230)
+lngPurple = RGB(128,0,128)
+lngRed = RGB(255,0,0)
+lngRosybrown = RGB(188,143,143)
+lngRoyalblue = RGB(65,105,225)
+lngSaddlebrown = RGB(139,69,19)
+lngSalmon = RGB(250,128,114)
+lngSandybrown = RGB(244,164,96)
+lngSeagreen = RGB(46,139,87)
+lngSeashell = RGB(255,245,238)
+lngSienna = RGB(160,82,45)
+lngSilver = RGB(192,192,192)
+lngSkyblue = RGB(135,206,235)
+lngSlateblue = RGB(106,90,205)
+lngSlategray = RGB(112,128,144)
+lngSnow = RGB(255,250,250)
+lngSpringgreen = RGB(0,255,127)
+lngSteelblue = RGB(70,130,180)
+lngTan = RGB(210,180,140)
+lngTeal = RGB(0,128,128)
+lngThistle = RGB(216,191,216)
+lngTomato = RGB(255,99,71)
+lngTurquoise = RGB(64,224,208)
+lngViolet = RGB(238,130,238)
+lngWheat = RGB(245,222,179)
+lngWhite = RGB(255,255,255)
+lngWhitesmoke = RGB(245,245,245)
+lngYellow = RGB(255,255,0)
+lngYellowgreen = RGB(154,205,50)

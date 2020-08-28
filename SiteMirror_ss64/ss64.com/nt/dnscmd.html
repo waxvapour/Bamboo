@@ -1,0 +1,227 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/dnscmd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>DnsCmd - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>DNSCMD</h1>
+<p>Manage DNS servers, unattended setup and configuration of new DNS servers.</p>
+<pre>Syntax
+      DnsCmd  <i>ServerName Command</i> [<i>Command Parameters</i>]
+ 
+    <i>ServerName</i>:
+       IP address or host name    -- remote or local DNS server
+       .                          -- DNS server on local machine
+
+    <i>Command</i>:
+    /ageallrecords    Set the current time on all time stamps in a zone or node.
+    /clearcache       Clear the DNS server cache.
+    /config           Reset the DNS server or zone configuration.
+    /createbuiltindirectorypartitions    Create the built-in DNS application directory partitions.
+    /createdirectorypartition    Create a DNS application directory partition.
+    /deletedirectorypartition    Delete a DNS application directory partition.
+    /directorypartitioninfo      List information about a DNS application directory partition.
+    /enlistdirectorypartition    Add a DNS server to the replication set of a DNS application directory partition.
+    /enumdirectorypartitions    List the DNS application directory partitions for a server.
+    /enumrecords     List the resource records in a zone.
+    /enumzones       List the zones hosted by the specified server.
+    /exportsettings  Write server configuration information to a text file.   NEW in Server 2012<br>                     %systemroot%\system32\dns\DnsSettings.txt
+    /info            Get server information.
+    /ipvalidate      Validate remote DNS servers.   NEW in Server 2008
+    /nodedelete      Delete all records for a node in a zone.
+    /recordadd       Add a resource record to a zone.
+    /recorddelete    Remove a resource record from a zone.
+    /resetforwarders       Set DNS servers to forward recursive queries.
+    /resetlistenaddresses  Set server IP addresses to serve DNS requests.
+    /startscavenging    Initiate server scavenging.
+    /statistics      Query or clear server statistics data.
+    /unenlistdirectorypartition    Remove a DNS server from the replication set of a DNS application directory partition.
+    /writebackfiles    Save all zone or root-hint data to a file.
+    /zoneadd           Create a new zone on the DNS server.
+    /zonechangedirectorypartition    Change the directory partition on which a zone resides.
+    /zonedelete        Deletes a zone from the DNS server.
+    /zoneexport        Write the resource records of a zone to a text file.
+    /zoneinfo          Display zone information.
+    /zonepause      Pause a zone.
+    /zoneprint      Display all records in the zone.
+    /zonerefresh    Force a refresh of the secondary zone from the master zone.
+    /zonereload     Reload a zone from its database.
+    /zoneresetmasters    Change the master servers that provide zone transfer information to a secondary zone.
+    /zoneresetscavengeservers Change the servers that can scavenge a zone.
+    /zoneresetsecondaries     Reset secondary information for a zone.
+    /zoneresettype     Change the zone type.
+    /zoneresume        Resume a zone.
+    /zoneupdatefromds  Update an active directory integrated zone with data from active directory Domain Services (AD DS).
+    /zonewriteback     Save zone data to a file.
+
+Detailed Usage:
+
+ DnsCmd <i>ServerName</i> /<b>AgeAllRecords</b> <i>ZoneName</i> [<i>NodeName</i>] [/Tree] [/f]
+    <i>Zone</i>     -- ZoneName
+    <i>ZoneName</i> -- FQDN of a zone
+    <i>NodeName</i> -- name or node or subtree in which to enable aging
+                   - "@" for zone root OR
+                   - FQDN of a node (name with a '.' at the end) OR
+                   - single label for name relative to zone root
+    /Tree      -- force aging on entire subtree of node
+                    or entire zone if node not given
+    /f         -- execute without asking for confirmation
+
+ DnsCmd <i>ServerName</i> /<b>clearcache</b>
+
+ DnsCmd <i>ServerName</i> /<b>Config</b> <i>ZoneName</i> <i>Property</i> <i>Value</i>
+   run DnsCmd /Config /? for more
+
+ DnsCmd <i>ServerName</i> /<b>CreateBuiltinDirectoryPartitions</b> <i>Option</i>
+   run DnsCmd /CreateBuiltinDirectoryPartitions /? for more
+
+ DnsCmd <i>ServerName</i> /<b>CreateDirectoryPartition</b> <i>FQDN of partition</i>
+
+ DnsCmd <i>ServerName</i> /<b>DeleteDirectoryPartition</b> <i>FQDN of partition</i>
+
+ DnsCmd <i>ServerName</i> /<b>DirectoryPartitionInfo</b> <i>FQDN of partition</i>
+
+ DnsCmd <i>ServerName</i> /<b>EnlistDirectoryPartition</b> <i>FQDN of partition</i>
+
+ DnsCmd <i>ServerName</i> /<b>EnumDirectoryPartitions</b> [/Custom]
+
+ DnsCmd <i>ServerName</i> /<b>EnumRecords</b> <i>ZoneName</i> <i>NodeName</i> [<i>DataOptions</i>] [<i>ViewOptions</i>]
+   run DnsCmd /EnumRecords /? for more
+
+ DnsCmd <i>ServerName</i> /<b>EnumZones</b> [<i>Filter1</i> <i>Filter2</i> ...]
+   run DnsCmd /EnumZones /? for more
+
+ DnsCmd <i>ServerName</i> /<b>exportsettings</b>
+
+ DnsCmd <i>Server</i> /<b>Info</b> [<i>Property</i>]
+   run DnsCmd /Info /? for more
+
+ DnsCmd <i>ServerName</i> /<b>IpValidate</b> <i>Context</i> [<i>ZoneName</i>] [<i>IPAddress</i>] ..]
+  Tests remote DNS server IP addresses
+  Context can be one of:
+    /DnsServers-- test that IPs are DNS servers
+    /Forwarders -- test IPs to use as forwarders
+    /RootHints -- test IPs to use as root hints
+    /ZoneMasters -- test IPs to use as master servers for the zone named <i>ZoneName</i>
+
+ DnsCmd <i>ServerName</i> /<b>NodeDelete</b> <i>Zone</i> <i>NodeName</i> [/Tree] [/f]
+   run DnsCmd /NodeDelete /? for more
+
+ DnsCmd <i>ServerName</i> /<b>RecordAdd</b> <i>Zone</i> <i>NodeName</i> [/Aging] [/OpenAcl] [/CreatePTR] [<i>Ttl</i>] <i>RRType</i> <i>RRData</i>
+   run DnsCmd /RecordAdd /? for more
+
+ DnsCmd <i>ServerName</i> /<b>RecordDelete</b> <i>Zone</i> <i>NodeName</i> <i>RRType</i> <i>RRData</i> [/f]
+   run DnsCmd /RecordDelete /? for more
+
+ DnsCmd <i>ServerName</i> /<b>ResetForwarders</b> [<i>IPAddress</i>] ...] [ /[No]Slave ] [/TimeOut <i>Time</i>]
+   run DnsCmd /ResetForwarders /? for more
+
+ DnsCmd <i>ServerName</i> /<b>ResetListenAddresses</b> [<i>ListenAddress</i>] ...]
+  <i>ListenAddress</i>  -- an IP address belonging to the DNS server
+    Default:  listen to all server IP Address(es) for DNS requests
+
+ DnsCmd <i>ServerName</i> /<b>startscavenging</b>
+
+ DnsCmd <i>ServerName</i> /<b>Statistics</b> [<i>StatId</i> | /Clear]
+   run DnsCmd /RecordDelete /? for a list of StatIds
+
+ DnsCmd <i>ServerName</i> /<b>UnenlistDirectoryPartition</b> <i>FQDN of partition</i>
+
+ DnsCmd <i>ServerName</i> /<b>WriteBackFiles</b> [<i>ZoneName</i>]
+  <i>ZoneName</i> -- FQDN of a zone whose datafile to be written back
+    Default: write back datafile for all dirty zones
+
+ DnsCmd <i>ServerName</i> /<b>ZoneAdd</b> <i>ZoneName</i> <i>ZoneType</i> [<i>Options</i>]
+  <i>ZoneName</i> -- FQDN of zone
+   run DnsCmd /ZoneAdd /? for more
+
+ DnsCmd <i>ServerName</i> /<b>ZoneChangeDirectoryPartition</b> <i>ZoneName</i> <i>NewPartition</i>
+    <i>ZoneName</i>      -- FQDN of zone to move to new partition
+    <i>NewPartition</i>  -- FQDN of new directory partition or one of:
+                         /domain   - domain directory partition
+                         /forest   - forest directory partition
+                         /legacy   - legacy directory partition
+
+ DnsCmd <i>ServerName</i> /<b>ZoneDelete</b> <i>ZoneName</i> [/DsDel] [/f]
+  /DsDel   -- Delete Zone from DS
+  /f       -- Execute without asking for confirmation
+  Default: delete zone from DNS sever, but NOT from DS
+
+ DnsCmd <i>ServerName</i> /<b>ZoneExport</b> <i>ZoneName</i> <i>ZoneExportFile</i>
+    <i>ZoneName</i>   -- FQDN of zone to export
+                    /Cache to export cache
+
+ DnsCmd <i>Server</i> /<b>ZoneInfo</b> <i>ZoneName</i> [<i>Property</i>]
+  <i>Property</i> -- zone property to view
+  Examples:
+    AllowUpdate
+    DsIntegrated
+    Aging
+    RefreshInterval
+    NoRefreshInterval
+
+ DnsCmd <i>ServerName</i> /<b>ZonePause</b> <i>ZoneName</i>
+
+ DnsCmd <i>ServerName</i> /<b>ZonePrint</b> [<i>ZoneName</i>] [/Detail]
+  <i>ZoneName</i> -- name of the zone (use ..Cache for DNS server cache)
+  /Detail -- explicit RPC node contents
+
+ DnsCmd <i>ServerName</i> /<b>ZoneResetType</b> <i>ZoneName</i> <i>Property</i> [<i>Options</i>]
+  <i>ZoneName</i>      -- FQDN of zone
+   run DnsCmd /ZoneResetType /? for more
+
+ DnsCmd <i>ServerName</i> /<b>ZoneRefresh</b> <i>ZoneName</i>
+
+ DnsCmd <i>ServerName</i> /<b>ZoneReload</b> <i>ZoneName</i>
+
+ DnsCmd <i>ServerName</i> /<b>ZoneResetMasters</b> <i>ZoneName</i> [/Local] [<i>Server IPs</i>]
+    /Local -- Set the local master list for DS integrated zones.
+    <i>Server IPs</i> -- List of one or more IP addresses of master servers for
+           this zone.  Masters may include the primary or other secondaries
+           for the zone, but should not make the replication graph cyclic.
+
+ DnsCmd <i>ServerName</i> /<b>ZoneResetScavengeServers</b> <i>ZoneName</i> [<i>Server IPs</i>]
+    <i>Server IPs</i> -- list of one or more IP addresses of servers to scavenge
+           this zone;  if no addresses given ALL servers hosting this zone
+           will be allowed to scavenge the zone.
+
+ DnsCmd <i>ServerName</i> /<b>ZoneResetSecondaries</b> <i>ZoneName</i> 
+               [<i>Security</i>] [<i>SecondaryIPAddress</i>] ...]
+               [<i>Notify</i>] [<i>NotifyIPAddress</i>] ...]
+   run DnsCmd /ZoneResetSecondaries /? for more
+
+ DnsCmd <i>ServerName</i> /<b>ZoneResume</b> <i>ZoneName</i>
+
+ DnsCmd <i>ServerName</i> /<b>ZoneUpdateFromDs</b> <i>ZoneName</i>
+
+ DnsCmd <i>ServerName</i> /<b>ZoneWriteBack</b> <i>ZoneName</i></pre>
+<p><i class="quote">&ldquo;Confidence comes not from always being right but from not fearing to be wrong&rdquo; - Peter T. Mcintyre </i><br>
+<b><br>
+Related:</b></p>
+<p><a href="netsh.html">NETSH</a> - Configure Network Interfaces</p>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/dnscmd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:00 GMT -->
+</html>

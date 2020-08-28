@@ -1,0 +1,52 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/trans_dist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>BEGIN DISTRIBUTED TRANSACTION  - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>BEGIN DISTRIBUTED TRANSACTION </h1>
+<p>Start  a T-SQL distributed transaction.</p>
+<pre>Syntax
+      BEGIN DISTRIBUTED TRAN[SACTION] [<i>transaction</i>] [;]
+
+      BEGIN DISTRIBUTED TRAN[SACTION] [@<i>transaction_var</i> ] [;]
+
+ Key:
+   transaction     A name for the transaction <= 32 characters.
+   <i>transaction_var</i> A user-defined variable containing a transaction name.
+</pre>
+<p>    Requires the Microsoft Distributed Transaction Coordinator (MS DTC) to be installed. </p>
+<p>Example</p>
+<pre>BEGIN DISTRIBUTED TRANSACTION;<br>--
+--<br>COMMIT TRANSACTION;<br>GO</pre>
+<p><span class="quote"><i>&quot;The two offices of memory are collection and distribution&quot;
+- Dr. Johnson</i></span></p>
+<p><b>Related commands:</b></p>
+<p><a href="trans_b.html">BEGIN TRANSACTION</a> <br>
+  <a href="trans_c.html">COMMIT TRANSACTION</a><br>
+Equivalent Oracle command:   <a href="../ora/savepoint.html">SAVEPOINT</a></p><!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/trans_dist.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:33 GMT -->
+</html>

@@ -1,0 +1,103 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/syntax-keybindings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Key bindings - macOS - SS64.com</title>
+<style type="text/css">
+.sel {background-color: #A2D1FB}
+</style>
+</head><body><!-- #BeginLibraryItem "/Library/head_osxsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>macOS Key bindings</h1>
+<p>Key binding allow you to swap around the action of keys (or key combinations) on the mac keyboard.</p>
+<p>The default key bindings for the home and end keys in MacOS are different to any other operating system </p>
+<p>To remaps the key bindings of a single user, edit the default keybinding file:<br>
+<span class="code">~/Library/KeyBindings/DefaultKeyBinding.dict</span></p>
+<p>If they are not already in place - just create the  file &amp; directory.</p>
+<p>The sample file below includes some help text and the codes to set Home and End to Start/End of line:</p>
+<pre> /*
+    Key Modifiers 
+    ^ : Ctrl 
+    $ : Shift 
+    ~ : Option (Alt) 
+    @ : Command (Apple) 
+    # : Numeric Keypad 
+     
+    Non-Printable Key Codes 
+     
+    Up Arrow:     \UF700        Backspace:    \U0008        F1:           \UF704 
+    Down Arrow:   \UF701        Tab:          \U0009        F2:           \UF705 
+    Left Arrow:   \UF702        Escape:       \U001B        F3:           \UF706 
+    Right Arrow:  \UF703        Enter:        \U000A        ... 
+    Insert:       \UF727        Page Up:      \UF72C 
+    Delete:       \UF728        Page Down:    \UF72D 
+    Home:         \UF729        Print Screen: \UF72E 
+    End:          \UF72B        Scroll Lock:  \UF72F 
+    Break:        \UF732        Pause:        \UF730 
+    SysReq:       \UF731        Menu:         \UF735 
+    Help:         \UF746 
+    */
+
+{
+/* Remap Home / End to move to the start/end of the line */
+
+"\UF729"  = "moveToBeginningOfLine:";                   /* Home         */
+"\UF72B"  = "moveToEndOfLine:";                         /* End          */
+"$\UF729" = "moveToBeginningOfLineAndModifySelection:"; /* Shift + Home */
+"$\UF72B" = "moveToEndOfLineAndModifySelection:";       /* Shift + End  */
+
+/* Remap alternate keys for Start/End of document */
+  "^," = moveToBeginningOfDocument:;
+  "^." = moveToEndOfDocument:;
+}</pre>
+<p>Home/End mapping <a href="http://www.evansweb.info/2005/03/24/mac-os-x-and-home-end-keys/">via  Jon Evans</a>, Start/End mapping via <a href="http://osxnotes.net/">osxnotes.net</a> who have lots of other remapping suggestions.</p>
+<h2>Key mapping in system preferences:</h2>
+<blockquote>
+<p> The key remapping available in system preferences  allows swapping the 4 keys: Caps Lock, Control, Option <img src="option-key.gif" width="16" height="16" alt="option"> and Command <img src="command-key.gif" width="16" height="16" alt="command">. This is to support non-Apple keyboards which may have the keys in a slightly different place.</p>
+<p>Apple > System Preferences > Keyboard >  Keyboard > Modifier Keys</p>
+</blockquote>
+<h2>Terminal.app </h2>
+<blockquote>
+<p>Terminal.app does not respect the macOS Key Bindings, but you can set terminal-specific keybindings in the  Terminal.app preferences:</p>
+<p>Profile &gt; Keyboard &gt; then click + to add a keybinding</p>
+<p> The shortcuts you’ll need to add      for Home and End (via <a href="http://blog.evilissimo.net/mac-os-x-keyboard-bindings-for-home-and-end-keys">evilissimo</a>):</p>
+<p><span class="code">ESC[H</span> - For the Home key <br>
+<span class="code">ESC[F</span> - For the End key</p>
+<p>When you type these in (press the actual Esc key) they should appear as the following escape codes:</p>
+<p><img src="keyb.jpg" width="544" height="350" alt="Terminal keybindings"></p>
+</blockquote>
+<p class="quote"><i><br>
+“There are shortcuts to happiness, and dancing is one of them” ~ Vicki Baum</i></p>
+<p><b>Related macOS comands:</b></p>
+<p><a href="syntax-bashkeyboard.html">Keyboard Shortcuts - bash Terminal </a> <br>
+  <a href="syntax-keyboard.html">Keyboard Shortcuts - macOS</a>
+<br>
+<a href="https://www.hcs.harvard.edu/~jrus/Site/Cocoa Text System.html">Guide to customizing OS X key bindings with a .plist or .dict property list.</a> - Jacob Rus<br>
+<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html">Text System Defaults and Key Bindings</a> - Apple.com<br>
+<a href="https://www.spectacleapp.com/">Spectacle app</a> - Shortcut keys for Maximise/Minimise.<br>
+<br>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/syntax-keybindings.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:51 GMT -->
+</html>

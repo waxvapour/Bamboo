@@ -1,0 +1,208 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-arrays.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<link rel="STYLESHEET" href="../tables.css" type="text/css">
+<title>Powershell Arrays - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Arrays</h1> 
+<p>A PowerShell array holds a list of data items.<br>
+The data elements of a PowerShell array need not be of the same type, unless the data type is declared (strongly typed).</p>
+<h2>Creating  Arrays </h2>
+<blockquote>
+<p> To create an Array just separate the elements with commas.</p>
+<p>Create an array named $myArray  containing elements with a mix of data types:</p>
+<p class="code"> $myArray = 64,&quot;Hello&quot;,3.5,&quot;World&quot;</p>
+<p>or use explicit  array cast syntax:</p>
+<p><span class="code"> $myArray = <b>@(</b>64,&quot;Hello&quot;,3.5,&quot;World&quot;<b>)</b></span></p>
+<blockquote>
+<p>Using the array cast syntax<span class="code"> @(...) </span>allows <i>anything</i> between the parenthesis to be treated as an array,  it could be a single element, the output from other commands/expressions, they will always be treated as an array. </p>
+</blockquote>
+<p>To distribute the  values back into  individual variables:</p>
+<p><span class="code">$var1,$var2,$var3,$var4 = $myArray</span></p>
+<p>Create an array   containing several numeric (int) values:</p>
+<p class="code"> $myArray = 1,2,3,4,5,6,7</p>
+<p>or using the range operator (..):</p>
+<p><span class="code">$myArray = (1..7) </span></p>
+<p>or strongly typed: </p>
+<p class="code">[int[]]$myArray = 12,64,8,64,12</p>
+<p> Create an empty array:</p>
+<p><span class="code">$myArray = @()</span></p>
+<p>Create an array with a  single element:</p>
+<p><span class="code">$myArray = @(&quot;Hello World&quot;)</span></p>
+<p>Create a Multi-dimensional array:</p>
+<pre>$myMultiArray = @(
+             (1,2,3),
+             (40,50,60)
+   )</pre></blockquote>
+<h2>Add values to an Array.</h2>
+<blockquote>
+<p> This is done using the<span class="code"> += </span>operator</p>
+<p>Append an extra element with a value of 'India' to the $countries array:<br>
+  <span class="code">$countries += 'India'</span></p>
+<p>Adding items to a large array can be quite slow, a PowerShell array variable is immutable - meaning that in the background it creates a whole new array that includes the new value and then discards the old array. <br>
+A faster alternative to use a .Net ArrayList:</p>
+<p class="code">$countries = New-Object System.Collections.ArrayList<br>
+$countries.Add('India') &gt; $null<br>
+$countries.Add('Montenegro') &gt; $null</p>
+</blockquote>
+<h2>Retrieve items from an Array </h2>
+<blockquote>
+<p>To retrieve an element, specify its number, PowerShell automatically numbers the array elements starting at 0.</p>
+<p> So for example, this array:</p>
+<p><span class="code">PS C:\&gt; $myArray = 64,&quot;Hello&quot;,3.5,&quot;World&quot;, &quot;Demo&quot;</span></p>
+<p>Will have the automatic index numbers:</p>
+<table>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td><span class="code">64</span></td>
+<td><span class="code">Hello</span></td>
+<td><span class="code">3.5</span></td>
+<td><span class="code">World</span></td>
+<td><span class="code">Demo</span></td>
+</tr>
+</table>
+<p>Return all the elements in an array: </p>
+<p class="code">PS C:\&gt; $myArray</p>
+<p>Return the first element in an array: </p>
+<p class="code">PS C:\&gt; $myArray[0]<br>
+64
+</p>
+<p>Return the fourth element in an array: </p>
+<p class="code">PS C:\&gt; $myArray[3]<br>
+World
+</p>
+<p>Return the 5th element through to the 10th element in an array: </p>
+<p class="code">PS C:\&gt; $myArray[4..9]</p>
+<p>Return the last element in an array: </p>
+<p class="code">PS C:\&gt; $myArray[-1]</p>
+<p>Return the first element from the first row in a multi-dimensional array: </p>
+<p class="code">PS C:\&gt; $myMultiArray[0][0]</p>
+<p>You can also combine named elements with a range, separating them with a +<br>
+so <span class="code">$myArray[1,2+4..9] </span>will return the elements at indices 1 and 2 and then 4 through 9 inclusive.</p>
+<p>Return the length of an array (how many items are in the array): </p>
+<p class="code">$myArray.length</p>
+<p>Loop through the elements in an array: </p>
+<p class="code">foreach ($element in $myArray) {$element}</p>
+<p>In PowerShell 4.0+ arrays have the methods <span class="code">.Where()</span> and <span class="code">.Foreach()</span>  a faster  alternative to a traditional pipeline at the expense of a higher memory consumption:<br>
+<span class="code">@(Get-Service).Where<b>(</b>{$_.Status -eq 'stopped'}<b>)</b><br>
+</span>or 
+omitting the parenthesis: <span class="code"><br>
+@(Get-Service).Where{$_.Status -eq 'stopped'}</span></p>
+</blockquote>
+<h2>Comparisons  <a href="syntax-compare.html">-eq - gt -lt</a> etc</h2>
+<blockquote>
+<p>With an array, comparison operators will work as a <a href="syntax-functions.html">filter</a> returning all the values which match.</p>
+<p class="code">PS C:\&gt; $a = 1,2,3,2<br>
+PS C:\&gt; $a -eq 2<br>
+2<br>
+2
+</p>
+<p>Care must be taken with comparing NULLs, because this is a filter you must place the <span class="code">$null</span> on the left  side of the comparison.</p>
+<p class="code">PS C:\&gt; $a -eq $null  # fails: returns $null<br>
+PS C:\&gt; $null -eq   $a # works: returns $false</p>
+</blockquote>
+<h2>Multi-dimensional arrays</h2>
+<blockquote>
+<p>Create a Multi-dimensional array:</p>
+<pre><span class="code">PS C:\&gt; </span>$MultiArray = @(
+             (&quot;cats&quot;,&quot;dogs&quot;,&quot;ravens&quot;),
+             (40,50,60)
+        )</pre>
+<p> PowerShell will automatically number the array elements on an X-Y grid starting at 0.</p>
+<table>
+<tr>
+<td>&nbsp;</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0</td>
+<td>cats</td>
+<td>dogs</td>
+<td>ravens</td>
+</tr>
+<tr>
+<td>1</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+</tr>
+</table>
+<p><span class="code">PS C:\&gt; $MultiArray[0][2]<br>
+ravens</span></p>
+<p>These are actualy 'Jagged' arrays  because the dimensions of each row can be a different size. This is very cost-effective storage.</p>
+</blockquote>
+<h2>Data Types</h2>
+<blockquote>
+<p>When you create an array without specifying a datatype, PowerShell will create the array as an object array.<br>
+To determine the data type of an array:</p>
+<p class="code">$myArray.gettype()</p>
+<p>To create a strongly typed array,  that can only contain values of one particular type, cast the variable as <span class="code">string[], long[], bool[], int32[]</span> or any other valid <a href="syntax-datatypes.html">data type</a>. <br>
+To cast an array, place the array type enclosed in square brackets before the variable name. <br>
+e.g.</p>
+<p class="code">[<b>int32[]</b>]$stronglytyped = @(64,12,24,5000)</p>
+<p class="code">[<b>int32[][]</b>]$multi = @(<br>
+(64, 12, 24),<br>
+(65, 14, 48)<br>
+)
+</p>
+<p>PowerShell is not case-sensitive so $myArray is treated the same as $Myarray</p>
+<p>If  you pipe an array to <a href="get-member.html">Get-Member</a>, it will display information about the objects <i>in </i>the array. If you use  Get-Member -InputObject, that will display information about the array itself:</p>
+<p class="code">get-member -inputobject $myArray</p>
+</blockquote>
+<h2> Edit Array values</h2>
+<blockquote>
+<p>To change  values in an array after it has been created, use the assignment operator (=) to specify a new value.</p>
+<p class="code">$myArray[4] = 64 </p>
+<p>Alternatively use the SetValue method: </p>
+<p class="code">$myArray.SetValue(64,4)</p>
+<p class="code">$myMultiArray[2][4] = 128</p>
+<p>Add one array to another.<br>
+This creates a new array containing all the values from the first two arrays:</p>
+<p class="code">$march = @(2, 3, 4, 5, 6)<br>
+$april = @(7, 8, 9, 10, 11, 12)<br>
+$all = $march + $april</p>
+</blockquote>
+<h2>Delete an Array
+(by deleting the array variable) </h2>
+<blockquote>
+<p class="code">Remove-Item variable:monthly_sales</p>
+</blockquote>
+<p class="quote"><i>&ldquo;Nor shall you by your presence make afraid, The kingfisher, who looks down dreamily, At his own shadow gorgeously array'd&rdquo; - Sir Edmund William Gosse</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><span class="code">get-help about_array</span><br>
+  <a href="syntax-hash-tables.html">Hash Tables</a> - Store paired Keys and Values, also the SPLAT operator.<br>
+<a href="syntax-variables.html">Variables</a> - Create/read variables</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-arrays.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+</html>

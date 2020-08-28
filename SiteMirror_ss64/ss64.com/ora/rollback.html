@@ -1,0 +1,58 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ora/rollback.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:49:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>rollback - Oracle - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ora.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Oracle</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>ROLLBACK</h1> 
+<p>Undo work done (transactional).<br>
+  <br>
+  Syntax:</p>
+<pre>   ROLLBACK [WORK] [TO [SAVEPOINT]'<i>savepoint_text_identifier</i>'];
+
+   ROLLBACK [WORK] [FORCE '<i>force_text</i>'];</pre>
+<p>FORCE - will manually rollback an in-doubt <i>distributed</i> 
+  transaction<br>
+  <br>
+  <i class="quote">"One of the symptoms of an approaching nervous breakdown is the belief that 
+  one's work is terribly important" ~ Bertrand 
+  Russell </i><b><br>
+  <br>
+Related Oracle Commands:</b></p>
+<p><a href="commit.html">COMMIT</a> - Save Changes<br>
+<a href="lock.html">LOCK TABLE</a>
+<br>
+<a href="savepoint.html"> SAVEPOINT</a> - Save changes to a point<br>
+<a href="../orap/DBMS_FLASHBACK.html">DBMS_FLASHBACK</a> <br>
+Syntax - <a href="syntax-redo.html">Redo, Rollback and Undo</a><br>
+<br>
+<b>Related Views:</b></p>
+<pre> <a href="../orav/V%24TRANSACTION.html">V$TRANSACTION</a>
+ <a href="../orav/V%24TRANSACTION_ENQUEUE.html">V$TRANSACTION_ENQUEUE</a>
+ <a href="../orav/V%24GLOBAL_TRANSACTION.html">V$GLOBAL_TRANSACTION</a>
+ <a href="../orav/V%24ROLLSTAT.html">V$ROLLSTAT</a></pre><!-- #BeginLibraryItem "/Library/foot_ora.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- oracle-footer -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4275490898"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ora/rollback.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:49:58 GMT -->
+</html>

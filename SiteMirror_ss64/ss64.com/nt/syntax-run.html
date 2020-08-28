@@ -1,0 +1,79 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-run.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>CMD syntax - How to Run a script - Windows CMD - SS64.com</title>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>How to Create and Run a CMD batch file</h1>
+<p>To prepare a new batch script, save the file as plain ASCII text with the file extension <span class="code">.CMD</span></p>
+<h2>Run a batch file</h2>
+<blockquote>
+<p>A batch file can be run by simply double clicking in Windows explorer, or by typing the name/path at the command line, optionally passing any <a href="syntax-args.html">parameters</a> needed.</p>
+<p>From the start menu: START &gt; RUN <span class="code">c:\path_to_scripts\my_script.cmd</span>, OK</p>
+<p>If the filename includes any spaces, then you will need to surround the command with quotes:</p>
+<p><span class="code">&quot;c:\path to scripts\my script.cmd</span>&quot;</p>
+<p>Open a new CMD prompt by choosing START &gt; RUN <span class="code">cmd</span>, OK</p>
+<p> From the command line, enter the name of the script and press return.<br>
+<br>
+<span class="code">C:\Batch&gt; Demo.cmd</span><br>
+or
+<br>
+<span class="code">C:\Batch&gt; c:\path_to_scripts\my_script.cmd param1 param2</span></p>
+<p>This can be made easier by creating a <a href="shortcut.html">shortcut</a> for the start menu or taskbar.</p>
+<p>To run a batch file from within another batch file, use the <a href="call.html">CALL</a> command, otherwise the first script will start the second script and immediately exit, so any further commands in the first script will not run.</p>
+<p>It is also possible to run batch scripts with the old (Windows 95 style) <span class="code">.BAT</span> extension, but be aware that these will run in 16 bit compatibility mode, and that sets the <span class="code"><a href="errorlevel.html">ERRORLEVEL</a></span> according to the old MSDOS rules.</p>
+</blockquote>
+<h2>View the startup command line</h2>
+<blockquote>
+<p>The environment Variable <span class="code">%CmdCmdLine%</span> will expand into the original 
+command line passed to CMD.EXE </p>
+<p> When a batch file is launched from the command line <span class="code">%CmdCmdLine%</span> will return: <br>
+<span class="code">C:\WINDOWS\system32\cmd.exe <i>param1</i></span></p>
+<p>When a batch file is launched by double clicking in Windows Explorer or START &gt; RUN, <span class="code">%CMDCMDLINE%</span> will return:<br>
+<span class="code">C:\WINDOWS\system32\cmd.exe <b>/c</b> &quot;&quot;C:\demo\batch.cmd <i>param1</i></span></p>
+<p>The<span class="code"> /c </span>can be used to detect the start mode:<br>
+<span class="code">Echo %CmdCmdLine% | findstr /c:&quot; /c &quot; &gt;nul &amp;&amp; Echo Started with a double click.</span></p>
+</blockquote>
+<h2>Run a Powershell script</h2>
+<blockquote>
+<p>To run a PowerShell script from the CMD shell:</p>
+<pre><span class="code">C:\&gt; </span>powershell -file &quot;c:\batch\demo.ps1&quot;
+</pre>
+</blockquote>
+<h2>Run a VBScript file </h2>
+<blockquote>
+<p>To run a VBScript from the CMD shell:</p>
+<pre><span class="code">C:\&gt; cscript c:\batch\demo.vbs</span></pre>
+</blockquote>
+<p class="quote"><i>“The method of the enterprising is to plan with audacity and execute with vigor” ~ John Christian Bovee</i>
+<p><b>Related</b>
+<p><a href="../ps/syntax-run.html">Run a script from PowerShell </a><br>
+<a href="../vb/syntax-run.html">Run a script from VBScript</a>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-run.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:53 GMT -->
+</html>

@@ -1,0 +1,125 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/common.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Common Parameters - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Common Parameters</h1>
+<p>  PowerShell includes several common parameters that all cmdlets support. <br>
+Their short aliases are listed     in (parentheses).</p>
+<pre>
+
+   -Confirm       Prompt the user for permission before performing any action that
+                  modifies the system.[boolean] (<b>cf</b>)
+                  -Confirm:$false or -Confirm:$true
+
+   -Debug         Provide programming-level information about the operation [boolean] (<b>db</b>)
+                  $true (-Debug:$true). Has the same effect as -Debug.
+
+   -ErrorAction   Control command behavior when an error occurs [enum] (<b>ea</b>)
+                  Valid values: <b><u>Continue</u></b> [default], <b>Stop</b>, <b>Suspend, SilentlyContinue</b>, <b>Ignore</b>, <b>Inquire</b>. [Enum]
+                  e.g. -EA SilentlyContinue
+
+   -ErrorVariable Name of variable (in addition to $error) in which 
+                  to place objects to which an error has occurred [string] (<b>ev</b>)
+
+   -InformationAction
+                  Override the value of the $InformationPreference preference variable. (<b>ia</b>)
+                  Valid values: <b><u>SilentlyContinue</u>, Stop, Continue, Inquire, Ignore, Suspend</b> 
+
+   -InformationVariable [+]<i>variable_name</i>    
+                  Store into a variable a string that you specify with Write-Information. 
+                  PowerShell 5.0+
+
+   -OutBuffer     The number of objects to buffer before calling the next 
+                  cmdlet in the pipeline.[Int32] (<b>ob</b>)
+
+                          
+   -OutVariable   Name of variable in which to place output objects [string](<b>ov</b>)
+                  (equivalent to piping the command Set-Variable -passthru true)
+
+   -PipelineVariable (<b>pv</b>)
+                  Stores the value of the current pipeline element as a variable, for
+                  any named command as it flows through the pipeline.
+                  Valid values are strings, the same as for any variable names.
+
+   -Verbose       Provide detailed information about the operation [boolean] (<b>vb</b>)
+                    $true (-Verbose:$true) has the same effect as -Verbose.
+                    $false (-Verbose:$false)
+
+   -WarningAction Determines how the cmdlet responds to a warning from the command.(<b>wa</b>)
+                  &quot;Continue&quot; is the default value. This parameter works only when the
+                  command generates a warning message. For example, this parameter
+                  works when a command contains the Write-Warning cmdlet.
+
+   -WarningVariable
+                  Stores warnings about the command in the specified variable. (<b>wv</b>)
+                  All generated warnings are saved in the variable even if the
+                  warnings are not displayed to the user.
+                  To append the warnings to the variable content, instead of replacing
+                  any warnings that might already be stored there, type a plus sign (+)
+                  before the variable name.  -WarningVariable +myvar
+
+   -WhatIf        Explain what will happen if the command is executed, without actually
+                  executing the command.[boolean] (<b>wi</b>)
+                  -whatif:$false or -whatif:$true
+
+   -Write-Information
+                  values are shown depending on the value of the -InformationAction
+                  common parameter; if you do not add the -InformationAction common parameter,
+                  Write-Information strings are shown depending on the value of the $InformationPreference
+</pre>
+<p>An Error Variable can be useful for logging errors as part of a pipeline process i.e. when only a few out of many items may fail:</p>
+<p class="code">PS C:&gt; some-pscmdlet | foreach { <br>
+&nbsp;&nbsp;another-pscmdlet -options blah -errorvariable ErrFlag<br>
+&nbsp;&nbsp;if ($ErrFlag) {  Echo &quot;$_.name failed&quot; }<br>
+}
+</p>
+<p>The <span class="code">-confirm</span> parameter allows dropping into the runtime command line while running a PowerShell  scriptCmdlet:<br>
+The confirmation prompt is<span class="code"> [Y] Yes [A] All [N] No [L] No to all [S] Suspend</span><br>
+choosing S will drop you at the command prompt where you can echo variables, make changes etc before typing EXIT to resume running the scriptCmdlet.</p>
+<h2>Default values</h2>
+<blockquote>
+<p>Other than where stated above, none of the common parameters have a defined default value, so they will evaluate as FALSE.</p>
+<p>You can set a default value, for the duration of a script or a session using <span class="code">$PSDefaultParameterValues</span>, for example you could set the value of <span class="code">WhatIf</span> to TRUE at the start of a script and this will affect every cmdlet in the script</p>
+<p class="code">$PSDefaultParameterValues['*:WhatIf'] = $true</p>
+</blockquote>
+<p>Some common parameters may have no effect in some cmdlets, this does not raise an error.</p>
+<p>Aliases: <span class="code">-ErrorAction</span> and <span class="code">-ErrorVariable</span>,  have defined parameter aliases  so you can just type <span class="code">-EA</span> and <span class="code">-EV</span></p>
+<p><b>Examples</b></p>
+<p><span class="code">PS C:\&gt; Del $somefile -ErrorVariable somevariable</span><br>
+<br>
+Notice that the error variable is not prefixed with a $ here, using <span class="code">$somevariable</span> will not work. </p>
+<p>If  the ErrorVariable  name is prefixed with a <span class="code">+</span> then PowerShell will ADD the errors to that variable:</p>
+<p class="code">PS C:\&gt; Del $somefile -ErrorVariable +somevariable<br>
+PS C:\&gt; $somevariable.count</p>
+<p class="quote"><i>&ldquo;Friendship is born at that moment when one person says to another, What! You, too? I thought I was the only one&rdquo; ~ C. S. Lewis</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="syntax-args.html">Parameters</a> - Command Line Parameters  param() and $args[]<br>
+<a href="get-help.html">get-help</a>  - Open the help file,  list  parameters for a cmdlet.</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/common.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:04 GMT -->
+</html>

@@ -1,0 +1,61 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-admin-share.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<link rel="STYLESHEET" href="../tables.css" type="text/css">
+<title>Enable Admin Shares - Windows CMD - SS64.com</title>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Enable Admin Shares </h1>
+<p>How to enable access to Windows  Administrative Shares <span class="code">C$, D$</span> etc </p>
+<p>The default shares are automatically setup on every hard drive partition in the system. They grant access to anyone who is a  member of the local Administrators group, either directly or inherited through <a href="syntax-groups.html">global groups</a> such as Domain Admins.</p>
+<p>In Windows Vista and above, UAC remote restrictions must be lifted either via Policy or with the registry modification below.</p>
+<pre>REG add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f</pre>
+<p>The change will take effect immediately.</p>
+<p>The <span class="code">LocalAccountTokenFilterPolicy</span> registry entry in the registry can have a value of 0 or of 1 </p>
+<table width="60%" border="1">
+<tr>
+<th scope="col">Value</th>
+<th scope="col">Description</th>
+</tr>
+<tr>
+<td>0</td>
+<td>This value builds a filtered token. This is the <u>default</u> value. The administrator credentials are removed.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>This value builds an <a href="syntax-elevate.html">elevated</a> token. </td>
+</tr>
+</table>
+<p>You may also need to enable <i>File and Printer Sharing</i>. in the Control Panel &gt; Network and Sharing Center &gt; Advanced Sharing.</p>
+<p>In addition to this, <i>File and Printer Sharing</i> must be enabled through the Windows firewall.</p>
+<p class="quote"><i>&ldquo;Trust is a core currency of any relationship. Sometimes our need to control and micromanage everything erodes our confidence in ourselves and others. The truth: People are much more capable than we think. A hearty dose of trust is often what's needed to unlock the magic. Go ahead, have faith&rdquo; ~ Kris Carr</i></p><p><b>Related</b>
+<p><a href="https://support.microsoft.com/en-us/help/951016/description-of-user-account-control-and-remote-restrictions-in-windows">Q951016</a> - Description of User Account Control and remote restrictions in Windows.<br>
+<a href="net-share.html">NET SHARE</a> - Create file and printer shares.<br>
+<a href="net-use.html">NET USE</a> - Connect to a file/print Share (Drive Map) 
+</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-admin-share.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:00 GMT -->
+</html>

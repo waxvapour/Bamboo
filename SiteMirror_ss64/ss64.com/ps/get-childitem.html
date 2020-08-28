@@ -1,0 +1,194 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/get-childitem.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Get-ChildItem gci - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Get-ChildItem</h1> 
+<p>Get  the items and child items in a folder or registry key. If the item is a container, it gets the items inside the container, known as child items. You can use the Recurse parameter to get items in all child containers.
+Aliases: <span class="code">dir / ls / gci</span></p>
+<pre>Syntax
+      Get-ChildItem <b>[</b> [-path] <i>string</i>[] <b>|</b> [-literalPath] <i>string</i>[] <b>]</b> 
+         [-Attributes <i>FileAttributes</i>] [[-filter] <i>string</i>] [-include <i>string</i>[]] [-exclude <i>string</i>[]]
+            [-Depth <i>UInt32</i>] [-Name]<b> </b>[-Directory] [-File] [-Hidden]
+               [-ReadOnly] [-recurse] [-force] [-System] [-UseTransaction] [<i>CommonParameters</i>]
+
+      Get-ChildItem [-Attributes <i>FileAttributes</i>] [-Directory] [-File] [-Force] [-Hidden]
+         [-ReadOnly] [-System] [-UseTransaction] [<i>CommonParameters</i>]
+
+Key
+   -path <i>string</i>
+       The paths to the items from which content is to be retrieved.
+       Wildcards are permitted. Default is the current directory (.)
+
+   -literalPath <i>string</i>
+       Like Path above, only the value is used exactly as typed.
+       No characters are interpreted as wildcards. If the path includes any escape characters then
+       enclose the path in single quotation marks.
+       One or more locations can be specified as a string array.
+
+   -Attributes {ReadOnly | Hidden | System | Directory | Archive | Device |  Normal | Temporary | SparseFile | 
+                ReparsePoint | Compressed | Offline | NotContentIndexed | Encrypted |  IntegrityStream | NoScrubData}
+    
+       Get files and folders with the specified attributes.
+       This parameter supports all attributes and complex combinations of attributes.
+        
+       For example, to get non-system files (not directories) that are encrypted or compressed, type:
+            Get-ChildItem -Attributes !Directory+!System+Encrypted, !Directory+!System+Compressed
+        
+       To find files and folders with commonly used attributes, you can use the Attributes parameter, or the 
+        -Directory, -File, -Hidden, -ReadOnly, and -System switch parameters.
+        
+       A 'Normal' file is a standard file that has no special attributes. This attribute is valid only if it is used alone.
+        
+       Use the following operators to combine attributes.
+           !    NOT
+           +    AND
+           ,    OR
+       No spaces are permitted between an operator and its attribute. However, spaces are permitted before commas.
+        
+       Abbreviations for commonly used attributes:
+           D    Directory
+           H    Hidden
+           R    Read-only
+           S    System
+
+   -Depth <i>UInt32</i>
+       use with –Recurse to limit the recursion to <i>UInt32</i> levels.
+
+   -Directory
+       Get directories (folders).  
+       To get only directories, use -Directory and omit -File.
+       To exclude directories, use -File and omit -Directory, or use the -Attributes parameter.      
+       alias: <b>ad</b>
+
+   -File
+       Get files. 
+       To get only files, use -File and omit -Directory.
+       To exclude files, use -Directory and omit -File, or use the -Attributes parameter.
+
+   -Hidden
+       Get only hidden files and directories (folders).
+       By default, Get-ChildItem gets only non-hidden items, use the -Force parameter to include
+       both hidden and non-hidden items in the results.
+
+   -include <i>string</i>
+       Include only the specified items from the Path. e.g. 'May*'
+        
+   -exclude <i>string</i>
+       Omit the specified items from the Path e.g. '*SS64*'
+
+   -force
+       Get all items including hidden or system files, but will not override
+       security/file permissions. You can also get hidden files and folders with -Hidden or
+       with the Hidden value of the -Attributes parameter.
+      
+   -filter <i>string</i>
+       A filter in the provider's format or language. 
+       The exact syntax of the filter (wildcard support etc) depends on the provider.
+       A filesystem -filter will use the old Win32/DOS syntax - <a href="syntax-wildcards.html">see the wildcards page for details</a>.
+       Filters are slightly more efficient than -include/-exclude, because the provider
+       applies the filter when retrieving the objects, rather than having 
+       PowerShell filter the objects after they are retrieved.
+
+   -Name 
+       Retrieve only the names of the items.
+       This is useful when piping the names of the child items to another command.
+
+   -ReadOnly
+       Get only read-only files and directories (folders).  
+       To exclude read-only items, use the -Attributes parameter.
+       Alias: <b>ar</b>
+
+   -recurse 
+       Get the items plus all child items of the location(s).
+       Only for paths that point to a container such as C:\Windows or C:\Windows\*
+       A path such as *.txt will not have any child items.
+
+   -Depth <i>UInt32</i>
+       
+   -System
+       Get only system files and directories (folders).
+       To exclude system files and folders, use the -Attributes parameter.
+       Alias: <b>as</b> 
+       
+   -UseTransaction
+       Include the command in the active <a href="syntax-transactions.html">transaction</a>.
+
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer -OutVariable.</pre>
+<p>Standard <a href="get-alias.html">Aliases</a> for Get-ChildItem:<span class="code"> dir, list, ls, <b>gci</b></span></p>
+<p>By default, Get-ChildItem gets only non-hidden items, but you can use the -Directory, -File, -Hidden, -ReadOnly, and -System      parameters to get only items with these attributes.</p>
+<p>When listing files and sub-directories, get-childitem will return the mode (attributes), last write time, file size (length), and the filename.<br>
+Valid modes (attributes) are: <span class="code">d</span> (directory), <span class="code">a</span> (archive), <span class="code">r</span> (read-only), <span class="code">h</span> (hidden), and <span class="code">s</span> (system).</p>
+<p>The default path is the current directory  ' . ' <br>
+To specify all  the items in the current directory use '<span class="code">*</span>'</p>
+<h2>Wildcards</h2>
+<blockquote>
+<p>When listing a single folder (without recursion), you can do
+<span class="code">get-childitem c:\music\*.mp3</span><br>
+Unlike  the CMD shell, in PowerShell the path filter of <span class="code">c:\music\*.mp3</span> is applied only to files not folders (or other containers)<br>
+The way 
+to apply a wildcard recursively to a whole tree of items in PowerShell is to use the -include parameter:<br> 
+<span class="code">get-childitem c:\music\ -include *.mp3 -recurse</span><br>
+<br>
+This change in syntax was required because some providers (such as the registry provider) allow backslashes in a value name, separating the -path from the -include string makes it possible to use <span class="code">get-childitem</span> against any provider: files, registry, processes etc.</p>
+</blockquote>
+<p><b>Examples</b></p>
+<p>Get   the child items in the current location:<br>
+<span class="code">PS C:\&gt; get-childitem</span><br>
+<br>
+Get   a plain list of full filenames, like <a href="../nt/dir.html">DIR /b</a> without a header, <a href="select-object.html">Select</a> just the fullname:<br>
+<span class="code">PS C:\&gt; $stuff = gci &quot;C:\some folder&quot; | select fullname<br>
+</span><span class="code"> PS C:\&gt; $stuff.fullname &gt; demo.txt</span></p>
+<p>An effect similar to the above can be had by piping the result to <a href="format-table.html"><span class="code">format-table –hidetableheaders</span></a> however Format-Table will also pad the output with spaces.</p>
+<p>Get all the .XLS files in a folder:<br>
+<span class="code">PS C:\&gt; get-childitem \\Server64\Work\* -Include *.xls</span></p>
+<p>Count all the .XLS files in a folder and all sub-folders:<br>
+<span class="code">PS C:\&gt; $a = get-childitem \\Server64\Work\ -Include *.xls -Recurse</span><br>
+<span class="code">PS C:\&gt; $a.Count</span></p>
+<p>Get all the files owned by BWithers:<span class="code"><br>
+PS C:\&gt; PS C:\&gt; get-childitem C:\Work\ -recurse | get-acl | where {$_.Owner -match &quot;BWithers&quot;}</span></p>
+<p>Get all files, including hidden files, in the current directory, but exclude subdirectories,<br>
+The second command uses aliases and abbreviations, but has the same effect as the first. :<span class="code"><br>
+PS C:\&gt; Get-ChildItem -Attributes !Directory,!Directory+Hidden<br>
+PS C:\&gt; dir -att !d,!d+h</span></p>
+<p>Get a list of sub-folder names and store in $folders<span class="code"><br>
+PS C:\&gt; $folders = gci 'C:\YourDir' | Where-Object{($_.PSIsContainer)} | foreach-object{$_.Name}</span></p>
+<p>Measure the size of a folder:<br>
+<span class="code">PS C:\&gt; Get-ChildItem C:\Work\ -Recurse -Force |
+<a href="measure-object.html">Measure-Object</a> -property length -sum </span></p>
+<p>Get all the certificates in the certificate store, use the dynamic parameter <span class="code">-codesigningcert</span> to get only certificates with code-signing authority. ( see &quot;get-help certificate&quot; for more)<br>
+<span class="code">PS C:\&gt; get-childitem cert:\. -recurse -codesigningcert</span></p>
+<p class="quote"><i>&ldquo;You [humans] think that you an insignificant, while there is a great universe contained in you&rdquo; ~ Ali ibn Abi Talib</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="syntax-wildcards.html">Wildcards</a> - Match multiple items.<br>
+<a href="get-item.html">Get-Item</a> - Get a file object or get a registry (or other namespace) object.<br>    
+<a href="get-location.html">Get-Location</a> - Display the current location.<br>    
+<a href="join-path.html">Join-Path -resolve</a> - Combine a path and child-path.</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/get-childitem.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:31 GMT -->
+</html>

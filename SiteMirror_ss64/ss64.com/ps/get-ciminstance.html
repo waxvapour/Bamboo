@@ -1,0 +1,262 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/get-ciminstance.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Get-CIMInstance - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Get-CIMInstance (PowerShell 3.0+ )</h1> 
+<p>Get the CIM instances of a class from a CIM server. The Common Information Model (CIM) is the DMTF standard [<a href="https://www.dmtf.org/dsp/DSP0004">DSP0004</a>] for describing the structure and behavior of managed resources such as storage, network, or software components.</p>
+<pre>Syntax
+      Get-CimInstance <b>[</b>-ComputerName <i>String[]</i> <b>|</b> -CimSession <i>CimSession[]</i> <b>]</b> [<b>-ClassName</b>] <i><b>String</b></i> [-Filter <i>String</i>]
+         [-KeyOnly] [-Namespace <i>String</i>] [-OperationTimeoutSec <i>UInt32</i>]
+            [-Property <i>String[]</i>] [-QueryDialect <i>String</i>] [-Shallow] [<i>CommonParameters</i>]
+  
+      Get-CimInstance <b>[</b> -ComputerName <i>String[]</i> <b>|</b> -CimSession <i>CimSession[]</i> <b>]</b> <b>-ResourceUri <i>Uri</i></b> [-Filter <i>String</i>]
+         [-KeyOnly] [-Namespace <i>String</i>] [-OperationTimeoutSec <i>UInt32</i>]
+            [-Property <i>String[]</i>] [-Shallow] [<i>CommonParameters</i>]
+
+      Get-CimInstance <b>[ </b>-ComputerName <i>String[]</i> <b>|</b> -CimSession <i>CimSession[]</i> <b>]</b> <b>-Query <i>String</i></b>
+         [-Namespace <i>String</i>] [-OperationTimeoutSec <i>UInt32</i>] [-QueryDialect <i>String</i>]
+            [-ResourceUri <i>Uri</i>] [-Shallow] [<i>CommonParameters</i>]
+  
+      Get-CimInstance <b>[</b> -ComputerName <i>String[]</i> <b>|</b> -CimSession <i>CimSession[]</i> <b>] </b>[<b>-InputObject</b>] <i><b>CimInstance</b></i>
+         [-OperationTimeoutSec <i>UInt32</i>] [-ResourceUri <i>Uri</i>] [<i>CommonParameters</i>]
+
+Key
+   -CimSession <i>CimSession</i>[]
+        The CIM session to use for this cmdlet. Enter a variable that contains the CIM session or a command 
+        that creates or gets the CIM session, such as the New-CimSession or Get-CimSession cmdlets. For more 
+        information, see about_CimSessions.
+        
+   -ClassName <i>String</i>
+        The name of the CIM class for which to retrieve the CIM instances. 
+        NOTE: You can use tab completion to browse the list of classes, because wps_2 gets a list of classes from the 
+        local WMI server to provide a list of class names.
+        
+   -ComputerName <i>String</i>[]
+        The computer on which you want to run the CIM operation. You can specify a fully qualified domain name 
+        (FQDN), a NetBIOS name, or an IP address.
+        
+        If you specify this parameter, the cmdlet creates a temporary session to the specified computer using the 
+        WsMan protocol.If you do not specify this parameter, the cmdlet performs the operation on the local computer
+        using Component Object Model (COM).
+
+        If multiple operations are being performed on the same computer, using a CIM session gives better performance.
+        
+   -Filter <i>String</i>
+       Specifies a where clause to use as a filter. Specify the clause in either the WQL or the CQL query language.
+       Note: Do not include the <b>where</b> keyword in the value of the parameter.
+        
+   -InputObject <i>CimInstance</i>
+       Specifies a CIM instance object to use as input.
+        
+       If you are already working with a CIM instance object, you can use this parameter to pass the CIM instance 
+       object in order to get the latest snapshot from the CIM server. When you pass a CIM instance object as an 
+       input, Get-CimInstance returns the object from server using a get CIM operation, instead of an enumerate or 
+       query operation. Using a get CIM operation is more efficient than retrieving all instances and then filtering 
+       them.
+        
+       If the CIM class does not implement the get operation, then specifying the InputObject parameter returns an 
+       error.
+        
+   -KeyOnly
+       Indicates that only objects with key properties populated are returned. Specifying the KeyOnly parameter 
+       reduces the amount of data transferred over the network.
+        
+       Use the KeyOnly parameter to return only a small portion of the object, which can be used for other 
+       operations, such as the Set-CimInstance or Get-CimAssociatedInstance cmdlets.
+       
+   -Namespace <i>String</i>
+       Specifies the namespace of CIM class.
+        
+       The default namespace is root/cimv2. 
+       NOTE: You can use tab completion to browse the list of namespaces, because wps_2 gets a list of namespaces 
+       from the local WMI server to provide the list of namespaces.
+        
+   -OperationTimeoutSec <i>UInt32</i>
+       Specifies the amount of time that the cmdlet waits for a response from the computer.
+        
+       By default, the value of this parameter is 0, which means that the cmdlet uses the default timeout value for 
+       the server.
+        
+       If the OperationTimeoutSec parameter is set to a value less than the robust connection retry timeout of 3 
+       minutes, network failures that last more than the value of the OperationTimeoutSec parameter are not 
+       recoverable, because the operation on the server times out before the client can reconnect.
+       
+   -Property <i>String</i>[]
+       Specifies a set of instance properties to retrieve.
+        
+       Use this parameter when you need to reduce the size of the object returned, either in memory or over the 
+       network.
+        
+       The object returned always has key properties populated, irrespective of the set of properties listed by the 
+       Property parameter. Other properties of the class are present but they are not populated.
+       
+   -Query <i>String</i>
+       A query to run on the CIM server. For WQL-based queries, you can only use a SELECT query that 
+       returns instances.
+       
+       If the value specified contains double quotes (“), single quotes (‘), or a backslash (\), you must escape 
+       those characters by prefixing them with the backslash (\) character. If the value specified uses the WQL LIKE 
+       operator, then you must escape the following characters by enclosing them in square brackets ([]): percent 
+       (%), underscore (_), or opening square bracket ([).
+       
+       You cannot use a metadata query to retrieve a list of classes or an event query. To retrieve a list of 
+       classes, use the Get-CimClass cmdlet. To retrieve an event query, use the Register-CimIndicationEvent cmdlet.
+       
+       You can specify the query dialect using the -QueryDialect parameter.
+       
+   -QueryDialect <i>String</i>
+       Specifies the query language used for the Query parameter.
+       
+       psdx_paramvalues WQL or CQL.
+       
+       The default value is WQL.
+       
+   -ResourceUri <i>Uri</i>
+       Specifies the resource uniform resource identifier (URI) of the resource class or instance. The URI is used to 
+       identify a specific type of resource, such as disks or processes, on a computer.
+       
+       A URI consists of a prefix and a path to a resource. For example: 
+       
+       http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_LogicalDisk
+       http://intel.com/wbem/wscim/1/amt-schema/1/AMT_GeneralSettings
+       
+       By default, if you do not specify this parameter, the DMTF standard resource URI 
+       http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/ is used and the class name is appended to it.
+       
+       ResourceURI can only be used with CIM sessions created using the WSMan protocol, or when specifying the 
+       ComputerName parameter, which creates a CIM session using WSMan. If you specify this parameter without 
+       specifying the ComputerName parameter, or if you specify a CIM session created using DCOM protocol, you will 
+       get an error, because the DCOM protocol does not support the ResourceURI parameter.
+       
+       If both the ResourceUri parameter and the Filter parameter are specified, the Filter parameter is ignored.
+       
+   -Shallow
+       Indicates that the instances of a class are returned without including the instances of any child classes.
+       
+       By default, the cmdlet returns the instances of a class and its child classes.
+       
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer, PipelineVariable -OutVariable.</pre>
+<p>Standard <a href="get-alias.html">Aliases</a> for Get-CIMInstance:<span class="code"> <b>gcim</b></span></p>
+<h2>CIM Classes</h2>
+<blockquote>
+<p>The CIM classes available will vary according to your operating system.<span class="code"></span><br>
+List all CIM classes:<br>
+<span class="code">PS C:\&gt; Get-cimclass</span></p>
+<p>List all the   classes involding discs:<br>
+<span class="code">PS C:\&gt; Get-cimclass -List | <a href="where-object.html">Where</a> cimClassName  -like &quot;*disk*&quot;</span></p>
+<p>Some common CIM classes:</p>
+<pre>
+ Win32_Baseboard &nbsp;&nbsp; (Motherboard)
+ Win32_BIOS
+ Win32_ComputerSystem
+ Win32_LogicalDisk &nbsp;(hard disk)
+ Win32_OperatingSystem  (Virtual Memory)
+ Win32_Printer
+ Win32_PrinterShare
+ Win32_PhysicalMemory
+ Win32_Process
+ Win32_Processor &nbsp;&nbsp; (32+64 bit processor info)
+ Win32_Product      (<b></b>avoid this: see <a href="https://support.microsoft.com/en-gb/kb/974524">Q974524</a>)
+ Win32_Share&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (File shares)
+</pre>
+<p>List all properties of a class:<br>
+<span class="code">PS C:\&gt; Get-CIMinstance Win32_BIOS | <a href="get-member.html">Get-Member</a></span></p>
+<p>Find a specific class property:</p>
+<pre>PS C:\&gt; gcim Win32_bios | <a href="get-member.html">Get-Member</a> -MemberType property | <a href="where-object.html">Where</a> { $_.name -match '<i>install</i>'}
+or simply:
+PS C:\&gt; gcim Win32_bios | <a href="get-member.html">Get-Member</a> -MemberType property | <a href="where-object.html">Where</a> name -match '<i>install</i>'
+</pre>
+</blockquote>
+<p><b>Examples</b></p>
+<p>Display information about all  processes on the machine 'Server64':</p>
+<p><span class="code">PS C:\&gt; Get-CimInstance -ClassName Win32_Process </span> <span class="code">-computername Server64</span></p>
+<p>Get a list of namespaces from a WMI server          </p>
+<p class="code">PS C:\&gt; $NS = Get-CimInstance –Namespace root –ClassName __Namespace<br>
+PS C:\&gt; $NS</p>
+<p>Get instances of a class filtered by using a query to find those that starts with 'Oracle':</p>
+<p><span class="code">PS C:\&gt; Get-CimInstance -Query &quot;SELECT * from Win32_Process WHERE name LIKE 'Oracle%'&quot;</span></p>
+<p>Display service names on the local machine filtered to those that starts with 'Oracle':</p>
+<p><span class="code">PS C:\&gt; Get-CimInstance -ClassName Win32_Process -filter &quot;name like 'Oracle%'&quot; | <a href="select-object.html">select</a> name </span> <br>
+<br>
+Get CIM instances from remote computer:</p>
+<p class="code">PS C:\&gt; $comp = Get-CimInstance -ClassName Win32_ComputerSystem -ComputerName Server64, Server65</p>
+<p>Get only the key properties, instead of all properties, this reduces the size of the object and network traffic:</p>
+<p class="code">PS C:\&gt; Get-CimInstance -Class Win32_Process -KeyOnly</p>
+<p>Retrieve items with the -Property parameter and perform other CIM operations, for example      Set-CimInstance or Invoke-CimMethod.</p>
+<p class="code">PS C:\&gt; $x = Get-CimInstance -Class Win32_Process -Property Name, KernelModeTime<br><span class="code">PS C:\&gt; $x | Invoke-CimMethod -MethodName GetOwner</span><br>
+</p>
+<p>List services that are set to start automatically:</p>
+<p class="code">PS C:\&gt; gcim win32_service -filter &quot;startmode='auto'&quot; | <a href="select-object.html">select</a> name,startmode</p>
+<p>List services that are set to start automatically (same as above but written in WQL):</p>
+<pre>PS C:\&gt; gcim -query "select * from win32_service where startmode='auto'" | <a href="select-object.html">select</a> name,startmode </pre>
+<p>Display information about the Geolocation service (<span class="code">lfsvc</span>):</p>
+<p class="code">PS C:\&gt; gcim -query "select * from win32_service where name='lfsvc'"</p>
+<p>View the Running/Stopped status of the Geolocation service:</p>
+<p class="code">PS C:\&gt; (gcim win32_service -filter "name='lfsvc'").State</p>
+<p>Stop the Geolocation service (requires elevation):</p>
+<p class="code">PS C:\&gt; gwmi win32_process -filter "name='lfsvc'" | invoke-CIMmethod -name StopService </p>
+<p>Start the Geolocation service:</p>
+<p class="code">PS C:\&gt; gwmi win32_process -filter "name='lfsvc'" | invoke-CIMmethod -name StartService </p>
+<p>Get the computer serial number (or Dell service tag) for a remote PC and convert it to a string:</p>
+<p class="code">PS C:\&gt; (gcim  win32_systemenclosure -computername wkstn64).SerialNumber<br>
+or<br>
+PS C:\&gt; gcim win32_bios -computername wkstn64 | fl SerialNumber</p>
+<p>Display BIOS and Memory information:</p>
+<p class="code">PS C:\&gt; gcim win32_bios | <a href="format-list.html">format-list</a> *<br>
+PS C:\&gt; gcim Win32_ComputerSystem<br>
+PS C:\&gt; gcim Win32_PhysicalMemory</p>
+<p> Display the per-computer printers installed on workstation64:</p>
+<p class="code">PS C:\&gt; Get-CimInstance -Class Win32_Printer -ComputerName &quot;workstation64&quot;</p>
+<p>List the file shares on the remote server: <i>SERVER64</i> (PowerShell equivalent of the <a href="../nt/rmtshare.html">RMTShare</a> utility).</p>
+<pre>$shares = Get-<span class="code">CimInstance</span> -class Win32_Share -computername <b><i>SERVER64 </i></b>-filter &quot;Type=0&quot;
+$shares | foreach {
+    $path=($_.path)
+    $Description=($_.Description)
+    $name=($_.name)
+    $Caption=($_.Caption)
+
+    &quot;Share Name   : $name
+     Source Folder: $path 
+     Description  : $Description
+     Caption : $Caption&quot;
+    }</pre>
+
+<i class="quote">“A good question is like a miniskirt. Long enough to cover the essentials, but short enough to keep everyone interested” ~ Charles Halsey </i>
+<p><b>Related PowerShell Commands:</b></p>
+<p>Example - <a href="syntax-osversion.html">Remote inventory of OperatingSystem and Service Pack</a><br>
+<span class="code">invoke-CIMmethod</span><br>
+<a href="new-ciminstance.html">New-CimInstance</a> - Create a new instance of a class.<br>
+<a href="get-credential.html">Get-Credential</a> - Get a security credential object based on a user name and password.<br>
+<a href="../nt/rundll32.html">RUNDLL32</a> - Run a DLL command (add/remove print connections)<br>
+</p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/get-ciminstance.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:33 GMT -->
+</html>

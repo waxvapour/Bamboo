@@ -1,0 +1,65 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/syn_c.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>CREATE SYNONYM - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>CREATE SYNONYM</h1>
+<p>Create a synonym.</p>
+<pre>Syntax
+      CREATE SYNONYM [<i>Synonym_schema</i>.] <i>synonym</i> FOR <i>object</i> 
+
+   object:
+      <i>server</i>.[<i>database</i>].[<i>schema</i>].<i>object
+      database</i>.[<i>schema</i>].<i>object
+      schema.object</i>
+
+Key
+   synonym        The synonym to create
+   Synonym_schema The schema in which the synonym is created.
+   </pre>
+<p>    Synonyms may be created with dynamic SQL.</p>
+<p>Synonyms can be created for the following objects: </p>
+<p>Table <br>
+  View<br>
+  local/global temporary table<br>
+  Assembly (CLR) Stored Procedure/Table-valued Function/Scalar Function<br>
+  Assembly Aggregate (CLR) Aggregate Functions<br>
+  Replication-filter-procedure<br>
+  Extended Stored Procedure<br>SQL Stored Procedure<br>
+  SQL Scalar Function<br>
+  SQL Table-valued Function<br>
+SQL Inline-table-valued Function</p>
+<p>  The base object need not exist at synonym create time. It must obviously exist at run time.</p>
+<p>Example</p>
+<pre>CREATE SYNONYM ss64 FOR MyDatabase.MySchema.MyTable;<br>GO</pre>
+<p class="quote"><i>&quot;A synonym is a word you use when you can't spell the word you first 
+thought of&quot; - Burt Bacharach</i></p>
+<p><b>Related commands:</b></p>
+<p>  <a href="syn_d.html">DROP SYNONYM</a><br>
+Equivalent Oracle command:  <a href="../ora/syn_c.html">CREATE SYNONYM</a></p><!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/syn_c.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:32 GMT -->
+</html>

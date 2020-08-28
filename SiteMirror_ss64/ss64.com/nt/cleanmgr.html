@@ -1,0 +1,138 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/cleanmgr.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Cleanmgr - Delete Temp files - Windows CMD - SS64.com</title>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>CLEANMGR.exe</h1>  
+<p>Automated cleanup of Temporary files, Internet files, downloaded files, recycle bin. </p>
+<pre>Syntax
+      CLEANMGR [/d <i>driveletter</i>]<i> option</i>
+      CLEANMGR [/d <i>driveletter</i>]<i> /sageset:<i>n</i> option</i>
+      CLEANMGR [/d <i>driveletter</i>]<i> /sagerun:<i>n</i> option</i>
+
+Options
+       /d <i>driveletter</i>: Select the drive that you want Disk Cleanup to clean.
+
+       /sageset:<i>n</i>      Display the Disk Cleanup Settings dialog box and create
+                       a registry key to store the settings you select.
+                       The <i>n</i> value is stored in the registry and allows you to
+                       specify different tasks for Disk Cleanup to run.
+                       <i>n</i> can be any integer from 0 to 65535.
+                       Specify the %systemroot% drive to see all the available options.
+
+       /sagerun:<i>n</i>      Run task '<i>n</i>'
+                       All drives in the computer will be enumerated, and the
+                       selected profile will be run against each drive. 
+
+       /TUNEUP:<i>n</i>       Undocumented, appears to be the same as /sageset
+
+       /LOWDISK        Disk Cleanup will open with all options checked by default. 
+                       Normally invoked when Windows notifies that of disk space is running out.
+
+       /VERYLOWDISK    Run with the default settings, no user prompts.
+
+       /SETUP          Analyze the system files left over from a previous Windows version. [Undocumented]
+
+       /Autoclean      Analyze the system files left over from a previous Windows version/in-place upgrade.
+                       and also remove those files automatically. [Undocumented]
+
+       /Help           Display help
+       /Usage          Display help
+       /?              Display help</pre>
+<p>/sageset and /sagerun cannot be combined in a single command.</p>
+<p> If CLEANMGR is run without /sageset or /sagerun, it will start by calculating how much disk space could be saved. This makes the process much slower to run.</p>
+<p>Some cleanup options  require  <a href="syntax-elevate.html">elevation</a>, when run without elevation the GUI will include an option [Clean up System Files] which will relaunch CLEANMGR in Elevated mode.</p>
+<p><b>Examples</b><br>
+<br>
+Choose a set of options for cleanup (this will display the GUI) and Save  as settings group #64:</p>
+<p><span class="code">&nbsp;CLEANMGR /sageset:64</span></p>
+<blockquote>
+<p>Temporary Internet Files *<br>
+Temporary Setup Files<br>
+Downloaded Program Files *<br>
+Old Chkdsk Files<br>
+<b>Recycle Bin</b> *<br>
+Temporary Files<br>
+Temporary Offline Files<br>
+Offline Files<br>
+Compress Old Files<br>
+<b>Catalog Files for the Content Indexer </b><br>
+System files: Debug/chkdsk/Installer/Memory dump/Windows update/error reporting logs.
+</p>
+<p>Items in <b>bold</b> can appear in more than one drive, the items marked with * can be viewed in the GUI.</p>
+</blockquote>
+<p>Run the saved settings group #64</p>
+<p><span class="code">&nbsp;CLEANMGR /sagerun:64</span></p>
+<p>To run Disk Cleanup this way regularly, you can  create a shortcut which can be run from the Windows Startup folder or via a regular schedule. To run the saved settings group #64</p>
+<p class="code">%systemroot%\system32\cmd.exe /c CLEANMGR /sagerun:64</p>
+<h2>Application Data</h2>
+<blockquote>
+<p>Many files in Application Data hold system data that should not be deleted, however some applications  do leave  files  which you can delete from a roaming profile, these can be selectively removed with a VBScript <a href="../vb/syntax-profile.html">like this</a>.</p>
+</blockquote>
+<h2>Recent files</h2>
+<blockquote>
+<p>The 'User Profile/Recent' folder (for Start, Documents) can contain many more shortcuts than are set to display in the GUI. A very large number of these can affect logon/logoff times.<br>
+To clear out the shortcuts:</p>
+<p class="code">cd %userprofile%\Recent <br>
+echo y| del *.* </p>
+</blockquote>
+<h2>Close Locked files by restarting Windows Explorer</h2>
+<blockquote>
+<p>Close all applications<br>
+Open a command prompt<br> 
+Type:<br>
+<span class="code">taskkill /im explorer</span><br>
+This should kill explorer and bring up a logout/shutdown dialogue box.<br>
+Simultaneously press CTRL+SHIFT+ALT. <br>
+While you keep these keys pressed, click [Cancel] in the Shut Down Windows dialog 
+box. <br>
+In the command prompt window, you should now be able to delete the locked
+files. <br>
+At the command prompt, type <span class="code">explorer</span>, and  press ENTER to restart Windows Explorer. </p>
+</blockquote>
+<p>To enable Cleanmgr on Windows 2008, open Server Manager and choose Add feature, then select &quot;Desktop Experience&quot;<br>
+After running cleanmgr on a server you will probably want to disable 
+&quot;Desktop Experience&quot; again (or <a href="https://www.null-byte.org/development/missing-disk-cleanup-utility-in-windows-server-fix/">use this script</a>.)<br>
+When necessary cleanmgr can take ownership of the files before deleting them.</p>
+<p><a href="cleanmgr-registry.html">Registry settings for CLEANMGR</a> are held in:<br>
+<span class="code">[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches]</span></p>
+<p>Log files  for CLEANMGR are stored in:<br>
+<span class="code">C:\Windows\System32\LogFiles\setupcln\</span></p>
+<p><i class="quote">&rdquo;Mrs. Joe was a very clean housekeeper, but had an exquisite art of making her cleanliness more uncomfortable and unacceptable than dirt itself&ldquo;  ~ Charles Dickens</i><br>
+<br>
+<b>Related:</b><br>
+<br>
+<a href="delprof.html">DELPROF</a> - Delete  user profiles and/or User Profile 
+cache<br>
+<a href="defrag.html">DEFRAG</a> - Defragment hard drive (XP)<br>
+<a href="https://support.microsoft.com/en-us/help/253597/">Q253597</a> - Automating Disk Cleanup in Windows<br>
+ Equivalent bash command (Linux):<a href="../bash/export.html"> 
+</a> <a href="../bash/watch.html">watch</a> - Execute/display a program periodically 
+</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/cleanmgr.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:57 GMT -->
+</html>

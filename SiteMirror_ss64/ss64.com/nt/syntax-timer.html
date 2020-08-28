@@ -1,0 +1,139 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-timer.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Timer.cmd - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Timer.cmd</h1>
+<p>This script by bluesxman on the <a href="https://ss64.org/viewtopic.php?id=944">forum</a> can be used to accurately measure the time elapsed by some other process or script. To use it start the timer with <span class="code">CALL timer.cmd start</span>, then run the other process and then <span class="code">CALL timer.cmd stop</span> when finished.</p>
+<pre>@echo off
+setlocal
+
+set time=%~2
+set time=%time: =0%
+
+set stamp.file=%temp%\%~n0.stamp
+
+if /i "%~1" EQU "start" call :make.stamp
+if /i "%~1" EQU "stop"  call :read.stamp stop
+if /i "%~1" EQU "lap"   call :read.stamp lap
+if    "%~1" EQU ""      call :status
+
+endlocal
+goto :EOF
+
+:status
+
+ if exist "%stamp.file%" (
+	 if /i "%~1" NEQ "/q" echo:Timer is active.
+	 exit /b 0
+ )
+
+ echo:Timer is not active.
+ exit /b 1
+
+:make.stamp
+
+ if exist "%stamp.file%" call :read.stamp stop
+ set start.time=%time%
+
+ (echo:%start.time%) > "%stamp.file%"
+ echo:Timer started %start.time%
+ goto :EOF
+
+:read.stamp
+
+ call :status /q
+ if errorlevel 1 goto :EOF
+ set stop.time=%time%
+ set /p start.time=< "%stamp.file%"
+
+ echo:Timer started %start.time%
+ echo:Timer %1ped %stop.time%
+
+ if %1 EQU stop del "%stamp.file%"
+
+ call :calc.time.code %start.time%
+ set start.time.code=%errorlevel%
+
+ call :calc.time.code %stop.time%
+ set stop.time.code=%errorlevel%
+
+ set /a diff.time.code=stop.time.code - start.time.code
+
+ if %diff.time.code% LSS 0 set /a diff.time.code+=(24 * 60 * 60 * 100)
+
+ setlocal
+
+ set /a hs=diff.time.code %% 100
+ set /a diff.time.code/=100
+ set /a ss=diff.time.code %% 60
+ set /a diff.time.code/=60
+ set /a mm=diff.time.code %% 60
+ set /a diff.time.code/=60
+ set /a hh=diff.time.code
+
+ set hh=0%hh%
+ set mm=0%mm%
+ set ss=0%ss%
+ set hs=0%hs%
+
+ endlocal & set diff.time=%hh:~-2%:%mm:~-2%:%ss:~-2%.%hs:~-2%
+
+ echo %diff.time.code% hundredths of a second
+ echo %diff.time%
+
+ goto :EOF
+
+:calc.time.code
+
+ setlocal
+ for /f "usebackq tokens=1,2,3,4 delims=:." %%a in ('%1') do (
+    set hh=%%a
+    set mm=%%b
+    set ss=%%c
+    set hs=%%d
+ )
+
+ set /a hh=((%hh:~0,1% * 10) + %hh:~1,1%) * 60 * 60 * 100
+ set /a mm=((%mm:~0,1% * 10) + %mm:~1,1%) * 60 * 100
+ set /a ss=((%ss:~0,1% * 10) + %ss:~1,1%) * 100
+ set /a hs=((%hs:~0,1% * 10) + %hs:~1,1%)
+
+ set /a time.code=hh + mm + ss + hs
+ endlocal & exit /b %time.code%</pre>
+<p>When measuring  short time periods run the timer several times and take an average, this will smooth out the effect of any background processes and hard drive variations.<br>
+  <br>
+<i class="quote">&ldquo;You go away for a long time and return a different person ~ you never come all the way back&rdquo; ~ Paul Theroux</i></p>
+<p><b>Related:</b><br>
+<br>
+<a href="syntax-strlen.html">StrLen</a> - Calculate the length of a string.<br>
+<a href="syntax-tdiff.html">tdiff.cmd</a> - Time difference in Hours/Minutes.<br>
+<a href="https://ss64.org/viewtopic.php?id=944">Chronometer/Timer app</a> - SS64 Forum<br>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-timer.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

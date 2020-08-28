@@ -1,0 +1,164 @@
+
+# Display all User Shell Folders
+
+# constants from
+# https://msdn.microsoft.com/en-us/library/windows/desktop/bb774096(v=vs.85).aspx
+
+$shell = New-Object -ComObject Shell.Application
+
+Write-Output "PERSONAL folder"
+$Folder = $shell.Namespace(5) 
+Write-Output $Folder.self.path
+''
+Write-Output "ALTSTARTUP folder"
+$Folder = $shell.Namespace(29) 
+Write-Output $Folder.self.path
+''
+Write-Output "APPDATA folder"
+$Folder = $shell.Namespace(26) 
+Write-Output $Folder.self.path
+''
+Write-Output "BITBUCKET /recycler"
+$Folder = $shell.Namespace(10) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONALTSTARTUP folder"
+$Folder = $shell.Namespace(30) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONAPPDATA folder"
+$Folder = $shell.Namespace(35) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONDESKTOPDIR folder"
+$Folder = $shell.Namespace(25) 
+Write-Output $Folder.self.path
+''
+Write-Output "APPDATA folder"
+$Folder = $shell.Namespace(26) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONFAVORITES folder"
+$Folder = $shell.Namespace(31) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONPROGRAMS folder"
+$Folder = $shell.Namespace(23) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONSTARTMENU folder"
+$Folder = $shell.Namespace(22) 
+Write-Output $Folder.self.path
+''
+Write-Output "COMMONSTARTUP folder"
+$Folder = $shell.Namespace(24) 
+Write-Output $Folder.self.path
+''
+Write-Output "CONTROLS"
+$Folder = $shell.Namespace(3) 
+Write-Output $Folder.self.path
+''
+Write-Output "COOKIES folder"
+$Folder = $shell.Namespace(33) 
+Write-Output $Folder.self.path
+''
+Write-Output "DESKTOP folder"
+$Folder = $shell.Namespace(0) 
+Write-Output $Folder.self.path
+''
+Write-Output "DESKTOPDIRECTORY folder"
+$Folder = $shell.Namespace(16) 
+Write-Output $Folder.self.path
+''
+Write-Output "DRIVES"
+$Folder = $shell.Namespace(17) 
+Write-Output $Folder.self.path
+''
+Write-Output "FAVORITES folder"
+$Folder = $shell.Namespace(6) 
+Write-Output $Folder.self.path
+''
+Write-Output "FONTS folder"
+$Folder = $shell.Namespace(20) 
+Write-Output $Folder.self.path
+''
+Write-Output "HISTORY folder"
+$Folder = $shell.Namespace(34) 
+Write-Output $Folder.self.path
+''
+Write-Output "INTERNETCACHE folder"
+$Folder = $shell.Namespace(32) 
+Write-Output $Folder.self.path
+''
+Write-Output "LOCALAPPDATA folder"
+$Folder = $shell.Namespace(28) 
+Write-Output $Folder.self.path
+''
+Write-Output "MYPICTURES folder"
+$Folder = $shell.Namespace(39) 
+Write-Output $Folder.self.path
+''
+Write-Output "NETHOOD folder"
+$Folder = $shell.Namespace(19) 
+Write-Output $Folder.self.path
+''
+Write-Output "NETWORK"
+$Folder = $shell.Namespace(18) 
+Write-Output $Folder.self.path
+''
+Write-Output "PERSONAL folder"
+$Folder = $shell.Namespace(5) 
+Write-Output $Folder.self.path
+''
+Write-Output "PRINTERS"
+$Folder = $shell.Namespace(4) 
+Write-Output $Folder.self.path
+''
+Write-Output "PRINTHOOD folder"
+$Folder = $shell.Namespace(27) 
+Write-Output $Folder.self.path
+''
+Write-Output "PROFILE folder"
+$Folder = $shell.Namespace(40) 
+Write-Output $Folder.self.path
+''
+Write-Output "PROGRAMFILES folder"
+$Folder = $shell.Namespace(38) 
+Write-Output $Folder.self.path
+''
+Write-Output "PROGRAMFILESx86 folder"
+$Folder = $shell.Namespace(48) 
+Write-Output $Folder.self.path
+''
+Write-Output "PROGRAMS folder"
+$Folder = $shell.Namespace(2) 
+Write-Output $Folder.self.path
+''
+Write-Output "RECENT folder"
+$Folder = $shell.Namespace(8) 
+Write-Output $Folder.self.path
+''
+Write-Output "SENDTO folder"
+$Folder = $shell.Namespace(9) 
+Write-Output $Folder.self.path
+''
+Write-Output "STARTUP folder"
+$Folder = $shell.Namespace(7) 
+Write-Output $Folder.self.path
+''
+Write-Output "SYSTEM folder"
+$Folder = $shell.Namespace(37) 
+Write-Output $Folder.self.path
+''
+Write-Output "SYSTEMx86 folder"
+$Folder = $shell.Namespace(41) 
+Write-Output $Folder.self.path
+''
+Write-Output "TEMPLATES folder"
+$Folder = $shell.Namespace(21) 
+Write-Output $Folder.self.path
+''
+Write-Output "WINDOWS folder"
+$Folder = $shell.Namespace(36) 
+Write-Output $Folder.self.path
+''

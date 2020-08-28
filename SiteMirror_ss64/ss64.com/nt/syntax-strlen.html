@@ -1,0 +1,74 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-strlen.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>String Length - Windows CMD - SS64.com</title>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Get String length - strlen.cmd</h1>
+<p>This function can be used to return the length of a string.</p>
+<pre>
+@echo off
+Setlocal EnableDelayedExpansion
+:: strLen String [RtnVar]
+::             -- String  The string to be measured, surround in quotes if it contains spaces.
+::             -- RtnVar  An optional variable to be used to return the string length.
+Set "s=#%~1"
+Set "len=0"
+For %%N in (4096 2048 1024 512 256 128 64 32 16 8 4 2 1) do (
+  if "!s:~%%N,1!" neq "" (
+    set /a "len+=%%N"
+    set "s=!s:~%%N!"
+  )
+)
+Endlocal&if "%~2" neq "" (set %~2=%len%) else echo %len%
+Exit /b</pre>
+<p>If you pass a string to this function surrounded in quotes, it will be able to handle <a href="syntax-esc.html">special</a> punctuation characters such as <span class="code">&amp;</span>,  <span class="code">&gt;</span> or <span class="code">^</span><br>
+The surrounding quotes will not be considered in calculating the length.
+</p>
+<p>Source/credits: Dave Benham and others from the DosTips forum (<a href="https://ss64.org/viewtopic.php?pid=6478#p6478">strLen7</a>)</p>
+<p><b>Examples</b> calling strlen.cmd:</p>
+<p class="code">@Echo off<br>
+Setlocal<br>
+Set _demo=&quot;hello world&quot;<b><br>
+</b>Call <b>strLen.cmd</b> %_demo%<br>
+</p>
+<p class="code">C:\&gt; 11</p>
+<p class="code">Or using a variable for the result:</p>
+<p class="code">@Echo off<br>
+Setlocal<br>
+ Set _demo=&quot;hello world&quot;<b><br>
+</b>Call <b>strLen.cmd</b> %_demo% _len<br>
+Echo length is %_len%</p>
+<p class="code">C:\&gt; length is 11</p>
+<p> A discussion of this script along with some alternative functions can be found <a href="https://ss64.org/viewtopic.php?pid=6478">over on the SS64 forum</a>.</p>
+<p><i class="quote">&ldquo;You can't do anything about the length of your life, but you can do something about its width and depth&rdquo; ~ </i><i class="quote">Henry Louis Mencken</i>
+<p><b>Related</b>
+<p><a href="syntax-substring.html">VarSubstring</a> - Extract part of a variable (substring) <br>
+<a href="syntax-replace.html">VarSearch</a> - Search &amp; replace part of a variable.<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-strlen.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

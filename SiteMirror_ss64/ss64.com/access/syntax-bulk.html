@@ -1,0 +1,131 @@
+<!DOCTYPE HTML><html lang="en">
+
+<!-- Mirrored from ss64.com/access/syntax-bulk.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name="Description" content="The error 'You tried to assign the null value to a variable that is not a variant data type' is often produced when working with 'Required' database fields, if the required item is missing/NULL it will raise an engine-level error">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Bulk Edit form properties - Access - SS64.com</title></head>
+<body><!-- #BeginLibraryItem "/Library/head_access_syntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Access</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/access/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Bulk Edit Form properties in a database</h1>
+<p>The script below can be used to loop through all controls on all forms in a database and quickly set various properties. <br>
+It also demonstrates the use of the <span class="code">.Tag</span> property to apply a conditional format.</p>
+<p>This is  useful when converting from .MDB format to .ACCDB which  for some unknown reason will reset a bunch of form properties.</p>
+<p>Always make a BACKUP of the database before running this, and delete or comment out any properties you don't want to change.</p>
+<pre>Sub BulkEdit
+
+Dim frmObj As Access.Form
+Dim frm As Object
+Dim ctl As Control
+
+'Debug.Print " Loop through all controls on all forms"
+For Each frm In CurrentProject.AllForms
+
+    ' Only open forms with a name that contains 'frm' e.g. frmDemo
+    If InStr(frm.Name, "<b>frm</b>") And Not InStr(frm.Name, "<b>switchboard</b>") Then
+        'Debug.Print frm.Name
+        DoCmd.OpenForm frm.Name, acDesign
+        
+        ' Set a new variable to the now open form object
+        Set frmObj = Forms(frm.Name)
+        
+        ' Loop through all the controls and set desired properties
+        For Each ctl In frmObj.Controls
+           'Debug.Print ctl.Name
+           Select Case ctl.ControlType
+                Case acBoundObjectFrame
+                Case acCheckBox
+                Case acComboBox
+                    ctl.BackColor = 16119285
+                    ctl.BorderColor = 7633277
+                    ctl.FontName = "Microsoft Sans Serif"
+                    ctl.FontSize = 8
+                Case acCommandButton
+                    ctl.UseTheme = True
+                    ctl.BackColor = 12566463
+                    ctl.BorderColor = 7633277
+                    ctl.HoverColor = 10855845
+                    ctl.PressedColor = 12566463
+                    ctl.HoverForeColor = 0
+                    ctl.PressedForeColor = 0
+                    ctl.FontName = "Microsoft Sans Serif"
+                    ctl.FontSize = 8
+                ' Case acCustomControl
+                    ' ActiveX, don't use
+                Case acImage
+                Case acLabel
+                    '  ctl.ForeColor = 0
+                    '  ctl.BackColor
+                Case acLine
+                Case acListBox, acComboBox
+                    'ctl.ForeColor
+                    'ctl.BackColor
+                Case acObjectFrame
+                Case acOptionButton
+                Case acOptionGroup
+                Case acPage
+                Case acPageBreak
+                Case acRectangle
+                    'ctl.BackColor
+                Case acSubform
+                Case acTabCtl
+                    ctl.UseTheme = True
+                    ctl.BackColor = 14211288
+                    ctl.BorderColor = 7633277
+                    ctl.HoverColor = 12349952
+                    ctl.PressedColor = 11450043
+                    ctl.HoverForeColor = 0
+                    ctl.PressedForeColor = 0
+                    'Debug.Print "Tabctl BorderColor: " & ctl.BorderColor
+                Case acTextBox
+                    'ctl.ForeColor
+                    'ctl.BackColor
+                    ctl.BorderColor = 7633277
+                    If <b>ctl.Tag = "Header"</b> Then
+                        ctl.FontName = "Georgia"
+                        ctl.FontSize = 12
+                    Else
+                        ctl.FontName = "Microsoft Sans Serif"
+                        ctl.FontSize = 8
+                    End If
+                Case acToggleButton
+        End Select
+        Next
+        
+        ' Save the form
+        DoCmd.Close acForm, frm.Name, acSaveYes
+        DoEvents
+    End If
+Next
+
+End Sub
+</pre>
+<p class="quote"><i>&ldquo;You will never stub your toe standing still. The faster you go, the more chance there is of stubbing your toe, but the more chance you have of getting somewhere&rdquo; ~ Charles F. Kettering</i></p><p><b>Related</b>:</p>
+<p><a href="syntax-color.html">Colors</a> - Access color codes.<br>
+<a href="syntax-functions.html">Functions</a> - 
+Access functions in SQL or VBA.<br>
+</p><!-- #BeginLibraryItem "/Library/foot_access.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- access -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4313908313"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></p></body>
+
+<!-- Mirrored from ss64.com/access/syntax-bulk.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:09 GMT -->
+</html>

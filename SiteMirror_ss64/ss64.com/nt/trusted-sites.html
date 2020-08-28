@@ -1,0 +1,60 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/trusted-sites.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>List all IE Trusted Sites - Windows CMD - SS64.com</title>
+<meta name="Description" content="The script below will return the list of Internet Explorer Trusted Sites and Intranet Sites, when managed by Group Policy this list is greyed out in the GUI.">
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>List all Internet Explorer Trusted Sites </h1> 
+<p>The script below uses <a href="reg.html">REG query</a> to lookup the Internet Explorer Trusted Sites list, when managed by Group Policy this list is greyed out in the GUI. </p>
+<pre>@echo off
+:: TrustedSites.cmd<br>:: Display Trusted sites and Intranet sites
+for /f "tokens=* skip=2 delims=" %%G in ('<b>reg query</b> "HKCU\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMapKey"') do (
+call :sub "%%G")
+pause
+goto :eof
+ 
+:sub
+  set _ie=%1
+  set _ie=%_ie:"=%
+  set _ie=%_ie:REG_SZ= - % 
+  set _ie=%_ie:  0= My Computer%
+  set _ie=%_ie:  1= Local Intranet Zone%
+  set _ie=%_ie:  2= Trusted sites Zone%
+  set _ie=%_ie:  3= Internet Zone%
+  set _ie=%_ie:  4= Restricted Sites Zone%
+ 
+  echo %_ie%</pre>
+<p> The subroutine is used to <a href="syntax-replace.html">decode</a> the five Zone numbers and provide a more meaningful output.<br>
+<br>
+<i class="quote"> &quot;Me, I'm dishonest, and you can always trust a dishonest man to be dishonest. <br>
+Honestly, it's the honest ones you have to watch out for...”   ~ Captain Jack Sparrow (played by Johnny Depp)</i> <br>
+<br>
+<b>Related:</b></p>
+<p><a href="reg.html">REG</a> - Registry: Read, Set, Export, Delete keys and values<br>
+</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/trusted-sites.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+</html>

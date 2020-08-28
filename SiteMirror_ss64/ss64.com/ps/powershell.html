@@ -1,0 +1,191 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/powershell.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Powershell.exe - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Powershell </h1>
+<p>Launch a PowerShell session and/or run a PowerShell script.</p>
+<pre>Syntax
+      powershell[.exe] [-PSConsoleFile <i>file</i> | -Version <i>version</i>]
+         [-NoLogo] [-NoExit] [-Sta] [-Mta] [-NoProfile] [-NonInteractive]
+            [-InputFormat {Text | XML}] [-OutputFormat {Text | XML}]
+               [-WindowStyle <i>Style</i>] [EncodedCommand <i>Base64EncodedCommand</i>]
+                  [-File <i>FilePath Args</i>] [-ExecutionPolicy <i>ExecutionPolicy</i>]
+                     [-Command { - | <i>script-block</i> [-args <i>arg-array</i>]
+                                   | <i>string</i> [<i>CommandParameters</i>] } ]
+
+      powershell[.exe] -Help | -? | /?
+Key
+ 
+   -PSConsole <i>File</i>   Load a PowerShell console file. (created with <a href="export-console.html">export-console</a>)
+
+   -Version          Start the specified version of Windows PowerShell.
+
+   -NoLogo           Hide the copyright banner at startup.
+
+   -NoExit           Do not exit after running startup commands.
+
+   -Sta              Start the shell using a single threaded apartment
+
+   -Mta              Start the shell using a multi-threaded apartment
+
+   -NoProfile        Do not load the <a href="syntax-profile.html">PowerShell profile</a>. So no pre-defined functions will be available.
+                     When setting up a scheduled job, using -NoProfile can be a quick way
+                     to document the fact that nothing special in the profile is needed.
+                     It also ensures that any future profile changes will not affect the job.
+
+   -Noninteractive   Don't present an interactive prompt to the user.
+
+   -InputFormat      Format of data sent to Windows PowerShell. Valid values are
+                     "Text" (string) or "XML" (serialized CLIXML format). 
+
+   -OutputFormat     Format the output. Valid values are "Text" (string)
+                     or "XML" (serialized CLIXML format).
+ 
+
+   -Command          Execute commands or a script file of commands 
+                     If Command is "-", the command text is read from standard input.
+
+   -WindowStyle      Set the window style to Normal, Minimised, Maximised or Hidden.
+
+   -EncodedCommand   Accepts a base-64 encoded string version of a command, Use this to
+                     submit commands to PowerShell that require complex quotation marks
+                     or curly braces.
+
+   -File             Execute a script file.
+                     Note that '-file' is required if using a pathname that contains any spaces.
+                     To be robust and reliable always use  -file &quot;path to\your script.ps1&quot;
+
+   -ExecutionPolicy  Set the default <a href="set-executionpolicy.html">execution policy</a> for the session.
+
+   -Command          Execute the specified commands (and any parameters) as though they
+                     were typed at the PowerShell prompt, and then exit, unless NoExit is specified.
+                     The value of Command can be "-", a string. or a script block.
+
+                     If the value of Command is "-", the command is read from standard input.
+
+                     Script blocks must be enclosed in braces ({}).
+                     Specify a script block only when running PowerShell.exe from PowerShell.
+
+                     The results of the script are returned to the parent shell as
+                     deserialized XML objects, not live objects.
+
+                     If the value of Command is a string, it must be the last parameter
+                     in the command , any characters typed after command are interpreted
+                     as the command arguments.
+
+                     To write a string that runs a PowerShell command, use the format:
+
+                     "& {<i>command</i>}"
+
+                     where the quotation marks indicate a string and the <a href="call.html">call operator</a> (&)
+                     causes the command to be executed.
+
+   -Help, -?, /?     Display Help</pre>
+<p><br>
+Standard <a href="get-alias.html">Aliases</a> for Powershell_ISE.exe:<span class="code"> ise</span></p>
+<p>When launching a .ps1 script you may wish to specify <span class="code">-noprofile</span> to make sure that the script runs in a default PowerShell environment and does not load any profile scripts.</p>
+<p>In Windows Explorer, you can type &quot;powershell&quot; in the address bar to open a PowerShell prompt at the current location.</p>
+<p>From a CMD shell rather than running PowerShell within the command prompt, you might want to open a separate PowerShell window - so use <span class="code"><a href="../nt/start.html">START</a> POWERSHELL</span>.</p>
+<p>When running <span class="code">PowerShell.exe -Command <i>script-block</i></span> you don't need to add quotes around the <i>script-block</i>. <br>
+For example: <span class="code">PowerShell.exe -Command Get-Service wuauserv</span> everything after <span class="code">-Command</span> is passed to PowerShell, <br>
+Hhowever when calling Powershell.exe from the <a href="../nt/cmd.html">CMD.exe</a> shell (a common requirement) you will need to escape some characters which have a special meaning in CMD:</p>
+<ul>
+<li>Double quotes <span class="code">'&quot;'</span> each need to be escaped with a backslash.<span class="code"> \&quot;</span></li>
+<li>percent characters  '<span class="code">%</span>' can be <a href="../nt/syntax-esc.html#escape">escaped </a>by doubling them: <span class="code">%%</span></li>
+</ul>
+<h2>Launch with a Double Click</h2>
+<blockquote>
+<p>To create an icon/shortcut which can launch PowerShell and execute a script, you can use a simple batch script which calls PowerShell.exe:
+</p>
+<pre>::LAUNCHER.CMD
+@Echo off
+Cls
+Pushd %~dp0
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe <b>-windowstyle Hidden</b> ./your-script.ps1
+Popd</pre>
+<p> This assumes that <i><span class="code">your-script.ps1</span></i> is in the same folder as the batch file.<br>
+If you want to see output/errors from the script omit the <span class="code">-windowstyle Hidden</span><br>
+The <a href="../nt/pushd.html">Pushd</a> and Popd commands ensure that it works even if run directly from a UNC path. </p>
+</blockquote>
+<h2>64 bit vs 32 bit</h2>
+<blockquote>
+<p>By default, running PowerShell will launch a 64 bit process  <span class="code">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</span></p>
+<p>if you run a 64 bit shell (such as <span class="code">C:\windows\syswow64\cmd.exe</span>) and then  launch PowerShell it will launch the 64 bit PowerShell.</p>
+<p>However  if you run a 32 bit shell (such as <span class="code">C:\windows\syswow64\cmd.exe</span>) and then  launch PowerShell, you will launch the <a href="../nt/syntax-64bit.html">32 bit version</a> of PowerShell (<span class="code">C:\Windows\SysWOW64\WindowsPowerShell\v1.0\PowerShell.exe</span>)</p>
+<p>To  run the 64 bit version (which is supported by <a href="../nt/syntax-64bit.html">syswow64</a>) from a 32 bit process, use the sysnative path:<br>
+<span class="code">%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe</span></p>
+<p>When launching one  PowerShell session from another, <a href="https://stackoverflow.com/a/38981021/1720814">this script</a> will check the version of PowerShell running and will relaunch itself as 64-bit if you are running in 32-bit.</p>
+</blockquote>
+<h2>Run a Script <a href="syntax-elevate.html">As Admin</a></h2>
+<blockquote>
+<p>To run PowerShell and run a script</p>
+<pre>powershell.exe -Command Start-Process <b>PowerShell -ArgumentList '-File C:\demo\MyScript.ps1'</b> -Verb RunAs </pre>
+<p>This runs <span class="code">powershell.exe -Command</span> and then a powershell <i>cmdlet</i><br>
+Note this first invocation of PowerShell is not elevated. The cmdlet we run is <span class="code"><a href="start-process.html">Start-Process</a></span> and we use this  to run a second copy of <span class="code">PowerShell</span>, this time elevated through the use of the <span class="code">-verb runas</span> option. <br>
+</p>
+<p>The parts in <b>bold</b> above are elevated. Because this is being run under a new elevated session it is important to pass the full path to the script.</p>
+<p>The Start-Process options <span class="code"> -NoNewWindow</span> and <span class="code">-Verb RunAs</span> cannot be combined as that would elevate the already running session.</p>
+<p>For more details see the <a href="syntax-elevate.html">elevation page</a> which includes a self-elevating PowerShell script.</p>
+</blockquote>
+<h2>Long Filenames</h2>
+<blockquote>
+<p>If you are calling one PowerShell session from another, this is a non issue, but if you are calling PowerShell from a CMD batch file and the command contains quotation marks, they must be escaped:<span class="code"> &quot; </span>becomes <span class="code">\&quot;</span> This is a <a href="../nt/cmd.html">CMD</a> escape that works due to PowerShell's (current) use of <a href="https://msdn.microsoft.com/en-us/library/bb776391.aspx?f=255&amp;MSPPError=-2147217396">CommandLineToArgvW</a>, this could change in the future so the safest approach is to avoid long pathnames with spaces.</p>
+<pre>powershell.exe -Command Start-Process PowerShell -ArgumentList '-File <b>\&quot;</b>c:\long name\test one.ps1<b>\&quot;</b>' -Verb RunAs</pre>
+Extending the above to pass quoted arguments to the script:
+<pre>powershell.exe -Command Start-Process PowerShell -ArgumentList '-NoProfile -File <b>\&quot;</b>C:\long name\test two.ps1<b>\&quot; \&quot;</b>Arg1<b>\&quot; \&quot;</b>Arg2<b>\&quot;</b>' -Verb RunAs</pre>
+<p> A less readable alternative to  backslash escapes is triple quotes <span class="code">&quot;&quot;&quot;Arg1&quot;&quot;&quot;</span></p>
+</blockquote>
+<h2>Exit Codes</h2>
+<blockquote>
+<p>In PowerShell the <a href="exit-pssession.html">exit</a> code is stored in the automatic variable <span class="code">$LASTEXITCODE</span>.</p>
+<p>To read exit codes (other than 0 or 1) launch the PowerShell script and return the <span class="code">$LASTEXITCODE</span> in a single line like this:</p>
+<p><span class="code"><a href="powershell.html">powershell.exe</a> -noprofile C:\scripts\script.ps1; exit $LASTEXITCODE</span></p>
+</blockquote>
+<p>
+<b>Examples</b></p>
+<p>Run a script (non elevated)</p>
+<p class="code">PowerShell.exe -Command C:\demo\MyScript.ps1</p>
+<p>Load a console and run a Script: </p>
+<p><span class="code">PowerShell.exe -PSConsoleFile "C:\scripting\MyShell.psc1" -Command ". 'MyScript.ps1'"</span></p>
+<p>Run a command to display the security event log: </p>
+<p class="code"> powershell.exe -command {get-eventlog -logname security}</p>
+<p>Or the same thing but calling PowerShell from the CMD shell:</p>
+<p class="code"> powershell.exe -command &quot;&amp; {get-eventlog -logname security}&quot;</p>
+<p>Run a simple calculation and return (supports Long numbers): </p>
+<p class="code"> powershell.exe 200000000*2</p>
+<p>PS.cmd - a simple batch file to launch PowerShell with less typing:<span class="code"><br>
+@echo off<br>
+Powershell.exe %*</span></p>
+<p class="quote">&ldquo;If you want to launch big ships you have to go where the water is deep&rdquo; ~ Anon</p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="index-2.html">List of all PowerShell cmdlets </a><br>
+<span class="code">PWRSH</span> - Launch PowerShell core.<br>
+<a href="http://community.idera.com/powershell/powertips/b/tips/posts/converting-powershell-to-batch">Convert-PowerShellToBatch</a> - Encode a PowerShell script to base64, this allows it to be run as a batch script you can double click. (Idera)<br>
+Equivalent bash command: <a href="../bash/index-2.html">bash</a> - launch bash shell</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/powershell.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:59 GMT -->
+</html>

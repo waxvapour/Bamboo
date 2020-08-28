@@ -1,0 +1,68 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/substring.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Substring() - PowerShell - SS64.com</title>
+</head><body>
+f<!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Substring()</h1> 
+<p>Return part of a longer string.</p>
+<pre>Syntax
+      .<span class="code">Substring( <i>StartIndex</i> [, <i>length</i>] )
+</span>
+
+Key<i>
+   StartIndex</i>  Characters to skip from the start of the string.
+               Use 0 to start from the beginning of the string.
+               Cannot be less than zero.
+
+<i>   length</i>      The number of characters to return.<br>               Cannot be less than zero or longer than the string.
+               If omitted all remaining characters will be returned.</pre>
+<p><b>Examples</b></p>
+<p>Skip the first 2 characters and then return the next 3 characters from the string &quot;abcdef&quot;:</p>
+<p class="code">PS C:\> &quot;abcdef&quot;.substring(2,3)<br>
+cde</p>
+<p>Return the first 5 characters from a string (LEFT):</p>
+<p class="code">PS C:\> $var = 'Hello World'<br>
+PS C:\> $result = $var.substring(0, 5)<br>
+PS C:\> $result<br>
+Hello</p>
+<p>Return the last 5 characters from a string (RIGHT):</p>
+<p class="code">PS C:\> $var = 'Hello World'<br>
+PS C:\> $length = $var.length<br>
+PS C:\> $result = $var.substring($length -5, 5)<br>
+#          you could also use  
+.substring($length -5)<br>
+PS C:\> $result<br>
+World</p>
+<p class="quote">“As long as Palestinian violence exists, but not a Palestinian state, Israel is in danger, because it cannot obtain assistance from the international community against an entity that is not subordinate to international law” ~ Stephane Hessel</p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="syntax-methods.html">PowerShell Methods</a><br>
+<a href="split.html">Split()</a></p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/substring.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+</html>

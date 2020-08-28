@@ -1,0 +1,67 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/syntax-shellscript.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Run a bash shell script - macOS - SS64.com</title>
+</head><!-- #BeginLibraryItem "/Library/head_osxsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Run a bash shell script</h1>
+<p>A shell script is an ASCII text file containing one or more commands.</p>
+<p class="code">#!/bin/bash<br>
+# My example bash script<br>
+echo &quot;Hello World&quot;</p>
+<p>The first line contains a <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a><span class="code"> #!</span> followed by the path to the shell, in this case <span class="code">bash</span> - this acts as an interpreter directive and ensures that the script is executed under the correct shell.</p>
+<p>The <span class="code">#</span> character indicates a comment, so the shebang line is ignored by bash when running the script.</p>
+<p>Next you need to make the script executable with <a href="chmod.html">chmod</a> </p>
+<p class="code">$ chmod u+x my_shell_script.sh</p>
+<p>You can now run the script by prefixing it with <span class="code">./ </span></p>
+<p class="code">$ ./my_shell_script.sh</p>
+<p>If you get an error like <span class="code">"<i>#!/bin/bash: No such file or directory"</i></span>, that  is typically an indication that the File encoding or line endings are wrong, use an editor like VI or <a href="https://www.barebones.com/products/bbedit/">BB Edit</a> (shows line encodings at the bottom of the edit window) the script file should be <span class="code">Unicode (UTF-8)</span> and <span class="code">Unix (LF)</span> line endings</p>
+<h2>Making a script available everywhere</h2>
+<blockquote>
+<p>If you will be writing a few shell scripts then it's worth creating a folder, perhaps called &quot;scripts&quot; and adding that to the system path: </p>
+<p class="code">$ mkdir -p $HOME/scripts<br>
+$ export PATH=&quot;$PATH:~/scripts&quot;</p>
+<p>Next edit your <span class="code">.bash_profile </span>file to include <span class="code">export PATH=&quot;$PATH:~/scripts&quot;</span> that will keep the &quot;scripts&quot; folder in your path every time you log in.</p>
+<p>With the script saved in the folder, you can now run it with just:</p>
+<p class="code">$ my_shell_script.sh</p>
+</blockquote>
+<h2>Enabling Drag and drop onto a Shell script</h2>
+<blockquote>
+<p>A short AppleScript can be used that when run, will execute a Unix command/script passing the filename, you can drop also drop multiple files at once: </p>
+<pre>on open filelist
+  repeat with i in filelist
+    set posixPath to quoted form of POSIX path of i
+    do shell script "some_command " &amp; posixPath
+  end repeat
+end open</pre>
+<p>AppleScripts can be created using &quot;Utilities / Script Editor&quot; and then saved as type= application.</p>
+</blockquote>
+<p><b>Related macOS comands:</b></p>
+<p><a href="exec.html">exec</a> - Execute a command<br>
+<a href="syntax.html">macOS Syntax</a>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/syntax-shellscript.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:48 GMT -->
+</html>

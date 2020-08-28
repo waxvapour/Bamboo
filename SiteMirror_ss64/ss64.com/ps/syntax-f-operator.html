@@ -1,0 +1,194 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-f-operator.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>-f Format operator - PowerShell - SS64.com</title>
+
+<style type="text/css">
+.tab1
+{
+ background-color: #ddd;
+ border-collapse: collapse;
+}
+.tab1 td
+{
+ border-bottom: 1px solid #999;
+  padding: 2px 8px;
+}
+.tab1 tbody tr:hover td
+{
+ background-color: #ccc;
+}
+</style></head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1> <span class="code">-f </span>Format operator</h1> 
+<p>Format a string expression.</p>
+<pre>Syntax:
+       &quot;String with placeholders&quot; <b>-f</b> &quot;Array of values to place into the placeholders&quot;
+
+<span class="code">       'Filename: <b>{0}</b> Created: <b>{1}</b>' <b>-f</b> $_.fullname,$_.creationtime</span>
+
+       &quot;{<i>I,A:FS</i>} {<i>I,A:FS</i>} {<i>I,A:FS</i>}..&quot; <b>-f</b> &quot;string0&quot;, &quot;string1&quot;, &quot;string2&quot;...</pre>
+<blockquote>
+<blockquote>
+<p>Place <span class="code">{0} {1}</span> etc. into the string as placemarkers where you want the variables to appear, <span class="code"></span>immediately follow the string with the<span class="code"> -f </span>operator and then lastly, a list of comma separated variables which will be used to populate the placemarkers.</p>
+</blockquote>
+</blockquote>
+<pre>Key:
+<i>   I </i></span>  Index of the item to display, 0,1,2 etc.</pre>
+<pre><i>   A</i>   Alignment. 
+       A positive number will <b>right</b> align <i>n </i>characters. 
+       A negative number will <b>left</b> align <i>n </i>characters. 
+        so {2,-25} will allocate 25 characters of horizontal space on the line, even if the string is only 1 character long. </pre>
+<pre><i>   FS</i>  An optional Format String that acts on the item depending on its type (not case sensitive).
+
+       Valid format strings:</pre>
+<blockquote><blockquote>
+<table class="tab1">
+<tr>
+<td class="code">:c </td>
+<td>Currency format (for the current culture)</td>
+</tr>
+<tr>
+<td class="code">:d</td>
+<td>Decimal. (:d<i>P</i> precision=number of digits); if needed, leading zeroes are added to the beginning of the number.</td>
+</tr>
+<tr>
+<td class="code">:e</td>
+<td>Scientific (exp) notation </td>
+</tr>
+<tr>
+<td class="code">:f</td>
+<td>Fixed point<br>
+:f5 = fix to 5 places </td>
+</tr>
+<tr>
+<td class="code">:g</td>
+<td>Most compact format, fixed or sci<br>
+:g5 = 5 significant digits </td>
+</tr>
+<tr>
+<td class="code">:n</td>
+<td>Number (:n<i>P</i> precision=number of decimal places), includes culture separator for thousands 1,000.00 </td>
+</tr>
+<tr>
+<td class="code">:p</td>
+<td>Percentage</td>
+</tr>
+<tr>
+<td class="code">:r</td>
+<td>Reversible Precision </td>
+</tr>
+<tr>
+<td class="code">:x</td>
+<td>Hex format </td>
+</tr>
+<tr>
+<td class="code">:hh<br>
+:mm<br>
+:ss</td>
+<td>Convert a DateTime to a 2 digit Hour/minute/second<br>
+&quot;{0:hh}:{0:mm}&quot;</td>
+</tr>
+<tr>
+<td class="code">:HH</td>
+<td>Hour in 24 Hour format</td>
+</tr>
+<tr>
+<td class="code">:dd</td>
+<td>Day of Month</td>
+</tr>
+<tr>
+<td class="code">:ddd</td>
+<td>Convert a DateTime to Day of the Week</td>
+</tr>
+<tr>
+<td class="code">:dddd</td>
+<td>Full name of Day of Week</td>
+</tr>
+<tr>
+<td class="code">:yyyy</td>
+<td>Full year</td>
+</tr>
+<tr>
+<td class="code">#</td>
+<td>Digit Place Holder</td>
+</tr>
+</table>
+<p>Some of these letters (:d, :D, :f, :F, :g, :G and :r, :R)  also perform double duty as date patterns which can lead to confusion, when applied to a date they will act as date patterns and they are then case sensitive:  <a href="syntax-dateformats.html">Full list of Date Formats</a> <br> 
+</p>
+<p>The -f format string can be surrounded by either single or double quotes.</p>
+<p> Static text or more complex expressions may be included before or in-between the <span class="code">-f {<i>format strings</i>} </span><br>
+The -F operator has equal precedence with Arithmetic operators, <span class="code">* / % + -</span> etc, see About_Operator_Precedence<br>
+When operators have equal precedence, PowerShell evaluates them from left to right.</p>
+</blockquote></blockquote>
+<p><b>Examples: </b></p>
+<p>Display a number to 3 decimal places:<br>
+<span class="code">PS C:\&gt; &quot;{0:d3}&quot; -f 123.45678<br>
+123.457</span></p>
+<pre><span class="code"><span class="body">Right align the first number only:</span><br>PS C:\&gt;&quot;{0,10}&quot; -f 4,5,6
+         4
+
+</span><span class="body">Left and right align text:</span>
+<span class="code">PS C:\&gt; &quot;|{0,-10}| |{1,10}|&quot; <b>-f</b> &quot;hello&quot;, &quot;world&quot;</span>
+<span class="code">|hello     ||     world</span>|
+</pre>
+<p>Display an integer with  3 digits:<br>
+<span class="code">PS C:\&gt; &quot;{0:n3}&quot; -f [int32]12<br>
+012</span></p>
+<p>Separate a number with dashes (# digit place holder):<br>
+<span class="code">PS C:\&gt; &quot;{0:###-##-##}&quot; -f 1234567<br>
+123-45-67</span></p>
+<p>Create a list of 100 names with a padded suffix no.  (Name001  → Name100):<br>
+<span class="code">1..100 | % { 'Name{0:<b>d3</b>}' -f $_ }</span></p>
+<p>Convert a number to Hex:<br>
+<span class="code"> PS C:\&gt; &quot;{1,10} {0,10} {2,10:x}&quot; <b>-f</b> &quot;First&quot;, &quot;Second&quot;, 255<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Second&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FF<br>
+</span></p>
+<pre><span class="body">Display filenames and creation time</span>:<br><span class="code">PS C:\&gt; Get-ChildItem c:\docs | ForEach-Object <b>{</b>'Filename: <b>{0}</b> Created: <b>{1}</b>' <b>-f</b> $_.fullname,$_.creationtime<b>}</b></span></pre>
+<p>Display only the Year  from a date time value:<span class="code"><br>
+PS C:\&gt; &quot;{0:yyyy}&quot; <b>-f</b> (Get-Date)<br> 
+2018
+</span></p>
+<p>Display the hours and minutes from a date time value:<span class="code"><br>
+PS C:\&gt; &quot;{0:hh}:{0:mm}&quot; <b>-f</b> (Get-Date)<br>
+17:52</span></p>
+
+<p>Reverse the order of display:<br>
+<span class="code"> PS C:\&gt; &quot;{2} {1,-10} {0:n3}&quot; <b>-f</b> [math]::pi, &quot;world&quot;, &quot;hello&quot;<br>
+hello world 3.142</span></p>
+<p>Display a number as a percentage:<br>
+<span class="code">PS C:\&gt; &quot;{0:p0}&quot; -f 0.5<br>
+50%
+</span><br>
+</p>
+<p class="quote"><i>&ldquo;I skate to where the puck is going to be, not where it has been&rdquo; ~ Wayne Gretsky</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="syntax-operators.html">PowerShell Operators</a> - Format strings and arrays<br>
+<a href="syntax-variables.html">Variables</a> - PowerShell Variables and basic Mathematical operators (+ - = /)<br>
+<a href="syntax-pipeline.html">Pipelines</a> - Pass objects down the pipeline<br>
+</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-f-operator.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:51 GMT -->
+</html>

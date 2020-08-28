@@ -1,0 +1,93 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-compatibility.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>App Compatibility - Windows CMD - SS64.com</title>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>App compatibility </h1>
+<p>To run old applications in Windows 7 and Windows 10 it is possible to set the compatibility options under <b>File Properties &gt; Compatibility</b>.</p>
+<p>This is a per user setting stored in the registry, so it will only work for executables on the local hard drive not on a network drive. It also will not work for protected files delivered as part of the OS such as notepad.exe. It is possible to make a copy of a system file and set the properties on that, or to create a shortcut and set the shortcut properties.</p>
+<p>All of the settings in the Compatibility tab can also be set directly via the registry:</p>
+<p><span class="code">HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers</span> <br>
+or for all users:<span class="code"><br>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers</span> </p>
+<ul>
+<li> The value (not the data) is the full path/filename of the application that needs to be modified.</li>
+<li> The data is a syntax string as enumerated below.<br>
+Each entry is a string (REG_SZ) value.</li>
+</ul>
+<p>Windows 7 and Windows 10 use a slightly different syntax and a different set of compatibility options.
+It is important to specify the options in the correct order, the sequence in which the options are displayed in the compatibility tab.</p>
+<p><b>Syntax</b> Windows 10:<br>
+<span class="code">&nbsp;&nbsp;&nbsp;~ [Privilege Level] + [Settings (value(s) with space between)] + [Compatibility Mode (only one) </span></p>
+<p><b>Syntax</b> Windows 7 :<br>
+<span class="code">&nbsp;&nbsp;&nbsp;[Compatibility Mode (only one)] [Settings (value(s) with space between)] +  [Privilege Level]</span></p>
+<p>Privilege Level (pick only one) :<br>
+</p>
+<pre>    ELEVATECREATEPROCESS  = Launch a child program as Administrator  (<a href="https://msdn.microsoft.com/en-us/library/bb756937.aspx">Vista only</a>)  
+    RUNASADMIN            = RUN AS ADMINISTRATOR</pre>
+<p> Settings:<br>
+</p>
+<pre>
+    256COLOR     = Reduce color mode (8-bit 256)    (Win7/10)
+    16BITCOLOR   = Reduce color mode (16BIT 65536)    (Win10)
+    640X480      = RUN IN 640X480 RESOLUTION    (Win7/10)
+    DISABLETHEMES  Disable visual themes       (Win7)
+    DISABLEWDM     Disable desktop composition (Win7)
+     
+    PERPROCESSSYSTEMDPIFORCEOFF  Override system DPI @Windows logon  (Win10 build 17063)
+    PERPROCESSSYSTEMDPIFORCEON   Override system DPI @Application start  (Win10 build 17063)
+    HIGHDPIAWARE      Disable Display Scaling on High DPI Settings - Scaling performed by: Application  (Win7/10)
+    DPIUNAWARE        Scaling performed by: Application   (Win10 build 15002+)
+    GDIDPISCALING DPIUNAWARE     Scaling performed by: System (Enhanced)  (Win10 build 15002+)</pre>
+<p> Compatibility Mode (pick only one) :<br>
+</p>
+<pre>
+    WIN95     (Win7/10)
+    WIN98     (Win7/10)
+    NT4SP5    (Win7)
+    WIN2000   (Win7)
+    WINXPSP2  (Win7/10)
+    WINXPSP2  (Win7/10)
+    WINSRV03SP1 (Win7)
+    WINSRV08SP1 (Win7)
+    VISTARTM  (Win7/10)
+    VISTASP1  (Win7/10)
+    VISTASP2  (Win7/10)
+    WIN7RTM   (Win7/10)
+    WIN8RTM     (Win10)</pre>
+<p><b>Example</b></p>
+<p>Set WinXP compatibility for a program running under Windows 10 and Run as Admin (elevate):</p>
+<pre>~ RUNASADMIN WINXPSP2
+</pre>
+<p class="quote"><i>&ldquo;It's a poor sort of memory that only works backwards&rdquo; - </i><i>Lewis Carroll</i>
+<p><b>Related:</b>
+<p>  <a href="syntax-elevate.html">Elevate</a> - Run with elevated permissions (As Admin).<a href="syntax-esc.html"></a>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-compatibility.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

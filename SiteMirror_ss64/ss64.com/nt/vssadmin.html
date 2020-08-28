@@ -1,0 +1,126 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/vssadmin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>VSSADMIN - Windows CMD - SS64.com</title></head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>VSSADMIN</h1>  
+<p>Display the current volume shadow copy backups and all installed shadow copy writers and providers.</p>
+<pre>Syntax
+      Add a volume shadow copy storage association:
+      VSSADMIN <b>add shadowstorage</b> /for=<i>ForVolumeSpec</i> /on=<i>OnVolumeSpec</i> [/maxsize=<i>MaxSizeSpec</i>]
+
+      Create a new volume shadow copy:
+      VSSADMIN <b>create shadow</b> /for=<i>ForVolumeSpec</i> [/autoretry=<i>MaxRetryMinutes</i>]
+
+      Delete volume shadow copies:
+      VSSADMIN <b>delete shadows</b> /for=<i>ForVolumeSpec</i> [/oldest | /all | /shadow=<i>ShadowID</i>] [/quiet]
+
+      Delete volume shadow copy storage associations:
+      VSSADMIN <b>delete shadowstorage</b> /for=<i>ForVolumeSpec</i> [/on=<i>OnVolumeSpec</i>] [/quiet]
+
+      List registered volume shadow copy providers:
+      VSSADMIN <b>list providers</b>
+
+      List existing volume shadow copies:
+      VSSADMIN <b>list shadows</b> [/for=<i>ForVolumeSpec</i>] [/shadow=<i>ShadowID</i>]
+
+      List all shadow copy storage associations on the system:
+      VSSADMIN <b>list shadowstorage</b> {/for=<i>ForVolumeSpec</i> | /on=<i>OnVolumeSpec</i>}
+
+      List volumes that are eligible for shadow copies:
+      VSSADMIN <b>list volumes</b>
+
+      List all subscribed volume shadow copy writers on the system:
+      VSSADMIN <b>list writers</b>
+
+      Resize the maximum size for a shadow copy storage association:
+      VSSADMIN <b>resize shadowstorage</b> /for=<i>ForVolumeSpec</i> /on=<i>OnVolumeSpec</i> [/maxsize=<i>MaxSizeSpec</i>]
+             ** Resizing the storage association may cause shadow copies to disappear.
+
+Key
+   /all                Delete all of the shadow copies for the specified volume.
+
+   /autoretry=<i>MaxRetryMinutes</i>
+                       The maximum amount of time (in minutes) during which the vssadmin command will attempt
+                       to create the shadow copy, if another process is simultaneously attempting to create a shadow copy.
+
+   /for=<i>ForVolumeSpec</i>  The volume for which the shadow copy storage operation is intended.
+
+   /on=<i>OnVolumeSpec</i>    The volume to be used as storage for the volume that is defined in the /for parameter.
+
+   /maxsize=<i>MaxSizeSpec</i> The max amount of storage space FOR the volume specified in /on.
+                       If MaxSizeSpec is not specified, there is no limit placed on the space to be used.
+                       If the max. number of shadow copy storage associations have already been made, an
+                       error is returned. MaxSizeSpec must be 300 MB or greater and it must be expressed
+                       in one of the following units: bytes, KB, MB, GB, TB, PB, or EB.
+                       These units can be abbreviated as B, K, M, G, T, P, and E, respectively.
+                       If no unit is specified, MaxSizeSpec uses bytes (B) by default.
+   /oldest             Delete only the oldest shadow copy.
+
+   /shadow=<i>ShadowID</i>    Delete the shadow copy specified by ShadowID. 
+
+<i>   ShadowID</i>            To get the shadow copy ID, use the VSSADMIN list shadows command.
+                       When you type a shadow copy ID, use the following format, where
+                       each X represents a hexadecimal character: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+
+   /quiet              Suppress messages.
+</pre>
+<p>To enable VSS on a volume. Right-click on the volume and select Properties &gt; Shadow Copies. From here, you can then click Enable to create the first snapshot. </p>
+<p>Shadow copies are exposed to PowerShell by a WMI class called <span class="code">Win32_ShadowCopy</span>.</p>
+<p><b>Examples:</b><br>
+<br>
+Specify that for volume C, volume D is to be used for storage and the maximum size for storage space is to be 900 MB</p>
+<p class="code">VSSADMIN add shadowstorage /for=c: /on=d: /maxsize=900mb</p>
+<p>Create a shadow copy of volume C</p>
+<p class="code">VSSADMIN create shadow /for=c: </p>
+<p>Delete the oldest shadow copy of volume C: </p>
+<p class="code">VSSADMIN delete shadows /for=c: /oldest</p>
+<p>Create a shadow copy with PowerShell [<a href="https://msdn.microsoft.com/en-us/library/aa389391(v=vs.85).aspx">source</a>]:</p>
+<pre># get existing shadow copies 
+$shadow = get-wmiobject win32_shadowcopy
+ "There are {0} shadow copies on this sytem" -f $shadow.count ""</pre>
+<pre># get static method
+$class=[WMICLASS]"root\cimv2:win32_shadowcopy"</pre>
+<pre># create a new shadow copy 
+"Creating a new shadow copy" 
+$class.create("E:\", "ClientAccessible")  
+
+# Count again 
+$shadow = get-wmiobject win32_shadowcopy 
+ "There are now {0} shadow copies on this sytem" -f $shadow.count
+
+<span class="body">Create a shadow copy with a single line of PowerShell:</span>
+(get-wmiobject -list win32_shadowcopy).Create('E:\','ClientAccessible')</pre>
+<p>Create a shadow copy with <a href="wmic.html">WMIC</a>:<br>
+<span class="code">WMIC shadowcopy call create Volume='E:\'</span></p>
+<p><i class="quote">&ldquo;You are on a soulful path that asks you to step into the greatest version of yourself. It is a sacred gift to shine your brightest light, not just in your moments of glory, but each day&rdquo; ~ Debbie Ford</i><br>
+<br>
+<b>Related:</b></p>
+<p><a href="https://gallery.technet.microsoft.com/scriptcenter/PowerShell-Script-to-ce858ca8">PowerShell Script</a> - Delete shadow copies over <i>30</i> days old.<br>
+<a href="https://www.bleepingcomputer.com/news/security/why-everyone-should-disable-vssadmin-exe-now/">Renaming vssadmin.exe</a> - Hide VSSADMIN from Crypto Ransomware.</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/vssadmin.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:40 GMT -->
+</html>

@@ -1,0 +1,65 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/syntax-wildcards.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Wildcards - macOS - SS64.com</title>
+</head><!-- #BeginLibraryItem "/Library/head_osxsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Wildcards</h1>
+<p>Wildcards allow pattern matching within both Regular Expressions and in Globbing<code></code>.</p>
+<p>Bash performs filename expansion on <b>unquoted</b> command-line arguments.</p>
+<p>Any command that uses quotes e.g.<span class="code"> echo &quot;hello&quot; </span>or<span class="code"> echo '*' </span>will simply echo the text.<br>
+Without quotes <span class="code">echo * </span>will perform globbing and echo a list of files in the current directory.</p>
+<p>Any character that appears in a pattern, other than the special pattern characters described below, matches itself. <br>
+The NUL character can not occur in a pattern. The special pattern characters must be quoted if they are to be matched literally. </p>
+<p>The special pattern characters have the following meanings: </p>
+<blockquote>
+<p><code>*</code> Matches any string, including the null string. </p>
+<p><code>?</code> Matches any single character. </p>
+<p><code>[...] </code>Matches any one of the enclosed characters. </p>
+<p><span class="code">A-C </span>A pair of characters separated by a minus sign denotes a <i>range</i>; any character lexically between those two characters, inclusive, is matched.</p>
+</blockquote>
+<p> To prevent any file named with dashes (<span class="code">-rf</span>) being interpreted as a commnd option, it is a good idea to use <span class="code">/some/path/*</span> (or <span class="code">./*</span> for the current directory) rather than just a bare <span class="code">*</span></p>
+<p>If the first character following the <samp>`['</samp> is a <samp>`!'</samp> or a <samp>`^'</samp> then any character not enclosed is matched. A <samp>`-'</samp> can be matched by including it as the first or last character in the set. A <samp>`]'</samp> can be matched by including it as the first character in the set. Within <samp>`['</samp> and <samp>`]'</samp>, <i>character classes</i> can be specified using the syntax <code>[:</code><i>class</i><code>:]</code>, where <i>class</i> is one of the following classes defined in the POSIX 1003.2 standard:</p>
+<pre>alnum   alpha   ascii   blank   cntrl   digit   graph   lower
+print   punct   space   upper   xdigit</pre>
+<p> A character class matches any character belonging to that class. Within <samp>`['</samp> and <samp>`]'</samp>, an <i>equivalence class</i> can be specified using the syntax <code>[=</code><i>c</i><code>=]</code>, which matches all characters with the same collation weight (as defined by the current locale) as the character <i>c</i>. Within <samp>`['</samp> and <samp>`]'</samp>, the syntax <code>[.</code><i>symbol</i><code>.]</code> matches the collating symbol <i>symbol</i>. </p>
+<p>If the <code>extglob</code> shell option is enabled using the <code>shopt</code> builtin, several extended pattern matching operators are recognized. In the following description, a <i>pattern-list</i> is a list of one or more patterns separated by a <samp>`|'</samp>. Composite patterns can be formed using one or more of the following sub-patterns: </p>
+<blockquote>
+<p><code>?(<i>pattern-list</i>)</code> Matches zero or one occurrence of the given patterns. <br>
+<br>
+<code>*(<i>pattern-list</i>)</code> Matches zero or more occurrences of the given patterns. <br>
+<br>
+<code>+(<i>pattern-list</i>)</code> Matches one or more occurrences of the given patterns. <br>
+<br>
+<code>@(<i>pattern-list</i>)</code> Matches exactly one of the given patterns. <br>
+<br>
+<code>!(<i>pattern-list</i>)</code> Matches anything except one of the given patterns.</p>
+</blockquote>
+<p><b>Related macOS commands:</b></p>
+<p> <a href="syntax-condition.html">Comparison Operators</a> - exists, greater than, equal to</p>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/syntax-wildcards.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:48 GMT -->
+</html>

@@ -1,0 +1,60 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/mem.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Mem - Memory usage - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>MEM</h1> 
+<p>Display memory usage. Available only in 32 bit systems.</p>
+<pre>Syntax
+      MEM 
+      MEM /C
+      MEM /D
+      MEM /P<br>
+Key<br>   /P   List programs in memory
+        with the memory address and size of each 
+
+   /D   List Programs(as /P) and also Devices
+
+   /C   List programs in conventional memory and
+        list programs in upper memory</pre>
+<p> MEM will only display details about the current CMD shell environment, programs running in a separate shell (or WIN32 programs) will not be listed 
+- so it won't tell you anything about total memory usage.<br>
+<br>
+<i class="quote">&ldquo;The palest ink is better than the sharpest memory&rdquo; ~ Chinese proverb</i><br>
+<br>
+<b>Related:</b><br>
+<br>
+<a href="run.html">MDSCHED</a> - Windows Memory Diagnostic Scheduler<br>
+<a href="winmsd.html">WINMSD</a> - Windows  Diagnostics (including Physical Memory)<br>
+GUI Task Manager - for all program details including Win32 applications.<br>
+<a href="tlist.html">TLIST</a> - Task List<br>
+powershell: <span class="code"><a href="../ps/get-wmiobject.html">gwmi</a> Win32_PhysicalMemory</span> / <span class="code"><a href="../ps/get-wmiobject.html">gwmi</a> Win32_ComputerSystem </span><br>
+<a href="https://support.microsoft.com/en-gb/help/126962/"> Q126962</a> - How to increase desktop heap memory for non-interactive processes<br>
+<a href="https://download.microsoft.com/download/e/b/a/eba1050f-a31d-436b-9281-92cdfeae4b45/mem-mgmt.doc">Memory Management.doc</a> -  explains allocation of memory address space (Microsoft.com) <br>
+Equivalent bash command (Linux): <span class="code">free -t</span>  Display a summary of current memory usage and availability.</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/mem.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:23 GMT -->
+</html>

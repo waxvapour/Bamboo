@@ -1,0 +1,153 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-filenames.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Long filenames - Windows CMD - SS64.com</title>
+
+<style type="text/css">
+.style2 {color: #FF0033}
+</style></head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Long filenames, NTFS and legal filename characters </h1>
+<h2> Long path names</h2>
+<blockquote>
+<p> If a filename contains spaces you must surround it 
+with double quotes:<span class="code"> &quot;my file.txt&quot; </span><br>
+Filenames that include quotes or parenthesis <span class="code">(')</span> are legal filenames but they can still cause problems, particularly within batch files where these characters have special meaning.</p>
+<p><b>Win32 File Namespaces </b></p>
+<p>The NTFS file system supports large paths and file names up to 32,767 unicode characters, normally this is restricted by the 260 character* MAX_PATH limit enforced by the Windows Win32 API. This means it is sometimes possible, when moving files and directories around, or mapping drives, to create a pathname which is too long for Win32 to process.</p>
+<p>Long filenames have been supported in Windows since 1995, the main reason for keeping short 8.3 filenames around at this point is that sometimes you might want to use the old short 8.3  filename when the 260 char file limit has been exceeded.</p>
+<p>There is an alternative for accessing very long filenames: for file I/O, the <span class="code">&quot;\\?\&quot;</span> prefix to a path string tells the Windows APIs to disable all string parsing and to send the string that follows it straight to the file system.</p>
+<p class="code">dir &quot;\\?\UNC\Server64\Teams\Personnel\some - very - long - file - name.txt&quot;</p>
+<p>Because it turns off automatic expansion of the path string, the <span class="code">&quot;\\?\&quot;</span> prefix also allows the use of &quot;..&quot; and &quot;.&quot; in the path names, which can be useful if you are attempting to perform operations on a file with these otherwise reserved relative path specifiers as part of the fully qualified path. This syntax can be used in both CMD and PowerShell.</p>
+<p>Starting in Windows 10, version 1607, MAX_PATH limitations have been removed from common Win32 file and directory functions. However, you must <a href="https://docs.microsoft.com/en-us/windows/desktop/fileio/naming-a-file">opt-in to</a> the new behavior.</p>
+<p><span class="code">* </span>The 260 character limit has a couple of caveats, it includes a null terminator character and every folder must be able to hold a file that is 8.3 characters long (8+3+'.' = 12 characters). This means that the longest <i>FOLDER</i> you can create is 260 - 12 - 1 = <b>247</b> characters</p>
+<p>See the <a href="del.html">DEL</a> page for more on deleting very long filenames.</p>
+<p><b>Win32 Device Namespaces   </b></p>
+<p>The <span class="code">&quot;\\.\&quot;</span> prefix will access the Win32 device namespace instead of the Win32 file namespace. This is how access to physical disks and volumes is accomplished directly, without going through the file system, if the API supports this type of access. <br>
+e.g.<br>
+<span class="code">&quot;\\.\COM1&quot;<br>&quot;\\.\COM56&quot;</span><br>
+</p>
+</blockquote>
+<h2>Short file names</h2>
+<blockquote>
+<p>The order in which you create files will affect short 
+  8.3 names<br>
+  e.g. <br>
+  echo abc > "a long file 1.txt" <br>
+  echo abc > "a long file 3.txt" <br>
+  echo abc > "a long file 2.txt"<br>
+  DIR /x <br>
+  :: will produce this:<br>
+  ALONGF~1.TXT a long file 1.txt <br>
+  ALONGF~3.TXT a long file 2.txt <br>
+  ALONGF~2.TXT a long file 3.txt <br>
+  <br>
+  If these files are now copied to another folder the 8.3 filenames will change, 
+  this is most likely to happen when upgrading server storage or restoring data 
+  from a backup. </p>
+<p>Similarly for folders <br>
+  md "a long folder 1" <br>
+  md "a long folder 3" <br>
+  md "a long folder 2" <br>
+  DIR /x <br>
+  :: will produce this:<br>
+  ALONGF~1 a long folder 1<br>
+  ALONGF~3 a long folder 2 <br>
+  ALONGF~2 a long folder 3<br>
+  <br>
+  Again copying these to somewhere else will change the 8.3 names to: <br>
+  ALONGF~1 a long folder 1 <br>
+  ALONGF~2 a long folder 2<br>
+  ALONGF~3 a long folder 3 <br>
+</p>
+<p> See the <a href="syntax-wildcards.html">Wildcards</a> page for more long/short filename issues. </p>
+</blockquote>
+<h2> Enable or Disable 8.3 filenames in NTFS</h2>
+<blockquote>
+<p>If 8.3 filenames are disabled, ancient 16 bit software (like WordPerfect 3) will still be able to read/write short filenames (C:\WORK\JAN.WPD), but won&rsquo;t see a short equivalent for long filenames (C:\My Documents\new stuff.wpd).</p>
+<p> Disabling 8.3 filenames may provide a small improvement in directory enumeration performance. Worth applying on a completely new fileserver, but not worth the risk of possible breakage on an application server or with legacy systems. <br>
+The 
+SQL Server FILESTREAM feature <a href="https://support.microsoft.com/en-gb/help/2160002/recommendations-and-guidelines-for-improving-sql-server-filestream-per">recommends</a> that 8.3 filename support is turned off.</p>
+<p>Disable the creation of 8.3 filenames</p>
+<p class="code"><a href="fsutil.html">FSUTIL.exe</a> behavior set disable8dot3 1</p>
+<p>or in the registry (see <a href="https://support.microsoft.com/en-gb/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions">Q121007</a>):<br>
+<br>
+  <span class="code">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]<br>
+NtfsDisable8dot3NameCreation=1</span></p>
+<p>Enable the creation of 8.3 filenames (default) </p>
+<p><span class="code"><a href="fsutil.html">FSUTIL.exe</a> behavior set disable8dot3 0</span></p>
+<p>or in the registry:<br>
+  <span class="code">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]<br>
+NtfsDisable8dot3NameCreation=0</span></p>
+</blockquote>
+<h2>Batch files  .BAT or .CMD ?</h2>
+<blockquote>
+<p>Batch files can be saved with the extension .BAT or .CMD <br>
+The .BAT extension will run under Windows 95/MSDOS or later but the .CMD extension will only run under NT, XP or later.</p>
+<p> One key difference between .CMD and .BAT scripts (running under  CMD.EXE) is that with extensions enabled, commands like PATH/APPEND/PROMPT/SET/ASSOC will reset ERRORLEVEL to 0 if they succeed. In the old style .BAT file, the ERRORLEVEL 
+will not be changed unless there is a new error (<a href="https://groups.google.com/forum/#!msg/microsoft.public.win2000.cmdprompt.admin/XHeUq8oe2wk/LIEViGNmkK0J">source</a>).<br>
+The old behaviour where some commands will reset the 
+ERRORLEVEL and some don't is not considered helpful and is likely to result in buggy code - you test for one error but actually pick up a different unrelated error.</p>
+</blockquote>
+<h2>NTFS file system</h2>
+<blockquote>
+<p>Legal characters in NTFS include the following:</p>
+<p class="code"> ! [ ] . ; = ( ) </p>
+<p> Illegal Characters: The following characters are not permitted in Windows file or directory names: </p>
+<p class="code style2"><b>/ \ : * ? &quot; &lt; &gt; | </b></p>
+<p>The control characters (<a href="../ascii.html"><span class="code">0x00-0x1F, 0x7F</span></a>) are also invalid in Windows' FAT and NTFS.<br>
+Windows Explorer will not create files with a period (.) as the first or only character in the filename, although NTFS (and many command-line tools) do support this. </p>
+<p>A long file name (LFN) can be up to 255 characters long. <br>
+NTFS supports paths up to 32768 characters in length, but only when using the Unicode APIs. <br>
+  <br>
+  When using very long path names, prefix the path with the characters \\?\ and use the Unicode versions of the C Runtime functions.</p>
+</blockquote>
+<h2>8.3 format filenames</h2>
+<blockquote>
+<p>  These 
+can have between 1 and 8 characters in the file name. Short file names have the 8.3 format and are compatible with MS-DOS and other legacy operating systems. <br>
+The name must start with a letter or a number and can contain any characters except the following:</p>
+<p><span class="code"><b>&nbsp;/ \ : * ? &quot; [ ] | = ,  . ; (space) </b></span></p>
+<p>An 8.3 file name typically has a file name extension between one and three characters long with the same character restrictions. A period separates the file name from the file name extension.</p>
+<p>Some characters are invalid in 8.3 format filenames but are valid in NTFS filenames and are also valid <a href="syntax-esc.html">Delimiters</a> Typically the Windows GUI will silently change the 8.3 name for such files where necessary, for example <span class="code">DE=MO.TXT</span> will become <span class="code">DE_MO~1.TXT</span></p>
+<p>You can use long file names in both NTFS and FAT volumes (typically removable flash drives and memory cards). </p>
+</blockquote>
+<h2>Reserved Names</h2>
+<blockquote>
+<p>Do not use the following reserved names for the name of a file or folder: <br>
+<span class="code">CON, PRN, AUX, NUL, conIN$ , conOUT$
+<br>
+COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, <br>
+LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8,  LPT9.</span></p>
+<p> Also avoid these names followed immediately by any extension; for example, <span class="code">NUL.txt</span> is not recommended. Sources: [<a href="https://blogs.msdn.microsoft.com/oldnewthing/20031022-00/?p=42073">x</a>] [<a href="https://docs.microsoft.com/en-us/windows/desktop/fileio/naming-a-file">x</a>]</p>
+</blockquote>
+<p class="quote"><i>&ldquo;Tongues, like governments, have a natural tendency to degeneration; we have long preserved our constitution, let us make some struggles for our language&rdquo; - Samuel Johnson: Preface to the Dictionary </i>
+<p><b>Related:</b>
+<p>  <a href="syntax-esc.html">Escape Characters, Delimiters and Quotes</a>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-filenames.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

@@ -1,0 +1,105 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-which.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Which.cmd - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Which.cmd</h1>
+<p>Show the full path to an executable file.</p>
+<pre>:WHICH  CommandName  [ReturnVar]
+::
+::  Determines the full path of the file that would execute if
+::  CommandName were executed.
+::
+::  The result is stored in variable ReturnVar, or else it is
+::  echoed to stdout if ReturnVar is not specified.
+::
+::  If no file is found, then an error message is echoed to stderr.
+::
+::  The ERRORLEVEL is set to one of the following values
+::    0 - Success: A matching file was found
+::    1 - CommandName is an internal command
+::    2 - No file was found and CommandName is not an internal command
+::    3 - Improper syntax - no CommandName specified
+::
+@echo off
+setlocal disableDelayedExpansion
+
+set "file=%~1"
+setlocal enableDelayedExpansion
+
+if not defined file (
+  >&2 echo Syntax error: No CommandName specified
+  exit /b 3
+)
+
+
+:: test for internal command
+echo(!file!|findstr /i "[^abcdefghijklmnopqrstuvwxyz]" &gt;nul || (
+  set "empty=!temp!\emptyFolder"
+  md "!empty!" 2&gt;nul
+  del /q "!empty!\*" 2&gt;nul &gt;nul
+  setlocal
+  pushd "!empty!"
+  set path=
+  (call )
+  !file! /? &gt;nul 2&gt;nul
+  if not errorlevel 9009 (
+    &gt;&2 echo "!file!" is an internal command
+    popd
+    exit /b 1
+  )
+  popd
+  endlocal
+)
+
+
+:: test for external command
+set "noExt="
+if "%~x1" neq "" if "!<a href="syntax-variables.html">PATHEXT</a>:%~x1=!" neq "!PATHEXT!" set noExt="";
+set "modpath=.\;!PATH!"
+@for %%E in (%noExt%%PATHEXT%) do @for %%F in ("!file!%%~E") do (
+  setlocal disableDelayedExpansion
+  if not "%%~$modpath:F"=="" if not exist "%%~$modpath:F\" (
+    endlocal & endlocal & endlocal
+    if "%~2"=="" (echo %%~$modpath:F) else set "%~2=%%~$modpath:F"
+    exit /b 0
+  )
+  endlocal
+)
+endlocal
+
+
+&gt;&2 echo "%~1" is not a valid command
+exit /b 2
+
+:: Credits:
+:: Dave Benham :: <a href="https://ss64.org/viewtopic.php?id=1479">forum thread</a> :: <a href="https://stackoverflow.com/a/21146630/1720814">StackOverflow</a> answer</pre>
+<p><b>Related</b></p>
+<p><a href="where.html">WHERE</a> - Locate and display files in a directory tree. <br>
+<a href="http://www.flounder.com/whereis.htm">whereis utility</a> - Flounder.com</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-which.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

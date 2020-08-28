@@ -1,0 +1,58 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/tree.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>TREE - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>TREE.com</h1> 
+<p>Display the folder structure of a drive or path as a graphical tree.</p>
+<pre>Syntax
+      TREE [<i>drive</i>:][<i>path</i>] [/F] [/A]
+Key
+   [<i>drive</i>:][<i>path</i>]  The startng directory for the tree listing.
+
+   /F   Display the names of the files in each folder.
+
+   /A   Use ASCII instead of extended characters.</pre>
+<p>Like the DIR command, the first two lines of output from Tree are the  Volume Label and Serial Number, in Windows 10 the Serial number is prefixed with the Device ID.</p>
+<p>The output can be <a href="syntax-redirection.html">redirected</a> to a file with<span class="code"> &gt; c:\filename.txt</span></p>
+<p><b>Examples</b></p>
+<p>Display a tree for the &quot;C:\Program Files&quot; folder:<br>
+<span class="code">tree &quot;C:\program files&quot;</span></p>
+<p>Display a tree for the users home folder:<br>
+<span class="code">tree %homedrive%%homepath%<br>
+<br>
+</span>or from PowerShell<span class="code">:<br>
+tree $home
+</span></p>
+<p><i class="quote">&ldquo;The significance of the cherry blossom tree in Japanese culture goes back hundreds of years. In their country, the cherry blossom represents the fragility and the beauty of life. It's a reminder that life is almost overwhelmingly beautiful but that it is also tragically short&rdquo; ~</i><i class="quote">Homaro Cantu</i><br>
+<br>
+<b>Related:</b><br>
+<br>
+<a href="dir.html">DIR</a> - Display a list of files and folders<br>
+<a href="vol.html">VOL</a> - Display a disk label</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/tree.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:38 GMT -->
+</html>

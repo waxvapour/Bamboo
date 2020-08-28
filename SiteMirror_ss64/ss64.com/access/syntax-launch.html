@@ -1,0 +1,82 @@
+<!DOCTYPE HTML><html lang="en">
+
+<!-- Mirrored from ss64.com/access/syntax-launch.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name="Description" content="Microsoft Access front end launcher that will help to avoid corruption in shared Access databases.">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Launch - Access - SS64.com</title></head>
+<body><!-- #BeginLibraryItem "/Library/head_access_syntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Access</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/access/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Microsoft Access front end launcher.</h1>
+<p>A best practice in designing any Access database is to split the database into a front-end containing Access forms and code and a back-end containing just tables and indexes, either as an Access MDB or ACCDB or preferrably a SQL Server database.</p>
+<p>Even with this setup you can still run into corruption problems when the front-end is shared between multiple users. Access has a built in utility - <i>Compact and Repair </i>which will clean up temporary objects, cached query results etc. When allowed to run once a day this will typically keep the system running well. However as soon as multiple users are involved it is likely that one or more users will leave the database open for days on end. That means <i>Compact and Repair </i>will never run and eventually you will end up with corruption.</p>
+<p>One way to avoid this problem is to use a startup launcher, commercial packages are available (listed below) but a simple batch file can be used - give each user a shortcut to the launcher script, this in turn makes a copy of the front end for each user and then opens the database. When that user closes their copy of the database <i>Compact and Repair </i>will be able to run.</p>
+<p>This technique can also be used to deliver new versions of the database, incrementing the version number will cause a fresh copy to be made the next time each user opens the launcher.</p>
+<p>On a modern network this will add a small startup delay of a second or two, but only for the first run, normal use thereafter should have no noticable startup delay.</p>
+<p>LAUNCH.CMD</p>
+<pre>@Echo Off
+Setlocal
+:: Access Launcher, this script will first copy an Access database to a local folder
+:: and then launch it.
+
+:: The source path of the database and version.txt
+Set _source=<b>T:\databases</b>
+
+:: The destination for the local front end copy (=%HOMEDRIVE%)
+Set _destination=<b>C:\downloads</b>
+
+:: The version of the database - increment when changes are made.
+Set _version=<b>1.0</b>
+
+:: The source name of the database file without extension
+Set _source_db_name=<b>demo</b>
+:: The destination name of the database file without extension
+Set _dest_db_name=<b>demo</b>
+
+:: The file extension, typically MDE or ACCDE
+Set _source_extension=<b>mde</b>
+Set _dest_extension=<b>mde</b>
+
+:: Tip - To prevent anyone opening and working directly from the source file you can
+:: rename and use a source file extension like .AAA which will not open in Access.
+
+:: Read the destination version no.
+if exist %_destination%\version.txt (for /f "delims=*" %%G in (%_destination%\version.txt) do set _dest_ver=%%G) Else set _dest_ver=0
+:: echo Dest is %_dest_ver%
+if %_version% EQU %_dest_ver% goto :launch
+::  New version found so copy database
+copy "%_source%\%_source_db_name%.%_source_extension%" "%_destination%\%_dest_db_name%.%_dest_extension%" >nul
+if %errorlevel% GEQ 1 goto :launch
+:: copy worked so now write version.txt
+echo %_version% >%_destination%\version.txt
+
+:launch
+:: Open database
+Start "Launching" "%_destination%\%_dest_db_name%.%_dest_extension%"</pre>
+<p class="quote"><i>&ldquo;Your job is your bosses, he can give it to someone else, your career is yours you can take it with you&rdquo; ~ Jeffrey Snover</i></p>
+<p><b>Related</b></p>
+<p><a href="http://autofeupdater.com/">AutoFEupdater</a> - Automatically copy files from a server to a folder on each users PC<br>
+<a href="https://www.fmsinc.com/products/startup/">FMSinc startup</a> - Control startup versions, bitness</p><!-- #BeginLibraryItem "/Library/foot_access.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- access -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4313908313"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/access/syntax-launch.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:09 GMT -->
+</html>

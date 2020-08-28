@@ -1,0 +1,133 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/syntax-brackets.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Parenthesis/Brackets to group expr - macOS - SS64.com</title>
+</head><!-- #BeginLibraryItem "/Library/head_osxsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1> Using parenthesis to group and expand expressions</h1>
+<p>Grouping a (list of commands) in parenthesis causes them to be executed as if 
+they were a single unit. <br>
+<br>
+When commands are grouped, redirections can be applied to the entire command list. For example, the output of all the commands in the list can be redirected 
+to a single stream. <br>
+<br>
+Group commands in a sub-shell: <b>( )</b></p>
+<pre>  (<i>list</i>)</pre>
+<blockquote>
+<p>Placing a list of commands between parentheses causes a <a href="https://unix.stackexchange.com/a/138498">subshell</a> to be created, and each of the commands in <var>list</var> to be executed in that 
+subshell, without removing non-<a href="export.html">exported</a> variables.</p>
+<p>Since the <var>list</var> is executed in a subshell, variable assignments 
+do not remain in effect after the subshell completes.</p>
+<p>Not to be confused with <a href="syntax-substitution.html">Command Substitution</a> &nbsp;&nbsp;<span class="code">$(<i>command</i>)</span> Notice the dollar prefix, which tells the shell to substitute the output of the <i>command</i> into the main command.</p>
+</blockquote>
+<p><span class="body"> Group commands in the current shell:<b> { }</b><br>
+</span> </p>
+<pre>  { <i>list</i>; }</pre>
+<blockquote>
+<p> Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The 
+semicolon (or newline) following <var>list</var> is required. </p>
+<p>In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are <code>reserved words</code>, so they must be separated from the <var>list</var> by <code>blank</code>s. 
+  The parentheses are <code>operators</code>, and are recognized as separate tokens by the shell even if they are not separated from the <var>list</var> by whitespace. </p>
+<p>The exit status of both of these constructs is the exit status of <var>list</var>. <br>
+</p>
+</blockquote>
+<h2>Test - return the binary result of an expression:<b> [[ ]]</b></h2>
+<pre>   [[ <i>expression</i> ]] </pre>
+<blockquote>
+<p>Return a status of 0 or 1 depending on the evaluation of the conditional expression. Word splitting and filename expansion are not performed 
+on the words between the<span class="code"> [[ </span>and<span class="code"> ]]</span>; tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution, 
+process substitution, and quote removal are performed. <br>
+<br>
+When the</span><span class="code"> == </span>and<span class="code"> != </span>operators are used, pattern matching will be done on the string to the right of the operator.<br>
+<br>
+The return value is 0 if the string matches or does not match the pattern, respectively, and 1 otherwise. <br>
+<br>
+Any part of the pattern can be quoted to force it to be matched as a string. <br>
+</p>
+<p>For more details and examples see the full <a href="test.html">bash test [[ ]]</a> page.</p>
+</blockquote>
+<h2><a id="arithmetic"></a>Arithmetic expansion</h2>
+<blockquote>
+<p> Arithmetic expansion allows the evaluation of an arithmetic expression and the substitution of the result. <br>
+The format for arithmetic expansion is: <br>
+<span class="code">$(( <i>expression</i> ))</span></p>
+<p> The format for a simple Arithmetic Evaluation is:<br>
+<span class="code">(( <i>expression</i> ))</span></p>
+<p>The expression is treated as if it were within double quotes, but a double quote inside the parentheses is not treated specially. All tokens in the expression undergo parameter expansion, command substitution, and quote removal. Arithmetic substitutions can be nested.</p>
+<p>The exit status of arithmetic expressions  are Success(0) / Fail (1) codes rather then the True (1) / False (0) which you might expect, so an expression like <span class="code">(( 2 &gt; 4))</span> will return an exit code of <span class="code">1</span></p>
+<p>However if you set a <i>variable</i> to the results of an arithmetic expression that will be set to the more logical True (1) / False (0)</p>
+<p class="code">let &quot;num = (( 2 &gt; 4 ))&quot;<br>
+echo $?<br>
+#&nbsp;1<br>
+echo $num <br>
+#&nbsp;0</p>
+<p>Shell variables can be used as operands:</p>
+<p class="code"> test=string<br>
+string=3 <br>
+echo $((test)) <br>
+#&nbsp;3</p>
+<p>Arithmetic operators e.g. <span class="code">(( demovar += 5 ))</span></p>
+<pre>  = Set Equal to
+ *= Multiply
+ /= divide
+ %= Modulo
+ += Add
+ -= Subract
+&lt;&lt;= bitwise shift left
+&gt;&gt;= bitwise shift right
+ &amp;= bitwise AND
+ ^= bitwise XOR
+ |= bitwise NOT</pre>
+<p> Comparison operators e.g. <span class="code">(( demovar == 5 ))</span></p>
+<pre>==	Test Equality
+!=	Test Inequality
+ &lt;	Less than
+ &gt;	Greater than
+&lt;=	Less than or equal
+&gt;=	Greater than or equal</pre>
+</blockquote>
+<h2>Combine multiple expressions</h2>
+<blockquote>
+<p> Expressions can be combined using the following operators, listed in decreasing order of precedence: </p>
+<pre>( <i>expression</i> )               Returns the value of expression.
+                             This can be used to override the normal precedence of operators. 
+<br>! <i>expression</i>                 Logical NOT, True if expression is <b>false</b>.
+
+(( expr1 && expr2 ))         Logical AND
+
+(( expr1 || expr2 ))         Logical OR
+
+(( expr1 | expr2 ))          Bitwise OR</pre>
+<p> You can't use <span class="code">&amp;&amp;</span> inside old test <span class="code">[</span>, but these are valid uses:</p>
+<pre><b>[</b> expr1 = &quot;$expr2&quot; <b>]</b> &amp;&amp; <b>[</b> expr3 = &quot;$expr4&quot; ] # old Test
+<b>[[</b> $expr1 = expr2 &amp;&amp; $expr3 = expr4<b>]]</b>        # New test</pre>
+<p>The <span class="code">&amp;&amp;</span> and <span class="code">||</span> commands do not execute expression2 if the value of expression1 is sufficient to determine the return value of the entire conditional 
+expression. If the expression is invalid, Bash prints a message indicating failure to the standard error and no substitution occurs. </p>
+</blockquote>
+<p><b>Related macOS commands:</b></p>
+<p><a href="syntax.html">macOS Syntax</a></p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/syntax-brackets.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:48 GMT -->
+</html>

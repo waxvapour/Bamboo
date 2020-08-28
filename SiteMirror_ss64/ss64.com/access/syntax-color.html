@@ -1,0 +1,145 @@
+<!DOCTYPE HTML><html lang="en">
+
+<!-- Mirrored from ss64.com/access/syntax-color.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Color - Access - SS64.com</title></head>
+<style type="text/css">
+.in{
+	border-top: 1px solid #7c7c7c;
+  border-left: 1px solid #ACB5BE;
+  border-right: 1px solid #ACB5BE;
+  border-bottom: 1px solid #ddd;
+  background: #fff url(../images/fieldbg.gif) repeat-x top;
+	box-shadow:0 0 2px #ccc;
+  height: 25px;
+  padding: 6px;
+	font-size: 14px;
+}
+
+.in:focus{
+   outline:none;
+    border:1px solid #4D90FE;
+    -webkit-box-shadow: 0px 0px 4px 0px #4D90FE;
+    box-shadow: 0px 0px 4px 0px #4D90FE;
+
+}
+.buttons {
+   -webkit-appearance: none;
+  width: 125px;
+  height: 35px;
+	border: 1px solid #777;
+	border-radius: 2px 2px 2px 2px;
+	color: #333;
+	cursor: pointer;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center;
+	background: #eee;
+	background-image: -moz-linear-gradient(top , #eee, #ccc);
+	background-image: -webkit-linear-gradient(top , #eee, #ccc);
+	background-image: -ms-linear-gradient(top, #eee, #ccc);
+	background-image: -o-linear-gradient(top, #eee, #ccc);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc')"; /* IE8+ */ 
+	background-image: linear-gradient(top , #eee, #ccc);
+}
+
+.buttons:hover {
+background-image: -moz-linear-gradient(top , #eee, #bbb);
+background-image: -webkit-linear-gradient(top , #eee, #bbb);
+background-image: -ms-linear-gradient(top, #eee, #bbb);
+background-image: -o-linear-gradient(top, #eee, #bbb);
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#bbbbbb')"; /* IE8+ */ 
+background-image: linear-gradient(top , #eee, #bbb);
+}
+.buttons:active,#btn:focus{color: #666; border: 1px solid #4B8DF8;}
+
+.colorwell {
+   border-width: 3px 1px 3px;
+   border-color: black #ccc white;
+   font-size: 100%; 
+   text-align: center;
+   cursor: pointer;
+   padding: 0;
+   height: 30px;
+   width: 125px;
+   margin-bottom:5px;
+   }
+</style>
+<script type="text/javascript">
+function Hextolng()
+{
+// convert a RGB hex colour to a long
+var prefix = '0x';
+var HexIn1 =  document.getElementById('hexcol');
+var HexIn =  prefix.concat(HexIn1.value);
+var components = {
+    r: (HexIn & 0xff0000) >> 16, 
+    g: (HexIn & 0x00ff00) >> 8, 
+    b: (HexIn & 0x0000ff)
+};
+
+LngCol = components.b * 65536 + components.g * 256 + components.r;
+window.document.forms['ColourForm'].elements['LongOut'].value = LngCol;
+swatchcolour = '#' + HexIn1.value;
+document.getElementById("swatch").style.color = swatchcolour;
+}
+</script>
+<body><!-- #BeginLibraryItem "/Library/head_access_syntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Access</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/access/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Microsoft Access Colors</h1>
+<p>The color of many objects (forms, buttons,text etc) in Microsoft access can be set, either manually or using VBA. The exact colour is specified as either a Long number or (in recent versions) a Hex color code. </p>
+<p>You can convert any 6 digit Hex color code into a long integer  below:</p>
+<form name="ColourForm" action="#">
+<table id="example">
+<tr> 
+<td class="tblhead">&nbsp;</td>
+<td class="tblhead">Hex Color</td>
+<td><input name="color1" id="color1" class="colorwell" value="#ff03c0" onchange="javascript:document.getElementById('hexcol').value = document.getElementById('color1').value.substr(1, 6);Hextolng();" type="color"></td>
+<td><span class="tblhead"><div id="swatch">Long  Color code</div></span></td>
+</tr>
+<tr> 
+<td >&nbsp;</td>
+<td ><input type="text" size="8" name="kib" id="hexcol" value="FF03C0" class="in" onblur="Hextolng();" ></td>
+<td ><input type="button" name="B2" id="swatchX" value="Convert >" class="buttons"></td>
+<td ><input type="text" size="12" name="LongOut"value="16712640" class="in" tabindex=4 onBlur="return convertkb(this.form)" readonly></td>
+</tr>
+</table>
+</form>
+<p>Typically these colours are applied to the <span class="code">.backcolor, .forecolor</span> and <span class="code">.hover</span> properties</p>
+<p>When storing a color code in a VBA variable use a 32-bit  Long (max=2,147,483,647), not the default Integer  (max=65535).<br>
+It is also possible to specify  a hex constant like <span class="code">&amp;FF005F&amp;</span> the extra <span class="code">&amp;</span> on the end denotes a 32 bit Long.</p>
+<p> Converting hex colors to long  can also be done with the <a href="rgb.html">RGB</a> function.</p>
+<p>In Access 2010, it was possible to set colors based on the users current desktop theme, with a set of constants <i>System Button Face, System Button Shadow</i> etc. In Windows 10 the theme system has changed and these values can no longer be edited in the Control Panel making that functionality redundant.</p>
+<p><b>Examples</b></p>
+<p class="code">Me!txtAddress.BackColor = <b>&amp;</b>FF005F<b>&amp;</b></p>
+<p class="code">Me!txtPostcode.ForeColor = 16712640</p>
+<p class="quote"><i>&ldquo;Speed kills colour... the gyroscope, when turning at full speed, shows up gray&rdquo; ~ Paul Morand</i></p>
+<p><b>Related:</b></p>
+<p><a href="syntax-references.html">Access Form References</a> - Reference controls on subforms.<br>
+<a href="https://emw3.com/colour.html">Average (mix) colours</a> - EMW3<br>
+<a href="http://www.endprod.com/colors/">List of Access color codes</a> - Endprod.com</p><!-- #BeginLibraryItem "/Library/foot_access.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- access -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4313908313"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/access/syntax-color.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:09 GMT -->
+</html>

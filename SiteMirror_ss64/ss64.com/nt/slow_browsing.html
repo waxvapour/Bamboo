@@ -1,0 +1,73 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/slow_browsing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Slow Network Browsing - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Slow network browsing issues in Windows</h1> 
+<h2>1) Listing the contents of a shared folder is slow - Desktop.ini</h2>
+<blockquote>
+<p>The file permissions set on   <span class="code">desktop.ini</span> files can slow down browsing the folder structure. This issue affects Windows clients using mapped drives or UNC connections, this issue was  fixed in XP sp2 (<a href="https://web.archive.org/web/20120713030828/https://support.microsoft.com/kb/840309">Q840309</a>), but from <a href="https://support.microsoft.com/en-gb/help/326549/">Q326549</a> has re-emerged in Windows 7.</p>
+<p>When listing a directory, Windows  will search for and parse Desktop.ini files. This will noticably affect performance when a large number of subfolders are involved, it does this for the current folder and one level down the directory tree.</p>
+<p>Desktop.ini can be used to provide a custom icon, thumbnail view, and can make normal file folders into 'Special Folders' (eg Fonts, History, Temporary Internet Files, &quot;My Music&quot;, &quot;My Pictures&quot;, and &quot;My Documents&quot;). </p>
+<p>Desktop.ini files are only visible in Windows Explorer if you first un-check &quot;Hide protected operating system files&quot; (under Tools, Options, View)</p>
+<p>To see the file locks created by this process run the following command on the file server, while a client is (slowly) listing a large directory:<br> 
+<span class="code">NET FILE | Find &quot;desktop.ini&quot;</span></p>
+<p>A  solution to this performance problem is to remove the READ_ONLY <a href="attrib.html">attribute</a> from the folder and/or delete the non-essential desktop.ini files.</p>
+</blockquote>
+<h2>2) Explorer randomly locks files</h2>
+<blockquote>
+<p>There are <a href="https://www.techspot.com/community/topics/windows-explorer-becomes-very-slow-and-or-stops-responding.48091/">reports</a> that Windows Explorer can run very slowly or stop responding if some of the profile permissions get corrupted. </p>
+<p>To fix this logout and login with a different (Administrator level) account and rename this folder: </p>
+<p class="code">C:\Users\&lt;<i>profilename</i>&gt;\AppData\Local\Microsoft\Windows </p>
+<p> When you login again the folder will be re-created with the correct permissions.</p>
+</blockquote>
+<h2>3) ) Network Shortcuts on the Start menu and Desktop</h2>
+<blockquote>
+<p>Placing a shortcut to a network 
+  resource in either the Start menu or Desktop (including the recycle bin) can drastically slow down system response, particularly 
+when the network resource is unavailable. Shortcuts to <i>Domains</i> or <i>Machines</i> don&rsquo;t suffer from these problems as they always have the same icon. </p>
+<p>A sensible routine for managing desktop shortcuts can be found <a href="https://ask.metafilter.com/172010/Shortcuts-and-Memory#2474481">here</a>. </p>
+<p>An alternative worksround is to create a shortcut to Explorer.exe and pass the UNC name of the resource.<br>
+<span class="code">explorer /e, \\Server\FileShare</span></p>
+</blockquote>
+<p class="quote">  <i>"Total world oil reserves amount to one thousand billion barrels, yearly 
+              consumption is 27 billion barrels&quot; ~ BP 
+  Amoco </i></p>
+<p><b> Related:</b>
+<p><a href="../vb/syntax-profile.html">CleanRoamingProfile.vbs</a> - VBScript to delete selected files from a roaming profile.<br>
+<a href="https://blogs.technet.microsoft.com/markrussinovich/2005/06/15/an-explosion-of-audit-records/">SysInternals</a> - Mark Russinovich - Desktop.ini files fill up the audit event log. <br>
+<a href="https://support.microsoft.com/en-gb/help/822219/">Q822219</a> - Slow File Server Performance.<br>
+<a href="https://support.microsoft.com/en-gb/help/829700/">Q814112</a> - Network shares open slowly SMB/AntiVirus scanning .<br>
+<a href="https://support.microsoft.com/en-gb/help/326549/">Q326549</a> - Read-only &amp; System attributes for folders.<br>
+<a href="https://support.microsoft.com/en-gb/help/321281/">Q321281</a> - Desktop.ini does not work correctly when you customise the Default Profile.<br>
+<a href="https://web.archive.org/web/20130621234159/https://support.microsoft.com/kb/320829">Q320829</a> - Increase the <i>Request Size Buffer</i> on the file server - (try between 32 and 64 Kb)<br>
+<a href="https://web.archive.org/web/20100302083831/https://support.microsoft.com/kb/319470/">Q319470</a> - Office2000: Screen response is slow  in Save As dialog box in Word.<br>
+<a href="https://support.microsoft.com/en-gb/help/312403/">Q312403</a> - Distributed Link Tracking.<br>
+<a href="cleanmgr.html">CleanMgr</a> - Automated cleanup of Temp files, recycle bin.<br>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/slow_browsing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

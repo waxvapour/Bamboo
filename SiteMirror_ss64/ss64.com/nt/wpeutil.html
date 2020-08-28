@@ -1,0 +1,65 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/wpeutil.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Wpeutil - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Wpeutil.exe</h1> 
+<p>Run commands during a Windows  Preinstallation Environment  (PE) session.</p>
+<pre>Syntax
+      <i></i>Wpeutil CreatePageFile [/path=<i>path</i>] [/size=<i>size</i>]
+      Wpeutil DisableExtendedCharactersForVolume <i>path_on_target_volume</i>
+      Wpeutil Disablefirewall
+      Wpeutil EnableExtendedCharactersForVolume <i>path_on_target_volume
+</i>      Wpeutil Enablefirewall
+      Wpeutil InitializeNetwork
+      Wpeutil ListKeyboardLayouts <i><a href="../locale.html">LCID</a></i>
+      Wpeutil Reboot
+      Wpeutil SaveProfile
+      Wpeutil SetKeyboardLayout <i>keyboard_layout_ID</i>
+        Run ListKeyboardLayouts to get a list of supported keyboard layouts
+      Wpeutil SetMuiLanguage <i><a href="../locale.html">language-name</a></i>[;<i><a href="../locale.html">language-name</a></i>]
+        Specify multiple languages in priority order, separating them with a semicolon.
+        For example: Wpeutil SetMuiLanguage de-DE;en-US
+      Wpeutil SetUserLocale <i><a href="../locale.html">language-name</a></i>[;<i><a href="../locale.html">language-name</a></i>]
+      Wpeutil Shutdown
+      Wpeutil UpdateBootInfo
+      Wpeutil WaitForNetwork   (Waits for the network card to be initialized.)
+      Wpeutil WaitForRemovableStorage (block startup until removable devices, e.g. USB drives, are initialized.)
+
+Wpeutil can only accept one command per line.</pre>
+<p> A common method to initiate an unattended Setup is to boot the computer  using Windows PE, and then launch Setup with an answer file from a distribution folder on the network.</p>
+<p><b>Examples</b></p>
+<p>Enable the firewall, set the language and then wait for the network to initialise:</p>
+<p><span class="code">Wpeutil Enablefirewall<br>
+</span><span class="code">Wpeutil SetMuiLanguage en-US<br>
+</span><span class="code">Wpeutil WaitForNetwork</span></p>
+<p class="quote"><i>&ldquo;Since the day of my birth, my death began its walk. It is walking toward me, without hurrying&rdquo; ~Jean Cocteau</i></p><p><b>Related:</b><br>
+<br>
+<a href="https://msdn.microsoft.com/en-gb/windows/hardware/commercialize/manufacture/desktop/wpeutil-command-line-options">Wpeutil</a> - Microsoft help page<br>
+<a href="https://en.wikipedia.org/wiki/Windows_Preinstallation_Environment">WinPE</a> - Wikipedia </p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/wpeutil.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:43 GMT -->
+</html>

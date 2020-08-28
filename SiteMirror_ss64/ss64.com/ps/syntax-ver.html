@@ -1,0 +1,90 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-ver.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>OS Version - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Finding the Operating System version</h1> 
+<p>Within PowerShell there are several different options for returning the OS version.</p>
+<p class="code"> [environment]::OSVersion.Version </p>
+<blockquote>
+<p>The OSVersion variable works in all OS's with one caveat being that Windows 8.1 will read as Windows 8.0 due to some <a href="https://github.com/lordmulder/stdutils/issues/9 wmi vs cmi">API changes</a>, despite that this is a good easy solution for most purposes.</p>
+<p>To return a Single version number:</p>
+<pre>
+<span class="code">[double]$osver = [string][environment]::OSVersion.Version.major + '.' + [environment]::OSVersion.Version.minor </span></pre>
+<p># In the above we <a href="syntax-datatypes.html">cast</a> to a string to build the value and then <a href="syntax-datatypes.html">cast</a> back to a double.<br>
+# This numeric version number can then be tested against a desired minimum version:<br>
+<br>
+<span class="code">if ($osver -gt 6.0) {echo we have Windows Vista/Server 2008 or greater}</span></p>
+<p><span class="code">if ($osver -gt 6.1) {echo we have Windows 7/Server 2008 R2 or greater}</span></p>
+<p><span class="code">if ($osver -gt 10.0) {echo we have Windows 10/Server 2016 or greater} </span></p>
+<p>To get the OS version of a <i>remote</i> machine, you could run this same command with <a href="invoke-command.html">Invoke-Command</a><br>
+</p>
+<pre>
+PS C:\&gt; $ver = Invoke-Command -Computername <i><b>computer64</b></i> -ScriptBlock {[Environment]::OSVersion.Version}
+PS C:\&gt; $ver</pre>
+<p>However this is quite slow and requires setting up <a href="enable-psremoting.html">PS Remoting</a> so a faster / easier alternative is to use <s>WMI</s>/CIM as described below.</p>
+</blockquote>
+<p class="code"><a href="syntax-osversion.html">Get-CimInstance Win32_OperatingSystem</a></p>
+<blockquote>
+<p>Get-CimInstance works in all OS’s but requires PowerShell 3.0+ <br>
+Get-CimInstance like all the CIM cmdlets is particularly useful for querying remote machines, just add the <span class="code">-computername</span> option. </p>
+</blockquote>
+<p class="code">Get-WmiInstance</p>
+<blockquote>
+<p> An older and much <a href="http://maikkoster.com/cim-vs-wmi-cmdlets-the-top-reasons-i-changed/">slower</a> version which predates the CIM* cmdlets, Get-WmiInstance works in PowerShell 1.0 and 2.0 but is deprecated in v3.0+ and <a href="https://richardspowershellblog.wordpress.com/2017/10/05/use-cim-cmdlets-not-wmi-cmdlets/">not available at all</a> in PowerShell 6.0 </p>
+</blockquote>
+<p class="code"><a href="../nt/systeminfo.html">SystemInfo</a></p>
+<blockquote>
+<p>SystemInfo works in all OS’s but as a CMD utility you will have to parse the string output with <a href="../nt/for_f.html">FOR</a>.<br>
+It is also very slow. </p>
+</blockquote>
+<p class="code"><a href="../nt/ver.html">VER</a></p>
+<blockquote>
+<p>This also works in all OS’s but as an internal CMD command it has to be run within CMD. <br>
+To capture the output you either have to test the errorlevel or parse the string output.</p>
+</blockquote>
+<p><span class="code"><a href="https://blogs.technet.microsoft.com/heyscriptingguy/2014/04/25/use-powershell-to-find-operating-system-version/">kernel32.dll or ntdll</a></span></p>
+<blockquote>
+<p>Directly importing system DLLs and reading the version information. This works but requires rather a lot of code and there’s no guarantee those DLLs will be updated or even exist in future versions of Windows.</p>
+</blockquote>
+<h2>Windows 10 build/releaseID</h2>
+<blockquote>
+<p>In Windows 10 we can also read the build/releaseID from the registry (1709,1803 etc)</p>
+<pre>[string]$osRelease = (Get-ItemProperty &quot;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion&quot;).ReleaseId </pre>
+<p>Again we can make this a handy function: </p>
+<pre>Function get-build{ 
+ [string]$osRelease = (Get-ItemProperty &quot;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion&quot;).ReleaseId &quot;$osRelease&quot;
+}</pre>
+</blockquote>
+<p> One extra postscript about using an <a href="syntax-env.html">environment</a> variable, is that system wide variables can potentially be changed, this can be very useful for testing changes but in highly secure systems you may not want to rely on the value always being true.</p>
+<p class="quote"><i>&ldquo;In any collection of data, the figure most obviously correct, beyond all need of checking, is the mistake&rdquo; ~ Finagle's third law </i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="get-host.html">Get-Host</a> - returns the version of PowerShell</p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-ver.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+</html>

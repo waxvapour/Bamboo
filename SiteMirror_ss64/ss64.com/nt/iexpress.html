@@ -1,0 +1,82 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/iexpress.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>iexpress - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>IEXPRESS.exe</h1>
+<p> Create a self extracting ZIP file archive. 
+iexpress 2.0 must be run with <a href="syntax-elevate.html">elevated</a> permissions. </p>
+<pre>Syntax
+      IEXPRESS [ /N [/Q] [/M] ] <i><a href="iexpress-sed.html">SED_filename</a></i>
+         [/O:<i>Override_SED_filename</i>, <i>OverrideSectionName</i>] [/D:directory]
+
+Key:
+
+  /N   Build package now (SED filename must be specified)
+  /Q   Quiet mode when using /N
+  /M   Use minimised windows when using /N
+  /O   Specify overrideSED file and section
+  /D   Override directory for exe stub
+
+When running the created self extracting archive, the following options can be used:
+
+  /Q            Quiet mode, No prompts and no errors.
+  /QA           Quiet + Assume the person running the app is admin/SMS so do not check for admin rights or disk space.[Build 306]
+  /QU           Quiet + Assume the person running the app is an non-admin user. [Build 306]
+                No extract UI, but still get warnings on admin checks or disk space issues.
+                Used when IExpress packages are shipped on CDs or installed through ActiveSetup.
+
+  /T:<i>Full_path</i>  A Temporary working folder
+  /C            Extract files only, when used with /T
+  /C:<i>cmd</i>        Override the install command defined by the author.
+
+  /R:N    Never restart the computer after installation.
+  /R:A    Ask to restart the computer after installation.
+  /R:S    Restart the computer after installation without prompting the user.</pre>
+<p>Running IExpress with no options will launch a GUI wizard<b>.</b></p>
+<p>Some options /QA and /QU are only available in Build 306.</p>
+<p>The error message &quot;<i>Unable to open the report file</i>...&quot; typically means that iexpress needs to be elevated.</p>
+<p>Early versions of iexpress were supplied with the Internet Explorer administration kit (IE 5 and IE 6).</p>
+<p>The self extracting bundle created will be dependent on the source OS bitness (32 or 64 bit), so if you create a self-extracting archive of 64 bit programs, they won’t run (extract) on a 32 bit computer.</p>
+<p><b>Examples</b></p>
+<p>Create a zip archive:</p>
+<p class="code">iexpress.exe</p>
+<p>Extract an archive, run any installation program specified and then prompt to reboot:</p>
+<p class="code">demo.exe /R:A</p>
+<p>Extract package.exe and then run setup /s (which is embedded inside package.exe)</p>
+<p class="code">Package.exe /Q /C:&quot;setup.exe /s&quot;</p>
+<p>Alternatively in build 306, the package.exe can be built with the install command predefined: (<span class="code">UserQuietInstCmd=Setup.exe /s</span>) then launching becomes a simple:</p>
+<p class="code">Package.exe /QU</p>
+<p><span class="quote">“He can compress the most words into the smallest ideas of any man I ever met”  ~ Abraham Lincoln (attr.)</span><br>
+<b><br>
+Related:</b></p>
+<p><a href="makecab.html">MAKECAB</a> - Create compressed .CAB file.<br>
+<a href="http://www.mdgx.com/INF_web/">INF + SED</a> (Self Extraction Directive) file functions.<br>
+<a href="https://github.com/markgollnick/iespresso">iespresso</a> - tools for creating more useful iexpress.exe packages</p>
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/iexpress.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:17 GMT -->
+</html>

@@ -1,0 +1,85 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/afinfo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:39:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>afinfo Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>afinfo</h1> 
+<p>Audio File Info.</p>
+<pre>Syntax
+      afinfo [option...] <i>audio_file(s)</i>
+
+Options: (may appear before or after arguments)
+   -h
+   --help
+        print help
+   -b
+   --brief
+        Print a brief (one line) description of the audio file
+   -r
+   --real
+        Get the estimated duration after obtaining the real packet count
+   --leaks
+        Run leaks at the end of the conversion
+   -i --info }
+       print contents of the InfoDictionary
+   -x
+   --xml
+       Print output in xml format
+   --warnings
+       Print warnings if any (by default warnings are not printed in non-xml output mode)</pre>
+<p>The macOS Finder Get Info window for an audio file displays: Genre, Author, Year Recorded, Sample Rate, Duration and Channels, where available.</p>
+<p>  <b>Examples</b> </p>
+<p>Get file information for  jolene.mp3:<br>
+</p>
+<pre>$ afinfo jolene.mp3
+File:           jolene.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     2 ch,  44100 Hz, '.mp3' (0x00000000) 0 bits/channel, 0 bytes/packet, 1152 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 219.742025 sec
+audio bytes: 8789681
+audio packets: 8412
+bit rate: 320000 bits per second
+packet size upper bound: 1052
+maximum packet size: 1045
+audio data file offset: 33
+optimized
+----</pre>
+<p>Pipe the output to grep or awk to return individual values:<br>
+<span class="code">$ afinfo jolene.mp3 |grep 'bit rate'<br>
+bit rate: 320000 bits per second<br>
+</span>
+<br>
+<i class="quote">&ldquo;You've achieved success in your field when you don't know whether what you're doing is work or play” ~ Warren Beatty</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="afconvert.html">afconvert</a> - Audio File Convert<br>
+<a href="afplay.html">afplay</a> - Audio File Play<br>
+</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/afinfo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:39:57 GMT -->
+</html>

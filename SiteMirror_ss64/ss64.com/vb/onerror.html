@@ -1,0 +1,71 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/vb/onerror.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:44:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>On Error  - VBScript - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_vb.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">VBScript</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/vb/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>On Error</h1> 
+<p>Error handling. For scripts designed to run against multiple computers or printers it is important to including error handling in case the remote machine is off-line. </p>
+<pre>Syntax 
+      On Error resume next    - Enable error handling
+
+      On Error goto 0         - Disable error handling
+
+Error properties:
+
+   err.Number (default)
+   err.Source
+   err.Description</pre>
+<p>Examples</p>
+<p>In  the examples below - replace the 'code goes here' line with your VBScript commands. </p>
+<p>Example 1) Trap an error </p>
+<pre>On Error Resume Next<br>' code goes here<br>If Err.Number &lt;&gt; 0 Then<br>    'error handling:
+    WScript.Echo Err.Number &amp; &quot; Srce: &quot; &amp; Err.Source &amp; &quot; Desc: &quot; &amp;  Err.Description<br>    Err.Clear<br>End If
+</pre>
+
+<p>Example 2) Trap an error or success </p>
+<pre>
+On Error Resume Next<br>' code goes here<br>If Err.Number = 0 Then
+    WScript.Echo &quot;It worked!&quot;
+Else<br>    WScript.Echo &quot;Error:&quot;
+    WScript.Echo Err.Number &amp; &quot; Srce: &quot; &amp; Err.Source &amp; &quot; Desc: &quot; &amp;  Err.Description<br>    Err.Clear<br>End If
+</pre>
+<p>Example 3) Trap an error </p>
+<pre>
+On Error Resume Next<br>' code goes here<br>If Err.Number &lt;&gt; 0 Then ShowError(&quot;It failed&quot;)<br>
+
+Sub ShowError(strMessage)
+    WScript.Echo strMessage
+    WScript.Echo Err.Number &amp; &quot; Srce: &quot; &amp; Err.Source &amp; &quot; Desc: &quot; &amp;  Err.Description<br>    Err.Clear
+End Sub
+</pre>
+<p class="quote"><i>&ldquo;Success is falling nine times and getting up ten&rdquo; ~ Jon Bon Jovi</i></p>
+<p><b>Related:</b></p>
+<p><a href="syntax-errors.html">Syntax - error codes</a><br>
+<a href="inputbox.html">InputBox</a> - Prompt for user input<br>
+Equivalent in PowerShell: <a href="../ps/common.html">ErrorAction</a> and <span class="code">$errorActionPreference</span></p><!-- #BeginLibraryItem "/Library/foot_vb.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- VB300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1683739502"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/vb/onerror.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:44:23 GMT -->
+</html>

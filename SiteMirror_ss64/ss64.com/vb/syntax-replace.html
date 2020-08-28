@@ -1,0 +1,66 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/vb/syntax-replace.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Search and Replace  - VBScript - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_vbsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">VBScript</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/vb/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Replace.vbs</h1> 
+<p>Find and replace a text string in a file.</p>
+<pre>
+'usage: cscript replace.vbs Filename "StringToFind" "stringToReplace"
+ 
+Option Explicit
+Dim fso,strFilename,strSearch,strReplace,objFile,oldContent,newContent
+ 
+strFilename=WScript.Arguments.Item(0)
+strSearch=WScript.Arguments.Item(1)
+strReplace=WScript.Arguments.Item(2)
+ 
+'Does file exist?
+Set fso=CreateObject("Scripting.FileSystemObject")
+if fso.FileExists(strFilename)=false then
+   wscript.echo "file not found!"
+   wscript.Quit
+end if
+ 
+'Read file
+set objFile=fso.OpenTextFile(strFilename,1)
+oldContent=objFile.ReadAll
+ 
+'Write file
+newContent=replace(oldContent,strSearch,strReplace,1,-1,0)
+set objFile=fso.OpenTextFile(strFilename,2)
+objFile.Write newContent
+objFile.Close </pre>
+<p><b>Example</b></p>
+<p class="code">cscript //Nologo  replace.vbs c:\docs\demo.txt "Madonna" "Lady Gaga"</p>
+<p class="quote"><i>&ldquo;Substitute “damn” every time you're inclined to write &ldquo;very;&rdquo; your editor will delete it and the writing will be just as it should be&rdquo; ~ Mark Twain</i></p>
+<p><b>Related:</b></p>
+<p><a href="replace.html">replace</a> - <span class="body">Find and replace text in a string.</span><br>
+<a href="https://www.dostips.com/forum/viewtopic.php?f=3&amp;t=3855">Repl.bat</a> - FInd and Replace text,  JScript/Batch script<br>
+<a href="https://www.dostips.com/forum/viewtopic.php?f=3&amp;t=4697">FindRepl.bat</a> - FInd and Replace text,  JScript/Batch script</p><!-- #BeginLibraryItem "/Library/foot_vb.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- VB300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1683739502"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/vb/syntax-replace.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:00 GMT -->
+</html>

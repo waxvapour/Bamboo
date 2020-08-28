@@ -1,0 +1,114 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/echo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>echo Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>echo</h1> 
+<p>Display message on screen.</p>
+<pre>Syntax
+     echo [<i>options</i>]... [<i>String</i>]...
+
+Options
+
+ -n
+     Do not output the trailing newline.
+
+ -E
+     Disable the interpretation of the following backslash-escaped characters.
+
+ -e
+     Enable interpretation of the following backslash-escaped
+     characters in each <i>String</i>:
+
+    \a          alert (bell)
+
+    \b          backspace
+
+    \c          suppress trailing newline
+
+    \e          escape <br> <br>    \f          form feed
+
+    \n          new line
+
+    \r          carriage return
+
+    \t          horizontal tab
+
+    \v          vertical tab
+
+    \\          backslash
+
+    \0<i>NNN</i>
+          the character whose ASCII code is NNN (octal); NNN can be 0 to 3 octal digits.</pre>
+<p>To produce a default beep:</p>
+<p> <span class="code">$ echo '^G^G^G^G'</span><br>
+Enter  the  ^G characters (which represent ASCII 7, the BEL character) by typing <span class="code">Ctrl-v Ctrl-g</span></p>
+<p>The echo utility exits 0 on success, and >0 if an error occurs.</p>
+<p>This is a BASH shell builtin, to display your local syntax from the bash prompt type: <span class="code">help echo<br>
+</span>There is also an echo utility (<span class="code">man echo</span>) , but the shell built-in version will generally take precedence.</p>
+<p><b>Examples</b></p>
+<p><span class="code">echo &quot;Hello World&quot;<br>
+<br>
+DEMO=Testing123<br>
+echo &quot;$DEMO&quot;<br>
+# Testing123</span></p>
+<p class="code">echo &quot;with quotes we can echo<br>
+several lines at a time&quot;</p>
+<p>Echo can also display in color  using Escape sequences for foreground (30..37) and background (40..47) colours.<br>
+Terminal.app preferences  give much finer control over  colors (background + selected text).</p>
+<p class="code">$ COL_BLUE=&quot;\x1b[34;01m&quot;<br>
+$ COL_RESET=&quot;\x1b[39;49;00m&quot;<br>
+$ echo -e $COL_BLUE&quot;Important Message: &quot;$COL_RESET&quot;This is a message&quot;</p>
+<p>Here is a shell script to display all the color combinations: </p>
+<pre> #!/bin/bash
+ #
+ echo ---Bg---40---41---42---43---44---45---46---47
+ for i in {30..37} # foreground
+ do
+ echo -n -e fg$i- 
+ for j in {40..47} # background
+ do
+ echo -n -e '\E['$i';'$j'm SS64'
+ tput sgr0 # Reset text attributes to normal without clear
+ done
+ echo # newline
+ done
+ 
+ echo -- Clear BG --
+ for n in {30..37} # foreground
+ do
+ echo -e fg$n '\E['$n';'01'm SS64'
+ tput sgr0 # Reset text attributes to normal without clear
+ done</pre>
+<p class="quote"><i>QED - Quod erat demonstrandum. [Thus it is proven.]</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="lpr.html">lpr</a> - Print files<br>
+  <a href="printf.html">printf</a> - Format and print data<br>
+<a href="say.html">say</a> - Convert text to audible speech<br>
+<a href="wall.html">wall</a> - Write a message to users</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/echo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:13 GMT -->
+</html>

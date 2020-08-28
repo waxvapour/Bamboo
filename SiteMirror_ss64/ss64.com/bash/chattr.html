@@ -1,0 +1,111 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/bash/chattr.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:39:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>chattr Man Page - Linux - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_bash.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Linux</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/bash/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>chattr</h1> 
+<p>Change file attributes on a Linux file system. </p>
+<pre>Syntax
+      chattr [ -RVf ] [ -v <i>version</i> ] [ <i>mode</i> ] <i>files</i>...
+
+      The format of a symbolic <i>mode</i> is +-=[acdeijstuADST]
+
+Key
+   -R          Recursively change attributes of directories and their contents.
+
+   -V          Be verbose with chattr's output and print the program version.
+
+   -f          Suppress most error messages.
+
+   -v <i>version</i>  Set the file's version/generation number.</pre>
+<p>The operator '<span class="code">+</span>' causes the selected attributes to be added to the existing attributes of the files; '<span class="code">-</span>' causes them to be removed; and '<span class="code">=</span>' causes them to be the only attributes that the files have. </p>
+<p>The letters <span class="code">'acdeijstuADST'</span> select the new attributes for the files: </p>
+<blockquote>
+<p><span class="code">a </span>Append only<br>
+<span class="code">A </span>No atime updates<br>
+<span class="code">c </span>Compressed<br>
+<span class="code">d </span>No Dump<br>
+<span class="code">D </span>Synchronous directory updates<br>
+<span class="code">e </span>Extent format<br>
+<span class="code">i </span>Immutable<br>
+<span class="code">j </span>Data journalling<br>
+<span class="code">s </span>Secure deletion<br>
+<span class="code">S </span>Synchronous updates<br>
+<span class="code">t </span>No tail-merging<br>
+<span class="code">T </span>Top of directory hierarch<br>
+<span class="code">u </span>Undeletable <br>
+</p>
+</blockquote>
+<p>The following attributes are read-only, and may be listed by <a href="lsattr.html"><span class="code">lsattr</span></a> but not modified by <span class="code">chattr</span>: </p>
+<blockquote>
+<p><span class="code">h </span>Huge file<br>
+<span class="code">E </span>Compression error<br>
+<span class="code">I </span>Indexed directory<br>
+<span class="code">X </span>Compression raw access<br>
+<span class="code">Z </span>Compressed dirty file</p>
+</blockquote>
+<h2>Attributes </h2>
+<blockquote>
+<p>When a file with the '<span class="code">A</span>' attribute set is accessed, its atime record is not modified. This avoids a certain amount of disk I/O for laptop systems. </p>
+<p>A file with the 'a' attribute set can only be open in append mode for writing. Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capability can set or clear this attribute. </p>
+<p>A file with the '<span class="code">c</span>' attribute set is automatically compressed on the disk by the kernel. A read from this file returns uncompressed data. A write to this file compresses data before storing them on the disk. Note: please make sure to read the bugs and limitations section at the end of this document. </p>
+<p>When a directory with the '<span class="code">D</span>' attribute set is modified, the changes are written synchronously on the disk; this is equivalent to the 'dirsync' mount option applied to a subset of the files. </p>
+<p>A file with the '<span class="code">d</span>' attribute set is not candidate for backup when the dump(8) program is run. The 'E' attribute is used by the experimental compression patches to indicate that a compressed file has a compression error. It may not be set or reset using chattr(1), although it can be displayed by lsattr(1). </p>
+<p>The '<span class="code">e</span>' attribute indicates that the file is using extents for mapping the blocks on disk. It may not be removed using chattr(1). The 'I' attribute is used by the htree code to indicate that a directory is being indexed using hashed trees. It may not be set or reset using chattr(1), although it can be displayed by lsattr(1). </p>
+<p>The '<span class="code">h</span>' attribute indicates the file is storing its blocks in units of the filesystem blocksize instead of in units of sectors, and means that the file is (or at one time was) larger than 2TB. It may not be set or reset using chattr(1), although it can be displayed by lsattr(1). </p>
+<p>A file with the '<span class="code">i</span>' attribute (immutable) cannot be modified: it cannot be deleted or renamed, no link can be created to this file and no data can be written to the file. Only the superuser or a process possessing the CAP_LINUX_IMMUTABLE capability can set or clear this attribute. </p>
+<p>A file with the <span class="code">'j</span>' attribute has all of its data written to the ext3 journal before being written to the file itself, if the filesystem is mounted with the &quot;data=ordered&quot; or &quot;data=writeback&quot; options. When the filesystem is mounted with the &quot;data=journal&quot; option all file data is already journalled and this attribute has no effect. Only the superuser or a process possessing the CAP_SYS_RESOURCE capability can set or clear this attribute. </p>
+<p>When a file with the '<span class="code">s</span>' attribute set is deleted, its blocks are zeroed and written back to the disk. Note: please make sure to read the bugs and limitations section at the end of this document. When a file with the 'S' attribute set is modified, the changes are written synchronously on the disk; this is equivalent to the 'sync' mount option applied to a subset of the files. </p>
+<p>A directory with the '<span class="code">T</span>' attribute will be deemed to be the top of directory hierarchies for the purposes of the Orlov block allocator. This is a hint to the block allocator used by ext3 and ext4 that the subdirectories under this directory are not related, and thus should be spread apart for allocation purposes. For example it is a very good idea to set the 'T' attribute on the /home directory, so that /home/john and /home/mary are placed into separate block groups. For directories where this attribute is not set, the Orlov block allocator will try to group subdirectories closer together where possible. </p>
+<p>A file with the '<span class="code">t</span>' attribute will not have a partial block fragment at the end of the file merged with other files (for those filesystems which support tail-merging). This is necessary for applications such as LILO which read the filesystem directly, and which don't understand tail-merged files. Note: As of this writing, the ext2 or ext3 filesystems do not (yet, except in very experimental patches) support tail-merging. </p>
+<p>When a file with the '<span class="code">u</span>' attribute set is deleted, its contents are saved. This allows the user to ask for its undeletion. Note: please make sure to read the bugs and limitations section at the end of this document. </p>
+<p>The '<span class="code">X</span>' attribute is used by the experimental compression patches to indicate that a raw contents of a compressed file can be accessed directly. It currently may not be set or reset using chattr(1), although it can be displayed by lsattr(1). </p>
+<p>The '<span class="code">Z</span>' attribute is used by the experimental compression patches to indicate a compressed file is dirty. It may not be set or reset using chattr(1), although it can be displayed by lsattr(1). </p>
+</blockquote>
+<h2>Author </h2>
+<blockquote>
+<p>chattr was written by Remy Card &lt;Remy.Card@linux.org&gt;. It is currently being maintained by Theodore Ts'o &lt;tytso@alum.mit.edu&gt;. </p>
+</blockquote>
+<h2>Bugs and Limitations </h2>
+<blockquote>
+<p>The 'c', 's', and 'u' attributes are not honored by the ext2 and ext3 filesystems as implemented in the current mainline Linux kernels. These attributes may be implemented in future versions of the ext2 and ext3 filesystems. The 'j' option is only useful if the filesystem is mounted as ext3. The 'D' option is only useful on Linux kernel 2.5.19 and later. </p>
+</blockquote>
+<h2>Availability </h2>
+<blockquote>
+<p>chattr is part of the e2fsprogs package and is available from https://e2fsprogs.sourceforge.net. </p>
+</blockquote>
+<p><b>Example<br>
+<br></b>
+Make  the file <span class="code">some-file</span> immutable:<br>
+<span class="code">$ chattr +i /home/user/demo/some-file</span></p>
+<p class="quote"><i>Groupthink - Tendency of decision makers to join together around a policy or person without questioning basic assumptions.</i></p>
+<p><b>Related linux commands:</b></p>
+<p><a href="lsattr.html">lsattr</a>
+<br>
+Equivalent Windows command: <a href="../nt/attrib.html">ATTRIB</a> - Change file attributes.</p><!-- #BeginLibraryItem "/Library/foot_bash.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- bash300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4615356305"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/bash/chattr.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:39:27 GMT -->
+</html>

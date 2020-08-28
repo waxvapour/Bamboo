@@ -1,0 +1,127 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/fc.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>FC - file compare - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>FC.exe </h1> 
+<p>Compare the contents of two files or sets of files. Display any lines which do NOT match.</p>
+<pre>Syntax
+      FC [<i>options</i>] [<i>drive1</i>:][<i>path1</i>] <i><b>filename1</b></i> [<i>drive2</i>:][<i>path2</i>] <i><b>filename2</b></i>
+
+Options
+   /A    Abbreviate the output of an ASCII comparison, display only first and last lines
+         for each set of differences.
+
+   /B    Perform a binary comparison. FC compares the two files byte by byte and does not attempt
+         to resynchronize the files after finding a mismatch.
+         This is the default mode for comparing files that have the following file extensions:
+          .exe, .com, .sys, .obj, .lib, or .bin. 
+
+   /C    Do a case insensitive string comparison
+
+   /L    Compare the files in ASCII mode. Fc compares the two files line by line and attempts to resynchronize
+         the files after finding a mismatch.
+         This is the default mode for comparing non binary files, see /B. 
+
+   /LB<i>n</i>  Set the <i>n</i> number of lines for the internal line buffer. The default length of the line buffer is 100 lines.
+         If the files being compared have more than this number of consecutive differing lines, FC cancels the comparison. 
+
+   /N    Display line numbers during an ASCII comparison.
+
+   /T    Prevent FC from converting tabs to spaces.
+         The default behavior is to treat tabs as spaces, with stops at each eighth character position.
+
+   /U    Compares files as Unicode text files.
+
+   /W    Compress white space (that is, tabs and spaces) during the comparison.
+         If a line contains many consecutive spaces or tabs, /w treats these characters as a single space.
+         When used with the /W command-line option, FC ignores (and does not compare) white space at the beginning and end of a line. 
+
+   /<i>nnnn</i>   The a number of consecutive lines that must match before FC considers the files to be resynchronized.
+           If the number of matching lines in the files is less than <i>nnnn</i>, FC displays the matching lines as differences.
+           The default value is 2.
+
+ [ <i>drive1</i> : ][ <i>path1</i> ] <i>filename1</i>   The location and name of the first file you want to compare.
+                                   Filename1 is required.
+
+ [ <i>drive2</i> : ][ <i>path2</i> ] <i>filename2</i>   The location and name of the second file you want to compare.
+                                   Filename2 is required.
+
+ Wildcards ( * and ? ) may be used with <i>filename1</i> or <i>filename2</i>, FC will then compare all the matching files.</pre>
+<p>Powershell also has an Alias <span class="code">FC</span> for the <a href="../ps/format-custom.html">Format-Custom</a> cmdlet, therefore to run the 'old' FC under PowerShell you can explicitly run C:\windows\system32\fc.exe<br>
+</p>
+<h2> Errorlevels</h2>
+<blockquote>
+<p>FC will set an <a href="errorlevel.html">ErrorLevel</a> as follows:</p>
+<blockquote>
+<p> <span class="code">-1 </span>Invalid syntax (e.g. only one file passed) <br>
+<span class="code">0 </span>The files are identical.<br>
+<span class="code">1 </span>The files are different.<br>
+<span class="code">2 </span>Cannot find at least one of the files.<br>
+For an invalid switch (with two passed files) an error message is printed  but the errorlevel is not changed.</p>
+</blockquote>
+<p> The messages returned by FC are language/locale dependent, so to reliably identify 2 identical files use <a href="syntax-redirection.html">redirection</a> syntax:</p>
+<pre>   FC File1.txt File2.txt &gt;NUL <b>&amp;&amp;</b> Echo Same <b>||</b> Echo Different or error 
+</pre>
+</blockquote>
+<h2>Comparison order</h2>
+<blockquote>
+<p>When FC is used for an ASCII comparison, it will display differences between two files in the following order:</p>
+<ol>
+<li> Name of the first file     </li>
+<li> Lines from filename1 that differ between the files     </li>
+<li> First line to match in both files     </li>
+<li> Name of the second file     </li>
+<li> Lines from filename2 that differ     </li>
+<li> First line to match</li>
+</ol>
+</blockquote>
+<h2> Binary Comparisons </h2>
+<blockquote>
+<p><span class="code">/B </span>displays mismatches found during a binary comparison as follows: <span class="code">xxxxxxxx: yy zz </span></p>
+<p>The value of <span class="code">xxxxxxxx</span> specifies the relative hexadecimal address for the pair of bytes, measured from the beginning of the file. Addresses start at 00000000. <br>
+The hexadecimal values for <span class="code">yy</span> and <span class="code">zz</span> represent the mismatched bytes from <i>filename1</i> and <i>filename2</i>, respectively.</p>
+<p>When comparing binary files that are larger than available memory, FC compares both files completely, overlaying the portions in memory with the next portions from the disk. </p>
+</blockquote>
+<p><b>Example:</b><br>
+<br>
+Make a binary comparison of two DLL files:</p>
+<p class="code">C:\&gt; FC /b new.dll old.dll</p>
+<p> Make an ASCII comparison of two text files and display the result in abbreviated format: </p>
+<p><span class="code">C:\&gt; FC /a C:\demo\input.txt H:\work\output.txt</span><br><br>
+<i class="quote"># Oh lord won't you buy me a Mercedes Benz, my friends all drive Porsches, I must make amends # - Janice Joplin </i> <br>
+<br>
+<b>Related:</b></p>
+<p><a href="comp.html">COMP</a> - Compare two files and display any characters which do NOT match<br>
+<a href="find.html">FIND</a> - Search for a text string in a file<br>
+<a href="findstr.html">FINDSTR</a> - Search for strings in files<br>
+<a href="windiff.html">WinDiff</a> - GUI to compare files <br>
+Powershell: <a href="../ps/compare-object.html">Compare-Object</a> - Compare the properties of objects, e.g. compare content of files. <br>
+Equivalent bash command (Linux):<a href="../bash/export.html">
+</a><a href="../bash/cmp.html">cmp</a> - Compare two files</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/fc.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:13 GMT -->
+</html>

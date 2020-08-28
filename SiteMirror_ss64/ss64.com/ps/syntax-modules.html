@@ -1,0 +1,77 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-modules.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Modules - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Modules</h1> 
+<p> Functions and scripts can be shared as part of a module to enable easy re-use.</p>
+<h2>PSModulePath</h2>
+<blockquote>
+<p>Each new module should be stored in a sub folder of the <span class="code">\WindowsPowerShell\Modules</span> folder.<br>
+</p>
+<p>By default there are two Modules folders to choose from: </p>
+<p>Per system:<br>
+<span class="code">%windir%\System32\WindowsPowerShell\v1.0\Modules </span></p>
+<p>Per user:<br>
+<span class="code">%UserProfile%\Documents\WindowsPowerShell\Modules</span></p>
+<p>(These locations are defined by the <span class="code">$env:PSModulePath</span> environment variable.)</p>
+<p>When testing new modules save them as a 'Per user' module, when deploying to run as a background job move them over to the 'per system' location.</p>
+</blockquote>
+<h2>Create a new module</h2>
+<blockquote>
+<p>To make a new module, take a normal <span class="code">.ps1</span> PowerShell script  and rename it to  have the file extension <span class="code">.psm1</span> (for <b>P</b>ower<b>S</b>hell <b>M</b>odule V1).</p>
+<p>This script should just contain one or more functions  that you wish to make available as a Module.</p>
+<p>The folder you save it into should be the same as the name of the module, so if you create <span class="code">snark.psm1</span> this would be saved as <span class="code">%UserProfile%\Documents\WindowsPowerShell\Modules<b>\snark\snark</b>.psm1</span></p>
+<p>Because the module name and folder name match, the functions within can now be run from the PowerShell command line, you can explicitly load the module with  	 <span class="code">Import-Module snark </span><br>
+In PowerShell 3.0, and above, PowerShell will implicitly import a module the first time any one of the functions or cmdlets in the module is called by a user.</p>
+<p>So simply running one of your functions, like <span class="code">get-snark</span> if that's the name, will run the function and also load the module.</p>
+<p>Once loaded you can  use <span class="code">Get-Module</span> and see your module in the list of loaded PowerShell modules. To list the functions now available in the new module, use: <span class="code">Get-Command -Module snark</span></p>
+</blockquote>
+<h2>Module Manifests</h2>
+<blockquote>
+<p>Module manifests allow several more advanced features:</p>
+<ul>
+<li> Load multiple files</li>
+<li> Add an Author name</li>
+<li> Add a Company name</li>
+<li> Add Versioning information</li>
+<li> Specify processor requirements</li>
+<li> Load only a subset of the functions</li>
+</ul>
+<p>A module manifest is named just like the Module itself only with the file extension .psd1<br>
+The manifest can be created manually with a text editor or using the <span class="code">New-ModuleManifest</span> cmdlet which will accept (or prompt) for the various details. </p>
+</blockquote>
+<p class="quote"><i>&ldquo;If you have a garden and a library, you have everything you need&rdquo; ~ Marcus Tullius Cicero</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="get-module.html">Get-Module</a> -   Get the modules imported to the session<br>
+<a href="import-module.html">Import-Module</a> - Add a module to the session <br>
+<a href="new-module.html">New-Module</a> - Create a new dynamic module (only in memory) <br>
+<a href="remove-module.html">Remove-Module</a> - Remove a module from the current session</p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-modules.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+</html>

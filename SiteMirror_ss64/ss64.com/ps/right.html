@@ -1,0 +1,69 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/right.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Right - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>Right</h1>
+<p>There is no built in method to return the RIght <i>N</i> characters of a string, but we can   use <span class="code"><a href="syntax-methods.html">.SubString()</a></span>.</p>
+<p>To return  the rightmost 5 characters, we start at the character (5 less than the string length) and count 5 characters: </p>
+<p class="code">$var = &quot;Hello world&quot;<br>
+$result = $var.SubString($var.length - 5, 5)<br>
+$result</p>
+<p>However this assumes the string will always be at least 5 characters long to start with. To make this more robust the number of characters can be restrained to be no more than the initial length of the string using <span class="code"><a href="syntax-math.html">[math]::min</a>()</span></p>
+<p>To return the rightmost 50 characters:</p>
+<p class="code">$var = &quot;Hello world&quot;<br>
+$startchar = [math]::min($var.length - 50,$var.length)<br>
+$startchar =  [math]::max(0, $startchar)<br>
+$length = [math]::min($var.length, 50)<br>
+$var.SubString($startchar ,$length)</p>
+
+<p>If the string is shorter than 50 characters, the above will  display all the available characters rather than throw an error.</p>
+<p>For quick re-use this can be placed into a <a href="syntax-functions.html">function</a>:</p>
+<pre>
+Function right {
+   [CmdletBinding()]
+ 
+   Param (
+      [Parameter(Position=0, Mandatory=$True,HelpMessage="Enter a string of text")]
+      [String]$text,
+      [Parameter(Mandatory=$True)]
+      [Int]$Length
+   )
+<span class="code">$startchar = [math]::min($text.length - $Length,$text.length)<br>$startchar = [math]::max(0, $startchar)<br>$right = $text.SubString($startchar ,[math]::min($text.length, $Length))</span>
+$right
+}
+
+Example:
+<span class="code">PS C:\&gt; </span>right &quot;hello world&quot; -length 5</pre>
+<p class="quote"><i>“We look forward to the time when the Power of Love will replace the Love of Power. <br>
+Then will our world know the blessings of peace” ~  William Gladstone</i></p><p><b>Related PowerShell Commands:</b></p>
+<p><a href="left.html">Left</a> - Use $var.SubString(0,5) to return the first 5 characters of $var<br>
+<a href="syntax-methods.html">Methods</a> - ToUpper(), PadRight(), <a href="split.html">Split()</a>, Substring(), <a href="replace.html">Replace()</a> etc.</p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/right.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:39 GMT -->
+</html>

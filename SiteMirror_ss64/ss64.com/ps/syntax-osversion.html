@@ -1,0 +1,127 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-osversion.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Get the OperatingSystem and Service Pack - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Get the  OperatingSystem and Service Pack</h1>
+<p> Using <s>WMI</s>/CIM to find the OS version on a remote machine is a one line command:<br>
+<span class="code">PS C:\&gt; Get-CimInstance Win32_OperatingSystem -computer '<i><b>computer64</b></i>' | select Name, version, servicepackmajorversion, BuildNumber, CSName, OSArchitecture,  <a href="https://techontip.wordpress.com/tag/operatingsystemsku/">OperatingSystemSKU</a></span></p>
+<p>This can be written as a simple one line <a href="syntax-functions.html">function</a>, or see below for a fuller example: </p>
+<p class="code">Function get-ver{<br>
+&nbsp;&nbsp;(Get-CimInstance Win32_OperatingSystem) | select Caption, Version, BuildNumber <br>
+}</p>
+<p>A function which accepts a ComputerName and returns the OS/version:</p>
+<p>Get-OSVersion.ps1</p>
+<pre>function Get-OSVersion {
+    <#
+    .Synopsis
+    Get the operating system Version
+
+    .Description
+    The function gets the version of the operating system on
+    a local or remote computer.
+
+    .Parameter ComputerName
+    Enter the name of a local or remote computer. The default
+    is the local computer ("localhost").
+
+    .Parameter LogFile
+    Enter the name of a file
+    
+    .Notes
+    Get-OSVersion reads the OS properties from the Win32_OperatingSystem WMI/CIM class.
+
+    .LINK
+    https://ss64.com/ps/syntax-osversion.html
+
+    .Outputs
+    Displays several strings with different system information.
+    The ComputerName and Service pack can optionally be output to a log file.
+
+    .Example
+    Get-OSVersion
+
+    .Example
+    get-osVersion Server64 
+
+    .Example
+    # Get all computers with a name ending with db
+    $comps = get-adcomputer -filter {name -like "*db"} | select name
+    
+    # Then pipe the list of computer names to get-osversion
+    $comps.name | get-osversion
+
+    .Example
+    # Read a list of computernames from a file and write all the OS versions to a log file.
+    $computers = get-content c:\demo\computerlist.txt
+    $computers | foreach {get-osversion $_ -logfile List_of_versions.txt}
+
+    #>
+[cmdletbinding()]
+Param (
+    [parameter(ValueFromPipeline=$True)]
+    $ComputerName="localhost",
+    
+    $Logfile
+)
+
+PROCESS {
+    write-host "[$ComputerName]"
+
+    if( (Test-Connection $ComputerName -Quiet -count 1)) {
+        $osinfo = Get-CimInstance Win32_OperatingSystem -computer $ComputerName | select Name, version, servicepackmajorversion, BuildNumber, CSName, OSArchitecture, OperatingSystemSKU
+
+        $os = $osinfo.Name     # OS Name
+        $servicepack = $osinfo.servicepackmajorversion  # Service pack level
+        $bitness = $osinfo.OSArchitecture  # 32 or 64 bit
+        $build = $osinfo.BuildNumber       # Build Number
+        $machineName = $osinfo.CSName      # Name of the machine
+        $edition = $osinfo.OperatingSystemSKU  # Windows Edition (home, enterprise etc)
+
+        "Computer: $ComputerName Build: $build   Bitness: $bitness   Edition: $edition"
+        # service pack may be useful for W7
+        #  " ServicePack: $servicepack   OS: $os"
+        if ($Logfile) {"$ComputerName : $build : $bitness : $edition" | out-file -append -filepath $Logfile}        
+    }
+    else {
+        Write-Error "$ComputerName Not Responding"
+    }
+
+}  # End of PROCESS block / next ComputerName
+}</pre>
+<p>The function can be added to an existing <a href="syntax-run.html">script</a> or <a href="syntax-profile.html">psprofile</a>, or module or just pasted into the current session.<br>
+You can then run the function with: <span class="code"><br>
+GetOSVersion.ps1 computer64 </span></p>
+<p class="quote"><i>&ldquo;The hero has died as a modern man; but as eternal man - perfected, unspecific, universal man, - he has been reborn&rdquo; ~ Joseph Campbell</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="get-ciminstance.html">Get-CimInstance</a> - Get WMI class information<br>
+<a href="syntax-ver.html">OS Version</a> - How to retrieve the OS version in PowerShell (several methods compared).<br>
+<a href="syntax-psping.html">psp</a> - PowerShell Ping - test if a machine is online.<br>
+<a href="../nt/ver.html">VER</a> - Display version information<br>
+<a href="https://msdn.microsoft.com/en-us/library/aa394606(VS.85).aspx">WQL (WMI Query Language)</a> - msdn.microsoft.com</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-osversion.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:01 GMT -->
+</html>

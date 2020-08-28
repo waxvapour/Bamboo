@@ -1,0 +1,126 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/for.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>for Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>for</h1>
+<p>Loop command. The for loop executes a sequence of commands for each member in a list of items.</p>
+<pre>Syntax
+      for <i>name</i> [in <i>words</i> ...]; do <i>commands</i>; done</pre>
+<blockquote>
+<blockquote>
+<blockquote>
+<p> For each element in <i class="code">words</i>, <i class="code">name</i> is set to that element, and the <i class="code">commands</i> are executed.<br>
+<span class="body">If <samp>`in <i>words</i>'</samp> is not present, the <code>for</code> command executes the <i>commands</i> once for each positional parameter that 
+is set, as if <samp>`in "$@"'</samp> had been specified</span><br>
+</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre>
+      for (( <i>expr1</i> ; <i>expr2</i> ; <i>expr3</i> )) ; do <i>commands</i> ; done</pre>
+<blockquote>
+<p> Equivalent to:<br>
+</p>
+</blockquote>
+<pre>    	(( <i>EXP1</i> ))
+    	while (( <i>EXP2</i> )); do
+    		<i>commands</i>
+    		(( <i>EXP3</i> ))
+    	done</pre>
+<blockquote>
+<p> <span class="code"><i>EXP1, EXP2</i></span>, and <span class="code"><i>EXP3</i></span> are arithmetic expressions.  If any expression is
+omitted, it behaves as if it evaluates to 1.</p>
+</blockquote>
+<h2>Words</h2>
+<blockquote>
+<p>The words can be a simple list of strings <span class="code">file1.txt  file2.txt file3.txt</span> or <span class="code">Apple Sony  &quot;Hewlett Packard&quot;</span></p>
+<p>Alternatively, create the words by  iterating over the output of another command -  so to print the numbers from 1 to 10 with backticks:</p>
+<pre>for i in `seq 1 10` 
+ do       
+echo &quot;$i&quot;
+done</pre>
+<p> or with <a href="syntax-expand.html"> Brace Expansion</a>.<br>
+</p>
+<pre>for i in {1..10} 
+ do       
+echo &quot;$i&quot;
+done</pre>
+<p> or as a one liner:<br>
+<span class="code">for i in {1..10}; do echo $i; done</span></p>
+</blockquote>
+<p>When a wildcard is introduced, then words will match against filenames, * will match every file in the directory.</p>
+<pre>for thisfile in *; do
+   echo &quot;found $thisfile&quot;
+done</pre>
+<p class="body">The second form of the <span class="code">for</span> command is evaluated thus: </p>
+<blockquote>
+<p>First, the arithmetic expression <i>expr1</i> is evaluated 
+  according to <a href="syntax-math.html">shell  arithmetic expression rules</a>. <br>
+The arithmetic expression <i>expr2</i> is then evaluated repeatedly until it evaluates to zero. <br>
+<br>
+Each time <i>expr2</i> evaluates to a non-zero value, <i>commands</i> are executed and the arithmetic expression <i>expr3</i> is evaluated. <br>
+If any 
+expression is omitted, it behaves as if it evaluates to 1. </p>
+</blockquote>
+<h2> Return Status</h2>
+<blockquote>
+<p> The Return Status of <span class="code">for</span> will be  the exit status of the last command that executes, (if there are multiple expressions then the last command in <i>list</i> .) <br>
+If there are no items in the expansion of <i>words</i>, no commands are executed, and the return status is zero. </p>
+<p>The return status is false if any of the expressions is invalid. </p>
+</blockquote>
+<h2>Positional Parameters</h2>
+<blockquote>
+<p> These are assigned from the shell's arguments when the shell is invoked, they can be reassigned using the <a href="set.html">set </a>builtin command.<br>
+Positional parameter <i>N</i> can be referenced as ${<i>N</i>}, or as $<i>N</i> when <i>N</i> consists of a single digit. $1, $2 etc.</p>
+</blockquote>
+<p>This is a BASH shell builtin, to display your local syntax from the bash prompt type: <span class="code">help for</span></p>
+<p><b>Examples</b></p>
+<pre>#! /bin/bash<br># List of manufacturers<br>for manufacturer in Apple Sony &quot;Hewlett Packard&quot; Nokia<br>do<br>  echo &quot;Manufacturer is:&quot; $manufacturer<br>done
+</pre>
+<p># The above can also be written as a single line...<br>
+<span class="code">for manufacturer in Apple Sony &quot;Hewlett Packard&quot; Nokia; do echo &quot;Manufacturer is:&quot; $manufacturer;done<br>
+</span><br>
+<br>
+# Rename a bunch of iPhone screenshot files from IMG_0001.PNG, IMG_0002.PNG...<br>
+# to ScreenShot01.png,ScreenShot01.png...</p>
+<pre>
+for name in IMG*PNG<br>do
+  # Work out the new name<br>  newname=&quot;$(echo $name | <a href="sed.html">sed</a> &quot;s/IMG_00/ScreenShot/;s/PNG/png/&quot;)&quot;
+
+  # Move/rename the files<br>  echo &quot;renaming $name as $newname&quot;<br>  <a href="mv.html">mv</a> $name $newname<br>done
+</pre>
+<p class="quote"><i>&quot;In expanding the field of knowledge, we but increase the horizon of ignorance&quot; ~ Henry Miller </i> </p>
+<p><b>Related macOS commands:</b></p>
+<p>
+<a href="break.html">break</a> - Exit from a loop<br>
+<a href="while.html">while</a> - Execute commands <br>
+<a href="continue.html">continue</a> - Resume the next iteration of a while or foreach loop<br>
+<a href="until.html">until</a> - Execute commands (until error)</p>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/for.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:14 GMT -->
+</html>

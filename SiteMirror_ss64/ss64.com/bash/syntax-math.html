@@ -1,0 +1,89 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/bash/syntax-math.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>arithmetic expressions - Linux - SS64.com</title>
+</head><!-- #BeginLibraryItem "/Library/head_bashsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Linux</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/bash/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Arithmetic expressions</h1>
+<p>The shell allows arithmetic expressions to be evaluated, as one of the shell 
+  expansions or by the <a href="let.html"><code>let</code></a> builtin. 
+</p>
+<p>Evaluation is done in long integers with no check for overflow, though division 
+  by 0 is trapped and flagged as an error. The operators and their precedence 
+  and associativity are the same as in the C language. <br>
+  <br>
+  The following list of operators is grouped into levels of equal-precedence operators. 
+  The levels are listed in order of decreasing precedence. </p>
+<dl compact> 
+  <dt><code><i>id</i>++ <i>id</i>--</code> 
+  <dd>variable post-increment and post-decrement 
+  <dt><code>++<i>id</i> --<i>id</i></code> 
+  <dd>variable pre-increment and pre-decrement 
+  <dt><code>- +</code> 
+  <dd>unary minus and plus 
+  <dt><code>! ~</code> 
+  <dd>logical and bitwise negation 
+  <dt><code>**</code> 
+  <dd>exponentiation 
+  <dt><code>* / %</code> 
+  <dd>multiplication, division, remainder 
+  <dt><code>+ -</code> 
+  <dd>addition, subtraction 
+  <dt><code>&lt;&lt; &gt;&gt;</code> 
+  <dd>left and right bitwise shifts 
+  <dt><code>&lt;= &gt;= &lt; &gt;</code> 
+  <dd>comparison 
+  <dt><code>== !=</code> 
+  <dd>equality and inequality 
+  <dt><code>&amp;</code> 
+  <dd>bitwise AND 
+  <dt><code>^</code> 
+  <dd>bitwise exclusive OR 
+  <dt><code>|</code> 
+  <dd>bitwise OR 
+  <dt><code>&amp;&amp;</code> 
+  <dd>logical AND 
+  <dt><code>||</code> 
+  <dd>logical OR 
+  <dt><code>expr ? expr : expr</code> 
+  <dd>conditional evaluation 
+  <dt><code>= *= /= %= += -= &lt;&lt;= &gt;&gt;= &amp;= ^= |=</code> 
+  <dd>assignment 
+  <dt><code>expr1 , expr2</code> 
+  <dd>comma </dd>
+</dl>
+<p>Shell variables are allowed as operands; parameter expansion is performed before the expression is evaluated. Within an expression, shell variables can also be referenced by name without using the parameter expansion syntax. The value of a variable is evaluated as an arithmetic expression when it is referenced. A shell variable need not have its integer attribute turned on to be used in an expression. </p>
+<p>Constants with a leading 0 are interpreted as octal numbers. <br>
+A leading <samp>`0x'</samp> or <samp>`0X'</samp> denotes hexadecimal. <br>
+Otherwise, numbers take the form [<i>base</i><code>#</code>]<i>n</i>, where <i>base</i> is a decimal number between 2 and 64 representing the arithmetic base, and <i>n</i> is a number in that base. If <i>base</i><code>#</code> 
+is omitted, then base 10 is used. The digits greater than 9 are represented by the lowercase letters, the uppercase letters, <samp>`_'</samp>, and <samp>`@'</samp>, 
+in that order. If <i>base</i> is less than or equal to 36, lowercase and uppercase letters can be used interchangably to represent numbers between 10 and 35. </p>
+<p>Operators are evaluated in order of precedence. Sub-expressions in parentheses are evaluated first and can override the precedence rules above.</p>
+<p><b>Related linux commands:</b></p>
+<p><a href="syntax.html">Bash Syntax</a><br>
+<a href="https://dlmf.nist.gov/">NIST Digital Library of Mathematical Functions</a><br>
+Windows equivalent command: <a href="../nt/set.html">SET</a> /A - Display, set, or remove Windows  environment variables</p><!-- #BeginLibraryItem "/Library/foot_bash.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- bash300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4615356305"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+<!-- Mirrored from ss64.com/bash/syntax-math.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:44 GMT -->
+</html>

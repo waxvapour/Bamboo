@@ -1,0 +1,151 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/bcdedit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>BCDEDIT - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>BCDEDIT.exe (Vista+)</h1>  
+<p>Manage Boot Configuration Data (BCD) data stores.
+<pre>Syntax
+      BCDEdit /Command [<i>Argument1</i>] [<i>Argument2</i>] ...
+
+Key
+      /? <i>commmand</i>   To display detailed help for a particular command, run bcdedit /?command,
+                    where <i>command </i>is the name of the command you are searching for more information about.
+                    e.g. bcdedit /? createstore
+
+   Store commands:
+
+      /createstore  Creates a new empty boot configuration data store.
+                    The created store is not a system store.
+
+      /export       Export the contents of the system store into a file.
+                    This file can be used later to restore the state of the system store.
+                    Valid only for the system store.
+
+      /import       Restore the state of the system store by using a backup data file
+                    previously generated with /export.
+                    This command deletes any existing entries in the system store before
+                    the import takes place. Valid only for the system store.
+
+      /store        This option can be used with most BCDedit commands to specify
+                    the store to be used. If this option is not specified, then
+                    BCDEdit operates on the system store.
+                    Running the bcdedit /store command by itself is equivalent to running
+                    the bcdedit /enum active command.
+
+      /sysstore     Set the system store device. This only affects EFI-based systems.
+                    It does not persist across reboots, and is only used in cases where the system
+                    store device is ambiguous.
+
+   Operating on entries in a store:
+
+      /copy         Make a copy of a specified boot entry in the same system store.
+
+      /create       Create a new entry in the boot configuration data store.
+                    If a well-known identifier is specified, then the /application, /inherit, and
+                    /device options cannot be specified. If an identifier is not specified or not well
+                    known, an /application, /inherit, or /device option must be specified. 
+
+      /delete       Delete an element from a specified entry.
+
+      /mirror       Create a mirror of entries in the store.
+
+   Changing entry options:
+
+      /deletevalue  Delete a specified element from a boot entry.
+
+      /set          Set an entry option value.
+
+   Controlling output:
+
+      /enum         List entries in a store. The /enum option is the default value for BCEdit, so running
+                    the bcdedit command without options is equivalent to running the bcdedit /enum active command.
+
+      /v            Verbose mode.
+                    Usually, any well-known entry identifiers are represented by their friendly shorthand form.
+                    Specifying /v as a command-line option displays all identifiers in full.
+                    Running the bcdedit /v command by itself is equivalent to running the bcdedit /enum active /v command.
+
+   Controlling the boot manager:
+
+      /bootsequence Specifies a one-time display order to be used for the next boot.
+                    This command is similar to the /displayorder option, except that it is used only the
+                    next time the computer starts. Afterwards, the computer reverts to the original
+                    display order.
+      /default      Specifies the default entry that the boot manager selects when the timeout expires.
+
+      /displayorder Specifies the display order that the boot manager uses when displaying boot options
+                    to a user.
+      /timeout      Specifies the time to wait, in seconds, before the boot manager selects the default entry.
+
+      /toolsdisplayorder  Specifies the display order for the boot manager to use when displaying the Tools menu.
+
+   Emergency Management Services options:
+
+      /bootems      Enable or disable Emergency Management Services (EMS) for the specified entry.
+
+      /ems          Enable or disable EMS for the specified operating system boot entry.
+
+      /emssettings  Set the global EMS settings for the computer.
+                    /emssettings does not enable or disable EMS for any particular boot entry.
+
+   Debugging:
+
+      /bootdebug    Enable or disable the boot debugger for a specified boot entry.
+                    Although this command works for any boot entry, it is effective only for boot applications.
+
+      /dbgsettings  Specifies or displays the global debugger settings for the system.
+                    This command does not enable or disable the kernel debugger; use the /debug option for
+                    that purpose. To set an individual global debugger setting, use the
+                    bcdedit /setdbgsettings type value command.
+
+      /debug        Enable or disable the kernel debugger for a specified boot entry.
+
+      /hypervisorsettings  Set the hypervisor parameters.</pre>
+<p>BCDEdit is a command-line tool for managing Boot Configuration Data (BCD). BCD files provide a store that is used to describe boot applications and boot application settings.</p>
+<p>A normal shutdown and reboot is necessary to ensure that any modified BCDEdit settings are flushed to disk. </p>
+<p>BCDEdit is included in the <span class="code">%WINDIR%\System32</span> folder. <br>
+BCDEdit is limited to the standard data types and is designed primarily to perform single common changes to BCD. </p>
+<p>Some common BCD operations, such as recovering a partition or setting up a new PC's system partition, may be more easily accomplished by using <a href="bcdboot.html">BCDBOOT</a>.</p>
+<p>Administrative privileges are required to use BCDEdit to modify Boot Configuration Data.</p>
+<p><b>Examples</b></p>
+<p>This command will enable the system to trust Windows Insider Preview builds that are signed with certificates that are not trusted by default: </p>
+<p class="code">Bcdedit /set {bootmgr} flightsigning on <br>
+Bcdedit /set flightsigning on </p>
+<p>Reboot after running the command. <br>
+<br>
+To turn off flightsigning: </p>
+<p class="code">Bcdedit /set {bootmgr} flightsigning off<br>
+Bcdedit /set flightsigning off</p>
+<p><i class="quote">&ldquo;I’d rather wake up in the middle of nowhere than in any city on earth&rdquo; - Steve McQueen</i><br>
+<br>
+<b>Related:</b></p>
+<p><a href="bcdboot.html">BCDBOOT</a> - Create or repair a system partition<br>
+ Fixboot - Write a new partition boot sector<br>
+<a href="syntax-recovery.html">Recovery console</a></p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/bcdedit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:52 GMT -->
+</html>

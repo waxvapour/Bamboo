@@ -1,0 +1,94 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-math.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Variables and Operators - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>.Net Math</h1>
+<p>In addition to standard PowerShell <a href="syntax-methods.html">methods</a> we can also call .Net Math functions:</p>
+<pre>
+ .NET Math library:
+
+  [math]::Round($var, <i>p</i>)  Round a variable to <i>p</i> places.
+  [math]::Round($var)
+  [math]::Abs(<i>n</i>)
+  [math]::BigMul
+  [math]::Ceiling(<i>n</i>)   Rounds everything up, towards positive infinity.
+  [math]::DivRem
+  [math]::Equals(<i>n,m</i>)  Compare two values and return a [boolean] (true/false) result. (unlike -eq the types must also match)
+  [math]::Exp(p)       Raise e to a power p
+  [math]::Floor(<i>n</i>)     Rounds everything down, towards negative infinity.
+  [math]::GetHashCode
+  [math]::GetType
+  [math]::Log(<i>n</i>)    base e logarithm of <i>n</i>
+  [math]::Log10(<i>n</i>)  base 10 logarithm of <i>n</i>
+  [math]::Max(<i>n</i>,<i>m</i>)  Return the larger of two values
+  [math]::Min(<i>n</i>,<i>m</i>)  Return the smaller of two values
+  [math]::Pow(<i>n,p</i>)  Raise a number <i>n</i> to a power <i>p</i>
+  [math]::IEEERemainder
+  [math]::Round
+  [math]::Sign
+  [math]::Sqrt(n)   Square Root of a number <i>n</i>
+  [math]::ToString
+  [math]::Truncate(<i>n</i>)  Remove the decimal returning only an Integer. Rounds toward zero.
+
+The trig functions all accept an angle, measured in radians.
+To convert degrees to radians multiply by pi/180 using [Math]::PI 
+
+  [math]::Acos
+  [math]::Asin
+  [math]::Atan
+  [math]::Atan2
+  [math]::Cos
+  [math]::Cosh
+  [math]::Sin
+  [math]::Tan
+  [math]::Sinh
+  [math]::Tanh
+
+Static mathematical constants:
+  [math]::e
+  [math]::pi</pre>
+<p> You can list all the static memners of system.math like this: (via <a href="http://mow001.blogspot.com/2005/11/exploring-net-types-classes-and-enums.html">/\/\o\/\/</a> )<br>
+</p>
+<pre> [system.math] | gm -static</pre>
+<p><b>Examples</b></p>
+<p>Find the Minimum value of two variables:</p>
+<p class="code">$var1 = 764.4<br>
+$var2 = 1409<br>
+$answer = [math]::min($var1,$var2)<br>
+$answer</p>
+<p>Find the Tangent of 45 degrees:</p>
+<p class="code">$answer = [System.Math]::Tan(45/180*[System.Math]::PI)<br>
+$answer</p>
+<p class="quote"><i>&ldquo; Film is one of the three universal languages, the other two: mathematics and music&rdquo; ~ Frank Capra</i></p><p><b>Related PowerShell Commands:</b></p>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/api/system.math?redirectedfrom=MSDN&amp;view=netframework-4.7.2">math.class</a> - MSDN scroll down for full definitions.<br>
+<a href="syntax-concat.html">Concatenation</a> - Several methods to combine strings together.<br>
+<a href="syntax-operators.html">PowerShell Operators </a>- More advanced Operators for Arrays and formatting expressions.<br>
+</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-math.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+</html>

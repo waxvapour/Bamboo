@@ -1,0 +1,78 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/invoke-sqlcmd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Invoke-Sqlcmd - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Invoke-Sqlcmd</h1>
+<p>Run a script containing statements supported by the SQL Server <span class="code">SQLCMD</span> utility. .</p>
+<pre>Syntax
+      Invoke-Sqlcmd [-ServerInstance <i>PSObject</i>] [-Database <i>String</i>] [-EncryptConnection]
+         [<b>-Username</b> <i>String</i>] [<b>-Password</b> <i>String</i>] [[<b>-Query</b>] <i>String</i>]
+            [-QueryTimeout <i>Int32</i>] [-ConnectionTimeout <i>Int32</i>] [-ErrorLevel <i>Int32</i>]
+               [-SeverityLevel <i>Int32</i>] [-MaxCharLength <i>Int32</i>] [-MaxBinaryLength <i>Int32</i>]
+                  [-AbortOnError] [-DedicatedAdministratorConnection] [-DisableVariables]
+                     [-DisableCommands] [-HostName <i>String</i>] [-NewPassword <i>String</i>]
+                        [-Variable <i>String</i>[]] [<b>-InputFile</b> <i>String</i>] [-OutputSqlErrors <i>Boolean</i>]
+                           [-IncludeSqlUserErrors] [-SuppressProviderContextWarning] [-IgnoreProviderContext]
+                              [-OutputAs <i>OutputType</i>] [<a href="../ps/common.html"><i>CommonParameters</i></a>]
+
+      Invoke-Sqlcmd [[-Query] <i>String</i>] [-QueryTimeout <i>Int32</i>] [-ErrorLevel <i>Int32</i>]
+         [-SeverityLevel <i>Int32</i>] [-MaxCharLength <i>Int32</i>] [-MaxBinaryLength <i>Int32</i>]
+            [-AbortOnError] [-DisableVariables] [-DisableCommands] [-Variable <i>String</i>[]]
+               [<b>-InputFile</b> <i>String</i>] [-OutputSqlErrors <i>Boolean</i>] [-IncludeSqlUserErrors]
+                  [-OutputAs <i>OutputType</i>] <b>-ConnectionString</b> <i>String</i> [<a href="../ps/common.html"><i>CommonParameters</i></a>]
+
+Key:
+   -InputFile  Ensure all input scripts are secured with appropriate NTFS permissions.
+   -OutputAs   The type of the results to get: DataSet, DataTables, <u>DataRows</u>.
+</pre> 
+<p>  The Invoke-Sqlcmd cmdlet runs a script containing the languages and commands supported by the SQL Server <span class="code">SQLCMD</span> utility. </p>
+<p>The <span class="code">-password</span> parameter accepts only a clear-text password on the command line</p>
+<p>The commands supported are T-SQL statements and the subset of the XQuery syntax that is supported by the database engine. This cmdlet also accepts many of the commands supported natively by SQLCMD, such as GO and QUIT. </p>
+<p>This cmdlet also accepts the SQLCMD scripting variables, such as SQLCMDUSER. <br>
+By default, this cmdlet does not set SQLCMD scripting variables. <br>
+This cmdlet does not support the use of commands that are primarily related to interactive script editing. <br>
+The commands not supported include :<span class="code">!!, :connect, :error, :out, :ed, :list, :listvar, :reset, :perftrace</span>, and <span class="code">:serverlist</span>. </p>
+<p>When this cmdlet is run, the first result set that the script returns is displayed as a formatted table. If subsequent result sets contain different column lists than the first, those result sets are not displayed. If subsequent result sets after the first set have the same column list, their rows are appended to the formatted table that contains the rows that were returned by the first result set. </p>
+<p>You can display SQL Server message output, such as those that result from the SQL PRINT statement, by specifying the <span class="code">-Verbose</span> parameter.</p>
+<p><b>Examples</b></p>
+<p>Connect to a named instance and run a script</p>
+<p class="code">PS C:\&gt; Invoke-Sqlcmd -InputFile &quot;C:\demo\demo.sql&quot; -ServerInstance &quot;Computer64\Instance64&quot;</p>
+<p> Run a script and send the output to a file:</p>
+<p class="code">PS C:\&gt; Invoke-Sqlcmd -InputFile &quot;C:\demo\demo.sql&quot; -ServerInstance &quot;Computer64\Instance64&quot;| Out-File -FilePath &quot;C:\demo\output.rpt&quot;</p>
+<p>Capture data into a DataSet object</p>
+<p class="code"> PS C:\&gt; $DS = Invoke-Sqlcmd -ServerInstance &quot;Computer64&quot; -Query &quot;SELECT  ID, Item FROM MyDB.dbo.MyTable&quot; -As DataSet <br>
+PS C:\&gt; $DS.Tables[0].Rows | %{ echo &quot;{ $($_['ID']), $($_['Item']) }&quot; }<br>
+{ 10, AAA } <br>
+{ 20, BBB }<br>
+{ 30, CCC }</p>
+<p class="quote"><i>&quot;Always do everything you ask of those you command&quot; ~ George S. Patton</i></p>
+<p><b>Related:</b></p>
+<p><a href="https://ctigeek.net/a-condemnation-of-invoke-sqlcmd/">A condemnation</a> of Invoke-SqlCmd by Steven Swenson<br>
+<a href="sqlcmd.html">SQLCMD</a> - Run a T-SQL statement, procedure or script.<!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></p></body>
+
+<!-- Mirrored from ss64.com/sql/invoke-sqlcmd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:30 GMT -->
+</html>

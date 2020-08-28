@@ -1,0 +1,212 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-folders.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<link rel="STYLESHEET" href="../tables.css" type="text/css">
+<title>User Shell Folders - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>User Shell Folders - Profile, Start Menu folder...
+</h1>
+<h2>Roaming Profile Folder Extensions</h2>
+<blockquote>
+
+<table>
+<tbody>
+<tr>
+<th>OS version</th>
+<th>Local Profile folder %userprofile%</th>
+<th>Roaming Profile Folder</th>
+</tr>
+<tr>
+<td>Windows XP/ 2003</td>
+<td>C:\Documents and Settings\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i></td>
+</tr>
+<tr>
+<td>Windows Vista</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V2</b></td>
+</tr>
+<tr>
+<td>Windows Server 2008</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V2</b></td>
+</tr>
+<tr>
+<td>Windows 7</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V2</b></td>
+</tr>
+<tr>
+<td>Windows Server 2008 R2</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V2</b></td>
+</tr>
+<tr>
+<td>Windows 8 * (<a href="https://support.microsoft.com/en-gb/help/2887239/">Q2887239</a> )</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.V3</td>
+</tr>
+<tr>
+<td>Windows Server 2012 * (<a href="https://support.microsoft.com/en-gb/help/2887239/">Q2887239</a> )</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.V3</td>
+</tr>
+<tr>
+<td>Windows 8.1 * (<a href="https://support.microsoft.com/en-gb/help/2887595/">Q2887595</a>)</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V4</b></td>
+</tr>
+<tr>
+<td>Windows Server 2012 R2 * (<a href="https://support.microsoft.com/en-gb/help/2887595/">Q2887595</a>)</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V4</b></td>
+</tr>
+<tr>
+<td>Windows 10 (2015)</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.V5</td>
+</tr>
+<tr>
+<td>Windows 10 Anniversary Edition (2016)</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V6</b></td>
+</tr>
+<tr>
+<td>Windows 10 Creators Update (2017)</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V6</b></td>
+</tr>
+<tr>
+<td>Windows 10 Fall Creators Update (2017)</td>
+<td>C:\Users\<i>username</i></td>
+<td><i>fileshare</i>\<i>username</i>.<b>V6</b></td>
+</tr>
+</tbody>
+</table>
+<p>* These OS's require a patch to upgrade from .V2 to separate V3/V4 profiles.</p>
+</blockquote>
+<h2>Profile Subfolders</h2>
+<blockquote>
+<p>As Windows has been updated, the profile folder names have changed, not just the main User Profile folder (<span class="code">%USERPROFILE%</span>)  as above, but many of the subfolders have also changed name or location:</p>
+<pre>Windows 7 / 2008
+
+%USERPROFILE%\AppData\Roaming
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Cookies
+%USERPROFILE%\AppData\Local\Microsoft\Windows\History
+%USERPROFILE%\AppData\Local
+%USERPROFILE%\Documents
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Network Shortcuts
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Printer Shortcuts
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\SendTo
+<abbr title="right-click 'All Programs' under the start menu, and choose Open">%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu</abbr>
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Templates
+%USERPROFILE%\AppData\Local\Microsoft\Windows\Temporary Internet Files
+
+Windows 10 / 2012 R2
+
+%USERPROFILE%\AppData\Roaming
+%USERPROFILE%\AppData\Local\Microsoft\Windows\<b>INetCookies</b>
+%USERPROFILE%\AppData\Local\Microsoft\Windows\History
+%USERPROFILE%\AppData\Local
+%USERPROFILE%\Documents
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Network Shortcuts
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Printer Shortcuts
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\<b>Recent Items</b>
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\SendTo
+<abbr title="right-click 'All Programs' under the start menu, and choose Open">%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu</abbr>
+%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Templates
+%USERPROFILE%\AppData\Local\Microsoft\Windows\<b>INetCache</b></pre>
+</blockquote>
+<h2><a id="allusers"></a>'All Users' Shell Folders</h2>
+<blockquote>
+<p>The folders for All Users settings have also moved:</p>
+<pre>Windows 7/2008
+
+%ProgramData%
+%PUBLIC%\Desktop
+%PUBLIC%\Documents
+%ProgramData%\Microsoft\Windows\Start Menu\Programs
+<abbr title="right-click 'All Programs' under the start menu, and choose Open All Users.">%ProgramData%\Microsoft\Windows\Start Menu</abbr>
+%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup
+%ProgramData%\Microsoft\Windows\Templates
+
+Windows 10/2012 R2
+
+%ProgramData%
+%PUBLIC%\<b>Public Desktop</b>
+%PUBLIC%\<b>Public Documents
+</b>%ProgramData%\Microsoft\Windows\Start Menu\Programs  *
+<abbr title="right-click 'All Programs' under the start menu, and choose Open All Users.">%ProgramData%\Microsoft\Windows\Start Menu</abbr>  *
+%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup  *
+%ProgramData%\Microsoft\Windows\Templates</pre>
+<p><span class="code">* </span>In Windows 10 the Start Menu items are held in a <a href="https://arstechnica.com/gadgets/2015/07/review-windows-10-is-the-best-version-yet-once-the-bugs-get-fixed/">database</a> that is stored under <span class="code">C:\Users\<i>accountname</i>\AppData\Local\TileDataLayer</span> this is proprietary, non user editable and limited to 500 shortcuts. It is also used for Cortana Search. The entire database can be copied between accounts - all or nothing.</p>
+</blockquote>
+<h2>Registry</h2>
+<blockquote>
+<p>There are definitions for all the above in the registry, however: <i>I implore you to exercise restraint and not rely on this new key. Just use the function SHGetFolderPath, which returns the path to whatever folder you want. Let the &quot;User Shell Folders&quot; key rest in peace.</i> - <a href="https://blogs.msdn.microsoft.com/oldnewthing/20031103-00/?p=41973/">Raymond Chen</a> (MSFT) </p>
+<p>A fully supported way of reading these values can be done via Shell.Application, here are  a couple of <a href="shell-folders-ps.txt">PowerShell</a> and <a href="shell-folders-vbs.txt">VBScript</a> examples which  echo all the values. Some of these are already available as standard <a href="syntax-variables.html"> environment variables</a> but these scripts will display everything. Using the <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb774096(v=vs.85).aspx">ShellSpecialFolderConstants</a> means the scripts should work on any foreign locale edition of Windows.</p>
+<p>To modify these values, either use Group Policy or a <a href="https://stackoverflow.com/questions/25709398/set-location-of-special-folders-with-powershell">script like this</a>.</p>
+<p>If you must delve into the Registry here are the locations:</p>
+<blockquote>
+<p>Registry locations (REG_EXPAND_SZ)<br>
+<span class="code">HKEY_<b>CURRENT_USER</b>\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders</span></p>
+<p>By default these all resolve to subfolders below %USERPROFILE% but they can be redirected to other locations by group policy.</p>
+<p>Registry locations for ALL Users (REG_EXPAND_SZ)<br>
+<span class="code">HKEY_<b>LOCAL_MACHINE</b>\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders</span></p>
+<p> On a brand new install of Windows some of the keys may not exist (typically the fonts entry) Registry entries can appear in both the older <span class="code">Shell Folders</span> subkey and the <span class="code">User Shell Folders</span>  in both HKLM and HKCU. The entries that appear in  <span class="code">User Shell Folders</span> take precedence over those in <span class="code">Shell Folders</span>. <br>
+The entries that appear in HKCU take precedence over those in HKLM</p>
+</blockquote>
+</blockquote>
+<h2>Folder Redirection</h2>
+<blockquote>
+<p>Although it is possible to redirect any of these folders with Group Policy, not all options are fully supported,<br>
+for example redirecting IE favorites/cookies will result in <a href="https://blogs.msdn.microsoft.com/oldnewthing/20140702-00/?p=593/">very slow</a> performance.</p>
+</blockquote>
+<p><b>Examples</b></p>
+<p>Find the location of the Start Menu folder:</p>
+<p class="code">For /f &quot;tokens=3*&quot; %%G in ('<a href="reg.html">REG QUERY</a> &quot;HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders&quot; /v &quot;Start Menu&quot; ^|Find &quot;REG_&quot;') do Call Set _startmenu=%%H<br>
+<br>
+Echo %_startmenu%</p>
+<p>PowerShell <a href="../ps/syntax-functions.html">function</a> to open the Start menu:</p>
+<p class="code">function Open-StartMenu { <br>
+&nbsp;$drive = dir env:SystemDrive <br>
+&nbsp;$startPath = $drive.value + "\ProgramData\Microsoft\Windows\Start Menu" <br>
+&nbsp;if (test-path $w7path) {explorer $startPath}<br>
+}
+</p>
+<p class="quote"><i>“There are no shortcuts to any place worth going” -  Beverly Sills</i>
+<p><b>Related:</b></p>
+<p><a href="shell.html">Shell: folder</a> - Shortcuts to key folders.<br>
+<a href="syntax-variables.html">Windows Environment Variables</a><br>
+<a href="../vb/syntax-profile.html">RoamingProfile.vbs</a> - Cleardown files to improve logon and logoff times.<br>
+<a href="../vb/special.html">WshShell.SpecialFolders</a> - 
+VBScript obtain the path to special Windows folders.<br>
+<a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-vista/cc766489(v=ws.10)">Managing Roaming User Data Deployment Guide</a> - docs.microsoft.com<br>
+<a href="https://support.microsoft.com/en-gb/help/886549/">Q886549</a> - User Shell Folders</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-folders.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:53 GMT -->
+</html>

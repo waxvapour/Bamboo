@@ -1,0 +1,75 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/vb/addprinterconnection.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:44:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>AddPrinterConnection - VBScript - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_vb.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">VBScript</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/vb/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>.AddPrinterConnection</h1> 
+<p>Add a printer connection.</p>
+<pre>Syntax 
+      objNetwork.AddPrinterConnection(<i>strLocalName</i>, 
+                     <i>strRemoteName</i>[,<i>bUpdateProfile</i>][,<i>strUser</i>][,<i>strPassword</i>]
+
+Key
+   objNetwork    : A <a href="network.html">WScript.network</a> object
+
+   strLocalName  : Local printer Name (String value) 
+   
+   strRemoteName : Remote printer Name (String value) 
+
+   
+   bUpdateProfile : Indicate whether the printer mapping 
+                    is stored in the current user's profile.
+                    Boolean value  
+                    If TRUE the mapping is stored in the user profile. 
+                    default = false.
+   
+   strUser       : The user name. (if using a different profile)
+                   Optional. 
+   
+   strPassword   : The user password. (if using a different profile)
+                   Optional.   </pre>
+<p>The AddPrinterConnection method adds a network printer to an MS-DOS printer port, such as LPT1.<br>
+To add a remote Windows-based printer connection, use the <a href="addwindowsprinterconnection.html">AddWindowsPrinterConnection</a> method.</p>
+<p><b>Example</b></p>
+<pre>' Connect a network printer to LPT1.
+
+Set objNetwork = WScript.CreateObject("WScript.Network") 
+objNetwork.AddPrinterConnection "LPT1", "\\Server\Print1"</pre>
+<p class="quote"><i>&ldquo;Pay attention. It's all about paying attention. attention is vitality.<br>
+It connects you with others. It makes you eager. stay eager&rdquo; ~ Susan Sontag</i></p>
+<p><b>Related:</b></p>
+<p> Add Network printer - <a href="addwindowsprinterconnection.html">.AddWindowsPrinterConnection</a><br>
+<a href="../nt/syntax-printing.html">printcon.vbs</a> - change a Print connection to  a different Queue/Server<br>
+<a href="../nt/net-share.html">NET VIEW</a> - to view a list of printers<br>
+<a href="../nt/net-print.html">NET PRINT</a> - View and Delete print jobs <br>
+<a href="../nt/prncnfg.html">PRNCNFG</a> - Display, configure or rename a printer 
+<br>
+PRNDRVR - Add, delete or list printer drivers<br>
+PRNMNGR - Add, delete, or list printers / connections, set the default printer<br>
+<span class="body"><a href="../nt/syntax-printing.html">Network Printing</a> - Advice &amp; Tips</span></p><!-- #BeginLibraryItem "/Library/foot_vb.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- VB300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1683739502"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/vb/addprinterconnection.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:44:23 GMT -->
+</html>

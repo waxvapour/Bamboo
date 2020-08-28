@@ -1,0 +1,104 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/nvram.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>nvram Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>nvram</h1> 
+<p>Manipulate  firmware variables.</p>
+<pre>Syntax
+      nvram [ -p ] [ -f <i>filename</i> ] [ -d <i>name</i> ] [ -c ] [ <i>name</i> [= <i>value</i> ]] ...
+
+Key
+   -d <i>name</i>      Delete the named firmware variable.
+
+   -f filename  Set firmware variables from a text file. The file  must  be  a  list  of  &quot;name value&quot;  statements.
+                The  first space on each line is taken to be the separator between &quot;name&quot; and &quot;value&quot;.
+                If the last character of a line  is  \,  the  value extends to the next line.
+
+   -x           Use  XML  format  for  reading  and writing variables.  This option must be used before
+                the -p or -f options, since arguments are processed in order.
+
+   -c           Delete all of the firmware variables.
+
+   -p           Print all of the firmware variables.</pre>
+<p>The <span class="code">nvram</span> command allows manipulation of firmware NVRAM variables. It can be used to get or set a variable. It can also be used to print all of the variables or set a list of  variables from a file. Changes to NVRAM variables are only saved by clean restart or shutdown. </p>
+<p>In principle, <i>name</i> can be any string. In practice, not all strings will be accepted. New World machines can create new variables as desired. Most variables require <a href="sudo.html">sudo</a> administrator privilege to get or set.</p>
+<p> The given <i>value</i> must match the data type required for <i>name</i>. Binary data can be set using the <span class="code">%xx</span> notation, where <span class="code">xx</span> is the <a href="../ascii.html">hex</a> value of the byte. The type for new variables is always binary data.</p>
+<p>Changes to firmware settings can prevent a computer from booting. Backup your Mac and data with Time Machine or your backup method of choice and check the current value with <span class="code">-p</span> before making any changes.</p>
+<h2>NVRAM Variables</h2>
+<blockquote>
+<pre>aht-results         Contains details of the last run of the Apple Hardware Test.
+backlight-level
+bluetoothActiveControllerInfo
+bluetoothInternalControllerInfo
+boot-args           Multiple values can be set as a space-separated list   boot-args=&quot;item=0 item=1&quot;
+display-config
+efi-apple-recovery
+efi-boot-device
+efi-boot-device-data
+EFIBluetoothDelay   Time allowed for a wireless keyboard to connect during startup
+fmm-computer-name
+LocationServicesEnabled
+prev-lang:kbd
+SystemAudioVolume    Set this to %01 in pre 2017 Macs to silence the startup chime.
+SystemAudioVolumeDB
+</pre>
+</blockquote>
+<h2>To reset the NVRAM on any model of Mac</h2>
+<blockquote>
+<p>Shut  down the Mac.</p>
+<p>Power on the Mac then immediately press and hold down the keys:<span class="code"> Command, Option, P </span>and<span class="code"> R</span>.</p>
+<p>Wait 20 seconds until the Mac has fully booted.</p>
+<p>All the nvram settings will then revert to the default. </p>
+<p>This will also reset  the third-party kernel extension policy, if that has been previously changed from the default using <span class="code">spctl</span>.</p>
+</blockquote>
+<p><b>Examples</b></p>
+<p>List all the variables curretly stored in your Mac’s NVRAM:</p>
+<p class="code">$ nvram -p</p>
+<p>List all the variables curretly stored in your Mac’s NVRAM in XML format:</p>
+<p class="code">$ nvram -xp</p>
+<p>List the current value (if any) of boot-args:</p>
+<p class="code">$ nvram -p | grep boot-args</p>
+<p>Enable an external Apple SuperDrive on a Mac that already has a built-in optical drive. </p>
+<p class="code">$ sudo nvram boot-args=&quot;mbasd=1&quot;</p>
+<p>Set the boot-args variable to  single user mode with        the root device in hard drive partition 10:</p>
+<p class="code">$ sudo nvram boot-args=&quot;-s rd=*hd:10&quot;</p>
+<p>Create  a  new variable, ss64, containing a list of two C-strings that is terminated by a NUL:</p>
+<p class="code">$ sudo nvram ss64=&quot;String One%00String Two%00%00&quot; </p>
+<p>Delete the variable named ss64:</p>
+<p><span class="code">$ sudo nvram -d ss64</span><br>
+<br>
+<i class="quote">"True Ease in Writing comes from Art, not Chance, As those move easiest who have learned to dance" ~ Alexander Pope</i></p>
+<p><b>Related macOS commands:</b></p>
+<p>spctl - SecAssessment system policy security<br>
+<a href="syntax-keyboard.html">macOS Keyboard Shortcuts</a><br>
+<a href="https://support.apple.com/en-gb/HT204063">HT204063</a> - Reset NVRAM or PRAM on your Mac<br>
+<a href="https://support.apple.com/en-gb/HT201295">HT201295</a> - How to reset the System Management Controller (SMC) on your Mac</p>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/nvram.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:17 GMT -->
+</html>

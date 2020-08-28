@@ -1,0 +1,179 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/set.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>set Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>set</h1> 
+<p>Change the value of a shell option and set the positional parameters, or display the names and values of shell variables. </p>
+<pre>Syntax
+      set [--abefhkmnptuvxBCEHPT] [-o <i>option-name</i>] [<i>argument</i> …]
+      set [+abefhkmnptuvxBCEHPT] [+o <i>option-name</i>] [<i>argument</i> …]
+</pre>
+<p>If no options or arguments are supplied, set displays the 
+  names and values of all shell variables and functions, sorted according to the 
+  current locale, in a format that can be reused as input.   When options are supplied, they set or unset shell attributes. </p>
+<pre>Options</pre>
+<pre>
+Using + rather than - will cause the option to be turned off. 
+
+   -a  Mark variables which are modified or created for export. <b>-o allexport</b>
+
+   -b  Cause the status of terminated background jobs to be 
+       reported immediately, rather than before printing the
+       next primary prompt.  <b>-o notify</b>
+
+   -B  The shell will perform brace expansion. 
+       This option is on by default.  <b>-o braceexpand</b>
+
+   -C  Prevent output redirection using `&gt;', `&gt;&amp;',
+       and `&lt;&gt;' from overwriting existing files.  <b>-o noclobber</b>
+
+   -e  Exit immediately if a <abbr title="not a compound command or a function call.">simple command</abbr> exits with a non-zero status, unless
+       the command that fails is part of an until or  while loop, part of an
+       if statement, part of a &amp;&amp; or || list, or if the command's return status
+       is being inverted using !.  <b>-o errexit</b>
+
+   -f  Disable file name generation (globbing).  <b>-o noglob</b>
+
+   -h  Locate and remember (hash) commands as they are looked
+       up for execution. This option is enabled by default. <b>-o hashall</b>
+
+   -H  Enable `!' style history substitution 
+       This option is on by default for interactive shells. <b>-o histexpand</b> 
+
+   -k  All arguments in the form of assignment statements are
+       placed in the environment for a command, not just those that
+       precede the command name. <b>-o keyword</b>
+ 
+   -m  Job control is enabled.  <b>-o monitor</b>
+
+   -n  Read commands but do not execute them; this can be used
+       to check a script for syntax errors. 
+       This option is ignored by interactive shells. <b>-o noexec</b>
+
+   -o  If <span class="code">-o</span> is supplied with no<i> option-name</i>, the values of the current options are printed.<br>       If <span class="code">+o</span> is supplied with no <i>option-name</i>, a series of set commands to recreate  the current
+       option settings is displayed on the standard output.<i></i>
+
+   -o <i>option-name</i>
+          Set the option corresponding to '<i>option-name</i>'
+          The `option-names' are listed above and below (in <b>bold</b>):
+
+                 allexport   Same as -a.
+                 braceexpand Same as -B.
+                 emacs       Use an emacs-style command line editing interface.  This is enabled by default
+                             when the shell is interactive, unless the shell is started with --noediting
+                 errtrace    Same as -E.
+                 functrace   Same as -T.
+                 errexit     Same as -e.
+                 hashall     Same as -h.
+                 histexpand  Same as -H.
+                 history     Enable command history, as described above under HISTORY.  This option  is  on
+                              by default in interactive shells.
+                 ignoreeof   The  effect is as if the shell command `<a href="syntax-shell_vars.html">IGNOREEOF</a>=10' had been executed
+                 keyword     Same as -k.
+                 monitor     Same as -m.
+                 noclobber   Same as -C.
+                 noexec      Same as -n.
+                 noglob      Same as -f.  nolog Currently ignored.
+                 notify      Same as -b.
+                 nounset     Same as -u.
+                 onecmd      Same as -t.
+                 physical    Same as -P.
+                 pipefail    If set, the return value of a pipeline is the value of the last (rightmost)
+                             command to exit with a non-zero status, or zero if all commands in the pipeline
+                             exit successfully.  This option is disabled by default.
+                 posix       Change the behavior of bash where the default operation differs from the POSIX
+                             standard to match the standard (posix mode).
+                 privileged  Same as -p.
+                 verbose     Same as -v.
+                 vi          Use a vi-style command line editing interface.
+                 xtrace  Same as -x.
+
+   -p<i>  </i>Turn on privileged mode. In this mode,
+       the $BASH_ENV and $ENV files are not processed,
+       shell functions are not inherited from the environment, 
+       and the SHELLOPTS variable, if it appears in the environment, is ignored. 
+       If the shell is started with the effective user (group) id not equal to the
+       real user (group) id, and the -p option is not supplied, these actions
+       are taken and the effective user id is set to the real user id. 
+       If the -p option is supplied at startup, the effective user 
+       id is not reset. Turning this option off causes the effective 
+       user and group ids to be set to the real user and group ids.
+         <b>-o privileged</b> 
+
+   -P<i>  </i>If set, do not follow symbolic links when performing commands.
+       The physical directory is used instead. <b>-o physical</b>
+
+   -t  Exit after reading and executing one command.  <b>-o onecmd</b>
+
+   -u  Treat unset variables as an error when performing 
+       parameter expansion. An error message will be written 
+       to the standard error, and a non-interactive shell will exit. <b>-o nounset</b>
+
+   -v<i>  </i>Print shell input lines as they are read. <b>-o verbose</b>
+
+   -x<i>  </i>Print a trace of simple commands and their arguments
+       after they are expanded and before they are executed. <b>-o xtrace</b>
+&nbsp; 
+   --  If no arguments follow this option, then the positional parameters are unset. 
+       Otherwise, the positional parameters are set to the arguments, 
+       even if some of them begin with a `-'. 
+
+   -   Signal the end of options, cause all remaining arguments to be 
+       assigned to the positional parameters. The `-x' and `-v' 
+       options are turned off. If there are no arguments, the positional parameters 
+       remain unchanged.</pre>
+<p>Without options, the <i>name</i> and <i>value</i> of each shell variable are displayed in a format that  can be  reused as input for setting or resetting the currently-set variables. 
+<p>When  options  are  specified,  they set or unset shell attributes. 
+<p>Read-only variables cannot be reset. 
+<p>By default, unset variables are evaluated as an empty string which can have unexpected and undesirable effects. When writing and debugging shell scripts it is good practice to set both <span class="code">-e</span> and <span class="code">-u</span> so that the script will exit on an <b>E</b>rror or if an <b>U</b>nset variable is referenced
+<p><span class="code">set -eu</span>
+<p>The options can also be specified as arguments to an invocation of the shell. The current set of options may be found in <span class="code">$-</span>.<br>
+Any arguments remaining after the options are processed are treated as values for the  positional parameters and are assigned, in order, to <code>$1</code>, <code>$2</code>, ... <code>$<i>N</i></code>.
+The special parameter <code>#</code> is set to <i>N</i>.
+<p>The return status is always zero unless an invalid option is supplied. 
+<p>This is a BASH shell builtin, to display your local syntax from the bash prompt type: <span class="code">help [r]ead</span>
+<p><b>Examples</b>
+<p>Set both <span class="code">-e</span> and <span class="code">-u</span> so that the script will exit on an <b>E</b>rror or if an <b>U</b>nset variable is referenced. <span class="body">This is good practice when  writing and debugging shell scripts</span>
+<p><span class="code">#!/bin/bash<br>
+# an example bash script<br>
+set -eu</span></p>
+<p>Turn ON the <span class="code">allexport</span> option:
+<p class="code">set -o allexport</p>
+<p>Turn OFF the <span class="code">allexport</span> option:</p>
+<p><span class="code">set +o allexport</span></p>
+<p>Set the shell variable 'MYDEPT' equal to 'Sales' :
+<pre> MYDEPT=Sales<br> echo $MYDEPT</pre>
+<p>To make the change permanent, you can export this as an environment variable:</p>
+<pre> export $MYDEPT</pre>
+<p class="quote"><i>&ldquo;Have no friends not equal to yourself&rdquo; ~ Confucious (Analects)</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="echo.html">echo</a> - Display text (or variables) on screen<br>
+<a href="unset.html">unset</a> - Remove variable or function names<br>
+</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/set.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:24 GMT -->
+</html>

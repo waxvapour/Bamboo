@@ -1,0 +1,523 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-banner.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Banner Text - Windows CMD - SS64.com</title>
+<meta name="Description" content="Display a string of text in extra large letters, similar to banner printing on a dot matrix printer. 
+This can be useful when you need to read the output from a distance.">
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Banner.cmd</h1>
+<p>Display a string of text in extra large letters, similar to  banner printing on a dot matrix printer. <br>
+This can be useful when you need to read the output from a distance.</p>
+<pre>@Echo off&SETLOCAL
+IF [%1] NEQ [] goto s_start
+Echo   Syntax  
+Echo       BANNER <i>string</i>
+Echo           Where <i>string</i> is the text or numbers to be displayed
+Echo:
+GOTO :eof
+   :s_start
+      SET _length=0
+      SET _sentence=%*
+
+      :: Get the length of the sentence
+      SET _substring=%_sentence%
+   :s_loop
+      IF not defined _substring GOTO :s_result
+      ::remove the first char from _substring (until it is null)
+      SET _substring=%_substring:~1%
+      SET /A _length+=1
+      GOTO s_loop
+      
+   :s_result
+      SET /A _length-=1
+
+      :: Truncate text to fit the window size
+      :: assuming average char is 6 digits wide
+      for /f "tokens=2" %%G in ('mode ^|find "Columns"') do set/a _window=%%G/6
+      IF %_length% GTR %_window% set _length=%_window% 
+
+      :: Step through each digit of the sentence and store in a set of variables
+      FOR /L %%G IN (0,1,%_length%) DO call :s_build %%G
+
+   :: Now Echo all the variables
+   Echo:
+   Echo:%_1%
+   Echo:%_2%
+   Echo:%_3%
+   Echo:%_4%
+   Echo:%_5%
+   Echo:%_6%
+   Echo:%_7%
+   Echo:
+   GOTO :EOF
+
+   :s_build
+      :: get the next character
+      CALL SET _digit=%%_sentence:~%1,1%%%
+      :: Add the graphics for this digit to the variables
+      IF "%_digit%"==" " (CALL :s_space) ELSE (CALL :s_%_digit%)
+   GOTO :EOF
+   
+   ::  Pad digits to -->
+   :s_0
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% #  #)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_1
+   ::  Pad digits to -->
+      (SET _1=%_1%  ## )
+      (SET _2=%_2%   # )
+      (SET _3=%_3%   # )
+      (SET _4=%_4%   # )
+      (SET _5=%_5%   # )
+      (SET _6=%_6%   # )
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_2
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3%    #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5% #   )
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_3
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2%    #)
+      (SET _3=%_3%    #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5%    #)
+      (SET _6=%_6%    #)
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_4
+   ::  Pad digits to -->
+      (SET _1=%_1% #  #)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5%    #)
+      (SET _6=%_6%    #)
+      (SET _7=%_7%    #)
+   GOTO :EOF
+   
+   :s_5
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #   )
+      (SET _3=%_3% #   )
+      (SET _4=%_4% ####)
+      (SET _5=%_5%    #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_6
+   ::  Pad digits to -->
+      (SET _1=%_1% ##  )
+      (SET _2=%_2% #   )
+      (SET _3=%_3% #   )
+      (SET _4=%_4% ####)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_7
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3%    #)
+      (SET _4=%_4%   ##)
+      (SET _5=%_5%   # )
+      (SET _6=%_6%   # )
+      (SET _7=%_7%   # )
+   GOTO :EOF
+   
+   :s_8
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_9
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5%    #)
+      (SET _6=%_6%    #)
+      (SET _7=%_7%    #)
+   GOTO :EOF
+   
+   :s_-
+   ::  Pad digits to -->
+      (SET _1=%_1%     )
+      (SET _2=%_2%     )
+      (SET _3=%_3%     )
+      (SET _4=%_4% ####)
+      (SET _5=%_5%     )
+      (SET _6=%_6%     )
+      (SET _7=%_7%     )
+   GOTO :EOF
+   
+   :s_.
+   ::  Pad digits to -->
+      (SET _1=%_1%     )
+      (SET _2=%_2%     )
+      (SET _3=%_3%     )
+      (SET _4=%_4%     )
+      (SET _5=%_5%     )
+      (SET _6=%_6%     )
+      (SET _7=%_7%  #  )
+   GOTO :EOF
+   
+   :s_a
+   ::  Pad digits to -->
+      (SET _1=%_1%  ## )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% #  #)
+   GOTO :EOF
+   
+   :s_b
+   ::  Pad digits to -->
+      (SET _1=%_1% ### )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ### )
+   GOTO :EOF
+   
+   :s_c
+   ::  Pad digits to -->
+      (SET _1=%_1%  ## )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #   )
+      (SET _4=%_4% #   )
+      (SET _5=%_5% #   )
+      (SET _6=%_6% #  #)
+      (SET _7=%_7%  ## )
+   GOTO :EOF
+   
+   :s_d
+   ::  Pad digits to -->
+      (SET _1=%_1% ### )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% #  #)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% ### )
+   GOTO :EOF
+   
+   :s_e
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #   )
+      (SET _3=%_3% #   )
+      (SET _4=%_4% ### )
+      (SET _5=%_5% #   )
+      (SET _6=%_6% #   )
+      (SET _7=%_7% ####)
+   GOTO :EOF
+   
+   :s_f
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2% #   )
+      (SET _3=%_3% #   )
+      (SET _4=%_4% ### )
+      (SET _5=%_5% #   )
+      (SET _6=%_6% #   )
+      (SET _7=%_7% #   )
+   GOTO :EOF
+
+   :s_g
+   ::  Pad digits to -->
+      (SET _1=%_1%  ## )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #   )
+      (SET _4=%_4% #   )
+      (SET _5=%_5% # ##)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7%  ## )
+   GOTO :EOF
+
+   :s_h
+   ::  Pad digits to -->
+      (SET _1=%_1% #  #)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ####)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% #  #)
+   GOTO :EOF
+
+   :s_i
+   ::  Pad digits to -->
+      (SET _1=%_1%  # )
+      (SET _2=%_2%  # )
+      (SET _3=%_3%  # )
+      (SET _4=%_4%  # )
+      (SET _5=%_5%  # )
+      (SET _6=%_6%  # )
+      (SET _7=%_7%  # )
+   GOTO :EOF
+
+   :s_j
+   ::  Pad digits to -->
+      (SET _1=%_1% ####)
+      (SET _2=%_2%   # )
+      (SET _3=%_3%   # )
+      (SET _4=%_4%   # )
+      (SET _5=%_5%   # )
+      (SET _6=%_6%   # )
+      (SET _7=%_7% ##  )
+   GOTO :EOF
+
+   :s_k
+   ::  Pad digits to -->
+      (SET _1=%_1% #   )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% # # )
+      (SET _4=%_4% ##  )
+      (SET _5=%_5% ##  )
+      (SET _6=%_6% # # )
+      (SET _7=%_7% #  #)
+   GOTO :EOF
+
+   :s_l
+   ::  Pad digits to -->
+      (SET _1=%_1% #   )
+      (SET _2=%_2% #   )
+      (SET _3=%_3% #   )
+      (SET _4=%_4% #   )
+      (SET _5=%_5% #   )
+      (SET _6=%_6% #   )
+      (SET _7=%_7% ####)
+   GOTO :EOF
+
+   :s_m
+   ::  Pad digits to --->
+      (SET _1=%_1% #   #)
+      (SET _2=%_2% ## ##)
+      (SET _3=%_3% # # #)
+      (SET _4=%_4% # # #)
+      (SET _5=%_5% #   #)
+      (SET _6=%_6% #   #)
+      (SET _7=%_7% #   #)
+   GOTO :EOF
+
+   :s_n
+   ::  Pad digits to --->
+      (SET _1=%_1% #   #)
+      (SET _2=%_2% ##  #)
+      (SET _3=%_3% ##  #)
+      (SET _4=%_4% # # #)
+      (SET _5=%_5% #  ##)
+      (SET _6=%_6% #  ##)
+      (SET _7=%_7% #   #)
+   GOTO :EOF
+
+   :s_o
+   ::  Pad digits to -->
+      (SET _1=%_1%  ## )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% #  #)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7%  ## )
+   GOTO :EOF
+
+   :s_p
+   ::  Pad digits to -->
+      (SET _1=%_1% ### )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ### )
+      (SET _5=%_5% #   )
+      (SET _6=%_6% #   )
+      (SET _7=%_7% #   )
+   GOTO :EOF
+
+   :s_q
+   ::  Pad digits to -->
+      (SET _1=%_1%  ## )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% #  #)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% # ##)
+      (SET _7=%_7%  # #)
+   GOTO :EOF
+
+   :s_r
+   ::  Pad digits to -->
+      (SET _1=%_1% ### )
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% ### )
+      (SET _5=%_5% # # )
+      (SET _6=%_6% #  #)
+      (SET _7=%_7% #  #)
+   GOTO :EOF
+
+   :s_s
+   ::  Pad digits to -->
+      (SET _1=%_1%  ###)
+      (SET _2=%_2% #   )
+      (SET _3=%_3% #   )
+      (SET _4=%_4%  ## )
+      (SET _5=%_5%    #)
+      (SET _6=%_6%    #)
+      (SET _7=%_7% ### )
+   GOTO :EOF
+
+   :s_t
+   ::  Pad digits to -->
+      (SET _1=%_1% ###)
+      (SET _2=%_2%  # )
+      (SET _3=%_3%  # )
+      (SET _4=%_4%  # )
+      (SET _5=%_5%  # )
+      (SET _6=%_6%  # )
+      (SET _7=%_7%  # )
+   GOTO :EOF
+
+   :s_u
+   ::  Pad digits to -->
+      (SET _1=%_1% #  #)
+      (SET _2=%_2% #  #)
+      (SET _3=%_3% #  #)
+      (SET _4=%_4% #  #)
+      (SET _5=%_5% #  #)
+      (SET _6=%_6% #  #)
+      (SET _7=%_7%  ## )
+   GOTO :EOF
+
+   :s_v
+   ::  Pad digits to --->
+      (SET _1=%_1% #   #)
+      (SET _2=%_2% #   #)
+      (SET _3=%_3% #   #)
+      (SET _4=%_4% #   #)
+      (SET _5=%_5% #   #)
+      (SET _6=%_6%  # # )
+      (SET _7=%_7%   #  )
+   GOTO :EOF
+
+   :s_w
+   ::  Pad digits to ----->
+      (SET _1=%_1% #  #  #)
+      (SET _2=%_2% #  #  #)
+      (SET _3=%_3% #  #  #)
+      (SET _4=%_4% #  #  #)
+      (SET _5=%_5% #  #  #)
+      (SET _6=%_6% #  #  #)
+      (SET _7=%_7%  ## ## )
+   GOTO :EOF
+
+   :s_x
+   ::  Pad digits to -->
+      (SET _1=%_1%      )
+      (SET _2=%_2% #   #)
+      (SET _3=%_3%  # # )
+      (SET _4=%_4%   #  )
+      (SET _5=%_5%   #  )
+      (SET _6=%_6%  # # )
+      (SET _7=%_7% #   #)
+   GOTO :EOF
+
+   :s_y
+   ::  Pad digits to --->
+      (SET _1=%_1% #   #)
+      (SET _2=%_2%  # # )
+      (SET _3=%_3%   #  )
+      (SET _4=%_4%   #  )
+      (SET _5=%_5%   #  )
+      (SET _6=%_6%   #  )
+      (SET _7=%_7%   #  )
+   GOTO :EOF
+
+   :s_z
+   ::  Pad digits to --->
+      (SET _1=%_1% #####)
+      (SET _2=%_2%     #)
+      (SET _3=%_3%    # )
+      (SET _4=%_4%   #  )
+      (SET _5=%_5%  #   )
+      (SET _6=%_6% #    )
+      (SET _7=%_7% #####)
+   GOTO :EOF
+
+   :s_space
+   ::  Pad digits to --->
+      (SET _1=%_1%      )
+      (SET _2=%_2%      )
+      (SET _3=%_3%      )
+      (SET _4=%_4%      )
+      (SET _5=%_5%      )
+      (SET _6=%_6%      )
+      (SET _7=%_7%      )
+   GOTO :EOF
+</pre>
+
+<p class="quote"><i>&ldquo;No matter how sophisticated you may be, a large granite mountain cannot be denied - it speaks in silence to the very core of your being&rdquo; ~
+Ansel Adams</i></p>
+<p><b>Related</b>
+<p><a href="syntax-dpi.html">Display DPI</a> - Monitor size settings.<br>
+<a href="echo.html">ECHO</a> - Display message on screen
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-banner.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:53 GMT -->
+</html>

@@ -1,0 +1,52 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/dbcc_cleantable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>DBCC CLEANTABLE - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>DBCC CLEANTABLE</h1>
+<p>Reclaim space from dropped variable-length columns in a table or indexed view.</p>
+<pre>
+Syntax
+      DBCC CLEANTABLE
+       ( { '<i>database</i>' | <i>database_id </i>| 0 }
+         , { '<i>table</i>' | <i>table_id </i>| '<i>view</i>' | <i>view_id </i>}
+            [ , batch_size]
+       ) [WITH NO_INFOMSGS]
+
+ Key:
+    batch_size   - The no. of rows to process per transaction.
+                    default (or if 0 is specified) = whole table
+    NO_INFOMSGS  - Suppress all information messages.
+</pre>
+<p>If 0 is specified, the current database will be used.</p>
+<p>Example</p>
+<pre>DBCC CLEANTABLE ('MyDatabase','MySchema.MyTable', 0)<br>WITH NO_INFOMSGS;<br>GO</pre>
+<p class="quote"><i>&quot;It's hard to be funny when you have to be clean&quot; ~ Mae West.</i></p>
+<p>  <b>Equivalent Oracle command</b>:</p>
+<p> <a href="../ora/tablespace_a.html">ALTER TABLESPACE</a> COALESCE</p><!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/dbcc_cleantable.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:21 GMT -->
+</html>

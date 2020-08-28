@@ -1,0 +1,145 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-function-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Advanced Function - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Writing an Advanced Function</h1>
+<p>An <i>Advanced</i> Function is  one that contains either a <span class="code">[cmdletbinding()]</span> attribute or the <span class="code">Parameter</span> attribute, or both.<br>
+<span class="code">[cmdletbinding()]</span>  adds  cmdlet features to the function: <a href="common.html">common parameters</a> (-verbose, -whatif, -confirm etc)</p> 
+<h2>Attributes</h2>
+<blockquote>
+<p>Several (optional) attributes can be added to the <span class="code">Param</span> clause of an advanced <a href="syntax-functions.html">function</a>. <br>
+The <span class="code">Param</span> keyword is used to define parameters in both simple and advanced functions,   <br>
+The <span class="code">Parameter</span> attribute in advanced functions  is to validate (limit the valid values of each parameter).</p>
+<p> <span class="code">[<b>parameter(</b><i>Argument</i>=<i>value</i><b>)</b>]</span> # Define  attributes for each parameter, see below for a list of  Parameter Arguments.<br>
+<span class="code">[alias(&quot;CN&quot;,&quot;MachineName&quot;)]  </span># Establish an alternate name(s) for the parameter.<br>
+<span class="code">[AllowNull()] <br>
+[AllowEmptyString()]<br>
+[AllowEmptyCollection()]<br>
+[ValidateCount(1,5)]</span> # The number or parameters accepted.<br>
+<span class="code">[ValidateLength(1,10)] </span># minimum and max. number of characters in a parameter or variable value.<br>
+<span class="code">[ValidatePattern(&quot;[0-9][0-9][0-9][0-9]&quot;)]</span> # specifies a regex that is compared to the parameter or variable value. <br>
+<span class="code">[ValidateRange(0,10)]</span> # specifies a numeric range for each parameter or variable value.<br>
+<span class="code">[ValidateScript({$_ -ge (get-date)})] </span># specifies a script that is used to validate a parameter or variable value.  <span class="code">[ValidateSet(&quot;Low&quot;, &quot;Average&quot;, &quot;High&quot;)]</span> #  specifies a set of valid values for a parameter or variable.<br>
+<span class="code">[ValidateNotNull()] </span># specifies that the parameter value cannot be null ($null).<br>
+<span class="code">[ValidateNotNullOrEmpty()]</span> # specifies that the parameter value cannot be null and cannot be an empty string (&quot;&quot;) <br>
+<span class="code">DynamicParam {&lt;<i>statement-list</i>&gt;}</span> # A dynamic parameter.<br>
+<span class="code">[Switch]&lt;<i>ParameterName</i>&gt;  </span># Set a parameter with only a True/False value. </p>
+</blockquote>
+<h2>Parameter arguments</h2>
+<blockquote>
+<p>These can be included in each <span class="code">[Parameter(  )]</span> attribute. The Parameter attribute is optional, and you can omit it if none of the parameters of your advanced function need attributes. Separate multiple arguments with commas. </p>
+<p><span class="code">Mandatory=$true </span># Whether the parameter is mandatory or optional (the default) If you call a function without passing a value for a mandatory parameter, PowerShell will prompt for the value.<span class="code"><br>
+Position=0 </span># By default, PowerShell assigns each parameter a <abbr title="PowerShell can identify an unnamed parameter value by its position (or order) in the list of unnamed parameter values">position number</abbr> in the order declared, starting from 0.<span class="code"><br>
+ParameterSetName=&quot;User&quot;</span> # allow a function to accept different sets of parameters for different tasks.<span class="code"><br>
+ValueFromPipeline=$true </span># Accept values via the pipeline.<span class="code"><br>
+ValueFromPipelineByPropertyName=$true </span># Accept values via the pipeline of the same type expected by the parameter and which also must have the same name as the parameter accepting pipeline input.<span class="code"><br>
+ValueFromRemainingArguments=$true <br>
+HelpMessage=&quot;Custom prompt message that appears for a mandatory parameter.&quot;</span></p>
+</blockquote>
+<p>Below is a  template for an Advanced Function, containing help text, parameters and <a href="syntax-function-input.html">begin-process-end</a> blocks:</p>
+<pre>Function FnNameVERB-NOUN {
+<#
+.SYNOPSIS
+    This advanced function does blah
+
+.DESCRIPTION
+    A more detailed description of what the function does.
+
+.PARAMETER DemoParam1
+    The parameter DemoParam1 is used to define the value of blah and also blah.
+
+.PARAMETER DemoParam2
+    The parameter DemoParam2 is used to define the value of blah and also blah.
+
+.EXAMPLE
+    The example below does blah
+    PS C:\&gt; &lt;Example&gt;
+    
+.NOTES
+    Author: &lt;Name&gt;
+    Last Edit: yyyy-mm-dd
+    Version 1.0 - initial release of blah
+    Version 1.1 - update for blah
+
+#>
+    [CmdletBinding()]  # Add cmdlet features.
+    Param (
+        # Define parameters below, each separated by a comma
+
+        [Parameter(Mandatory=$True)]
+        [int]$DemoParam1,
+
+        [Parameter(Mandatory=$False)]
+        [ValidateSet('Alpha','Beta','Gamma')]
+        [string]$DemoParam2,
+ 
+        # you don’t have to use the full [Parameter()] decorator on every parameter
+        [string]$DemoParam3,
+        
+        [string]$DemoParam4, $DemoParam5
+        
+        # Add additional parameters here.
+    )
+
+    Begin {
+        # Start of the BEGIN block.
+        Write-Verbose -Message "Entering the BEGIN block [$($MyInvocation.MyCommand.CommandType): $($MyInvocation.MyCommand.Name)]."
+
+        # Add additional code here.
+        
+    } # End Begin block
+
+    Process {
+        # Start of PROCESS block.
+        Write-Verbose -Message "Entering the PROCESS block [$($MyInvocation.MyCommand.CommandType): $($MyInvocation.MyCommand.Name)]."
+
+
+        # Add additional code here.
+
+        
+    } # End of PROCESS block.
+
+    End {
+        # Start of END block.
+        Write-Verbose -Message "Entering the END block [$($MyInvocation.MyCommand.CommandType): $($MyInvocation.MyCommand.Name)]."
+
+        # Add additional code here.
+
+    } # End of the END Block.
+} # End Function</pre>
+<p class="quote"><i>&ldquo;If you want to go fast, go alone, <br>
+If you want to go far, go together&rdquo; ~ African proverb</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p>Microsoft docs: <a href="https://docs.microsoft.com/en-gb/powershell/module/microsoft.powershell.core/about/about_functions_advanced_parameters?view=powershell-5.1">About Functions Advanced Parameters</a><br>
+$PSCmdlet variable<br>
+The <span class="code">ParameterSetName</span> property allows you to see the parameter set that is being used. Parameter sets allow you to create a function that performs different tasks based on the parameters that are specified when the function is run.<br>
+<a href="syntax-scriptblock.html">Scriptblock</a> - A collection of statements<br>
+<a href="syntax-ref.html">Ref vars</a> - Passing a reference variable to a function. <br>
+<a href="https://technet.microsoft.com/en-us/library/jj554301.aspx">TechNet</a> - Defining Parameters </p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-function-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+</html>

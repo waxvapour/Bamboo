@@ -1,0 +1,56 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/get-psprovider.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Get-PSProvider - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Get-PSProvider</h1> 
+<p>Get information about  a  PowerShell provider.</p>
+<pre>Syntax
+      Get-PSProvider [[-psProvider] <i>string</i>[]] [<i>CommonParameters</i>]
+
+Key
+   -psProvider <br>      Name(s) of the Windows PowerShell provider.
+
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer -OutVariable.</pre>
+<p>
+  PowerShell providers let you access a variety of data stores as though they were file system drives. For example the registry provider allows you to map drives to locations in the registry. 
+For information about PowerShell providers, see about_Providers.</p>
+<p><b>Examples</b></p>
+<p>List all available PowerShell providers:</p>
+<p><span class="code">PS C:\&gt; get-psprovider</span><br>
+  <br>
+List PowerShell providers with names that begin with 'f' or 'r':</p>
+<p class="code">PS C:\&gt; get-psprovider f*, r* | format-list</p>
+<p>Display the snap-in for each Windows PowerShell provider</p>
+<p class="code">PS C:\&gt; get-psprovider | format-list name, pssnapin</p>
+<p class="quote"><i>&quot;Art is a jealous mistress, and, if a man have a genius for painting, poetry, music, architecture, or philosophy, he makes a bad husband, and ill-provider&quot;  ~ Ralph Waldo Emerson</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="get-psdrive.html">Get-PSDrive</a> - Get drive information (DriveInfo)</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/get-psprovider.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:59 GMT -->
+</html>

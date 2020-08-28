@@ -1,0 +1,10 @@
+::SPack.cmd
+@echo off
+SETLOCAL
+:: Get the Windows SERVICE PACK Level of the local machine
+:: Calls the REG.exe utility
+
+:: The delimiters below are TAB plus Space
+
+FOR /f "tokens=2* delims=	 " %%G IN ('Reg.exe QUERY "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v CSDVersion ^| find /i ^"CSDVersion^"') DO (
+set _spack=%%H & echo Current Service Pack IS: %%H)

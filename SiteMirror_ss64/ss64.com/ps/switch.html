@@ -1,0 +1,119 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/switch.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Switch - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Switch</h1> 
+<p>Handle multiple if statements</p>
+<pre>Brief Syntax
+
+      Switch ($<i>item</i>)
+      {
+       <i>value</i> { <i>expression</i> }
+       <i>value</i> { <i>expression</i> }
+      }
+
+Full Syntax
+
+      Switch [ -regex | -wildcard | -exact ] [-casesensitive] ( <b><i>pipeline</i></b> )
+      { 
+        "<i>string</i>" | <i>number</i> | <i>variable</i> | { <i>expression</i> } { <i>statementlist</i> }
+        [ default { <i>statementlist</i> } ]
+      }
+
+      Switch [ -regex | -wildcard | -exact ] [-casesensitive] <b>-file <i>filename</i></b>
+      { 
+        "<i>string</i>" | <i>number</i> | <i>variable </i>| { <i>expression</i> } { <i>statementlist</i> }
+        [ default { <i>statementlist</i> } ]
+      }
+Key
+
+   <b>-r</b>egex       Treat the match clause, if a string, as a <a href="syntax-regex.html">Regex</a>.
+
+   default      This provides an optional 'catch-all' for any data items that are not explicitly handled in the
+                list of switch statements. Append 'default {<i>statementlist</i>}' as the last choice.
+                The 'default' will only be used if no other match is found for the explicit conditions.
+
+   <b>-w</b>ildcard    Treat the match clause, if a string, as a wildcard string
+                Wildcard characters:
+                    ?   = Any single unspecified character.
+                    *   = Zero or more unspecified chars.
+                  [a-b] = Any character in the range a-b
+                  [ab]  = The specified characters.
+                The wildcard match is case in-sensitive 
+
+   <b>-e</b>xact       Match strings exactly (disable wildcards)
+
+ <b>-c</b>asesensitive Modify the match clause, if a string, to be case sensitive
+
+   <b>-f</b>ile        Take input from a file (or representative)</pre>
+<p>
+  The switch options can be given in abbreviated format using the first letter, so <span class="code">-e</span> is equivalent to <span class="code">-exact</span></p>
+<p>The keyword <span class="code">break</span> indicates that no more processing will occur and the switch statement will exit. </p>
+<p> The keyword <span class="code">continue</span> indicates that no processing will continue against the current token and the next token in the conditional will be evaluated. If no tokens are available, the switch statement will exit.</p>
+<p>If <b><i>pipeline</i></b> results in an array, each element of the array will be evaluated in ascending offset order (starting at 0). At least one element must be present that meets at least one condition or an error will result.</p>
+<p><b>Examples</b></p>
+<p>Compare a string, this is effectively  a string of IF statements:</p>
+<pre>$my_variable = "orange"
+
+switch ($my_variable)<b> {</b>
+   "apple" {"First result"; break}
+   "pear" {"Second result"; break}
+   "orange" {"Third result"; break}
+   "peach" {"Fourth result"; break}
+   "banana" {"Fifth result"; break}
+   default {"Something else happened"; break}
+<b>}</b></pre>
+<p>The <span class="code">break</span> at the end of each condition tells  switch to stop looking further, if you omit this, the switch statement can theoretically match more than one clause and perform more than one action, this is only likely to happen if a wildcard match is being used.</p>
+<p>Where <span class="code">break</span> has been  excluded, it can be useful to add a  <span class="code"># FALLTHROUGH</span> comment to indicate that further tests will be done.</p>
+<pre>$department = &quot;sales&quot;
+
+switch ($department) <b>{</b>
+   &quot;HR&quot; {echo &quot;HR found&quot;; <b>break</b>}
+   &quot;sales&quot; {
+           echo &quot; ... exact match ... &quot;
+           # FALLTHROUGH
+   }
+   &quot;*sales&quot; {
+          echo &quot; ... wildcard match ... &quot;
+          <b>break</b>
+   }
+<b>}</b></pre>
+<p class="quote"><i>&quot;History teaches us that men and nations behave
+wisely once they have exhausted all other
+alternatives&quot; ~ Abba Eban </i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p>  <a href="break.html">Break statement </a><br>
+<a href="continue.html">Continue statement</a><br>
+
+<a href="foreach-object.html">ForEach-Object</a> - (foreach) Loop for each object in the pipeline<br>
+<a href="foreach.html">ForEach</a> - Loop through values in the pipeline<br> 
+<a href="for.html">For</a> - Loop through items that match a condition<br>
+<a href="if.html">IF</a> - Conditionally perform a command<br>
+<a href="while.html">While</a> - Loop while a condition is True</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/switch.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:59 GMT -->
+</html>

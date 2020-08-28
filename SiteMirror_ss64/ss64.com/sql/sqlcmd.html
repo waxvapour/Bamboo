@@ -1,0 +1,102 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/sqlcmd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>SQLCMD - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>SQLCMD</h1>
+<p>Run a T-SQL statement, procedure or script at the command prompt.</p>
+<pre>Syntax
+      sqlcmd <i>options</i>
+
+Options (<a href="https://msdn.microsoft.com/en-US/library/ms162773(SQL.120).aspx">SQL 2014</a>, items in <b>bold</b> are <a href="https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility">SQL 2016</a>/Azure only)
+
+   -a <i>packet_size</i>  
+   -A  (dedicated administrator connection)  
+   -b  (terminate batch job if there is an error)  
+   -c <i>batch_terminator</i>
+   -C  (trust the server certificate)  
+   -d <i>db_name</i>
+   -e  (echo input)  
+   -E  (use trusted connection)  
+   -f<i>codepage </i>| i:<i>codepage</i>[,o:<i>codepage</i>] | o:<i>codepage</i>[,i:<i>codepage</i>]  
+<b>   -g (enable column encryption)
+   -G (use Azure Active Directory for authentication)</b>
+   -h <i>rows_per_header</i>
+   -H<i> workstation_name</i>
+   -i <i>input_file
+</i>   -I  (enable quoted identifiers)
+   <b>-j (Print raw error messages)</b>
+   -k[1 | 2] (remove or replace control characters)  
+   -K<i> application_intent</i>
+   -l<i> login_timeout
+</i>   -L[c]  (list servers, optional clean output)  
+   -m<i> error_level</i>
+   -M <i>multisubnet_failover
+</i>   -N  (encrypt connection)  
+   -o<i> output_file
+</i>   -p[1] (print statistics, optional colon format)  
+   -P<i> password</i>
+   -q "<i>cmdline query</i>"
+   -Q "<i>cmdline query</i>" (and exit)  
+   -r[0 | 1] (msgs to stderr)  
+   -R (use client regional settings)  
+   -s<i> col_separator</i>
+   -S [protocol:]<i>server</i>[\<i>instance_name</i>][,<i>port</i>]  
+   -t <i>query_timeout</i>
+   -u  (unicode output file)  
+   -U <i>login_id</i>
+   -v <i>var</i> = "<i>value</i>"
+   -V<i> error_severity_level</i>
+   -w <i>column_width
+</i>   -W  (remove trailing spaces)  
+   -x  (disable variable substitution)  
+   -X[1] (disable commands, startup script, environment variables and optional exit)  
+   -y<i> variable_length_type_display_width</i>
+   -Y<i> fixed_length_type_display_width</i>
+   -z<i> new_password</i>
+   -Z<i> new_password</i> (and exit)
+   -?  (usage)</pre>
+<h2> Best Practice</h2>
+<ul>
+<li>Use integrated security.     </li>
+<li>Use -X in automated environments.     </li>
+<li>Secure input and output files by using appropriate NTFS file system permissions.     </li>
+<li>To increase performance, do as much in one sqlcmd session as you can, instead of in a series of sessions.     </li>
+<li>Set time-out values for batch or query execution higher than you expect it will take to execute the batch or query.</li>
+</ul>
+<p><b>Example</b></p>
+<p>Run the script DemoScript.sql using integrated security:</p>
+<p><span class="code">C:\&gt; sqlcmd -S Server64\instance2 -i C:\demo\DemoScript.sql</span></p>
+<p>Run the script DemoScript.sql and output to a file:</p>
+<p><span class="code">C:\&gt; sqlcmd -S Server64\instance2 -i C:\demo\DemoScript.sql -o C:\demo\output.txt</span><br>
+</p>
+<p class="quote"><i>&quot;When debugging, novices insert corrective code; experts remove defective code&quot; ~ Richard Pattis</i></p>
+<p><b>Related:</b></p>
+<p><a href="invoke-sqlcmd.html">Invoke-Sqlcmd</a> - Run an SQL script (PowerShell/SQLCMD)</p>
+<!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/sqlcmd.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:30 GMT -->
+</html>

@@ -1,0 +1,214 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/openssl.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>openssl Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>openssl</h1> 
+<p>OpenSSL command line tool.</p>
+<pre>Syntax
+      openssl command [ <i>command_opts</i> ] [ <i>command_args</i> ]
+
+      openssl [ <i>list-standard-commands</i> | <i>list-message-digest-commands</i> | <i>list-cipher-commands</i> ]
+
+      openssl no-XXX [ <i>arbitrary options</i> ]
+
+
+STANDARD COMMANDS
+       asn1parse Parse an ASN.1 sequence.
+
+       ca        Certificate Authority (CA) Management.
+
+       ciphers   Cipher Suite Description Determination.
+
+       crl       Certificate Revocation List (CRL) Management.
+
+       crl2pkcs7 CRL to PKCS#7 Conversion.
+
+       dgst      Message Digest Calculation.
+
+       dh        Diffie-Hellman Parameter Management.  Obsoleted by dhparam.
+
+       dsa       DSA Data Management.
+
+       dsaparam  DSA Parameter Generation.
+
+       enc       Encoding with Ciphers.
+
+       errstr    Error Number to Error String Conversion.
+
+       dhparam   Generation and Management of Diffie-Hellman Parameters.
+
+       gendh     Generation of Diffie-Hellman Parameters.  Obsoleted by dhparam.
+
+       gendsa    Generation of DSA Parameters.
+
+       genrsa    Generation of RSA Parameters.
+
+       ocsp      Online Certificate Status Protocol utility.
+
+       passwd    Generation of hashed passwords.
+
+       pkcs12    PKCS#12 Data Management.
+
+       pkcs7     PKCS#7 Data Management.
+
+       rand      Generate pseudo-random bytes.
+
+       req       X.509 Certificate Signing Request (CSR) Management.
+
+       rsa       RSA Data Management.
+
+       rsautl    RSA utility for signing, verification, encryption, and decryption.
+
+       s_client  This implements a generic SSL/TLS client which can establish a transparent
+                 connection to a remote server speaking SSL/TLS. It's intended for testing
+                 purposes only and provides only rudimentary interface functionality but
+                 internally uses mostly all functionality of the OpenSSL ssl library.
+
+       s_server  This implements a generic SSL/TLS server which accepts connections from
+                 remote clients speaking SSL/TLS. It's intended for testing purposes only and
+                 provides only rudimentary interface functionality but internally uses mostly
+                 all functionality of the OpenSSL ssl library.  It provides both an own
+                 command line oriented protocol for testing SSL functions and a simple HTTP
+                 response facility to emulate an SSL/TLS-aware webserver.
+
+       s_time    SSL Connection Timer.
+
+       sess_id   SSL Session Data Management.
+
+       smime     S/MIME mail processing.
+
+       speed     Algorithm Speed Measurement.
+
+       verify    X.509 Certificate Verification.
+
+       version   OpenSSL Version Information.
+
+       x509      X.509 Certificate Data Management.
+
+MESSAGE DIGEST COMMANDS
+       md2       MD2 Digest
+
+       md5       MD5 Digest
+
+       mdc2      MDC2 Digest
+
+       rmd160    RMD-160 Digest
+
+       sha       SHA Digest
+
+       sha1      SHA-1 Digest
+
+       sha224    SHA-224 Digest
+
+       sha256    SHA-256 Digest
+
+       sha384    SHA-384 Digest
+
+       sha512    SHA-512 Digest
+
+ENCODING AND CIPHER COMMANDS
+       base64    Base64 Encoding
+
+       bf bf-cbc bf-cfb bf-ecb bf-ofb
+                 Blowfish Cipher
+
+       cast cast-cbc
+                 CAST Cipher
+
+       cast5-cbc cast5-cfb cast5-ecb cast5-ofb
+                 CAST5 Cipher
+
+       des des-cbc des-cfb des-ecb des-ede des-ede-cbc des-ede-cfb des-ede-ofb des-ofb
+                 DES Cipher
+
+       des3 desx des-ede3 des-ede3-cbc des-ede3-cfb des-ede3-ofb
+                 Triple-DES Cipher
+
+       idea idea-cbc idea-cfb idea-ecb idea-ofb
+                 IDEA Cipher
+
+       rc2 rc2-cbc rc2-cfb rc2-ecb rc2-ofb
+                 RC2 Cipher
+
+       rc4       RC4 Cipher
+
+       rc5 rc5-cbc rc5-cfb rc5-ecb rc5-ofb
+                 RC5 Cipher
+PASS PHRASE ARGUMENTS
+       Several commands accept password arguments, typically using -passin and -passout for
+       input and output passwords respectively. These allow the password to be obtained from a
+       variety of sources. Both of these options take a single argument whose format is
+       described below. If no password argument is given and a password is required then the
+       user is prompted to enter one: this will typically be read from the current terminal
+       with echoing turned off.
+
+       pass:password
+                 the actual password is password. Since the password is visible to utilities
+                 (like 'ps' under Unix) this form should only be used where security is not
+                 important.
+
+       env:var   obtain the password from the environment variable var. Since the environment
+                 of other processes is visible on certain platforms (e.g. ps under certain
+                 Unix OSes) this option should be used with caution.
+
+       file:pathname
+                 the first line of pathname is the password. If the same pathname argument is
+                 supplied to -passin and -passout arguments then the first line will be used
+                 for the input password and the next line for the output password. pathname
+                 need not refer to a regular file: it could for example refer to a device or
+                 named pipe.
+
+       fd:number read the password from the file descriptor number. This can be used to send
+                 the data via a pipe for example.
+
+       stdin     read the password from standard input.</pre>
+<p>OpenSSL is a cryptography toolkit implementing the Secure Sockets Layer (SSL v2/v3) and        Transport Layer Security (TLS v1) network protocols and related cryptography standards        required by them.        </p>
+<p>The openssl program is a command line tool for using the various cryptography functions        of OpenSSL's crypto library from the shell.  It can be used for         </p>
+<ul>
+<li>Creation of RSA, DH and DSA key parameters</li>
+<li>Creation of X.509 certificates, CSRs and CRLs         </li>
+<li>Calculation of Message Digests         o  Encryption and Decryption with Ciphers         </li>
+<li>SSL/TLS Client and Server Tests         </li>
+<li>Handling of S/MIME signed or encrypted mail </li>
+</ul>
+<p>COMMAND SUMMARY        </p>
+<p>The openssl program provides a rich variety of commands (command in the SYNOPSIS        above), each of which often has a wealth of options and arguments (command_opts and        command_args in the SYNOPSIS).        </p>
+<p>The pseudo-commands <span class="code">list-standard-commands</span>, <span class="code">list-message-digest-commands</span>, and<span class="code"> list-        cipher-commands</span> output a list (one entry per line) of the names of all standard        commands, message digest commands, or cipher commands, respectively, that are available        in the present openssl utility.        </p>
+<p>The pseudo-command no-XXX tests whether a command of the specified name is available.        If no command named XXX exists, it returns 0 (success) and prints no-XXX; otherwise it        returns 1 and prints XXX.  In both cases, the output goes to stdout and nothing is        printed to stderr.  Additional command line arguments are always ignored.  Since for        each cipher there is a command of the same name, this provides an easy way for shell        scripts to test for the availability of ciphers in the openssl program.  (no-XXX is not        able to detect pseudo-commands such as quit, list-...-commands, or no-XXX itself.)</p>
+<p><b>Examples</b></p>
+<p>Verify a manually-downloaded software update (<span class="code">InstallESD.dmg</span>) from Apple Downloads, which contains a SHA-1 digest</p>
+<pre class="code">$ <b>openssl sha1</b> /Volumes/Install\ macOS\ Sierra\ 12.5.03/Install\ macOS\ Sierra.app/Contents/SharedSupport/InstallESD.dmg</pre>
+<pre class="code">SHA1(/Volumes/Install macOS Sierra 12.5.03/Install macOS Sierra.app/Contents/SharedSupport/InstallESD.dmg)= 51df126965433187403987c9d74d95c26cba9266</pre>
+<p>This can be compared with a list of known good file hashes. e.g. <a href="https://github.com/drduh/macOS-Security-and-Privacy-Guide/blob/master/InstallESD_Hashes.csv">OSX InstallESD_Hashes.csv</a></p>
+<p><b>  </b><i class="quote">"Programming is dreadfully impermanent; it's more like performance 
+    art than literature&quot; ~ Bruce 
+    Sterling</i></p>
+<p><b>Related macOS commands:</b></p>
+<p> asn1parse(1), ca(1), config(5), crl(1), crl2pkcs7(1), dgst(1), dhparam(1), dsa(1),        dsaparam(1), enc(1), gendsa(1), genrsa(1), nseq(1), openssl(1), passwd(1), pkcs12(1),        pkcs7(1), pkcs8(1), rand(1), req(1), rsa(1), rsautl(1), s_client(1), s_server(1),        s_time(1), smime(1), spkac(1), verify(1), version(1), x509(1), crypto(3), ssl(3)</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/openssl.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:17 GMT -->
+</html>

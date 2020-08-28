@@ -1,0 +1,310 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-mmc.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<link rel="STYLESHEET" href="../tables.css" type="text/css">
+<title>MMC Admin command lines - Windows CMD - SS64.com</title>
+<script src="../css/sorttable.js"></script>
+<style type="text/css">
+/* Sortable tables */
+table.sortable th {
+    cursor: default;
+    background-color: #B6C9E7;
+}
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: url("data:image/gif;base64,R0lGODlhFQAJAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4OEM2REYyN0ExMDhBNDJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjdCNTAyODcwMEY4NjExRTBBMzkyQzAyM0E1RDk3RDc3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjdCNTAyODZGMEY4NjExRTBBMzkyQzAyM0E1RDk3RDc3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDE4MDExNzQwNzIwNjgxMTg4QzZERjI3QTEwOEE0MkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDE4MDExNzQwNzIwNjgxMTg4QzZERjI3QTEwOEE0MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQBAAABACwAAAAAFQAJAAACF4yPgMsJ2mJ4VDKKrd4GVz5lYPeMiVUAADs=");
+/*" \25B4\25BE " */ 
+}
+#mmc tr:hover td {  background-color: #ddd;}
+</style>
+</head><body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>MMC Snap-ins</h1>
+<p>System Administrator command line shortcuts to popular Microsoft Management Consoles (MMCs).</p>
+<table  id="mmc" class="sortable">
+<colgroup width="321">
+</colgroup>
+<colgroup width="320">
+</colgroup>
+<colgroup width="159">
+</colgroup>
+<tr>
+<th>Admin Snap-in</th>
+<th>Command</th>
+<th>Category</th>
+</tr>
+<tr>
+<td>Quality of Service Control Management</td>
+<td class="code">ACSsnap.msc</td>
+<td>Network</td>
+</tr>
+<tr>
+<td>ADSI Edit</td>
+<td class="code">ADSIedit.msc</td>
+<td>AD Configuration</td>
+</tr>
+<tr>
+<td>Authorization manager</td>
+<td class="code">AZman.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Certificates Management - Local machine</td>
+<td class="code">Certlm.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Certificates Management - Current user</td>
+<td class="code">Certmgr.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Certification Authority Management</td>
+<td class="code">Certsrv.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Certificate Templates</td>
+<td class="code">Certtmpl.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Failover cluster Manager</td>
+<td class="code">Cluadmin.exe</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Component Services</td>
+<td class="code">Comexp.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td><b>Computer Management</b></td>
+<td class="code">Compmgmt.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Device Manager</td>
+<td class="code">Devmgmt.msc</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>Notifications/Start menu/policy</td>
+<td class="code">DevModeRunAsUserConfig.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Disk Defragmenter</td>
+<td class="code"><a href="defrag.html">Defrag.exe</a> (formerly Dfrg.msc)</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Distributed File Service Mgmt</td>
+<td class="code">DFSmgmt.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Disk Manager</td>
+<td class="code">DiskMgmt.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>DNS Manager</td>
+<td class="code">DNSmgmt.msc</td>
+<td>Network</td>
+</tr>
+<tr>
+<td>AD Domains and Trusts</td>
+<td class="code">Domain.msc</td>
+<td>AD Configuration</td>
+</tr>
+<tr>
+<td>AD Users and Computers</td>
+<td class="code">DSA.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>AD Sites and Services</td>
+<td class="code">DSsite.msc</td>
+<td>AD Configuration</td>
+</tr>
+<tr>
+<td>Embedded Lockdown Manager</td>
+<td class="code">EmbeddedLockdown.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td><b>Event Viewer</b></td>
+<td class="code">Eventvwr.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Shared Folders open files</td>
+<td class="code">FSmgmt.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>File Server Resource manager</td>
+<td class="code">FSRM.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Local Group Policy Editor</td>
+<td class="code">GPedit.msc</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td>Group Policy Management</td>
+<td class="code">GPmc.msc</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td>Group Policy Management Editor</td>
+<td class="code">GPme.msc</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td>Group Policy Starter GPO Editor</td>
+<td class="code">GPTedit.msc</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td>Local Users and Groups Manager</td>
+<td class="code">LUsrMgr.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Teminal Services RDP</td>
+<td class="code">MSTSC</td>
+<td>Remote Access</td>
+</tr>
+<tr>
+<td>Teminal Services RDP to Console</td>
+<td class="code">MSTSC /v:[server] /console</td>
+<td>Remote Access</td>
+</tr>
+<tr>
+<td>NAP client configuration</td>
+<td class="code">NapCLCfg</td>
+<td>Network</td>
+</tr>
+<tr>
+<td><b>Performance Monitor</b></td>
+<td class="code">PerfMon.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Print Management</td>
+<td class="code">PrintManagement.msc</td>
+<td>Print</td>
+</tr>
+<tr>
+<td>Resultant Set of Policy</td>
+<td class="code">RSOP.msc</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td>Local Security Settings Manager</td>
+<td class="code">SecPol.msc</td>
+<td>Policy</td>
+</tr>
+<tr>
+<td><b>Server Roles, Features</b></td>
+<td class="code">ServerManager.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Services Management</td>
+<td class="code">Services.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>SQL Server configuration Manager</td>
+<td class="code">SQLServerManager11.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Storage Mgmt</td>
+<td class="code">StorageMgmt.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Telephony Management</td>
+<td class="code">TAPImgmt.msc</td>
+<td>Phone/Modem</td>
+</tr>
+<tr>
+<td>Task Scheduler</td>
+<td class="code">TaskSchd.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Trusted Platform Module</td>
+<td class="code">TPM.msc</td>
+<td>Security</td>
+</tr>
+<tr>
+<td>Terminal Server Manager</td>
+<td class="code">TSadmin.exe</td>
+<td>Remote Access</td>
+</tr>
+<tr>
+<td>Remote Desktop</td>
+<td class="code">TSmmc.msc</td>
+<td>Remote Access</td>
+</tr>
+<tr>
+<td>Windows Mangement Instrumentation</td>
+<td class="code">WmiMgmt.msc</td>
+<td><br></td>
+</tr>
+<tr>
+<td>Windows Server Backup (Local+Remote)</td>
+<td class="code">WBadmin.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Windows Local Backup</td>
+<td class="code">WLBadmin.msc</td>
+<td>Disc, File</td>
+</tr>
+<tr>
+<td>Windows Firewall</td>
+<td class="code">WF.msc</td>
+<td>Remote Access</td>
+</tr>
+</table>
+<p>The commands above can be entered from START &gt; Run, or from the command line.<br>
+Availability will vary by OS and by the features installed.</p>
+<p><i class="quote">&ldquo;I don't do anything in order to cause trouble. It just so happens that what I do naturally causes trouble.<br>
+&nbsp;I'm proud to be a troublemaker&rdquo; ~ Sinead O'Connor</i><br>
+<br>
+<b>Related:</b></p>
+<p><a href="syntax-run.html">Run Commands</a><br>
+<a href="syntax-windows.html">Windows 10 shortcut keys</a> e.g. Win+X opens the 
+Quick Link menu (Device Manager, Computer manager etc).<br>
+</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-mmc.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:52 GMT -->
+</html>

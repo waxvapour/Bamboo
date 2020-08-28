@@ -1,0 +1,202 @@
+
+' Display all User Shell Folders
+
+' constants from
+'https://msdn.microsoft.com/en-us/library/windows/desktop/bb774096(v=vs.85).aspx
+
+Set objShell = CreateObject("Shell.Application")
+
+Wscript.Echo "PERSONAL folder"
+Set objFolder = objShell.Namespace(5) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "ALTSTARTUP folder"
+Set objFolder = objShell.Namespace(29) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "APPDATA folder"
+Set objFolder = objShell.Namespace(26) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "BITBUCKET /recycler"
+Set objFolder = objShell.Namespace(10) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONALTSTARTUP folder"
+Set objFolder = objShell.Namespace(30) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONAPPDATA folder"
+Set objFolder = objShell.Namespace(35) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONDESKTOPDIR folder"
+Set objFolder = objShell.Namespace(25) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "APPDATA folder"
+Set objFolder = objShell.Namespace(26) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONFAVORITES folder"
+Set objFolder = objShell.Namespace(31) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONPROGRAMS folder"
+Set objFolder = objShell.Namespace(23) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONSTARTMENU folder"
+Set objFolder = objShell.Namespace(22) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COMMONSTARTUP folder"
+Set objFolder = objShell.Namespace(24) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "CONTROLS"
+Set objFolder = objShell.Namespace(3) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "COOKIES folder"
+Set objFolder = objShell.Namespace(33) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "DESKTOP folder"
+Set objFolder = objShell.Namespace(0) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "DESKTOPDIRECTORY folder"
+Set objFolder = objShell.Namespace(16) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "DRIVES"
+Set objFolder = objShell.Namespace(17) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "FAVORITES folder"
+Set objFolder = objShell.Namespace(6) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "FONTS folder"
+Set objFolder = objShell.Namespace(20) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "HISTORY folder"
+Set objFolder = objShell.Namespace(34) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "INTERNETCACHE folder"
+Set objFolder = objShell.Namespace(32) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "LOCALAPPDATA folder"
+Set objFolder = objShell.Namespace(28) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "MYPICTURES folder"
+Set objFolder = objShell.Namespace(39) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "NETHOOD folder"
+Set objFolder = objShell.Namespace(19) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "NETWORK"
+Set objFolder = objShell.Namespace(18) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PERSONAL folder"
+Set objFolder = objShell.Namespace(5) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PRINTERS"
+Set objFolder = objShell.Namespace(4) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PRINTHOOD folder"
+Set objFolder = objShell.Namespace(27) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PROFILE folder"
+Set objFolder = objShell.Namespace(40) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PROGRAMFILES folder"
+Set objFolder = objShell.Namespace(38) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PROGRAMFILESx86 folder"
+Set objFolder = objShell.Namespace(48) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "PROGRAMS folder"
+Set objFolder = objShell.Namespace(2) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "RECENT folder"
+Set objFolder = objShell.Namespace(8) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "SENDTO folder"
+Set objFolder = objShell.Namespace(9) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "STARTUP folder"
+Set objFolder = objShell.Namespace(7) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "SYSTEM folder"
+Set objFolder = objShell.Namespace(37) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "SYSTEMx86 folder"
+Set objFolder = objShell.Namespace(41) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "TEMPLATES folder"
+Set objFolder = objShell.Namespace(21) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""
+
+Wscript.Echo "WINDOWS folder"
+Set objFolder = objShell.Namespace(36) 
+Wscript.Echo objFolder.Self.Path
+Wscript.Echo ""

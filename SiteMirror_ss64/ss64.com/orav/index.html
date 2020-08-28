@@ -1,0 +1,325 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/orav/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Oracle v$ Views - Oracle - SS64.com</title>
+<meta name="Description" CONTENT="Oracle V$ Data Dictionary">
+<meta name="Keywords" CONTENT="oracle,v$,Command line,sql,script">
+</head><body> 
+<div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html">( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="../ora/index.html">Oracle</a></li>
+
+<li class="tbtn"><a href="../ora/syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div>
+<h1>Oracle  Dynamic Performance V$ Views</h1>
+<p>See also a dump of the <a href="../orad/index-2.html">Oracle Data Dictionary</a></p>
+<pre>
+ <a href="V%24ACCESS.html">V$ACCESS</a> 
+ <a href="V%24ACTIVE_INSTANCES.html">V$ACTIVE_INSTANCES</a> 
+ <a href="V%24ACTIVE_SESS_POOL_MTH.html">V$ACTIVE_SESS_POOL_MTH</a> 
+ <a href="V%24AQ.html">V$AQ</a> 
+ <a href="V%24AQ1.html">V$AQ1</a> 
+ <a href="V%24ARCHIVE.html">V$ARCHIVE</a> 
+ <a href="V%24ARCHIVED_LOG.html">V$ARCHIVED_LOG</a> 
+ <a href="V%24ARCHIVE_DEST.html">V$ARCHIVE_DEST</a> 
+ <a href="V%24ARCHIVE_DEST_STATUS.html">V$ARCHIVE_DEST_STATUS</a> 
+ <a href="V%24ARCHIVE_GAP.html">V$ARCHIVE_GAP</a> 
+ <a href="V%24ARCHIVE_PROCESSES.html">V$ARCHIVE_PROCESSES</a> 
+ <a href="V%24AW_CALC.html">V$AW_CALC</a> 
+ <a href="V%24AW_OLAP.html">V$AW_OLAP</a> 
+ <a href="V%24AW_SESSION_INFO.html">V$AW_SESSION_INFO</a> 
+ 
+ <a href="V%24BACKUP.html">V$BACKUP</a> 
+ <a href="V%24BACKUP_ASYNC_IO.html">V$BACKUP_ASYNC_IO</a> 
+ <a href="V%24BACKUP_CORRUPTION.html">V$BACKUP_CORRUPTION</a> 
+ <a href="V%24BACKUP_DATAFILE.html">V$BACKUP_DATAFILE</a> 
+ <a href="V%24BACKUP_DEVICE.html">V$BACKUP_DEVICE</a> 
+ <a href="V%24BACKUP_PIECE.html">V$BACKUP_PIECE</a> 
+ <a href="V%24BACKUP_REDOLOG.html">V$BACKUP_REDOLOG</a> 
+ <a href="V%24BACKUP_SET.html">V$BACKUP_SET</a> 
+ <a href="V%24BACKUP_SPFILE.html">V$BACKUP_SPFILE</a> 
+ <a href="V%24BACKUP_SYNC_IO.html">V$BACKUP_SYNC_IO</a> 
+ <a href="V%24BGPROCESS.html">V$BGPROCESS</a> 
+ <a href="V%24BH.html">V$BH</a> 
+ <a href="V%24BSP.html">V$BSP</a> 
+ <a href="V%24BUFFER_POOL.html">V$BUFFER_POOL</a> 
+ <a href="V%24BUFFER_POOL_STATISTICS.html">V$BUFFER_POOL_STATISTICS</a> 
+ 
+ <a href="V%24CIRCUIT.html">V$CIRCUIT</a> 
+ <a href="V%24CLASS_CACHE_TRANSFER.html">V$CLASS_CACHE_TRANSFER</a> 
+ <a href="V%24CLASS_PING.html">V$CLASS_PING</a> 
+ <a href="V%24COMPATIBILITY.html">V$COMPATIBILITY</a> 
+ <a href="V%24COMPATSEG.html">V$COMPATSEG</a> 
+ <a href="V%24CONTEXT.html">V$CONTEXT</a> 
+ <a href="V%24CONTROLFILE.html">V$CONTROLFILE</a> 
+ <a href="V%24CONTROLFILE_RECORD_SECTION.html">V$CONTROLFILE_RECORD_SECTION</a> 
+ <a href="V%24COPY_CORRUPTION.html">V$COPY_CORRUPTION</a> 
+ <a href="V%24CR_BLOCK_SERVER.html">V$CR_BLOCK_SERVER</a> 
+ 
+ <a href="V%24DATABASE.html">V$DATABASE</a> 
+ <a href="V%24DATABASE_BLOCK_CORRUPTION.html">V$DATABASE_BLOCK_CORRUPTION</a> 
+ <a href="V%24DATABASE_INCARNATION.html">V$DATABASE_INCARNATION</a> 
+ <a href="V%24DATAFILE.html">V$DATAFILE</a> 
+ <a href="V%24DATAFILE_COPY.html">V$DATAFILE_COPY</a> 
+ <a href="V%24DATAFILE_HEADER.html">V$DATAFILE_HEADER</a> 
+ <a href="V%24DATAGUARD_STATUS.html">V$DATAGUARD_STATUS</a> 
+ <a href="V%24DBFILE.html">V$DBFILE</a> 
+ <a href="V%24DBLINK.html">V$DBLINK</a> 
+ <a href="V%24DB_CACHE_ADVICE.html">V$DB_CACHE_ADVICE</a> 
+ <a href="V%24DB_OBJECT_CACHE.html">V$DB_OBJECT_CACHE</a> 
+ <a href="V%24DB_PIPES.html">V$DB_PIPES</a> 
+ <a href="V%24DELETED_OBJECT.html">V$DELETED_OBJECT</a> 
+ <a href="V%24DISPATCHER.html">V$DISPATCHER</a> 
+ <a href="V%24DISPATCHER_RATE.html">V$DISPATCHER_RATE</a> 
+ <a href="V%24DLM_ALL_LOCKS.html">V$DLM_ALL_LOCKS</a> 
+ <a href="V%24DLM_CONVERT_LOCAL.html">V$DLM_CONVERT_LOCAL</a> 
+ <a href="V%24DLM_CONVERT_REMOTE.html">V$DLM_CONVERT_REMOTE</a> 
+ <a href="V%24DLM_LATCH.html">V$DLM_LATCH</a> 
+ <a href="V%24DLM_LOCKS.html">V$DLM_LOCKS</a> 
+ <a href="V%24DLM_MISC.html">V$DLM_MISC</a> 
+ <a href="V%24DLM_RESS.html">V$DLM_RESS</a> 
+ <a href="V%24DLM_TRAFFIC_CONTROLLER.html">V$DLM_TRAFFIC_CONTROLLER</a> 
+ 
+ <a href="V%24ENABLEDPRIVS.html">V$ENABLEDPRIVS</a> 
+ <a href="V%24ENQUEUE_LOCK.html">V$ENQUEUE_LOCK</a> 
+ <a href="V%24ENQUEUE_STAT.html">V$ENQUEUE_STAT</a> 
+ <a href="V%24EVENT_NAME.html">V$EVENT_NAME</a> 
+ <a href="V%24EXECUTION.html">V$EXECUTION</a> 
+ 
+ <a href="V%24FAST_START_SERVERS.html">V$FAST_START_SERVERS</a> 
+ <a href="V%24FAST_START_TRANSACTIONS.html">V$FAST_START_TRANSACTIONS</a> 
+ <a href="V%24FILESTAT.html">V$FILESTAT</a> 
+ <a href="V%24FILESTATXS.html">V$FILESTATXS</a> 
+ <a href="V%24FILE_CACHE_TRANSFER.html">V$FILE_CACHE_TRANSFER</a> 
+ <a href="V%24FILE_PING.html">V$FILE_PING</a> 
+ <a href="V%24FIXED_TABLE.html">V$FIXED_TABLE</a> 
+ <a href="V%24FIXED_VIEW_DEFINITION.html">V$FIXED_VIEW_DEFINITION</a> 
+ 
+ <a href="V%24GCSHVMASTER_INFO.html">V$GCSHVMASTER_INFO</a> 
+ <a href="V%24GCSPFMASTER_INFO.html">V$GCSPFMASTER_INFO</a> 
+ <a href="V%24GC_ELEMENT.html">V$GC_ELEMENT</a> 
+ <a href="V%24GC_ELEMENTS_W_COLLISIONS.html">V$GC_ELEMENTS_W_COLLISIONS</a> 
+ <a href="V%24GES_BLOCKING_ENQUEUE.html">V$GES_BLOCKING_ENQUEUE</a> 
+ <a href="V%24GES_ENQUEUE.html">V$GES_ENQUEUE</a> 
+ <a href="V%24GLOBALCONTEXT.html">V$GLOBALCONTEXT</a> 
+ <a href="V%24GLOBAL_BLOCKED_LOCKS.html">V$GLOBAL_BLOCKED_LOCKS</a> 
+ <a href="V%24GLOBAL_TRANSACTION.html">V$GLOBAL_TRANSACTION</a> 
+ 
+ <a href="V%24HS_AGENT.html">V$HS_AGENT</a> 
+ <a href="V%24HS_PARAMETER.html">V$HS_PARAMETER</a> 
+ <a href="V%24HS_SESSION.html">V$HS_SESSION</a> 
+ <a href="V%24HVMASTER_INFO.html">V$HVMASTER_INFO</a> 
+ 
+ <a href="V%24INDEXED_FIXED_COLUMN.html">V$INDEXED_FIXED_COLUMN</a> 
+ <a href="V%24INSTANCE.html">V$INSTANCE</a> 
+ <a href="V%24INSTANCE_RECOVERY.html">V$INSTANCE_RECOVERY</a> 
+ 
+ <a href="V%24KCCDI.html">V$KCCDI</a> 
+ <a href="V%24KCCFE.html">V$KCCFE</a> 
+ 
+ <a href="V%24LATCH.html">V$LATCH</a> 
+ <a href="V%24LATCHHOLDER.html">V$LATCHHOLDER</a> 
+ <a href="V%24LATCHNAME.html">V$LATCHNAME</a> 
+ <a href="V%24LATCH_CHILDREN.html">V$LATCH_CHILDREN</a> 
+ <a href="V%24LATCH_MISSES.html">V$LATCH_MISSES</a> 
+ <a href="V%24LATCH_PARENT.html">V$LATCH_PARENT</a> 
+ <a href="V%24LIBRARYCACHE.html">V$LIBRARYCACHE</a> 
+ <a href="V%24LIBRARY_CACHE_MEMORY.html">V$LIBRARY_CACHE_MEMORY</a> 
+ <a href="V%24LICENSE.html">V$LICENSE</a> 
+ <a href="V%24LOADISTAT.html">V$LOADISTAT</a> 
+ <a href="V%24LOADPSTAT.html">V$LOADPSTAT</a> 
+ <a href="V%24LOCK.html">V$LOCK</a> 
+ <a href="V%24_LOCK.html">V$_LOCK</a>
+ <a href="V%24LOCKED_OBJECT.html">V$LOCKED_OBJECT</a> 
+ <a href="V%24LOCKS_WITH_COLLISIONS.html">V$LOCKS_WITH_COLLISIONS</a> 
+ <a href="V%24LOCK_ACTIVITY.html">V$LOCK_ACTIVITY</a> 
+ <a href="V%24LOCK_ELEMENT.html">V$LOCK_ELEMENT</a> 
+ <a href="V%24LOG.html">V$LOG</a> 
+ <a href="V%24LOGFILE.html">V$LOGFILE</a> 
+ <a href="V%24LOGHIST.html">V$LOGHIST</a> 
+ <a href="V%24LOGMNR_CALLBACK.html">V$LOGMNR_CALLBACK</a> 
+ <a href="V%24LOGMNR_CONTENTS.html">V$LOGMNR_CONTENTS</a> 
+ <a href="V%24LOGMNR_DICTIONARY.html">V$LOGMNR_DICTIONARY</a> 
+ <a href="V%24LOGMNR_LOGFILE.html">V$LOGMNR_LOGFILE</a> 
+ <a href="V%24LOGMNR_LOGS.html">V$LOGMNR_LOGS</a> 
+ <a href="V%24LOGMNR_PARAMETERS.html">V$LOGMNR_PARAMETERS</a> 
+ <a href="V%24LOGMNR_PROCESS.html">V$LOGMNR_PROCESS</a> 
+ <a href="V%24LOGMNR_REGION.html">V$LOGMNR_REGION</a> 
+ <a href="V%24LOGMNR_SESSION.html">V$LOGMNR_SESSION</a> 
+ <a href="V%24LOGMNR_STATS.html">V$LOGMNR_STATS</a> 
+ <a href="V%24LOGMNR_TRANSACTION.html">V$LOGMNR_TRANSACTION</a> 
+ <a href="V%24LOGSTDBY.html">V$LOGSTDBY</a> 
+ <a href="V%24LOGSTDBY_STATS.html">V$LOGSTDBY_STATS</a> 
+ <a href="V%24LOG_HISTORY.html">V$LOG_HISTORY</a> 
+ 
+ <a href="V%24MANAGED_STANDBY.html">V$MANAGED_STANDBY</a> 
+ <a href="V%24MAP_COMP_LIST.html">V$MAP_COMP_LIST</a> 
+ <a href="V%24MAP_ELEMENT.html">V$MAP_ELEMENT</a> 
+ <a href="V%24MAP_EXT_ELEMENT.html">V$MAP_EXT_ELEMENT</a> 
+ <a href="V%24MAP_FILE.html">V$MAP_FILE</a> 
+ <a href="V%24MAP_FILE_EXTENT.html">V$MAP_FILE_EXTENT</a> 
+ <a href="V%24MAP_FILE_IO_STACK.html">V$MAP_FILE_IO_STACK</a> 
+ <a href="V%24MAP_LIBRARY.html">V$MAP_LIBRARY</a> 
+ <a href="V%24MAP_SUBELEMENT.html">V$MAP_SUBELEMENT</a> 
+ <a href="V%24MAX_ACTIVE_SESS_TARGET_MTH.html">V$MAX_ACTIVE_SESS_TARGET_MTH</a> 
+ <a href="V%24MLS_PARAMETERS.html">V$MLS_PARAMETERS</a> 
+ <a href="V%24MTS.html">V$MTS</a> 
+ <a href="V%24MTTR_TARGET_ADVICE.html">V$MTTR_TARGET_ADVICE</a> 
+ <a href="V%24MVREFRESH.html">V$MVREFRESH</a> 
+ <a href="V%24MYSTAT.html">V$MYSTAT</a> 
+ 
+ <a href="V%24NLS_PARAMETERS.html">V$NLS_PARAMETERS</a> 
+ <a href="V%24NLS_VALID_VALUES.html">V$NLS_VALID_VALUES</a> 
+ 
+ <a href="V%24OBJECT_DEPENDENCY.html">V$OBJECT_DEPENDENCY</a> 
+ <a href="V%24OBJECT_USAGE.html">V$OBJECT_USAGE</a> 
+ <a href="V%24OBSOLETE_PARAMETER.html">V$OBSOLETE_PARAMETER</a> 
+ <a href="V%24OFFLINE_RANGE.html">V$OFFLINE_RANGE</a> 
+ <a href="V%24OLAP_ALTER_SESSION.html">V$OLAP_ALTER_SESSION</a> 
+ <a href="V%24OPEN_CURSOR.html">V$OPEN_CURSOR</a> 
+ <a href="V%24OPTION.html">V$OPTION</a> 
+
+ <a href="V%24PARALLEL_DEGREE_LIMIT_MTH.html">V$PARALLEL_DEGREE_LIMIT_MTH</a> 
+ <a href="V%24PARAMETER.html">V$PARAMETER</a> 
+ <a href="V%24PARAMETER2.html">V$PARAMETER2</a> 
+ <a href="V%24PGASTAT.html">V$PGASTAT</a> 
+ <a href="V%24PGA_TARGET_ADVICE.html">V$PGA_TARGET_ADVICE</a> 
+ <a href="V%24PGA_TARGET_ADVICE_HISTOGRAM.html">V$PGA_TARGET_ADVICE_HISTOGRAM</a> 
+ <a href="V%24PQ_SESSTAT.html">V$PQ_SESSTAT</a> 
+ <a href="V%24PQ_SLAVE.html">V$PQ_SLAVE</a> 
+ <a href="V%24PQ_SYSSTAT.html">V$PQ_SYSSTAT</a> 
+ <a href="V%24PQ_TQSTAT.html">V$PQ_TQSTAT</a> 
+ <a href="V%24PROCESS.html">V$PROCESS</a> 
+ <a href="V%24PROXY_ARCHIVEDLOG.html">V$PROXY_ARCHIVEDLOG</a> 
+ <a href="V%24PROXY_DATAFILE.html">V$PROXY_DATAFILE</a> 
+ <a href="V%24PWFILE_USERS.html">V$PWFILE_USERS</a> 
+ <a href="V%24PX_PROCESS.html">V$PX_PROCESS</a> 
+ <a href="V%24PX_PROCESS_SYSSTAT.html">V$PX_PROCESS_SYSSTAT</a> 
+ <a href="V%24PX_SESSION.html">V$PX_SESSION</a> 
+ <a href="V%24PX_SESSTAT.html">V$PX_SESSTAT</a> 
+ 
+ <a href="V%24QUEUE.html">V$QUEUE</a> 
+ <a href="V%24QUEUEING_MTH.html">V$QUEUEING_MTH</a> 
+ 
+ <a href="V%24RECOVERY_FILE_STATUS.html">V$RECOVERY_FILE_STATUS</a> 
+ <a href="V%24RECOVERY_LOG.html">V$RECOVERY_LOG</a> 
+ <a href="V%24RECOVERY_PROGRESS.html">V$RECOVERY_PROGRESS</a> 
+ <a href="V%24RECOVERY_STATUS.html">V$RECOVERY_STATUS</a> 
+ <a href="V%24RECOVER_FILE.html">V$RECOVER_FILE</a> 
+ <a href="V%24REPLPROP.html">V$REPLPROP</a> 
+ <a href="V%24REPLQUEUE.html">V$REPLQUEUE</a> 
+ <a href="V%24REQDIST.html">V$REQDIST</a> 
+ <a href="V%24RESERVED_WORDS.html">V$RESERVED_WORDS</a> 
+ <a href="V%24RESOURCE.html">V$RESOURCE</a> 
+ <a href="V%24RESOURCE_LIMIT.html">V$RESOURCE_LIMIT</a> 
+ <a href="V%24RESUMABLE.html">V$RESUMABLE</a> 
+ <a href="V%24RMAN_CONFIGURATION.html">V$RMAN_CONFIGURATION</a> 
+ <a href="V%24ROLLNAME.html">V$ROLLNAME</a> 
+ <a href="V%24ROLLSTAT.html">V$ROLLSTAT</a> 
+ <a href="V%24ROWCACHE.html">V$ROWCACHE</a> 
+ <a href="V%24ROWCACHE_PARENT.html">V$ROWCACHE_PARENT</a> 
+ <a href="V%24ROWCACHE_SUBORDINATE.html">V$ROWCACHE_SUBORDINATE</a> 
+ <a href="V%24RSRC_CONSUMER_GROUP.html">V$RSRC_CONSUMER_GROUP</a> 
+ <a href="V%24RSRC_CONSUMER_GROUP_CPU_MTH.html">V$RSRC_CONSUMER_GROUP_CPU_MTH</a> 
+ <a href="V%24RSRC_PLAN.html">V$RSRC_PLAN</a> 
+ <a href="V%24RSRC_PLAN_CPU_MTH.html">V$RSRC_PLAN_CPU_MTH</a> 
+ 
+ <a href="V%24SEGMENT_STATISTICS.html">V$SEGMENT_STATISTICS</a> 
+ <a href="V%24SEGSTAT.html">V$SEGSTAT</a> 
+ <a href="V%24SEGSTAT_NAME.html">V$SEGSTAT_NAME</a> 
+ <a href="V%24SESSION.html">V$SESSION</a> 
+ <a href="V%24SESSION_CONNECT_INFO.html">V$SESSION_CONNECT_INFO</a> 
+ <a href="V%24SESSION_CURSOR_CACHE.html">V$SESSION_CURSOR_CACHE</a> 
+ <a href="V%24SESSION_EVENT.html">V$SESSION_EVENT</a> 
+ <a href="V%24SESSION_LONGOPS.html">V$SESSION_LONGOPS</a> 
+ <a href="V%24SESSION_OBJECT_CACHE.html">V$SESSION_OBJECT_CACHE</a> 
+ <a href="V%24SESSION_WAIT.html">V$SESSION_WAIT</a> 
+ <a href="V%24SESSTAT.html">V$SESSTAT</a> 
+ <a href="V%24SESS_IO.html">V$SESS_IO</a> 
+ <a href="V%24SGA.html">V$SGA</a> 
+ <a href="V%24SGASTAT.html">V$SGASTAT</a> 
+ <a href="V%24SGA_CURRENT_RESIZE_OPS.html">V$SGA_CURRENT_RESIZE_OPS</a> 
+ <a href="V%24SGA_DYNAMIC_COMPONENTS.html">V$SGA_DYNAMIC_COMPONENTS</a> 
+ <a href="V%24SGA_DYNAMIC_FREE_MEMORY.html">V$SGA_DYNAMIC_FREE_MEMORY</a> 
+ <a href="V%24SGA_RESIZE_OPS.html">V$SGA_RESIZE_OPS</a> 
+ <a href="V%24SHARED_POOL_ADVICE.html">V$SHARED_POOL_ADVICE</a> 
+ <a href="V%24SHARED_POOL_RESERVED.html">V$SHARED_POOL_RESERVED</a> 
+ <a href="V%24SHARED_SERVER.html">V$SHARED_SERVER</a> 
+ <a href="V%24SHARED_SERVER_MONITOR.html">V$SHARED_SERVER_MONITOR</a> 
+ <a href="V%24SORT_SEGMENT.html">V$SORT_SEGMENT</a> 
+ <a href="V%24SORT_USAGE.html">V$SORT_USAGE</a> 
+ <a href="V%24SPPARAMETER.html">V$SPPARAMETER</a> 
+ <a href="V%24SQL.html">V$SQL</a> 
+ <a href="V%24SQLAREA.html">V$SQLAREA</a> 
+ <a href="V%24SQLTEXT.html">V$SQLTEXT</a> 
+ <a href="V%24SQLTEXT_WITH_NEWLINES.html">V$SQLTEXT_WITH_NEWLINES</a> 
+ <a href="V%24SQLXS.html">V$SQLXS</a> 
+ <a href="V%24SQL_BIND_DATA.html">V$SQL_BIND_DATA</a> 
+ <a href="V%24SQL_BIND_METADATA.html">V$SQL_BIND_METADATA</a> 
+ <a href="V%24SQL_CURSOR.html">V$SQL_CURSOR</a> 
+ <a href="V%24SQL_PLAN.html">V$SQL_PLAN</a> 
+ <a href="V%24SQL_PLAN_STATISTICS.html">V$SQL_PLAN_STATISTICS</a> 
+ <a href="V%24SQL_PLAN_STATISTICS_ALL.html">V$SQL_PLAN_STATISTICS_ALL</a> 
+ <a href="V%24SQL_REDIRECTION.html">V$SQL_REDIRECTION</a> 
+ <a href="V%24SQL_SHARED_CURSOR.html">V$SQL_SHARED_CURSOR</a> 
+ <a href="V%24SQL_SHARED_MEMORY.html">V$SQL_SHARED_MEMORY</a> 
+ <a href="V%24SQL_WORKAREA.html">V$SQL_WORKAREA</a> 
+ <a href="V%24SQL_WORKAREA_ACTIVE.html">V$SQL_WORKAREA_ACTIVE</a> 
+ <a href="V%24SQL_WORKAREA_HISTOGRAM.html">V$SQL_WORKAREA_HISTOGRAM</a> 
+ <a href="V%24STANDBY_LOG.html">V$STANDBY_LOG</a> 
+ <a href="V%24STATISTICS_LEVEL.html">V$STATISTICS_LEVEL</a> 
+ <a href="V%24STATNAME.html">V$STATNAME</a> 
+ <a href="V%24STREAMS_APPLY_COORDINATOR.html">V$STREAMS_APPLY_COORDINATOR</a> 
+ <a href="V%24STREAMS_APPLY_READER.html">V$STREAMS_APPLY_READER</a> 
+ <a href="V%24STREAMS_APPLY_SERVER.html">V$STREAMS_APPLY_SERVER</a> 
+ <a href="V%24STREAMS_CAPTURE.html">V$STREAMS_CAPTURE</a> 
+ <a href="V%24SUBCACHE.html">V$SUBCACHE</a> 
+ <a href="V%24SYSSTAT.html">V$SYSSTAT</a> 
+ <a href="V%24SYSTEM_CURSOR_CACHE.html">V$SYSTEM_CURSOR_CACHE</a> 
+ <a href="V%24SYSTEM_EVENT.html">V$SYSTEM_EVENT</a> 
+ <a href="V%24SYSTEM_PARAMETER.html">V$SYSTEM_PARAMETER</a> 
+ <a href="V%24SYSTEM_PARAMETER2.html">V$SYSTEM_PARAMETER2</a> 
+ 
+ <a href="V%24TABLESPACE.html">V$TABLESPACE</a> 
+ <a href="V%24TEMPFILE.html">V$TEMPFILE</a> 
+ <a href="V%24TEMPORARY_LOBS.html">V$TEMPORARY_LOBS</a> 
+ <a href="V%24TEMPSTAT.html">V$TEMPSTAT</a> 
+ <a href="V%24TEMPSTATXS.html">V$TEMPSTATXS</a> 
+ <a href="V%24TEMP_CACHE_TRANSFER.html">V$TEMP_CACHE_TRANSFER</a> 
+ <a href="V%24TEMP_EXTENT_MAP.html">V$TEMP_EXTENT_MAP</a> 
+ <a href="V%24TEMP_EXTENT_POOL.html">V$TEMP_EXTENT_POOL</a> 
+ <a href="V%24TEMP_PING.html">V$TEMP_PING</a> 
+ <a href="V%24TEMP_SPACE_HEADER.html">V$TEMP_SPACE_HEADER</a> 
+ <a href="V%24THREAD.html">V$THREAD</a> 
+ <a href="V%24TIMER.html">V$TIMER</a> 
+ <a href="V%24TIMEZONE_NAMES.html">V$TIMEZONE_NAMES</a> 
+ <a href="V%24TRANSACTION.html">V$TRANSACTION</a> 
+ <a href="V%24TRANSACTION_ENQUEUE.html">V$TRANSACTION_ENQUEUE</a> 
+ <a href="V%24TYPE_SIZE.html">V$TYPE_SIZE</a> 
+ 
+ <a href="V%24UNDOSTAT.html">V$UNDOSTAT</a> 
+ <a href="V%24VERSION.html">V$VERSION</a> 
+ <a href="V%24VPD_POLICY.html">V$VPD_POLICY</a> 
+ <a href="V%24WAITSTAT.html">V$WAITSTAT</a> </pre>
+<p>These views are owned by SYS. The V$ views are actually public synonyms for corresponding SYS.V<b>_</b>$ views.</p>
+<p>To list all the V$ views on your system look in <a href="V%24FIXED_VIEW_DEFINITION.html" class="code">V$FIXED_VIEW_DEFINITION</a>, or <span class="code">Select name from <a href="V%24FIXED_TABLE.html">V$FIXED_TABLE</a> where name like 'V$%';</span></p>
+<p>To use
+  these views, ensure that timed_statistics is set  in the <a href="../ora/syntax-initora.html">init.ora</a> file (TIMED_STATISTICS=TRUE). This has  minimal effect on performance.</p>
+<p>GV$ views are dynamic performance views in a parallel
+  server environment. There is a GV$ view for almost every V$ view. 
+  These have an additional column INST_ID (instance number)<br>
+This document was originally based on Oracle 9i.</p><!-- #BeginLibraryItem "/Library/foot_menu.lbi" --><hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/orav/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:53:12 GMT -->
+</html>

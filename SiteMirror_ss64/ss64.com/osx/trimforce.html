@@ -1,0 +1,56 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/trimforce.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>trimforce Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>trimforce</h1> 
+<p>Enable TRIM commands on third-party solid-state drives.</p>
+<pre>Syntax
+      trimforce <i>verb</i>
+
+verbs
+     enable      Start sending TRIM commands to AHCI-attached third-party drives.
+                 Requires a reboot to take effect.
+
+     disable     Stop sending TRIM commands to AHCI-attached third-party drives.
+                 Requires a reboot to take effect.
+
+     help        Display brief usage syntax.</pre>
+<p>ERRORS      <br>
+trimforce will exit with status 0 if successful, or with an appropriate error if it cannot parse input, allocate memory, or is unauthorized to perform its work.</p>
+<p>TRIM is designed to  allow the operating system to inform a solid-state drive (SSD) which blocks of data are no longer considered in use and can be wiped internally. </p>
+<p>By around 2014, many SSDs had internal background garbage collection mechanisms that worked independently of trimming. Although this successfully maintained  performance even under operating systems that did not support trim, it had the associated drawbacks of increased write amplification and wear of the flash cells.</p>
+<p>After a TRIM command has been issued and garbage collection has taken place, it's highly unlikely that even a forensic scientist would be able to recover the data.</p>
+<p> The trimforce utility first appeared in OS X 10.10.4, Yosemite.</p>
+<p class="quote"><i>&ldquo;First rate people hire other first rate people. Second rate people hire third rate people. Third rate people hire fifth rate people&quot; - Andr&eacute; Weil</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="rm.html">rm</a> - Remove files<br>
+<a href="rmdir.html">rmdir</a> - Remove folder(s)</p>
+<!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/trimforce.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:25 GMT -->
+</html>

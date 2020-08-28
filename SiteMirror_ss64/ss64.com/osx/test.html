@@ -1,0 +1,205 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/test.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>test Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>test</h1> 
+<p>Condition evaluation.<br>
+  Evaluate an expression and, if it evaluates to true, return a zero (true) exit 
+  status; otherwise return 1 (false). If there is no expression, test also returns 
+1 (false).</p>
+<pre>      test <i>expr</i>
+         [ <i>expr</i> ]
+        [[ <i>expr</i> ]]</pre>
+<p><span class="code">[</span> is a synonym for test but requires a final argument of ].</p>
+<p>The double bracket <span class="code">[[</span> construct, also known as 'extended test' or 'New Test' is more versatile, the old test <span class="code">[</span> is more portable. <br>
+In most cases, on modern systems, you should prefer the use of new test <span class="code">[[</span></p>
+<p>Spaces around the brackets are important - each operator and operand must be a separate argument.</p>
+<p>To  do a simple numeric comparison (or any other shell arithmetic),  use<span class="code"> <a href="syntax-brackets.html#arithmetic">(( ))</a></span> instead of <span class="code">test</span>:</p>
+<p>To test variables you should quote the &quot;variablename&quot; as they may undergo word splitting or globbing, with New test [[ this is not necessary</p>
+<p class="code">[ &quot;$DEMO&quot; = 5 ] </p>
+<p class="code">[[ $DEMO == 10 ]]</p>
+<p>Multiple Expressions 
+  can be combined using the following operators, listed in decreasing order of 
+  precedence. </p>
+<pre>  ! <i>expr</i>           True if <i>expr</i> is <b>false</b>.
+  ( <i>expr</i> )         Returns the value of <i>expr</i>. This can be used to override the normal precedence of operators.
+
+<i></i><i>  expr1</i> &amp;&amp; <i>expr2</i>   True if both <i>expr1</i> <b>and</b> <i>expr2</i> are true. 
+<br><i>  expr1</i> || <i>expr2</i>   True if either <i>expr1</i> <b>or</b> <i>expr2</i> is true.
+</pre>
+<blockquote>
+<p> The old test<span class="code"> [ </span>can also use the -a and -o operators, and ( ... ) grouping, as defined by POSIX but only for strictly limited cases, and these are now marked as deprecated.</p>
+</blockquote>
+<p><span class="body">The <code>test</code> and <code>[</code> builtins evaluate 
+  conditional expressions using a set of rules based on the number of arguments.</span> </p>
+<pre>  0 arguments  The expression is false.
+
+  1 argument   The expression is true if and only if the argument is not null.
+
+  2 arguments  If the first argument is <samp>`!'</samp>, the expression is true if and only if the second argument is
+               null. If the first argument is one of the unary conditional operators, the expression is true
+               if the unary test is true. If the first argument is not a valid unary operator, the expression is false.
+
+  3 arguments  If the second argument is one of the binary conditional operators, the result of the expression
+               is the result of the binary test using the first and third arguments as operands. If the first
+               argument  is <samp>`!'</samp>, the value is the negation of the two-argument test using the second and third
+               arguments. If the first argument is exactly  <samp>`('</samp> and the third argument is exactly <samp>`)'</samp>, the result
+               is the one-argument test of the second argument. Otherwise, the expression is false.
+               The <samp>`-a'</samp> and <samp>`-o'</samp> operators are considered binary operators in this case.
+
+  4 arguments  If the first argument is <samp>`!'</samp>, the result is the negation of the three-argument expression composed
+               of the remaining arguments. Otherwise, the expression is parsed and evaluated according
+               to precedence using the rules listed above.
+
+  5 or more arguments   The expression is parsed and evaluated according to precedence using the rules listed above.</pre>
+<h2>File type tests </h2>
+<blockquote>
+<p>These options test for particular types of files. All cases will only return True (0) if the file exists.</p>
+<pre> -b <i>file</i>      True if <i>file</i> is a Block special device. [[ -b demofile ]]
+
+ -c <i>file</i>      True if <i>file</i> is a Character special device. [[ -c demofile ]]
+
+ -d <i>file </i>     True if <i>file</i> is a Directory. [[ -d demofile ]]
+
+ -e <i>file </i>     True if <i>file</i> Exists. [[ -e demofile ]]
+
+ -f <i>file </i>     True if <i>file</i> is a regular File. [[ -f demofile ]]
+
+ -g <i>file</i>      True if <i>file</i> has its set-group-id bit set. [[ -g demofile ]]
+
+ -G <i>file</i>      True if <i>file</i> is owned by the current effective group id. [[ -G demofile ]]
+
+ -k <i>file</i>      True if <i>file</i> has its "sticky" bit set. [[ -k demofile ]]
+
+ -h <i>file</i>      True if <i>file</i> is a symbolic Link. [[ -h demofile ]]
+ -L <i>file</i>      True if <i>file</i> is a symbolic Link. [[ -L demofile ]]
+
+ -O <i>file</i>      True if <i>file</i> is owned by the current effective user id. [[ -O demofile ]]
+
+ -p <i>file</i>      True if <i>file</i> is a named Pipe. [[ -p demofile ]]
+
+ -r <i>file</i>      True if <i>file</i> is readable. [[ -r demofile ]]
+
+ -S <i>file</i>      True if <i>file</i> is a Socket. [[ -S demofile ]]
+
+ -s <i>file</i>      True if <i>file</i> has a Size greater than zero. [[ -s demofile ]]
+
+ -t [FD]      True if FD is opened on a terminal.  If FD is omitted, it defaults to 1 (standard output). [[ -t demofile ]]
+
+ -u <i>file</i>      True if <i>file</i> has its set-user-id bit set. [[ -L demofile ]]
+
+ -w <i>file</i>      True if <i>file</i> is writable. [[ -w demofile ]]
+
+ -x <i>file</i>      True if <i>file</i> is executable. [[ -x demofile ]]
+
+<i>file</i>1 -ef <i>file</i>2    True if <i>file</i>1 and <i>file</i>2 have the same device and inode numbers,  i.e. they are hard links to each other.</pre>
+</blockquote>
+<h2>File Age Tests (<span class="body">modification date</span>)</h2>
+<blockquote>
+<pre>
+<i>file</i>1 -nt <i>file</i>2     True if <i>file</i>1 is newer than <i>file</i>2. [[ demofile1 -nt $DEMO ]]
+
+<i>file</i>1 -ot <i>file</i>2     True if <i>file</i>1 is older than <i>file</i>2. [[ $DEMO -ot demofile2 ]]</pre>
+</blockquote>
+<h2>String tests</h2>
+<blockquote>
+<p>Comparison strings for <span class="code">test</span> do not need to be quoted, though you can quote them to protect characters with special meaning to the shell, e.g. spaces.</p>
+<p>Comparisons using New test <span class="code">[[</span> perform pattern matching against the string on the right hand side unless you quote the &quot;string&quot; on the right. This prevents any characters with special meaning in pattern matching from taking effect. </p>
+<pre>-z <i>String</i>      True if the length of <i>String</i> is zero.
+
+-n <i>String</i>      True if the length of <i>String</i> is nonzero.
+<i>   String</i>      True if the length of <i>String</i> is nonzero.
+
+<i>String</i>1 = <i>String</i>2     True if the strings are equal.
+
+[[ <i>String</i>1 = &quot;<i>String</i>2&quot; ]]  True if the strings are equal (Literal, no pattern match).
+
+<i>String</i>1 != <i>String</i>2    True if the strings are not equal.
+[[ a != b ]] &amp;&amp; echo &quot;a is not equal to b&quot;
+
+[[ a &gt; b ]] || echo &quot;a does not come after b&quot;
+[[ az &lt; za ]] &amp;&amp; echo &quot;az comes before za&quot;
+[[ a = a ]] &amp;&amp; echo &quot;a equals a&quot;
+
+<span class="body">As of bash 4.1 (2010), string comparisons made with </span>[[<span class="body"> and using </span>&lt;<span class="body"> or </span>&gt;<span class="body"> will respect the current locale.
+
+Wildcard matching with [[</span>
+[[ $NAME = demo* ]] || echo &quot;NAME does not start with 'demo': $name&quot;</pre>
+</blockquote>
+<h2> Numeric tests</h2>
+<blockquote>
+<p>These are normally used in conjunction with another non-math <span class="code">test</span> operator somewhere in the expression. <br>
+For a purely numeric comparison, it is  better to  use <span class="code"><a href="syntax-brackets.html#arithmetic">(( ))</a></span> instead of <span class="code">test</span> or New test <span class="code">[[</span></p>
+<p>The arguments must be entirely numeric (possibly negative), or the special expression<span class="code"> -l <i>STRING </i></span>which evaluates to the length of <i>STRING</i>.                The <span class="code">&lt;</span> and <span class="code">&gt;</span> operators can also be used with new test <span class="code">[[</span></p>
+<pre><i>ARG1</i> -eq <i>ARG2</i>   Returns true if <i>ARG1</i> is equal to <i>ARG2</i>
+                [[ 5 -eq 05 ]] &amp;&amp; echo &quot;5 equals 05&quot;
+
+<i>ARG1</i> -ne <i>ARG2</i>   Returns true if <i>ARG1</i> is not-equal to <i>ARG2</i>
+                [[ 6 -ne 20 ]] &amp;&amp; echo &quot;6 is not equal to 20&quot;
+
+<i>ARG1</i> -lt <i>ARG2</i>   Returns true if <i>ARG1</i> is less-than to <i>ARG2</i>
+                [[ 8 -lt 9 ]] &amp;&amp; echo &quot;8 is less than 9&quot;
+                [[ 3 &lt; 4 ]] &amp;&amp; echo &quot;3 is less than 4&quot;
+
+<i>ARG1</i> -le <i>ARG2</i>   Returns true if <i>ARG1</i> is less-than-or-equal to <i>ARG2</i>
+                [[ 3 -le 8 ]] &amp;&amp; echo &quot;3 is less than or equal to 8&quot;
+
+<i>ARG1</i> -gt <i>ARG2</i>   Returns true if <i>ARG1</i> is greater-than to <i>ARG2</i>
+                [[ 5 -gt 10 ]] || echo &quot;5 is not bigger than 10&quot;
+                [[ 4 &gt; 2 ]] &amp;&amp; echo &quot;4 is greater than 2&quot;
+
+<i>ARG1</i> -ge <i>ARG2</i>   Returns true if <i>ARG1</i> is greater-than-or-equal to <i>ARG2</i>
+                [[ 3 -ge 3 ]] &amp;&amp; echo &quot;3 is greater than or equal to 3&quot;</pre>
+</blockquote>
+<p><b>Examples</b></p>
+<pre>test -1 -gt -2 && echo yes
+# yes
+test -l abc -gt 1 && echo yes
+# yes
+test 0x100 -eq 1
+# error--> test: integer expression expected before -eq
+</pre>
+<p>Test if the non existent file paris.txt is readable, the value returned
+is false (non zero)</p>
+<pre>test -r paris.txt
+echo $?
+# 1</pre>
+<p>Test if the  file amsterdam.txt exists:</p>
+<pre>If [[ -e amsterdam.txt ]]; then   
+  echo &quot;we found the file&quot;
+fi</pre>
+<p>Test the logged in username, if the logname variable = scott then the test returns TRUE (0):<br>
+</p>
+<pre>if [[ &quot;$LOGNAME&quot; <b>=</b> &quot;scott&quot; ]]; then<br>    echo &quot;Logged in as Scott&quot;<br>else<br>  echo &quot;incorrect user&quot;<br>fi</pre>
+<p>The double bracket <span class="code">[[</span> construct is a “compound command” while <span class="code">test</span> and the single bracket <span class="code">[</span> are shell built-ins.</p>
+<p class="quote"><i>&ldquo;The test of a vocation is the love of the drudgery it involves&rdquo; ~ Logan Pearsall</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="eval.html">eval</a> - Evaluate several commands/arguments<br>
+<a href="expr.html">expr</a> - Evaluate expressions</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/test.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:25 GMT -->
+</html>

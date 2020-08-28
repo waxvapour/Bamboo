@@ -1,0 +1,115 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/color.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Color - Foreground and Background colours - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>COLOR</h1>  
+<p>Sets the default console foreground and background colours. 
+<pre>Syntax
+      COLOR [<i>background</i>][<i>foreground</i>]
+</pre>
+<p> Colour attributes are specified by 2 of the following hex digits. There should be no space between the two color numbers.</p>
+<p>Each digit can be 
+  any of the following values: <br>
+  <br>
+  0 = Black <br>
+  8 = Gray <br>
+  <br>
+  1 = Blue <br>
+  9 = Light Blue <br>
+  <br>
+  2 = Green <br>
+  A = Light Green <br>
+  <br>
+  3 = Aqua <br>
+  B = Light Aqua <br>
+  <br>
+  4 = Red <br>
+  C = Light Red <br>
+  <br>
+  5 = Purple <br>
+  D = Light Purple <br>
+  <br>
+  6 = Yellow <br>
+  E = Light Yellow <br>
+  <br>
+  7 = White <br>
+  F = Bright White <br>
+  <br>
+  If no argument is given, COLOR restores the colour to what it was when CMD.EXE 
+  started. <br>
+  <br>
+  Colour values are assigned in the following order:<br>
+  <br>
+  The DefaultColor registry value. <br>
+  The <a href="cmd.html">CMD</a> /T command line switch<br>
+  The current colour settings when cmd was launched<br>
+  <br>
+  The COLOR command sets ERRORLEVEL to 1 if an attempt is made to execute the 
+  COLOR command with a foreground and background colour that are the same.</p>
+<p>In Windows 10 <b>clean-install</b> versions greater than build 16257 the <a href="https://blogs.msdn.microsoft.com/commandline/2017/08/02/updating-the-windows-console-colors/">default colour scheme has been changed</a> to modernize the look of the Windows Console suitable for modern   high-contrast LCD displays.<br>
+  <br>
+  <b>Examples </b>(from Windows 7): </p>
+<blockquote>
+<p><img src="cmd-colors1.jpg" width="963" height="406" alt="CMD colors 1"><br>
+<br>
+<img src="cmd-colors2.jpg" width="962" height="418" alt="CMD colors 2"><br>
+</p>
+</blockquote>
+<p><br>
+The default terminal color is <span class="code">COLOR 07</span>, white on black</p>
+<p>The COLOR command will change the color of <b>all</b> the text in the window.<span class="code"></span></p>
+<h2>Errorlevels</h2>
+<blockquote>If the color was successfully changed <a href="errorlevel.html">%ERRORLEVEL%</a> = 0<br>
+Background and foreground colors are the same (will fail) = 1<br>
+e.g. <span class="code">COLOR 00</span> 
+</blockquote>
+<h1>Windows 10 color schemes</h1>
+<blockquote>
+<p>In Windows 10 (new build &gt;= 16257) the default color values have been changed to improve legibility of darker colors on modern screens.</p>
+<p>For upgraded machines (rather than fresh installs), the <a href="https://blogs.msdn.microsoft.com/commandline/2017/08/11/introducing-the-windows-console-colortool/">Windows Console Colortool</a> can be used to change color schemes.</p>
+<p>In PowerShell you will probably need to <a href="https://github.com/Microsoft/console/issues/23">tinker with the new Colortool values</a>: <i>So up until very recently the console only supported 16 colours at a time. When the PowerShell team decided they wanted a very specific dark blue as the background colour, rather than altering the colour value for dark or light blue, they instead changed dark magenta to blue and used that as the background colour.</i></p>
+</blockquote>
+<p>COLOR is an <a href="syntax-internal.html">internal</a> command.<br>
+If <a href="cmd.html">Command Extensions</a> are disabled, the COLOR command will not function.</p>
+<p><i class="quote">&ldquo;How much more black could this be?" and the answer is "None...none more black&rdquo; ~ Spinal Tap</i><br>
+<br>
+<b>Related:</b><br>
+<br>
+<a href="cmd.html">CMD</a> - Start a new CMD shell<br>
+<a href="exit.html">EXIT</a> - Set a specific errorlevel
+<br>
+PowerShell: <a href="../ps/write-host.html">Write-Host</a> - Write  output to the screen (colour can be set for individual strings).<br>
+<a href="https://emw3.com/colour.html">Colour codes</a> - HTML/CSS <br>
+<a href="https://blogs.msdn.com/aaron_margosis/archive/2007/02/22/setting-color-for-all-cmd-shells-based-on-admin-elevation-status.aspx">Aaron Margosis</a> - Change prompt colors for all Admin level prompts<br>
+<a href="http://colorschemedesigner.com/">Color Scheme Designer </a> - Design colour themes <br>
+Equivalent bash command (Linux): <a href="../bash/dircolors.html">dircolors</a> - Colour setup for `ls'</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --><p><br>
+  <br>
+</p>
+</body>
+
+<!-- Mirrored from ss64.com/nt/color.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:59 GMT -->
+</html>

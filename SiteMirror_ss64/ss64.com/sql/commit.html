@@ -1,0 +1,52 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/sql/commit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>COMMIT - SQL Server - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_sql.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">SQL</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/sql/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>COMMIT</h1>
+<p>Mark the end of a transaction.</p>
+<pre>Syntax
+      COMMIT 
+      COMMIT WORK 
+      COMMIT TRAN[SACTION] [<i>transaction_name </i>| @<i>transaction_var</i>] <br>          [;]
+</pre>
+<p>A commit will make any data modifications performed since the start of the transaction a permanent part of the database.</p>
+<p>transaction_name is simply used by programmers to associate a BEGIN TRANSACTION statement with a  COMMIT TRANSACTION statement. It is ignored by the database engine.</p>
+<p>The syntax COMMIT or COMMIT WORK is compatible with SQL-92  </p>
+<p>Example</p>
+<pre>COMMIT</pre>
+<p class="quote"><i>&quot;Once a
+  journalist makes a commitment of confidentiality to a source, only the
+source can end that commitment&quot; ~ Matt Cooper </i></p>
+<p><b>Related commands:</b></p>
+<p><a href="trans_c.html">COMMIT TRANSACTION</a><br>
+<a href="checkpoint.html">CHECKPOINT</a><br>
+  <br>
+<b>Equivalent Oracle command</b>:</p>
+<p> <a href="../ora/commit.html">COMMIT</a></p><!-- #BeginLibraryItem "/Library/foot_sql.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- ss64-sql -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6953563613"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/sql/commit.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:22 GMT -->
+</html>

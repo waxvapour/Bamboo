@@ -1,0 +1,87 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-wildcards.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Wildcards - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>PowerShell Wildcards</h1>
+<h2>The four types of Wildcard:</h2> 
+<blockquote>
+<p>The <span class="code">*</span> wildcard will match zero or more characters<br>
+<br>
+The <span class="code">?</span> wildcard will match a single character</p>
+<p><span class="code">[<i>m</i>-<i>n</i>] </span>Match a range of characters from <i>m</i> to <i>n,</i> so <span class="code">[f-m]ake</span> will match fake/jake/make</p>
+<p><span class="code">[<i>abc</i>] </span>Match a set of characters <i>a,b,c.., </i>so <span class="code">[fm]ake</span> will match fake/make</p>
+</blockquote>
+<p>Ulike the rather fuzzy logic of MS-DOS and the CMD shell, PowerShell wildcards are consistent in their meaning so  <span class="code">*.*</span> will match <i>any</i> characters  followed by a period (<span class="code">.</span>) followed by <i>any</i> characters. In other words *.* will return only files that have an extension, not directories. </p>
+<p>To return all items just use a single * <br>
+</p>
+<p>When recursing a file heirarchy, it is necessary to use the wildcard as part of an <span class="code">-include</span> clause:<br>
+<span class="code">Get-ChildItem c:\windows -include *.exe -recurse</span></p>
+<p>Using a wildcard character without <span class="code">-include</span>:<br>
+<span class="code"> Get-ChildItem c:\windows\*.exe -recurse<br>
+</span>the above will not  match a file such as C:\windows\test\demo.exe</p>
+<p>When using WMI filters use  the WMI specific wildcards: <span class="code">%</span> for zero or more characters, <span class="code">_</span> for a single character.</p>
+<p>Wildcards will also work within both single and double quotes, to prevent wildcard expansion use the <span class="code">-LiteralPath</span> parameter where available.</p>
+<h2>-Like for  string comparison</h2>
+<blockquote>
+<p>To perform a  comparison of strings, use the <span class="code">-Like</span> or <span class="code">-notlike</span> operators, these comparison operators support the 4 wildcards above. </p>
+<p class="code">PS C:\&gt; 'hunting the snark' -like '*snark*'<br>
+True</p>
+<p>For more complex expressions, use the <span class="code">-match</span> operator with a <a href="syntax-regex.html">regular expression</a>.</p>
+</blockquote>
+<h2>The –Filter parameter</h2>
+<blockquote>
+<p>The <span class="code">Get-ChildItem -filter</span> parameter specifies a filter in the provider's format or language. <br>
+In the case of an SQL provider, the <span class="code">-Filter</span> parameter might offer SQL syntax ( -Filter “WHERE Name LIKE %pattern%”)<br>
+In the case of the Filesystem provider 
+the pattern  is processed by Win32 API (<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa364418(v=vs.85).aspx?f=255&amp;MSPPError=-2147217396">FindFirstFile</a>).<br>
+This means that <span class="code">-filter</span> has the same file resolution and <a href="../nt/syntax-wildcards.html">wildcarding as CMD.exe</a>, which utilises  the same Win32 API.</p>
+<p>CMD/Win32 wildcards are not very intuitive largely for historical reasons, they match against both short (8.3) and long filenames</p>
+<p>For example:</p>
+<p>In a wildcard  pattern ending with <span class="code">.*</span> the <span class="code">.*</span> is ignored. <br>
+So <span class="code">*.*</span> is the same as <span class="code">*</span> and <span class="code">demo*.*</span> is the same as <span class="code">demo*</span> this means it will match 'demonstrate' a filename with no .extension.</p>
+<p>The ? wildcard will not match a dot, so while you might expect <span class="code">demo????</span> to match 'demo.txt' it will not, you  need to use <span class="code">demo.???</span></p>
+<p>When matching extensions there is an implied wilcard at the end because short filenames are limited to a 3 character extension, so for example <span class="code">*.HTM</span> will match the file 'demo.HTML', but <span class="code">*.HT</span> will not.<br>
+</p>
+<p>The 'Old New Thing' blog has more detail on <a href="https://blogs.msdn.microsoft.com/oldnewthing/20071217-00/?p=24143/">how any why MS-DOS wildcards</a> work this way.</p>
+<p>In PowerShell v1 there was a significant performance benefit to using <span class="code">-filter</span> over a native PowerShell wildcard, but in v2 Microsoft added support for partial filtering to the Filesystem provider. This offloads as much of the filtering work as it can to the raw Win32 APIs – and then does more powerful (and correct) wildcard matching on the smaller set of results.</p>
+<p>This means that when it comes to the Filesystem provider, you probably <a href="http://www.leeholmes.com/blog/2015/01/23/the-wonderful-world-of-filtering-and-globbing/">don’t want or need the -Filter parameter</a> [leeholmes.com]</p>
+</blockquote>
+<p><b>Examples</b></p>
+<p class="code">PS C:\&gt; Get-ChildItem c:\work\*.xlsx</p>
+<p class="code">PS C:\&gt; Get-ChildItem c:\work\[a-f]*.txt</p>
+<p class="code">PS C:\&gt; Get-ChildItem -literalpath 'c:\work\test[1].txt'</p>
+<p class="code">PS C:\&gt; Get-ChildItem -recurse -filter c:\work\demo.*
+</p>
+<p class="quote"><i>&ldquo;We usually see only the things we are looking for, so much that we sometimes see them where they are not&rdquo; ~ Eric Hoffer </i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="syntax-regex.html">Regular Expressions</a> - Search for a string.<br>
+<a href="get-childitem.html">Get-ChildItem</a> - Get child items (contents of a folder or registry key)<br>
+<a href="syntax-compare.html">Comparison operators</a> -like, -lt, -gt, -eq, -ne, -match</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-wildcards.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+</html>

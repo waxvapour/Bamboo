@@ -1,0 +1,60 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/bash/syntax-execute.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Bash - Conditional Execution - Linux - SS64.com</title>
+</head><!-- #BeginLibraryItem "/Library/head_bashsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">Linux</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/bash/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>
+Conditional Execution</h1>
+<p>Chain commands to run one after another</p>
+<pre>An AND list has the form 
+
+<i>      command1</i> &amp;&amp; <i>command2</i></pre>
+<pre><i>command2</i> is executed if, and only if, <i>command1</i> succeeds
+
+An OR list has the form 
+<i>
+      command3</i> || <i>command4</i>
+<i>
+command4</i> is executed if, and only if, <i>command3</i> fails  </pre>
+<p>In any event the second command must wait for the first command to either complete successfully or to fail. </p>
+<p>A <code>list</code> is a sequence of one or more pipelines separated by one of the operators <samp>`;'</samp>, <samp>`&amp;'</samp>, <samp>`&amp;&amp;'</samp>, 
+or <samp>`||'</samp>, and optionally terminated by one of <samp>`;'</samp>, <samp>`&amp;'</samp>, or a <code>newline</code>. </p>
+<p>Of these list operators, <samp>`&amp;&amp;'</samp> and <samp>`||'</samp> have 
+equal precedence, followed by <samp>`;'</samp> and <samp>`&amp;'</samp>, which 
+have equal precedence. </p>
+<p>If a command is terminated by the control operator <samp>`&amp;'</samp>, the shell executes the command asynchronously in a subshell. This is known as executing 
+the command in the <i>background</i>. The shell does not wait for the command to finish, and the return status is 0 (true).<br>
+<br>
+When job control is not active, the standard input for asynchronous commands, in the absence of any explicit redirections, is redirected from <code>/dev/null</code>. 
+</p>
+<p>Commands separated by a <samp>`;'</samp> are executed sequentially; the shell waits for each command to terminate in turn. The return status is the exit status of the last command executed. </p>
+<p>The return status of AND and OR lists is the exit status of the last command executed in the list.</p>
+<p><b>Related linux commands:</b></p>
+<p><a href="syntax.html">Bash Syntax</a><br>
+Windows equivalent: <a href="../nt/syntax-conditional.html">Conditionals</a> 
+- IF THEN ELSE Execution</p><!-- #BeginLibraryItem "/Library/foot_bash.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- bash300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4615356305"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+<!-- Mirrored from ss64.com/bash/syntax-execute.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:44 GMT -->
+</html>

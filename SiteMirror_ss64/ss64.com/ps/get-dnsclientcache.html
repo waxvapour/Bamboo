@@ -1,0 +1,101 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/get-dnsclientcache.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Get-DnsClientCache - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Get-DnsClientCache</h1> 
+<p>Retrieve the content of the local DNS client cache.</p>
+<pre>Syntax
+      Get-DnsClientCache [[-Entry] <i>String</i>[]] [-CimSession <i>CimSession</i>[]] [-Data <i>String</i>[]]
+         [-DataLength <i>UInt16</i>[]] [-Name <i>String</i>[]] [-Section <i>Section</i>[]] [-Status <i>Status</i>[]]
+            [-ThrottleLimit <i>Int32</i>] [-TimeToLive <i>UInt32</i>[]] [-Type <i>Type</i>[]]  [<a href="common.html"><i>CommonParameters</i></a>]
+
+
+Key
+   -CimSession [CimSession[]]
+       Runs the cmdlet in a remote session or on a remote computer. Enter a computer name or a session object, such 
+       as the output of a New-CimSession or Get-CimSession cmdlet. The default is the current session on the local computer.
+        
+   -Data [<i>String</i>[]]
+       Specifies the record data.
+        
+   -DataLength [<i>UInt16</i>[]]
+       Specifies the record data length.
+        
+   -Entry [<i>String</i>[]]
+       Specifies the cache entry name.
+        
+   -Name [<i>String</i>[]]
+       Specifies the record name.
+        
+   -Section [<i>Section</i>[]]
+       Specifies the record section. The acceptable values for this parameter are:
+        
+        -- Answer
+        -- Authority
+        -- Additional
+        
+   -Status [<i>Status</i>[]]
+       Specifies the record status. The acceptable values for this parameter are:
+        
+        -- Success
+        -- NotExist
+        -- NoRecords
+        
+   -ThrottleLimit [<i>Int32</i>]
+       Specifies the maximum number of concurrent operations that can be established to run the cmdlet. If this 
+       parameter is omitted or a value of 0 is entered, then Windows PowerShell® calculates an optimum throttle limit 
+       for the cmdlet based on the number of CIM cmdlets that are running on the computer. The throttle limit applies 
+       only to the current cmdlet, not to the session or to the computer.
+        
+   -TimeToLive [<i>UInt32</i>[]]
+       Specifies the record time-to-live, in seconds.
+        
+   -Type [<i>Type</i>[]]
+       Specifies the record type. The acceptable values for this parameter are:
+        
+        -- A
+        -- NS
+        -- CNAME
+        -- SOA
+        -- PTR
+        -- MX
+        -- AAAA
+        -- SRV
+
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer, -PipelineVariable, -OutVariable.</pre>
+<p><b>Examples</b></p>
+<p>Get the DNS client cache:<br>
+<span class="code">PS C:\&gt; Get-DnsClientCache</span></p>
+<p class="quote"><i>“Muddy water, let stand - becomes clear”   ~ Lao Tzu</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="clear-dnsclientcache.html">Clear-DnsClientCache</a> - Clear the content of the DNS client cache<br>
+<a href="../nt/ipconfig.html">IPCONFIG</a> - ip configuration</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/get-dnsclientcache.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:48 GMT -->
+</html>

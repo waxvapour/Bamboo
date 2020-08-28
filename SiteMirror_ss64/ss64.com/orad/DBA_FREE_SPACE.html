@@ -1,0 +1,65 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/orad/DBA_FREE_SPACE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:53:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>DBA_FREE_SPACE - Oracle - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_orad.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="../ora/index.html">Oracle</a></li>
+<li class="tbtn"><a href="index.html">Dictionary</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>DBA_FREE_SPACE </h1><p> Free extents in all tablespaces </p> 
+ 
+<pre>Columns
+   ___________________________
+ 
+   TABLESPACE_NAME
+      Name of the tablespace containing the extent
+   FILE_ID
+      ID number of the file containing the extent
+   BLOCK_ID
+      Starting block number of the extent 
+   BYTES
+      Size of the extent in bytes
+   BLOCKS
+      Size of the extent in ORACLE blocks
+   RELATIVE_FNO
+      Relative number of the file containing the extent</pre>
+<p><b>Example</b></p>
+<p>--Free space in each tablespace: </p>
+<p class="code">COLUMN tablespace_name FORMAT A15<br>
+COLUMN &quot;Total Free (MB) &quot; FORMAT 999,999,999,999<br>
+COLUMN &quot;Largest Free Extent (MB) &quot; FORMAT 999,999,999,999</p>
+<p class="code">Select tablespace_name,<br>
+Sum(bytes/(1024*1024)) &quot;Total Free (MB) &quot;,<br>
+Max(bytes/(1024*1024)) &quot;Largest Free Extent (MB) &quot;<br>
+From dba_free_space<br>
+Group By tablespace_name; </p>
+<p>  <b>Related:</b></p>
+<p><a href="DBA_EXTENTS.html">DBA_EXTENTS</a><br>
+<a href="../ora/sql-free-space.html">SQL Script  - Tablespace Free Space </a><br>
+<a href="DBA_FREE_SPACE_COALESCED_TMP1.html">DBA_FREE_SPACE_COALESCED_TMP1<br>
+</a> <a href="DBA_FREE_SPACE_COALESCED_TMP2.html">DBA_FREE_SPACE_COALESCED_TMP2</a><br> 
+<a href="DBA_FREE_SPACE_COALESCED_TMP3.html">DBA_FREE_SPACE_COALESCED_TMP3</a> </p><!-- #BeginLibraryItem "/Library/foot_orad.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- oracle-footer -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4275490898"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div>
+<!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/orad/DBA_FREE_SPACE.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:53:45 GMT -->
+</html>

@@ -1,0 +1,195 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/new-ciminstance.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>New-CIMInstance - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>New-CIMInstance (PowerShell 3.0+ )</h1> 
+<p>Create an instance of a CIM class based on the class definition on either the local      computer or a remote computer.           The Common Information Model (CIM) is the DMTF standard [<a href="https://www.dmtf.org/dsp/DSP0004">DSP0004</a>] for describing the structure and behavior of managed resources such as storage, network, or software components.</p>
+<pre>Syntax
+    New-CimInstance <b>[ </b>-ComputerName <i>String[]</i> <b>|</b> -CimSession  <i>CimSession[]</i> <b>]</b> [-<b>ClassName</b>] <i>String</i>
+       [-Key <i>String[]</i>] [-ClientOnly] [-Namespace <i>String</i>] [-OperationTimeoutSec <i>UInt32</i>]
+          [[-Property] <i>IDictionary</i>] [-Confirm] [-WhatIf] [<i>CommonParameters</i>]
+
+
+    New-CimInstance <b>[</b> -ComputerName <i>String[]</i>] <b>|</b> -CimSession <i>CimSession[]</i> <b>]</b> <b>-ResourceUri</b> <i>Uri</i>
+       [-Key <i>String[]</i>] [-Namespace <i>String</i>] [-OperationTimeoutSec <i>UInt32</i>]
+          [-Property] <i>IDictionary</i>] [-Confirm] [-WhatIf] [<i>CommonParameters</i>]
+
+
+    New-CimInstance <b>[</b> -ComputerName <i>String[]</i>] <b>|</b> -CimSession <i>CimSession[]</i> <b>] </b>[<b>-CimClass</b>] <i>CimClass</i>
+       [-ClientOnly]  [-OperationTimeoutSec <i>UInt32</i>]
+          [[-Property] <i>IDictionary</i>] [-Confirm] [-WhatIf] [<i>CommonParameters</i>]
+    
+Key
+   -CimClass <i>CimClass</i>
+        Specifies a CIM class object that represents the type of the instance.
+        You can use the Get-CimClass cmdlet to retrieve the class declaration from a computer.
+        Using this parameter results in better client side schema validations.
+
+   -CimSession <i>CimSession</i>[]
+        The CIM session to use for this cmdlet. Enter a variable that contains the CIM session or a command 
+        that creates or gets the CIM session, such as the New-CimSession or Get-CimSession cmdlets. For more 
+        information, see about_CimSessions.
+        
+   -ClassName <i>String</i>
+        The name of the CIM class for which to retrieve the CIM instances. 
+        NOTE: You can use tab completion to browse the list of classes, because wps_2 gets a list of classes from the 
+        local WMI server to provide a list of class names.
+
+   -ClientOnly
+        Indicates that the instance is only created in wps_1 without going to the CIM server. You can use this 
+        parameter to create an in-memory CIM instance for use in subsequent wps_2 operations.
+
+   -ComputerName <i>String</i>[]
+        The computer on which you want to run the CIM operation. You can specify a fully qualified domain name 
+        (FQDN), a NetBIOS name, or an IP address.
+        
+        If you specify this parameter, the cmdlet creates a temporary session to the specified computer using the 
+        WsMan protocol.If you do not specify this parameter, the cmdlet performs the operation on the local computer
+        using Component Object Model (COM).
+
+        If multiple operations are being performed on the same computer, using a CIM session gives better performance.
+        
+   -Key <i>String</i>
+       Specifies the properties that are used as keys. -CimSession and -ComputerName cannot be used when -Key is specified.
+       
+   -Namespace <i>String</i>
+       Specifies the namespace of the class for the new instance.
+        
+       The default namespace is root/cimv2. 
+       NOTE: You can use tab completion to browse the list of namespaces, because wps_2 gets a list of namespaces 
+       from the local WMI server to provide the list of namespaces.
+        
+   -OperationTimeoutSec <i>UInt32</i>
+       Specifies the amount of time that the cmdlet waits for a response from the computer.
+        
+       By default, the value of this parameter is 0, which means that the cmdlet uses the default timeout value for 
+       the server.
+        
+       If the OperationTimeoutSec parameter is set to a value less than the robust connection retry timeout of 3 
+       minutes, network failures that last more than the value of the OperationTimeoutSec parameter are not 
+       recoverable, because the operation on the server times out before the client can reconnect.
+       
+   -Property <i>IDictionary</i>
+       Specifies the properties of the CIM instance using a hash table (name-value pairs).
+        
+       If you specify the CimClass parameter, then the New-CimInstance cmdlet performs a property validation on the 
+       client to make sure that the properties specified are consistent with the class declaration on the server. If 
+       the CimClass parameter is not specified, then the property validation is done on the server.
+             
+   -ResourceUri <i>Uri</i>
+       Specifies the resource uniform resource identifier (URI) of the resource class or instance. The URI is used to 
+       identify a specific type of resource, such as disks or processes, on a computer.
+       
+       A URI consists of a prefix and a path to a resource. For example: 
+       
+       http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/Win32_LogicalDisk
+       http://intel.com/wbem/wscim/1/amt-schema/1/AMT_GeneralSettings
+       
+       By default, if you do not specify this parameter, the DMTF standard resource URI 
+       http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/ is used and the class name is appended to it.
+       
+       ResourceURI can only be used with CIM sessions created using the WSMan protocol, or when specifying the 
+       ComputerName parameter, which creates a CIM session using WSMan. If you specify this parameter without 
+       specifying the ComputerName parameter, or if you specify a CIM session created using DCOM protocol, you will 
+       get an error, because the DCOM protocol does not support the ResourceURI parameter.
+       
+       If both the -ResourceUri parameter and the -Filter parameter are specified, the -Filter parameter is ignored.
+
+   -confirm
+       Prompt for confirmation before executing the command.
+
+   -whatIf
+       Describe the command without actually executing it.
+
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer, PipelineVariable -OutVariable.</pre>
+<p>Use the Property parameter to set the initial values of the selected properties.          By default, the New-CimInstance cmdlet creates an instance on the local computer.</p>
+<p>Standard <a href="get-alias.html">Aliases</a> for New-CIMInstance:<span class="code"> <b>ncim</b></span></p>
+<h2>CIM Classes</h2>
+<blockquote>
+<p>The CIM classes available will vary according to your operating system.<span class="code"></span><br>
+List all CIM classes:<br>
+<span class="code">PS C:\&gt; Get-cimclass</span></p>
+<p>List all the   classes involding discs:<br>
+<span class="code">PS C:\&gt; Get-cimclass -List | <a href="where-object.html">Where</a> cimClassName  -like &quot;*disk*&quot;</span></p>
+<p>Some common CIM classes:</p>
+<pre>
+ Win32_Baseboard &nbsp;&nbsp; (Motherboard)
+ Win32_BIOS
+ Win32_ComputerSystem
+ Win32_LogicalDisk &nbsp;(hard disk)
+ Win32_OperatingSystem  (Virtual Memory)
+ Win32_Printer
+ Win32_PrinterShare
+ Win32_PhysicalMemory
+ Win32_Process
+ Win32_Processor &nbsp;&nbsp; (32+64 bit processor info)
+ Win32_Product      (<b></b>avoid this: see <a href="https://support.microsoft.com/en-gb/kb/974524">Q974524</a>)
+ Win32_Share&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (File shares)
+</pre>
+<p>List all properties of a class:<br>
+<span class="code">PS C:\&gt; Get-CIMinstance Win32_BIOS | <a href="get-member.html">Get-Member</a></span></p>
+<p>Find a specific class property:</p>
+<pre>PS C:\&gt; gcim Win32_bios | <a href="get-member.html">Get-Member</a> -MemberType property | <a href="where-object.html">Where</a> { $_.name -match '<i>install</i>'}
+or simply:
+PS C:\&gt; gcim Win32_bios | <a href="get-member.html">Get-Member</a> -MemberType property | <a href="where-object.html">Where</a> name -match '<i>install</i>'
+</pre>
+</blockquote>
+<p><b>Examples</b></p>
+<p>Create  an instance of a CIM Class named win32_environment in the root/cimv2 namespace on the      computer.:</p>
+<p><span class="code">PS C:\&gt; </span><span class="code">New-CimInstance -ClassName Win32_Environment -Property      @{Name=&quot;testvar&quot;;VariableValue=&quot;testvalue&quot;;UserName=&quot;domain\user&quot;}</span></p>
+<p>Retrieve a CIM class object and store it in a variable named <b><span class="code">$class</span></b></p>
+<p class="code">PS C:\&gt; $class = Get-CimClass -ClassName Win32_Environment</p>
+<p>Pass the contents of the variable to the New-CimInstance cmdlet:</p>
+<p><span class="code">PS C:\&gt; New-CimInstance -CimClass <b>$class</b> -Property      @{Name=&quot;testvar&quot;;VariableValue=&quot;testvalue&quot;;UserName=&quot;ss64dom\User64&quot;}</span></p>
+<p>Creates a dynamic instance of the CIM class <span class="code">win32_Process</span> on the client computer without      getting the instance from the server. Store the dynamic instance  in a      variable named <span class="code">$dyn</span>:</p>
+<p><span class="code">PS C:\&gt; $dyn = New-CimInstance -ClassName Win32_Process -Property @{Handle=0} -Key Handle -ClientOnly</span> <br>
+<br>
+Pass the contents of the <span class="code">$dyn</span> variable to  Get-CimInstance:</p>
+<p class="code">PS C:\&gt; Get-CimInstance –CimInstance $dyn</p>
+<p>Invoke the GetOwner method against this dynamic instance:</p>
+<p class="code">PS C:\&gt; Invoke-CimMethod -CimInstance $dyn -MethodName GetOwner</p>
+<p>Get an instance of a CIM class named MSFT_Something in the namespace root/ss64 and      stores it in a variable named $class</p>
+<p class="code">PS C:\&gt; $class = Get-CimClass -ClassName MSFT_Something -Namespace root/ss64<span class="code"></span><br>
+</p>
+<p>Create a new CIM instance and perform client side validations on the new instance:</p>
+<p class="code">PS C:\&gt; New-CimInstance <b>-CimClass</b> $class -Property @{&quot;Prop1&quot;=1;&quot;Prop2&quot;=&quot;value&quot;} -ClientOnly</p>
+<p>If you want to validate the instance, for example, to make sure Prop1 and Prop2 actually exist and that the keys      are marked correctly, use the CimClass parameter instead of the ClassName parameter.</p>
+<p><i class="quote">“There is no instance of a nation benefitting from prolonged warfare” ~ Sun Tzu</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><span class="code">invoke-CIMmethod</span><br>
+<a href="get-ciminstance.html">Get-CIMInstance</a> -  Get a managed resource (storage, network, software etc)<br>
+<a href="get-credential.html">Get-Credential</a> - Get a security credential object based on a user name and password.<br>
+<a href="../nt/rundll32.html">RUNDLL32</a> - Run a DLL command (add/remove print connections)<br>
+</p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem -->
+</body>
+
+<!-- Mirrored from ss64.com/ps/new-ciminstance.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:32 GMT -->
+</html>

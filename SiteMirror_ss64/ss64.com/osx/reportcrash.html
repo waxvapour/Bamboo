@@ -1,0 +1,56 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/osx/reportcrash.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>ReportCrash Man Page - macOS - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_osx.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">macOS</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/osx/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>ReportCrash </h1> 
+<p>Enable or Disable crash reporting via <span class="code">launchtl</span>.</p>
+<pre>Syntax
+
+      To disable crash reporting:
+
+      launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
+      sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist
+
+      To re-enable crash reporting:
+
+      launchctl load -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
+      sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist</pre>
+<p>ReportCrash analyzes crashing processes and saves a crash report to disk.  A crash report contains information that can help a developer diagnose the cause of a crash.
+ReportCrash also records the identity of the crashing process and the location of the saved crash report in the system.log and the ASL log database.</p>
+<p>ReportCrash is invoked automatically by <span class="code">launchd</span> when a crash is detected.  For applications and other processes running in the per-user launchd context, ReportCrash runs as a
+LaunchAgent and saves crash reports in the user's<span class="code"> ~/Library/Logs/DiagnosticReports/</span> directory.  </p>
+<p>For daemons, other processes running in the system launchd context and other
+privileged processes, ReportCrash runs as a LaunchDaemon and saves crash reports in the system's <span class="code">/Library/Logs/DiagnosticReports</span> directory where they are only readable by admin users.  If there are too many crash reports saved for a particular process, older reports will automatically be removed in order to conserve disk space.</p>
+<p>For application crashes (but not background process crashes) ReportCrash will display a      dialog notifying the user that the application unexpectedly quit and offering to reopen      the application or send the report to Apple.  For developers, the behavior of this dialog      can be adjusted using <span class="code">/Developer/Applications/Utilities/CrashReporterPrefs.app</span> which is      installed as part of the developer tools. </p>
+<p>Crash reports which are sent to Apple are submitted anonymously by the SubmitDiagInfo      process.  The reports are used by Apple to improve its products.  </p>
+<p class="quote"><i>“I hate modern car radios. In my car, I don't even have a push-button radio. It's just got a dial and two knobs. Just AM. One knob makes it louder, and one knob changes the station. When you're driving, that's all I want.”  ~ Chris Isaak</i></p>
+<p><b>Related macOS commands:</b></p>
+<p><a href="http://bugreporter.apple.com/">http://bugreporter.apple.com</a> -   report bugs (ADC members only)<br>
+<a href="https://developer.apple.com/library/content/technotes/tn2004/tn2123.html">TN2123</a> - interpreting the contents of crash reports</p><!-- #BeginLibraryItem "/Library/foot_osx.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- OSX300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1823340303"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/osx/reportcrash.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:18 GMT -->
+</html>

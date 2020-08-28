@@ -1,0 +1,5961 @@
+<!doctype html><html>
+
+<!-- Mirrored from ss64.com/locale.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="main.css" type="text/css">
+<link rel="STYLESHEET" href="tables.css" type="text/css">
+<title>Windows Locales | SS64.com</title>
+<script src="css/sorttable.js"></script>
+<style type="text/css">
+/* Sortable tables */
+table.sortable th {
+    cursor: default;
+    background-color: #B6C9E7;
+}
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: url("data:image/gif;base64,R0lGODlhFQAJAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4OEM2REYyN0ExMDhBNDJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjdCNTAyODcwMEY4NjExRTBBMzkyQzAyM0E1RDk3RDc3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjdCNTAyODZGMEY4NjExRTBBMzkyQzAyM0E1RDk3RDc3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDE4MDExNzQwNzIwNjgxMTg4QzZERjI3QTEwOEE0MkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDE4MDExNzQwNzIwNjgxMTg4QzZERjI3QTEwOEE0MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQBAAABACwAAAAAFQAJAAACF4yPgMsJ2mJ4VDKKrd4GVz5lYPeMiVUAADs=");
+/*" \25B4\25BE " */ 
+}
+#localetbl tr:hover td {  background-color: #ddd;}
+</style>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_home.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Windows Locale ID Table</h1>
+<p>A locale is neither a language nor a country, the same language may be spoken in multiple countries (often with subtle differences) and a single country may speak multiple languages. A locale is therefore an area where a particular language is spoken which may (or may not) align with geographical and/or political boundaries.</p>
+<p>In multi-lingual countries it is common for the same user to switch between languages many times a day.</p>
+<table id="localetbl" class="sortable">
+	<tr>
+		<th>Locale description</th>
+		<th>Short string</th>
+		<th>Hexadecimal value</th>
+		<th>Decimal value</th>
+<th>Start of Week<br>
+blank=Monday (ISO default)</th>
+	</tr>
+	<tr>
+		<td>Afar</td>
+		<td>aa</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Afar (Djibouti)</td>
+		<td>aa-DJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Afar (Eritrea)</td>
+		<td>aa-ER</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Afar (Ethiopia)</td>
+		<td>aa-ET</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Afrikaans</td>
+		<td>af</td>
+		<td>0x36</td>
+		<td>54</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Afrikaans (Namibia)</td>
+		<td>af-NA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Afrikaans (South Africa)</td>
+		<td>af-ZA</td>
+		<td>0x436</td>
+		<td>1078</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Aghem</td>
+		<td>agq</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Aghem (Cameroon)</td>
+		<td>agq-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Akan</td>
+		<td>ak</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Akan (Ghana)</td>
+		<td>ak-GH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Albanian</td>
+		<td>sq</td>
+		<td>0x1C</td>
+		<td>28</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Albanian (Albania)</td>
+		<td>sq-AL</td>
+		<td>0x41C</td>
+		<td>1052</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Albanian (Kosovo)</td>
+		<td>sq-XK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Albanian (Macedonia, FYRO)</td>
+		<td>sq-MK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Alsatian</td>
+		<td>gsw</td>
+		<td>0x84</td>
+		<td>132</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Alsatian (France)</td>
+		<td>gsw-FR</td>
+		<td>0x484</td>
+		<td>1156</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Alsatian (Liechtenstein)</td>
+		<td>gsw-LI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Alsatian (Switzerland)</td>
+		<td>gsw-CH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Amharic</td>
+		<td>am</td>
+		<td>0x5E</td>
+		<td>94</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Amharic (Ethiopia)</td>
+		<td>am-ET</td>
+		<td>0x45E</td>
+		<td>1118</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Arabic</td>
+		<td>ar</td>
+		<td>0x1</td>
+		<td>1</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Algeria)</td>
+		<td>ar-DZ</td>
+		<td>0x1401</td>
+		<td>5121</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Bahrain)</td>
+		<td>ar-BH</td>
+		<td>0x3C01</td>
+		<td>15361</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Chad)</td>
+		<td>ar-TD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Comoros)</td>
+		<td>ar-KM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Djibouti)</td>
+		<td>ar-DJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Egypt)</td>
+		<td>ar-EG</td>
+		<td>0xC01</td>
+		<td>3073</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Eritrea)</td>
+		<td>ar-ER</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Iraq)</td>
+		<td>ar-IQ</td>
+		<td>0x801</td>
+		<td>2049</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Israel)</td>
+		<td>ar-IL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Jordan)</td>
+		<td>ar-JO</td>
+		<td>0x2C01</td>
+		<td>11265</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Kuwait)</td>
+		<td>ar-KW</td>
+		<td>0x3401</td>
+		<td>13313</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Lebanon)</td>
+		<td>ar-LB</td>
+		<td>0x3001</td>
+		<td>12289</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Libya)</td>
+		<td>ar-LY</td>
+		<td>0x1001</td>
+		<td>4097</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Mauritania)</td>
+		<td>ar-MR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Morocco)</td>
+		<td>ar-MA</td>
+		<td>0x1801</td>
+		<td>6145</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Oman)</td>
+		<td>ar-OM</td>
+		<td>0x2001</td>
+		<td>8193</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Palestinian Authority)</td>
+		<td>ar-PS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Qatar)</td>
+		<td>ar-QA</td>
+		<td>0x4001</td>
+		<td>16385</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Saudi Arabia)</td>
+		<td>ar-SA</td>
+		<td>0x401</td>
+		<td>1025</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Somalia)</td>
+		<td>ar-SO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (South Sudan)</td>
+		<td>ar-SS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Sudan)</td>
+		<td>ar-SD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Syria)</td>
+		<td>ar-SY</td>
+		<td>0x2801</td>
+		<td>10241</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (Tunisia)</td>
+		<td>ar-TN</td>
+		<td>0x1C01</td>
+		<td>7169</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (U.A.E.)</td>
+		<td>ar-AE</td>
+		<td>0x3801</td>
+		<td>14337</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Arabic (World)</td>
+		<td>ar-001</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Arabic (Yemen)</td>
+		<td>ar-YE</td>
+		<td>0x2401</td>
+		<td>9217</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Armenian</td>
+		<td>hy</td>
+		<td>0x2B</td>
+		<td>43</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Armenian (Armenia)</td>
+		<td>hy-AM</td>
+		<td>0x42B</td>
+		<td>1067</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Assamese</td>
+		<td>as</td>
+		<td>0x4D</td>
+		<td>77</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Assamese (India)</td>
+		<td>as-IN</td>
+		<td>0x44D</td>
+		<td>1101</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Asturian</td>
+		<td>ast</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Asturian (Spain)</td>
+		<td>ast-ES</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Asu</td>
+		<td>asa</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Asu (Tanzania)</td>
+		<td>asa-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Azerbaijani</td>
+		<td>az</td>
+		<td>0x2C</td>
+		<td>44</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Azerbaijani (Cyrillic)</td>
+		<td>az-Cyrl</td>
+		<td>0x742C</td>
+		<td>29740</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Azerbaijani (Cyrillic, Azerbaijan)</td>
+		<td>az-Cyrl-AZ</td>
+		<td>0x82C</td>
+		<td>2092</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Azerbaijani (Latin)</td>
+		<td>az-Latn</td>
+		<td>0x782C</td>
+		<td>30764</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Azerbaijani (Latin, Azerbaijan)</td>
+		<td>az-Latn-AZ</td>
+		<td>0x42C</td>
+		<td>1068</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bafia</td>
+		<td>ksf</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bafia (Cameroon)</td>
+		<td>ksf-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bambara</td>
+		<td>bm</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bambara (Latin)</td>
+		<td>bm-Latn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bambara (Latin, Mali)</td>
+		<td>bm-Latn-ML</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bangla</td>
+		<td>bn</td>
+		<td>0x45</td>
+		<td>69</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Bangla (Bangladesh)</td>
+		<td>bn-BD</td>
+		<td>0x845</td>
+		<td>2117</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Bangla (India)</td>
+		<td>bn-IN</td>
+		<td>0x445</td>
+		<td>1093</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Basaa</td>
+		<td>bas</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Basaa (Cameroon)</td>
+		<td>bas-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bashkir</td>
+		<td>ba</td>
+		<td>0x6D</td>
+		<td>109</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bashkir (Russia)</td>
+		<td>ba-RU</td>
+		<td>0x46D</td>
+		<td>1133</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Basque</td>
+		<td>eu</td>
+		<td>0x2D</td>
+		<td>45</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Basque (Basque)</td>
+		<td>eu-ES</td>
+		<td>0x42D</td>
+		<td>1069</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Belarusian</td>
+		<td>be</td>
+		<td>0x23</td>
+		<td>35</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Belarusian (Belarus)</td>
+		<td>be-BY</td>
+		<td>0x423</td>
+		<td>1059</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bemba</td>
+		<td>bem</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bemba (Zambia)</td>
+		<td>bem-ZM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bena</td>
+		<td>bez</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bena (Tanzania)</td>
+		<td>bez-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Blin</td>
+		<td>byn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Blin (Eritrea)</td>
+		<td>byn-ER</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bodo</td>
+		<td>brx</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Bodo (India)</td>
+		<td>brx-IN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Bosnian</td>
+		<td>bs</td>
+		<td>0x781A</td>
+		<td>30746</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bosnian (Cyrillic)</td>
+		<td>bs-Cyrl</td>
+		<td>0x641A</td>
+		<td>25626</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bosnian (Cyrillic, Bosnia and Herzegovina)</td>
+		<td>bs-Cyrl-BA</td>
+		<td>0x201A</td>
+		<td>8218</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bosnian (Latin)</td>
+		<td>bs-Latn</td>
+		<td>0x681A</td>
+		<td>26650</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bosnian (Latin, Bosnia and Herzegovina)</td>
+		<td>bs-Latn-BA</td>
+		<td>0x141A</td>
+		<td>5146</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Breton</td>
+		<td>br</td>
+		<td>0x7E</td>
+		<td>126</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Breton (France)</td>
+		<td>br-FR</td>
+		<td>0x47E</td>
+		<td>1150</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bulgarian</td>
+		<td>bg</td>
+		<td>0x2</td>
+		<td>2</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Bulgarian (Bulgaria)</td>
+		<td>bg-BG</td>
+		<td>0x402</td>
+		<td>1026</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Burmese</td>
+		<td>my</td>
+		<td>0x55</td>
+		<td>85</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Burmese (Myanmar)</td>
+		<td>my-MM</td>
+		<td>0x455</td>
+		<td>1109</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Catalan</td>
+		<td>ca</td>
+		<td>0x3</td>
+		<td>3</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Catalan (Andorra)</td>
+		<td>ca-AD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Catalan (Catalan)</td>
+		<td>ca-ES</td>
+		<td>0x403</td>
+		<td>1027</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Catalan (France)</td>
+		<td>ca-FR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Catalan (Italy)</td>
+		<td>ca-IT</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Central Atlas Tamazight (Arabic)</td>
+		<td>tzm-Arab</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Central Atlas Tamazight (Arabic, Morocco)</td>
+		<td>tzm-Arab-MA</td>
+		<td>0x45F</td>
+		<td>1119</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Central Atlas Tamazight (Latin, Morocco)</td>
+		<td>tzm-Latn-MA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Central Atlas Tamazight (Tifinagh, Morocco)</td>
+		<td>tzm-Tfng-MA</td>
+		<td>0x105F</td>
+		<td>4191</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Central Kurdish</td>
+		<td>ku</td>
+		<td>0x92</td>
+		<td>146</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Central Kurdish (Arabic)</td>
+		<td>ku-Arab</td>
+		<td>0x7C92</td>
+		<td>31890</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Central Kurdish (Iraq)</td>
+		<td>ku-Arab-IQ</td>
+		<td>0x492</td>
+		<td>1170</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chechen</td>
+		<td>ce</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chechen (Russia)</td>
+		<td>ce-RU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Cherokee</td>
+		<td>chr</td>
+		<td>0x5C</td>
+		<td>92</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Cherokee (Cherokee)</td>
+		<td>chr-Cher-US</td>
+		<td>0x45C</td>
+		<td>1116</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Cherokee (Cherokee)</td>
+		<td>chr-Cher</td>
+		<td>0x7C5C</td>
+		<td>31836</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chiga</td>
+		<td>cgg</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chiga (Uganda)</td>
+		<td>cgg-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chinese</td>
+		<td>zh</td>
+		<td>0x7804</td>
+		<td>30724</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chinese (Simplified Han, Hong Kong SAR)</td>
+		<td>zh-Hans-HK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Simplified Han, Macao SAR)</td>
+		<td>zh-Hans-MO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Simplified)</td>
+		<td>zh-Hans</td>
+		<td>0x4</td>
+		<td>4</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chinese (Simplified) Legacy</td>
+		<td>zh-Hans</td>
+		<td>0x4</td>
+		<td>4</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chinese (Simplified, PRC)</td>
+		<td>zh-CN</td>
+		<td>0x804</td>
+		<td>2052</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Chinese (Simplified, Singapore)</td>
+		<td>zh-SG</td>
+		<td>0x1004</td>
+		<td>4100</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Traditional)</td>
+		<td>zh-Hant</td>
+		<td>0x7C04</td>
+		<td>31748</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Traditional) Legacy</td>
+		<td>zh-Hant</td>
+		<td>0x7C04</td>
+		<td>31748</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Traditional, Hong Kong S.A.R.)</td>
+		<td>zh-HK</td>
+		<td>0xC04</td>
+		<td>3076</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Traditional, Macao S.A.R.)</td>
+		<td>zh-MO</td>
+		<td>0x1404</td>
+		<td>5124</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Chinese (Traditional, Taiwan)</td>
+		<td>zh-TW</td>
+		<td>0x404</td>
+		<td>1028</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Church Slavic</td>
+		<td>cu</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Church Slavic (Russia)</td>
+		<td>cu-RU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Colognian</td>
+		<td>ksh</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Cornish</td>
+		<td>kw</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Cornish (United Kingdom)</td>
+		<td>kw-GB</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Corsican</td>
+		<td>co</td>
+		<td>0x83</td>
+		<td>131</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Corsican (France)</td>
+		<td>co-FR</td>
+		<td>0x483</td>
+		<td>1155</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Croatian</td>
+		<td>hr</td>
+		<td>0x1A</td>
+		<td>26</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Croatian (Croatia)</td>
+		<td>hr-HR</td>
+		<td>0x41A</td>
+		<td>1050</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Croatian (Latin, Bosnia and Herzegovina)</td>
+		<td>hr-BA</td>
+		<td>0x101A</td>
+		<td>4122</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Czech</td>
+		<td>cs</td>
+		<td>0x5</td>
+		<td>5</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Czech (Czech Republic)</td>
+		<td>cs-CZ</td>
+		<td>0x405</td>
+		<td>1029</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Danish</td>
+		<td>da</td>
+		<td>0x6</td>
+		<td>6</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Danish (Denmark)</td>
+		<td>da-DK</td>
+		<td>0x406</td>
+		<td>1030</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Danish (Greenland)</td>
+		<td>da-GL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dari</td>
+		<td>prs</td>
+		<td>0x8C</td>
+		<td>140</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Dari (Afghanistan)</td>
+		<td>prs-AF</td>
+		<td>0x48C</td>
+		<td>1164</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Divehi</td>
+		<td>dv</td>
+		<td>0x65</td>
+		<td>101</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Divehi (Maldives)</td>
+		<td>dv-MV</td>
+		<td>0x465</td>
+		<td>1125</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Duala</td>
+		<td>dua</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Duala (Cameroon)</td>
+		<td>dua-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch</td>
+		<td>nl</td>
+		<td>0x13</td>
+		<td>19</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Aruba)</td>
+		<td>nl-AW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Belgium)</td>
+		<td>nl-BE</td>
+		<td>0x813</td>
+		<td>2067</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Bonaire, Sint Eustatius and Saba)</td>
+		<td>nl-BQ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Curaçao)</td>
+		<td>nl-CW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Netherlands)</td>
+		<td>nl-NL</td>
+		<td>0x413</td>
+		<td>1043</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Sint Maarten)</td>
+		<td>nl-SX</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dutch (Suriname)</td>
+		<td>nl-SR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Dzongkha</td>
+		<td>dz</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Dzongkha (Bhutan)</td>
+		<td>dz-BT</td>
+		<td>0xC51</td>
+		<td>3153</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Edo</td>
+		<td>bin</td>
+		<td>0x66</td>
+		<td>102</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Edo (Nigeria)</td>
+		<td>bin-NG</td>
+		<td>0x466</td>
+		<td>1126</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Embu</td>
+		<td>ebu</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Embu (Kenya)</td>
+		<td>ebu-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English</td>
+		<td>en</td>
+		<td>0x9</td>
+		<td>9</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (American Samoa)</td>
+		<td>en-AS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Anguilla)</td>
+		<td>en-AI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Antigua and Barbuda)</td>
+		<td>en-AG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Australia)</td>
+		<td>en-AU</td>
+		<td>0xC09</td>
+		<td>3081</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Austria)</td>
+		<td>en-AT</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Bahamas)</td>
+		<td>en-BS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Barbados)</td>
+		<td>en-BB</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Belgium)</td>
+		<td>en-BE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Belize)</td>
+		<td>en-BZ</td>
+		<td>0x2809</td>
+		<td>10249</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Bermuda)</td>
+		<td>en-BM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Botswana)</td>
+		<td>en-BW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (British Indian Ocean Territory)</td>
+		<td>en-IO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (British Virgin Islands)</td>
+		<td>en-VG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Burundi)</td>
+		<td>en-BI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Cameroon)</td>
+		<td>en-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Canada)</td>
+		<td>en-CA</td>
+		<td>0x1009</td>
+		<td>4105</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Caribbean)</td>
+		<td>en-029</td>
+		<td>0x2409</td>
+		<td>9225</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Cayman Islands)</td>
+		<td>en-KY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Christmas Island)</td>
+		<td>en-CX</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Cocos [Keeling] Islands)</td>
+		<td>en-CC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Cook Islands)</td>
+		<td>en-CK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Cyprus)</td>
+		<td>en-CY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Denmark)</td>
+		<td>en-DK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Dominica)</td>
+		<td>en-DM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Eritrea)</td>
+		<td>en-ER</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Europe)</td>
+		<td>en-150</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Falkland Islands)</td>
+		<td>en-FK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Fiji)</td>
+		<td>en-FJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Finland)</td>
+		<td>en-FI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Gambia)</td>
+		<td>en-GM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Germany)</td>
+		<td>en-DE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Ghana)</td>
+		<td>en-GH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Gibraltar)</td>
+		<td>en-GI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Grenada)</td>
+		<td>en-GD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Guam)</td>
+		<td>en-GU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Guernsey)</td>
+		<td>en-GG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Guyana)</td>
+		<td>en-GY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Hong Kong SAR)</td>
+		<td>en-HK</td>
+		<td>0x3C09</td>
+		<td>15369</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (India)</td>
+		<td>en-IN</td>
+		<td>0x4009</td>
+		<td>16393</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Indonesia)</td>
+		<td>en-ID</td>
+		<td>0x3809</td>
+		<td>14345</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Ireland)</td>
+		<td>en-IE</td>
+		<td>0x1809</td>
+		<td>6153</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Isle of Man)</td>
+		<td>en-IM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Israel)</td>
+		<td>en-IL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Jamaica)</td>
+		<td>en-JM</td>
+		<td>0x2009</td>
+		<td>8201</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Jersey)</td>
+		<td>en-JE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Kenya)</td>
+		<td>en-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Kiribati)</td>
+		<td>en-KI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Lesotho)</td>
+		<td>en-LS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Liberia)</td>
+		<td>en-LR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Macao SAR)</td>
+		<td>en-MO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Madagascar)</td>
+		<td>en-MG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Malawi)</td>
+		<td>en-MW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Malaysia)</td>
+		<td>en-MY</td>
+		<td>0x4409</td>
+		<td>17417</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Malta)</td>
+		<td>en-MT</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Marshall Islands)</td>
+		<td>en-MH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Mauritius)</td>
+		<td>en-MU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Micronesia)</td>
+		<td>en-FM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Montserrat)</td>
+		<td>en-MS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Namibia)</td>
+		<td>en-NA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Nauru)</td>
+		<td>en-NR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Netherlands)</td>
+		<td>en-NL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (New Zealand)</td>
+		<td>en-NZ</td>
+		<td>0x1409</td>
+		<td>5129</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Nigeria)</td>
+		<td>en-NG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Niue)</td>
+		<td>en-NU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Norfolk Island)</td>
+		<td>en-NF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Northern Mariana Islands)</td>
+		<td>en-MP</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Pakistan)</td>
+		<td>en-PK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Palau)</td>
+		<td>en-PW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Papua New Guinea)</td>
+		<td>en-PG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Pitcairn Islands)</td>
+		<td>en-PN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Puerto Rico)</td>
+		<td>en-PR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Philippines)</td>
+		<td>en-PH</td>
+		<td>0x3409</td>
+		<td>13321</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Rwanda)</td>
+		<td>en-RW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Saint Kitts and Nevis)</td>
+		<td>en-KN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Saint Lucia)</td>
+		<td>en-LC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Saint Vincent and the Grenadines)</td>
+		<td>en-VC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Samoa)</td>
+		<td>en-WS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Seychelles)</td>
+		<td>en-SC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Sierra Leone)</td>
+		<td>en-SL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Singapore)</td>
+		<td>en-SG</td>
+		<td>0x4809</td>
+		<td>18441</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Sint Maarten)</td>
+		<td>en-SX</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Slovenia)</td>
+		<td>en-SI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Solomon Islands)</td>
+		<td>en-SB</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (South Africa)</td>
+		<td>en-ZA</td>
+		<td>0x1C09</td>
+		<td>7177</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (South Sudan)</td>
+		<td>en-SS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (St Helena, Ascension, Tristan da Cunha)</td>
+		<td>en-SH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Sudan)</td>
+		<td>en-SD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>English (Swaziland)</td>
+		<td>en-SZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Sweden)</td>
+		<td>en-SE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Switzerland)</td>
+		<td>en-CH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Tanzania)</td>
+		<td>en-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Tokelau)</td>
+		<td>en-TK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Tonga)</td>
+		<td>en-TO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Trinidad and Tobago)</td>
+		<td>en-TT</td>
+		<td>0x2C09</td>
+		<td>11273</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Turks and Caicos Islands)</td>
+		<td>en-TC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Tuvalu)</td>
+		<td>en-TV</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Uganda)</td>
+		<td>en-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (United Kingdom)</td>
+		<td>en-GB</td>
+		<td>0x809</td>
+		<td>2057</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (United States)</td>
+		<td>en-US</td>
+		<td>0x409</td>
+		<td>1033</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (US Minor Outlying Islands)</td>
+		<td>en-UM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (US Virgin Islands)</td>
+		<td>en-VI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>English (Vanuatu)</td>
+		<td>en-VU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (World)</td>
+		<td>en-001</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Zambia)</td>
+		<td>en-ZM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>English (Zimbabwe)</td>
+		<td>en-ZW</td>
+		<td>0x3009</td>
+		<td>12297</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Esperanto</td>
+		<td>eo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Esperanto (World)</td>
+		<td>eo-001</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Estonian</td>
+		<td>et</td>
+		<td>0x25</td>
+		<td>37</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Estonian (Estonia)</td>
+		<td>et-EE</td>
+		<td>0x425</td>
+		<td>1061</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ewe</td>
+		<td>ee</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ewe (Ghana)</td>
+		<td>ee-GH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ewe (Togo)</td>
+		<td>ee-TG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ewondo</td>
+		<td>ewo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ewondo (Cameroon)</td>
+		<td>ewo-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Faroese</td>
+		<td>fo</td>
+		<td>0x38</td>
+		<td>56</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Faroese (Denmark)</td>
+		<td>fo-DK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Faroese (Faroe Islands)</td>
+		<td>fo-FO</td>
+		<td>0x438</td>
+		<td>1080</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Filipino</td>
+		<td>fil</td>
+		<td>0x64</td>
+		<td>100</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Filipino (Philippines)</td>
+		<td>fil-PH</td>
+		<td>0x464</td>
+		<td>1124</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Finnish</td>
+		<td>fi</td>
+		<td>0xB</td>
+		<td>11</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Finnish (Finland)</td>
+		<td>fi-FI</td>
+		<td>0x40B</td>
+		<td>1035</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French</td>
+		<td>fr</td>
+		<td>0xC</td>
+		<td>12</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Algeria)</td>
+		<td>fr-DZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>French (Belgium)</td>
+		<td>fr-BE</td>
+		<td>0x80C</td>
+		<td>2060</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Benin)</td>
+		<td>fr-BJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Burkina Faso)</td>
+		<td>fr-BF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Burundi)</td>
+		<td>fr-BI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Cameroon)</td>
+		<td>fr-CM</td>
+		<td>0x2C0C</td>
+		<td>11276</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Canada)</td>
+		<td>fr-CA</td>
+		<td>0xC0C</td>
+		<td>3084</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>French (Caribbean)</td>
+		<td>fr-029</td>
+		<td>0x1C0C</td>
+		<td>7180</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Central African Republic)</td>
+		<td>fr-CF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Chad)</td>
+		<td>fr-TD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Comoros)</td>
+		<td>fr-KM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Congo DRC)</td>
+		<td>fr-CD</td>
+		<td>0x240C</td>
+		<td>9228</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Congo)</td>
+		<td>fr-CG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Côte d’Ivoire)</td>
+		<td>fr-CI</td>
+		<td>0x300C</td>
+		<td>12300</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Djibouti)</td>
+		<td>fr-DJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>French (Equatorial Guinea)</td>
+		<td>fr-GQ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (France)</td>
+		<td>fr-FR</td>
+		<td>0x40C</td>
+		<td>1036</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (French Guiana)</td>
+		<td>fr-GF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (French Polynesia)</td>
+		<td>fr-PF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Gabon)</td>
+		<td>fr-GA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Guadeloupe)</td>
+		<td>fr-GP</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Guinea)</td>
+		<td>fr-GN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Haiti)</td>
+		<td>fr-HT</td>
+		<td>0x3C0C</td>
+		<td>15372</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Luxembourg)</td>
+		<td>fr-LU</td>
+		<td>0x140C</td>
+		<td>5132</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Madagascar)</td>
+		<td>fr-MG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Mali)</td>
+		<td>fr-ML</td>
+		<td>0x340C</td>
+		<td>13324</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Martinique)</td>
+		<td>fr-MQ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Mauritania)</td>
+		<td>fr-MR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Mauritius)</td>
+		<td>fr-MU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Mayotte)</td>
+		<td>fr-YT</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Monaco)</td>
+		<td>fr-MC</td>
+		<td>0x180C</td>
+		<td>6156</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Morocco)</td>
+		<td>fr-MA</td>
+		<td>0x380C</td>
+		<td>14348</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>French (New Caledonia)</td>
+		<td>fr-NC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Niger)</td>
+		<td>fr-NE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Reunion)</td>
+		<td>fr-RE</td>
+		<td>0x200C</td>
+		<td>8204</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Rwanda)</td>
+		<td>fr-RW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Saint Barthélemy)</td>
+		<td>fr-BL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Saint Martin)</td>
+		<td>fr-MF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Saint Pierre and Miquelon)</td>
+		<td>fr-PM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Senegal)</td>
+		<td>fr-SN</td>
+		<td>0x280C</td>
+		<td>10252</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Seychelles)</td>
+		<td>fr-SC</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Switzerland)</td>
+		<td>fr-CH</td>
+		<td>0x100C</td>
+		<td>4108</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Syria)</td>
+		<td>fr-SY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>French (Togo)</td>
+		<td>fr-TG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Tunisia)</td>
+		<td>fr-TN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>French (Vanuatu)</td>
+		<td>fr-VU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>French (Wallis and Futuna)</td>
+		<td>fr-WF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Frisian</td>
+		<td>fy</td>
+		<td>0x62</td>
+		<td>98</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Frisian (Netherlands)</td>
+		<td>fy-NL</td>
+		<td>0x462</td>
+		<td>1122</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Friulian</td>
+		<td>fur</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Friulian (Italy)</td>
+		<td>fur-IT</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah</td>
+		<td>ff</td>
+		<td>0x67</td>
+		<td>103</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah (Cameroon)</td>
+		<td>ff-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah (Guinea)</td>
+		<td>ff-GN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah (Latin)</td>
+		<td>ff-Latn</td>
+		<td>0x7C67</td>
+		<td>31847</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah (Latin, Senegal)</td>
+		<td>ff-Latn-SN</td>
+		<td>0x867</td>
+		<td>2151</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah (Mauritania)</td>
+		<td>ff-MR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Fulah (Nigeria)</td>
+		<td>ff-NG</td>
+		<td>0x467</td>
+		<td>1127</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Galician</td>
+		<td>gl</td>
+		<td>0x56</td>
+		<td>86</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Galician (Galician)</td>
+		<td>gl-ES</td>
+		<td>0x456</td>
+		<td>1110</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ganda</td>
+		<td>lg</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ganda (Uganda)</td>
+		<td>lg-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Georgian</td>
+		<td>ka</td>
+		<td>0x37</td>
+		<td>55</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Georgian (Georgia)</td>
+		<td>ka-GE</td>
+		<td>0x437</td>
+		<td>1079</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German</td>
+		<td>de</td>
+		<td>0x7</td>
+		<td>7</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Austria)</td>
+		<td>de-AT</td>
+		<td>0xC07</td>
+		<td>3079</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Belgium)</td>
+		<td>de-BE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Germany)</td>
+		<td>de-DE</td>
+		<td>0x407</td>
+		<td>1031</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Italy)</td>
+		<td>de-IT</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Liechtenstein)</td>
+		<td>de-LI</td>
+		<td>0x1407</td>
+		<td>5127</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Luxembourg)</td>
+		<td>de-LU</td>
+		<td>0x1007</td>
+		<td>4103</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>German (Switzerland)</td>
+		<td>de-CH</td>
+		<td>0x807</td>
+		<td>2055</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Greek</td>
+		<td>el</td>
+		<td>0x8</td>
+		<td>8</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Greek (Cyprus)</td>
+		<td>el-CY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Greek (Greece)</td>
+		<td>el-GR</td>
+		<td>0x408</td>
+		<td>1032</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Greenlandic</td>
+		<td>kl</td>
+		<td>0x6F</td>
+		<td>111</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Greenlandic (Greenland)</td>
+		<td>kl-GL</td>
+		<td>0x46F</td>
+		<td>1135</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Guarani</td>
+		<td>gn</td>
+		<td>0x74</td>
+		<td>116</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Guarani (Paraguay)</td>
+		<td>gn-PY</td>
+		<td>0x474</td>
+		<td>1140</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Gujarati</td>
+		<td>gu</td>
+		<td>0x47</td>
+		<td>71</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Gujarati (India)</td>
+		<td>gu-IN</td>
+		<td>0x447</td>
+		<td>1095</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Gusii</td>
+		<td>guz</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Gusii (Kenya)</td>
+		<td>guz-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Hausa</td>
+		<td>ha</td>
+		<td>0x68</td>
+		<td>104</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hausa (Latin)</td>
+		<td>ha-Latn</td>
+		<td>0x7C68</td>
+		<td>31848</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hausa (Latin, Ghana)</td>
+		<td>ha-Latn-GH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hausa (Latin, Niger)</td>
+		<td>ha-Latn-NE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hausa (Latin, Nigeria)</td>
+		<td>ha-Latn-NG</td>
+		<td>0x468</td>
+		<td>1128</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hawaiian</td>
+		<td>haw</td>
+		<td>0x75</td>
+		<td>117</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Hawaiian (United States)</td>
+		<td>haw-US</td>
+		<td>0x475</td>
+		<td>1141</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Hebrew</td>
+		<td>he</td>
+		<td>0xD</td>
+		<td>13</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Hebrew (Israel)</td>
+		<td>he-IL</td>
+		<td>0x40D</td>
+		<td>1037</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Hindi</td>
+		<td>hi</td>
+		<td>0x39</td>
+		<td>57</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hindi (India)</td>
+		<td>hi-IN</td>
+		<td>0x439</td>
+		<td>1081</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hungarian</td>
+		<td>hu</td>
+		<td>0xE</td>
+		<td>14</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Hungarian (Hungary)</td>
+		<td>hu-HU</td>
+		<td>0x40E</td>
+		<td>1038</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ibibio</td>
+		<td>ibb</td>
+		<td>0x69</td>
+		<td>105</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Ibibio (Nigeria)</td>
+		<td>ibb-NG</td>
+		<td>0x469</td>
+		<td>1129</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Icelandic</td>
+		<td>is</td>
+		<td>0xF</td>
+		<td>15</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Icelandic (Iceland)</td>
+		<td>is-IS</td>
+		<td>0x40F</td>
+		<td>1039</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Igbo</td>
+		<td>ig</td>
+		<td>0x70</td>
+		<td>112</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Igbo (Nigeria)</td>
+		<td>ig-NG</td>
+		<td>0x470</td>
+		<td>1136</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Indonesian</td>
+		<td>id</td>
+		<td>0x21</td>
+		<td>33</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Indonesian (Indonesia)</td>
+		<td>id-ID</td>
+		<td>0x421</td>
+		<td>1057</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Interlingua</td>
+		<td>ia</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Interlingua (France)</td>
+		<td>ia-FR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Interlingua (World)</td>
+		<td>ia-001</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Inuktitut</td>
+		<td>iu</td>
+		<td>0x5D</td>
+		<td>93</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Inuktitut (Latin)</td>
+		<td>iu-Latn</td>
+		<td>0x7C5D</td>
+		<td>31837</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Inuktitut (Latin, Canada)</td>
+		<td>iu-Latn-CA</td>
+		<td>0x85D</td>
+		<td>2141</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Inuktitut (Syllabics)</td>
+		<td>iu-Cans</td>
+		<td>0x785D</td>
+		<td>30813</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Inuktitut (Syllabics, Canada)</td>
+		<td>iu-Cans-CA</td>
+		<td>0x45D</td>
+		<td>1117</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Invariant Language (Invariant Country)</td>
+		<td></td>
+		<td>0x7F</td>
+		<td>127</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Irish</td>
+		<td>ga</td>
+		<td>0x3C</td>
+		<td>60</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Irish (Ireland)</td>
+		<td>ga-IE</td>
+		<td>0x83C</td>
+		<td>2108</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>isiXhosa</td>
+		<td>xh</td>
+		<td>0x34</td>
+		<td>52</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>isiXhosa (South Africa)</td>
+		<td>xh-ZA</td>
+		<td>0x434</td>
+		<td>1076</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>isiZulu</td>
+		<td>zu</td>
+		<td>0x35</td>
+		<td>53</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>isiZulu (South Africa)</td>
+		<td>zu-ZA</td>
+		<td>0x435</td>
+		<td>1077</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Italian</td>
+		<td>it</td>
+		<td>0x10</td>
+		<td>16</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Italian (Italy)</td>
+		<td>it-IT</td>
+		<td>0x410</td>
+		<td>1040</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Italian (San Marino)</td>
+		<td>it-SM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Italian (Switzerland)</td>
+		<td>it-CH</td>
+		<td>0x810</td>
+		<td>2064</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Italian (Vatican City)</td>
+		<td>it-VA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Japanese</td>
+		<td>ja</td>
+		<td>0x11</td>
+		<td>17</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Japanese (Japan)</td>
+		<td>ja-JP</td>
+		<td>0x411</td>
+		<td>1041</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Javanese</td>
+		<td>jv-Latn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Javanese</td>
+		<td>jv</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Javanese (Indonesia)</td>
+		<td>jv-Latn-ID</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Javanese (Javanese)</td>
+		<td>jv-Java</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Javanese (Javanese, Indonesia)</td>
+		<td>jv-Java-ID</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Jola-Fonyi</td>
+		<td>dyo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Jola-Fonyi (Senegal)</td>
+		<td>dyo-SN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kabuverdianu</td>
+		<td>kea</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kabuverdianu (Cabo Verde)</td>
+		<td>kea-CV</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kabyle</td>
+		<td>kab</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Kabyle (Algeria)</td>
+		<td>kab-DZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Kako</td>
+		<td>kkj</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kako (Cameroon)</td>
+		<td>kkj-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kalenjin</td>
+		<td>kln</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kalenjin (Kenya)</td>
+		<td>kln-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kamba</td>
+		<td>kam</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kamba (Kenya)</td>
+		<td>kam-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kannada</td>
+		<td>kn</td>
+		<td>0x4B</td>
+		<td>75</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kannada (India)</td>
+		<td>kn-IN</td>
+		<td>0x44B</td>
+		<td>1099</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kanuri</td>
+		<td>kr</td>
+		<td>0x71</td>
+		<td>113</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kanuri (Nigeria)</td>
+		<td>kr-NG</td>
+		<td>0x471</td>
+		<td>1137</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kashmiri</td>
+		<td>ks</td>
+		<td>0x60</td>
+		<td>96</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kashmiri (Devanagari)</td>
+		<td>ks-Deva</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kashmiri (Devanagari, India)</td>
+		<td>ks-Deva-IN</td>
+		<td>0x860</td>
+		<td>2144</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kashmiri (Perso-Arabic)</td>
+		<td>ks-Arab</td>
+		<td>0x460</td>
+		<td>1120</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kashmiri (Perso-Arabic)</td>
+		<td>ks-Arab-IN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kazakh</td>
+		<td>kk</td>
+		<td>0x3F</td>
+		<td>63</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kazakh (Kazakhstan)</td>
+		<td>kk-KZ</td>
+		<td>0x43F</td>
+		<td>1087</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Khmer</td>
+		<td>km</td>
+		<td>0x53</td>
+		<td>83</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Khmer (Cambodia)</td>
+		<td>km-KH</td>
+		<td>0x453</td>
+		<td>1107</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>K'iche'</td>
+		<td>quc-Latn</td>
+		<td>0x7C86</td>
+		<td>31878</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>K'iche'</td>
+		<td>quc</td>
+		<td>0x86</td>
+		<td>134</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>K'iche' (Guatemala)</td>
+		<td>quc-Latn-GT</td>
+		<td>0x486</td>
+		<td>1158</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kikuyu</td>
+		<td>ki</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kikuyu (Kenya)</td>
+		<td>ki-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kinyarwanda</td>
+		<td>rw</td>
+		<td>0x87</td>
+		<td>135</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kinyarwanda (Rwanda)</td>
+		<td>rw-RW</td>
+		<td>0x487</td>
+		<td>1159</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kiswahili</td>
+		<td>sw</td>
+		<td>0x41</td>
+		<td>65</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kiswahili (Congo DRC)</td>
+		<td>sw-CD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kiswahili (Kenya)</td>
+		<td>sw-KE</td>
+		<td>0x441</td>
+		<td>1089</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Kiswahili (Tanzania)</td>
+		<td>sw-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kiswahili (Uganda)</td>
+		<td>sw-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Konkani</td>
+		<td>kok</td>
+		<td>0x57</td>
+		<td>87</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Konkani (India)</td>
+		<td>kok-IN</td>
+		<td>0x457</td>
+		<td>1111</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Korean</td>
+		<td>ko</td>
+		<td>0x12</td>
+		<td>18</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Korean (Korea)</td>
+		<td>ko-KR</td>
+		<td>0x412</td>
+		<td>1042</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Korean (North Korea)</td>
+		<td>ko-KP</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Koyra Chiini</td>
+		<td>khq</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Koyra Chiini (Mali)</td>
+		<td>khq-ML</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Koyraboro Senni</td>
+		<td>ses</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Koyraboro Senni (Mali)</td>
+		<td>ses-ML</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kurdish (Perso-Arabic, Iran)</td>
+		<td>ku-Arab-IR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Kwasio</td>
+		<td>nmg</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kwasio (Cameroon)</td>
+		<td>nmg-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kyrgyz</td>
+		<td>ky</td>
+		<td>0x40</td>
+		<td>64</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Kyrgyz (Kyrgyzstan)</td>
+		<td>ky-KG</td>
+		<td>0x440</td>
+		<td>1088</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lakota</td>
+		<td>lkt</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Lakota (United States)</td>
+		<td>lkt-US</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Langi</td>
+		<td>lag</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Langi (Tanzania)</td>
+		<td>lag-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lao</td>
+		<td>lo</td>
+		<td>0x54</td>
+		<td>84</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Lao (Lao P.D.R.)</td>
+		<td>lo-LA</td>
+		<td>0x454</td>
+		<td>1108</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Latin</td>
+		<td>la</td>
+		<td>0x76</td>
+		<td>118</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Latin (World)</td>
+		<td>la-001</td>
+		<td>0x476</td>
+		<td>1142</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Latvian</td>
+		<td>lv</td>
+		<td>0x26</td>
+		<td>38</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Latvian (Latvia)</td>
+		<td>lv-LV</td>
+		<td>0x426</td>
+		<td>1062</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lingala</td>
+		<td>ln</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lingala (Angola)</td>
+		<td>ln-AO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lingala (Central African Republic)</td>
+		<td>ln-CF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lingala (Congo DRC)</td>
+		<td>ln-CD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lingala (Congo)</td>
+		<td>ln-CG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lithuanian</td>
+		<td>lt</td>
+		<td>0x27</td>
+		<td>39</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lithuanian (Lithuania)</td>
+		<td>lt-LT</td>
+		<td>0x427</td>
+		<td>1063</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Low German</td>
+		<td>nds</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Low German (Germany)</td>
+		<td>nds-DE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Low German (Netherlands)</td>
+		<td>nds-NL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lower Sorbian</td>
+		<td>dsb</td>
+		<td>0x7C2E</td>
+		<td>31790</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Lower Sorbian (Germany)</td>
+		<td>dsb-DE</td>
+		<td>0x82E</td>
+		<td>2094</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Luba-Katanga</td>
+		<td>lu</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Luba-Katanga (Congo DRC)</td>
+		<td>lu-CD</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Luo</td>
+		<td>luo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Luo (Kenya)</td>
+		<td>luo-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Luxembourgish</td>
+		<td>lb</td>
+		<td>0x6E</td>
+		<td>110</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Luxembourgish (Luxembourg)</td>
+		<td>lb-LU</td>
+		<td>0x46E</td>
+		<td>1134</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Luyia</td>
+		<td>luy</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Luyia (Kenya)</td>
+		<td>luy-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Macedonian (Former Yugoslav Republic of Macedonia)</td>
+		<td>mk-MK</td>
+		<td>0x42F</td>
+		<td>1071</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Macedonian (FYROM)</td>
+		<td>mk</td>
+		<td>0x2F</td>
+		<td>47</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Machame</td>
+		<td>jmc</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Machame (Tanzania)</td>
+		<td>jmc-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Makhuwa-Meetto</td>
+		<td>mgh</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Makhuwa-Meetto (Mozambique)</td>
+		<td>mgh-MZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Makonde</td>
+		<td>kde</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Makonde (Tanzania)</td>
+		<td>kde-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Malagasy</td>
+		<td>mg</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Malagasy (Madagascar)</td>
+		<td>mg-MG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Malay</td>
+		<td>ms</td>
+		<td>0x3E</td>
+		<td>62</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Malay (Brunei Darussalam)</td>
+		<td>ms-BN</td>
+		<td>0x83E</td>
+		<td>2110</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Malay (Latin, Singapore)</td>
+		<td>ms-SG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Malay (Malaysia)</td>
+		<td>ms-MY</td>
+		<td>0x43E</td>
+		<td>1086</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Malayalam</td>
+		<td>ml</td>
+		<td>0x4C</td>
+		<td>76</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Malayalam (India)</td>
+		<td>ml-IN</td>
+		<td>0x44C</td>
+		<td>1100</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Maltese</td>
+		<td>mt</td>
+		<td>0x3A</td>
+		<td>58</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Maltese (Malta)</td>
+		<td>mt-MT</td>
+		<td>0x43A</td>
+		<td>1082</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Manipuri</td>
+		<td>mni</td>
+		<td>0x58</td>
+		<td>88</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Manipuri (India)</td>
+		<td>mni-IN</td>
+		<td>0x458</td>
+		<td>1112</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Manx</td>
+		<td>gv</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Manx (Isle of Man)</td>
+		<td>gv-IM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Maori</td>
+		<td>mi</td>
+		<td>0x81</td>
+		<td>129</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Maori (New Zealand)</td>
+		<td>mi-NZ</td>
+		<td>0x481</td>
+		<td>1153</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mapudungun</td>
+		<td>arn</td>
+		<td>0x7A</td>
+		<td>122</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Mapudungun (Chile)</td>
+		<td>arn-CL</td>
+		<td>0x47A</td>
+		<td>1146</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Marathi</td>
+		<td>mr</td>
+		<td>0x4E</td>
+		<td>78</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Marathi (India)</td>
+		<td>mr-IN</td>
+		<td>0x44E</td>
+		<td>1102</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Masai</td>
+		<td>mas</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Masai (Kenya)</td>
+		<td>mas-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Masai (Tanzania)</td>
+		<td>mas-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mazanderani</td>
+		<td>mzn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Mazanderani (Iran)</td>
+		<td>mzn-IR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Meru</td>
+		<td>mer</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Meru (Kenya)</td>
+		<td>mer-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Meta'</td>
+		<td>mgo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Meta' (Cameroon)</td>
+		<td>mgo-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mohawk</td>
+		<td>moh</td>
+		<td>0x7C</td>
+		<td>124</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Mohawk (Mohawk)</td>
+		<td>moh-CA</td>
+		<td>0x47C</td>
+		<td>1148</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Mongolian</td>
+		<td>mn</td>
+		<td>0x50</td>
+		<td>80</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mongolian (Cyrillic)</td>
+		<td>mn-Cyrl</td>
+		<td>0x7850</td>
+		<td>30800</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mongolian (Cyrillic, Mongolia)</td>
+		<td>mn-MN</td>
+		<td>0x450</td>
+		<td>1104</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mongolian (Traditional Mongolian)</td>
+		<td>mn-Mong</td>
+		<td>0x7C50</td>
+		<td>31824</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mongolian (Traditional Mongolian, Mongolia)</td>
+		<td>mn-Mong-MN</td>
+		<td>0xC50</td>
+		<td>3152</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mongolian (Traditional Mongolian, PRC)</td>
+		<td>mn-Mong-CN</td>
+		<td>0x850</td>
+		<td>2128</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Morisyen</td>
+		<td>mfe</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Morisyen (Mauritius)</td>
+		<td>mfe-MU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mundang</td>
+		<td>mua</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mundang (Cameroon)</td>
+		<td>mua-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nama</td>
+		<td>naq</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nama (Namibia)</td>
+		<td>naq-NA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nepali</td>
+		<td>ne</td>
+		<td>0x61</td>
+		<td>97</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Nepali (India)</td>
+		<td>ne-IN</td>
+		<td>0x861</td>
+		<td>2145</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Nepali (Nepal)</td>
+		<td>ne-NP</td>
+		<td>0x461</td>
+		<td>1121</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Ngiemboon</td>
+		<td>nnh</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ngiemboon (Cameroon)</td>
+		<td>nnh-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ngomba</td>
+		<td>jgo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ngomba (Cameroon)</td>
+		<td>jgo-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>N'ko</td>
+		<td>nqo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>N'ko (Guinea)</td>
+		<td>nqo-GN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>North Ndebele</td>
+		<td>nd</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>North Ndebele (Zimbabwe)</td>
+		<td>nd-ZW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Northern Luri</td>
+		<td>lrc</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Northern Luri (Iran)</td>
+		<td>lrc-IR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Northern Luri (Iraq)</td>
+		<td>lrc-IQ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Norwegian</td>
+		<td>no</td>
+		<td>0x14</td>
+		<td>20</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Norwegian (Bokmål)</td>
+		<td>nb</td>
+		<td>0x7C14</td>
+		<td>31764</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Norwegian (Nynorsk)</td>
+		<td>nn</td>
+		<td>0x7814</td>
+		<td>30740</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Norwegian, Bokmål (Norway)</td>
+		<td>nb-NO</td>
+		<td>0x414</td>
+		<td>1044</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Norwegian, Bokmål (Svalbard and Jan Mayen)</td>
+		<td>nb-SJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Norwegian, Nynorsk (Norway)</td>
+		<td>nn-NO</td>
+		<td>0x814</td>
+		<td>2068</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nuer</td>
+		<td>nus</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nuer (South Sudan)</td>
+		<td>nus-SS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nyankole</td>
+		<td>nyn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Nyankole (Uganda)</td>
+		<td>nyn-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Occitan</td>
+		<td>oc</td>
+		<td>0x82</td>
+		<td>130</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Occitan (France)</td>
+		<td>oc-FR</td>
+		<td>0x482</td>
+		<td>1154</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Odia</td>
+		<td>or</td>
+		<td>0x48</td>
+		<td>72</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Odia (India)</td>
+		<td>or-IN</td>
+		<td>0x448</td>
+		<td>1096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Oromo</td>
+		<td>om</td>
+		<td>0x72</td>
+		<td>114</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Oromo (Ethiopia)</td>
+		<td>om-ET</td>
+		<td>0x472</td>
+		<td>1138</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Oromo (Kenya)</td>
+		<td>om-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Ossetian (Cyrillic, Georgia)</td>
+		<td>os-GE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ossetian (Cyrillic, Russia)</td>
+		<td>os-RU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ossetic</td>
+		<td>os</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Papiamento</td>
+		<td>pap</td>
+		<td>0x79</td>
+		<td>121</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Papiamento (Caribbean)</td>
+		<td>pap-029</td>
+		<td>0x479</td>
+		<td>1145</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Pashto</td>
+		<td>ps</td>
+		<td>0x63</td>
+		<td>99</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Pashto (Afghanistan)</td>
+		<td>ps-AF</td>
+		<td>0x463</td>
+		<td>1123</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Persian</td>
+		<td>fa</td>
+		<td>0x29</td>
+		<td>41</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Persian (Iran)</td>
+		<td>fa-IR</td>
+		<td>0x429</td>
+		<td>1065</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Polish</td>
+		<td>pl</td>
+		<td>0x15</td>
+		<td>21</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Polish (Poland)</td>
+		<td>pl-PL</td>
+		<td>0x415</td>
+		<td>1045</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese</td>
+		<td>pt</td>
+		<td>0x16</td>
+		<td>22</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Angola)</td>
+		<td>pt-AO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Brazil)</td>
+		<td>pt-BR</td>
+		<td>0x416</td>
+		<td>1046</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Cabo Verde)</td>
+		<td>pt-CV</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Equatorial Guinea)</td>
+		<td>pt-GQ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Guinea-Bissau)</td>
+		<td>pt-GW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Luxembourg)</td>
+		<td>pt-LU</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Macao SAR)</td>
+		<td>pt-MO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Mozambique)</td>
+		<td>pt-MZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Portugal)</td>
+		<td>pt-PT</td>
+		<td>0x816</td>
+		<td>2070</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Portuguese (São Tomé and Príncipe)</td>
+		<td>pt-ST</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Switzerland)</td>
+		<td>pt-CH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Portuguese (Timor-Leste)</td>
+		<td>pt-TL</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Prussian</td>
+		<td>prg</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Prussian (World)</td>
+		<td>prg-001</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Punjabi</td>
+		<td>pa</td>
+		<td>0x46</td>
+		<td>70</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Punjabi (Arabic)</td>
+		<td>pa-Arab</td>
+		<td>0x7C46</td>
+		<td>31814</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Punjabi (India)</td>
+		<td>pa-IN</td>
+		<td>0x446</td>
+		<td>1094</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Punjabi (Islamic Republic of Pakistan)</td>
+		<td>pa-Arab-PK</td>
+		<td>0x846</td>
+		<td>2118</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Quechua</td>
+		<td>quz</td>
+		<td>0x6B</td>
+		<td>107</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Quechua (Bolivia)</td>
+		<td>quz-BO</td>
+		<td>0x46B</td>
+		<td>1131</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Quechua (Ecuador)</td>
+		<td>quz-EC</td>
+		<td>0x86B</td>
+		<td>2155</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Quechua (Peru)</td>
+		<td>quz-PE</td>
+		<td>0xC6B</td>
+		<td>3179</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ripuarian (Germany)</td>
+		<td>ksh-DE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Romanian</td>
+		<td>ro</td>
+		<td>0x18</td>
+		<td>24</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Romanian (Moldova)</td>
+		<td>ro-MD</td>
+		<td>0x818</td>
+		<td>2072</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Romanian (Romania)</td>
+		<td>ro-RO</td>
+		<td>0x418</td>
+		<td>1048</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Romansh</td>
+		<td>rm</td>
+		<td>0x17</td>
+		<td>23</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Romansh (Switzerland)</td>
+		<td>rm-CH</td>
+		<td>0x417</td>
+		<td>1047</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Rombo</td>
+		<td>rof</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Rombo (Tanzania)</td>
+		<td>rof-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Rundi</td>
+		<td>rn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Rundi (Burundi)</td>
+		<td>rn-BI</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian</td>
+		<td>ru</td>
+		<td>0x19</td>
+		<td>25</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian (Belarus)</td>
+		<td>ru-BY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian (Kazakhstan)</td>
+		<td>ru-KZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian (Kyrgyzstan)</td>
+		<td>ru-KG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian (Moldova)</td>
+		<td>ru-MD</td>
+		<td>0x819</td>
+		<td>2073</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian (Russia)</td>
+		<td>ru-RU</td>
+		<td>0x419</td>
+		<td>1049</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Russian (Ukraine)</td>
+		<td>ru-UA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Rwa</td>
+		<td>rwk</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Rwa (Tanzania)</td>
+		<td>rwk-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Saho</td>
+		<td>ssy</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Saho (Eritrea)</td>
+		<td>ssy-ER</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sakha</td>
+		<td>sah</td>
+		<td>0x85</td>
+		<td>133</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sakha (Russia)</td>
+		<td>sah-RU</td>
+		<td>0x485</td>
+		<td>1157</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Samburu</td>
+		<td>saq</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Samburu (Kenya)</td>
+		<td>saq-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sami (Inari)</td>
+		<td>smn</td>
+		<td>0x703B</td>
+		<td>28731</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami (Lule)</td>
+		<td>smj</td>
+		<td>0x7C3B</td>
+		<td>31803</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami (Northern)</td>
+		<td>se</td>
+		<td>0x3B</td>
+		<td>59</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami (Skolt)</td>
+		<td>sms</td>
+		<td>0x743B</td>
+		<td>29755</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami (Southern)</td>
+		<td>sma</td>
+		<td>0x783B</td>
+		<td>30779</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Inari (Finland)</td>
+		<td>smn-FI</td>
+		<td>0x243B</td>
+		<td>9275</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Lule (Norway)</td>
+		<td>smj-NO</td>
+		<td>0x103B</td>
+		<td>4155</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Lule (Sweden)</td>
+		<td>smj-SE</td>
+		<td>0x143B</td>
+		<td>5179</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Northern (Finland)</td>
+		<td>se-FI</td>
+		<td>0xC3B</td>
+		<td>3131</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Northern (Norway)</td>
+		<td>se-NO</td>
+		<td>0x43B</td>
+		<td>1083</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Northern (Sweden)</td>
+		<td>se-SE</td>
+		<td>0x83B</td>
+		<td>2107</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Skolt (Finland)</td>
+		<td>sms-FI</td>
+		<td>0x203B</td>
+		<td>8251</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Southern (Norway)</td>
+		<td>sma-NO</td>
+		<td>0x183B</td>
+		<td>6203</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sami, Southern (Sweden)</td>
+		<td>sma-SE</td>
+		<td>0x1C3B</td>
+		<td>7227</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sango</td>
+		<td>sg</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sango (Central African Republic)</td>
+		<td>sg-CF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sangu</td>
+		<td>sbp</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sangu (Tanzania)</td>
+		<td>sbp-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sanskrit</td>
+		<td>sa</td>
+		<td>0x4F</td>
+		<td>79</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sanskrit (India)</td>
+		<td>sa-IN</td>
+		<td>0x44F</td>
+		<td>1103</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Scottish Gaelic</td>
+		<td>gd</td>
+		<td>0x91</td>
+		<td>145</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Scottish Gaelic (United Kingdom)</td>
+		<td>gd-GB</td>
+		<td>0x491</td>
+		<td>1169</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sena</td>
+		<td>seh</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sena (Mozambique)</td>
+		<td>seh-MZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Serbian</td>
+		<td>sr</td>
+		<td>0x7C1A</td>
+		<td>31770</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Cyrillic)</td>
+		<td>sr-Cyrl</td>
+		<td>0x6C1A</td>
+		<td>27674</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Cyrillic, Bosnia and Herzegovina)</td>
+		<td>sr-Cyrl-BA</td>
+		<td>0x1C1A</td>
+		<td>7194</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Cyrillic, Kosovo)</td>
+		<td>sr-Cyrl-XK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Cyrillic, Montenegro)</td>
+		<td>sr-Cyrl-ME</td>
+		<td>0x301A</td>
+		<td>12314</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Cyrillic, Serbia)</td>
+		<td>sr-Cyrl-RS</td>
+		<td>0x281A</td>
+		<td>10266</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Latin)</td>
+		<td>sr-Latn</td>
+		<td>0x701A</td>
+		<td>28698</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Latin, Bosnia and Herzegovina)</td>
+		<td>sr-Latn-BA</td>
+		<td>0x181A</td>
+		<td>6170</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Latin, Kosovo)</td>
+		<td>sr-Latn-XK</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Latin, Montenegro)</td>
+		<td>sr-Latn-ME</td>
+		<td>0x2C1A</td>
+		<td>11290</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Serbian (Latin, Serbia)</td>
+		<td>sr-Latn-RS</td>
+		<td>0x241A</td>
+		<td>9242</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sesotho (Lesotho)</td>
+		<td>st-LS</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sesotho sa Leboa</td>
+		<td>nso</td>
+		<td>0x6C</td>
+		<td>108</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sesotho sa Leboa (South Africa)</td>
+		<td>nso-ZA</td>
+		<td>0x46C</td>
+		<td>1132</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Setswana</td>
+		<td>tn</td>
+		<td>0x32</td>
+		<td>50</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Setswana (Botswana)</td>
+		<td>tn-BW</td>
+		<td>0x832</td>
+		<td>2098</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Setswana (South Africa)</td>
+		<td>tn-ZA</td>
+		<td>0x432</td>
+		<td>1074</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Shambala</td>
+		<td>ksb</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Shambala (Tanzania)</td>
+		<td>ksb-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Shona</td>
+		<td>sn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Shona (Latin)</td>
+		<td>sn-Latn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Shona (Latin, Zimbabwe)</td>
+		<td>sn-Latn-ZW</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sindhi</td>
+		<td>sd</td>
+		<td>0x59</td>
+		<td>89</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sindhi (Arabic)</td>
+		<td>sd-Arab</td>
+		<td>0x7C59</td>
+		<td>31833</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sindhi (Devanagari)</td>
+		<td>sd-Deva</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sindhi (Devanagari, India)</td>
+		<td>sd-Deva-IN</td>
+		<td>0x459</td>
+		<td>1113</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Sindhi (Islamic Republic of Pakistan)</td>
+		<td>sd-Arab-PK</td>
+		<td>0x859</td>
+		<td>2137</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sinhala</td>
+		<td>si</td>
+		<td>0x5B</td>
+		<td>91</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Sinhala (Sri Lanka)</td>
+		<td>si-LK</td>
+		<td>0x45B</td>
+		<td>1115</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Slovak</td>
+		<td>sk</td>
+		<td>0x1B</td>
+		<td>27</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Slovak (Slovakia)</td>
+		<td>sk-SK</td>
+		<td>0x41B</td>
+		<td>1051</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Slovenian</td>
+		<td>sl</td>
+		<td>0x24</td>
+		<td>36</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Slovenian (Slovenia)</td>
+		<td>sl-SI</td>
+		<td>0x424</td>
+		<td>1060</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Soga</td>
+		<td>xog</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Soga (Uganda)</td>
+		<td>xog-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Somali</td>
+		<td>so</td>
+		<td>0x77</td>
+		<td>119</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Somali (Djibouti)</td>
+		<td>so-DJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Somali (Ethiopia)</td>
+		<td>so-ET</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Somali (Kenya)</td>
+		<td>so-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Somali (Somalia)</td>
+		<td>so-SO</td>
+		<td>0x477</td>
+		<td>1143</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>South Ndebele</td>
+		<td>nr</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>South Ndebele (South Africa)</td>
+		<td>nr-ZA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Southern Sotho</td>
+		<td>st</td>
+		<td>0x30</td>
+		<td>48</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Southern Sotho (South Africa)</td>
+		<td>st-ZA</td>
+		<td>0x430</td>
+		<td>1072</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish</td>
+		<td>es</td>
+		<td>0xA</td>
+		<td>10</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Argentina)</td>
+		<td>es-AR</td>
+		<td>0x2C0A</td>
+		<td>11274</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Belize)</td>
+		<td>es-BZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Venezuela)</td>
+		<td>es-VE</td>
+		<td>0x200A</td>
+		<td>8202</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Bolivia)</td>
+		<td>es-BO</td>
+		<td>0x400A</td>
+		<td>16394</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Brazil)</td>
+		<td>es-BR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Chile)</td>
+		<td>es-CL</td>
+		<td>0x340A</td>
+		<td>13322</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Colombia)</td>
+		<td>es-CO</td>
+		<td>0x240A</td>
+		<td>9226</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Costa Rica)</td>
+		<td>es-CR</td>
+		<td>0x140A</td>
+		<td>5130</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Cuba)</td>
+		<td>es-CU</td>
+		<td>0x5C0A</td>
+		<td>23562</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Dominican Republic)</td>
+		<td>es-DO</td>
+		<td>0x1C0A</td>
+		<td>7178</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Ecuador)</td>
+		<td>es-EC</td>
+		<td>0x300A</td>
+		<td>12298</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (El Salvador)</td>
+		<td>es-SV</td>
+		<td>0x440A</td>
+		<td>17418</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Equatorial Guinea)</td>
+		<td>es-GQ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Guatemala)</td>
+		<td>es-GT</td>
+		<td>0x100A</td>
+		<td>4106</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Honduras)</td>
+		<td>es-HN</td>
+		<td>0x480A</td>
+		<td>18442</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Latin America)</td>
+		<td>es-419</td>
+		<td>0x580A</td>
+		<td>22538</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (Mexico)</td>
+		<td>es-MX</td>
+		<td>0x80A</td>
+		<td>2058</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Nicaragua)</td>
+		<td>es-NI</td>
+		<td>0x4C0A</td>
+		<td>19466</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Panama)</td>
+		<td>es-PA</td>
+		<td>0x180A</td>
+		<td>6154</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Paraguay)</td>
+		<td>es-PY</td>
+		<td>0x3C0A</td>
+		<td>15370</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Peru)</td>
+		<td>es-PE</td>
+		<td>0x280A</td>
+		<td>10250</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Philippines)</td>
+		<td>es-PH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Puerto Rico)</td>
+		<td>es-PR</td>
+		<td>0x500A</td>
+		<td>20490</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Spain)</td>
+		<td>es-ES</td>
+		<td>0xC0A</td>
+		<td>3082</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Spanish (United States)</td>
+		<td>es-US</td>
+		<td>0x540A</td>
+		<td>21514</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Spanish (Uruguay)</td>
+		<td>es-UY</td>
+		<td>0x380A</td>
+		<td>14346</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Standard Moroccan Tamazight</td>
+		<td>zgh</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Standard Moroccan Tamazight (Tifinagh)</td>
+		<td>zgh-Tfng</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Standard Moroccan Tamazight (Tifinagh, Morocco)</td>
+		<td>zgh-Tfng-MA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Swati</td>
+		<td>ss</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Swati (South Africa)</td>
+		<td>ss-ZA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Swati (Swaziland)</td>
+		<td>ss-SZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Swedish</td>
+		<td>sv</td>
+		<td>0x1D</td>
+		<td>29</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Swedish (Åland Islands)</td>
+		<td>sv-AX</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Swedish (Finland)</td>
+		<td>sv-FI</td>
+		<td>0x81D</td>
+		<td>2077</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Swedish (Sweden)</td>
+		<td>sv-SE</td>
+		<td>0x41D</td>
+		<td>1053</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Syriac</td>
+		<td>syr</td>
+		<td>0x5A</td>
+		<td>90</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Syriac (Syria)</td>
+		<td>syr-SY</td>
+		<td>0x45A</td>
+		<td>1114</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Tachelhit</td>
+		<td>shi</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Tachelhit (Latin)</td>
+		<td>shi-Latn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Tachelhit (Latin, Morocco)</td>
+		<td>shi-Latn-MA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Tachelhit (Tifinagh)</td>
+		<td>shi-Tfng</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Tachelhit (Tifinagh, Morocco)</td>
+		<td>shi-Tfng-MA</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Taita</td>
+		<td>dav</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Taita (Kenya)</td>
+		<td>dav-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Tajik</td>
+		<td>tg</td>
+		<td>0x28</td>
+		<td>40</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tajik (Cyrillic)</td>
+		<td>tg-Cyrl</td>
+		<td>0x7C28</td>
+		<td>31784</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tajik (Cyrillic, Tajikistan)</td>
+		<td>tg-Cyrl-TJ</td>
+		<td>0x428</td>
+		<td>1064</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamazight</td>
+		<td>tzm</td>
+		<td>0x5F</td>
+		<td>95</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamazight (Latin)</td>
+		<td>tzm-Latn</td>
+		<td>0x7C5F</td>
+		<td>31839</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamazight (Latin, Algeria)</td>
+		<td>tzm-Latn-DZ</td>
+		<td>0x85F</td>
+		<td>2143</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamazight (Tifinagh)</td>
+		<td>tzm-Tfng</td>
+		<td>0x785F</td>
+		<td>30815</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamil</td>
+		<td>ta</td>
+		<td>0x49</td>
+		<td>73</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamil (India)</td>
+		<td>ta-IN</td>
+		<td>0x449</td>
+		<td>1097</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamil (Malaysia)</td>
+		<td>ta-MY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tamil (Singapore)</td>
+		<td>ta-SG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Tamil (Sri Lanka)</td>
+		<td>ta-LK</td>
+		<td>0x849</td>
+		<td>2121</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tasawaq</td>
+		<td>twq</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tasawaq (Niger)</td>
+		<td>twq-NE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tatar</td>
+		<td>tt</td>
+		<td>0x44</td>
+		<td>68</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tatar (Russia)</td>
+		<td>tt-RU</td>
+		<td>0x444</td>
+		<td>1092</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Telugu</td>
+		<td>te</td>
+		<td>0x4A</td>
+		<td>74</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Telugu (India)</td>
+		<td>te-IN</td>
+		<td>0x44A</td>
+		<td>1098</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Teso</td>
+		<td>teo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Teso (Kenya)</td>
+		<td>teo-KE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Teso (Uganda)</td>
+		<td>teo-UG</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Thai</td>
+		<td>th</td>
+		<td>0x1E</td>
+		<td>30</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Thai (Thailand)</td>
+		<td>th-TH</td>
+		<td>0x41E</td>
+		<td>1054</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tibetan</td>
+		<td>bo</td>
+		<td>0x51</td>
+		<td>81</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tibetan (India)</td>
+		<td>bo-IN</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Tibetan (PRC)</td>
+		<td>bo-CN</td>
+		<td>0x451</td>
+		<td>1105</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tigre</td>
+		<td>tig</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tigre (Eritrea)</td>
+		<td>tig-ER</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tigrinya</td>
+		<td>ti</td>
+		<td>0x73</td>
+		<td>115</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tigrinya (Eritrea)</td>
+		<td>ti-ER</td>
+		<td>0x873</td>
+		<td>2163</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tigrinya (Ethiopia)</td>
+		<td>ti-ET</td>
+		<td>0x473</td>
+		<td>1139</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Tongan</td>
+		<td>to</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tongan (Tonga)</td>
+		<td>to-TO</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Tsonga</td>
+		<td>ts</td>
+		<td>0x31</td>
+		<td>49</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Tsonga (South Africa)</td>
+		<td>ts-ZA</td>
+		<td>0x431</td>
+		<td>1073</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Turkish</td>
+		<td>tr</td>
+		<td>0x1F</td>
+		<td>31</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Turkish (Cyprus)</td>
+		<td>tr-CY</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Turkish (Turkey)</td>
+		<td>tr-TR</td>
+		<td>0x41F</td>
+		<td>1055</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Turkmen</td>
+		<td>tk</td>
+		<td>0x42</td>
+		<td>66</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Turkmen (Turkmenistan)</td>
+		<td>tk-TM</td>
+		<td>0x442</td>
+		<td>1090</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ukrainian</td>
+		<td>uk</td>
+		<td>0x22</td>
+		<td>34</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Ukrainian (Ukraine)</td>
+		<td>uk-UA</td>
+		<td>0x422</td>
+		<td>1058</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Upper Sorbian</td>
+		<td>hsb</td>
+		<td>0x2E</td>
+		<td>46</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Upper Sorbian (Germany)</td>
+		<td>hsb-DE</td>
+		<td>0x42E</td>
+		<td>1070</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Urdu</td>
+		<td>ur</td>
+		<td>0x20</td>
+		<td>32</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Urdu (India)</td>
+		<td>ur-IN</td>
+		<td>0x820</td>
+		<td>2080</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Urdu (Islamic Republic of Pakistan)</td>
+		<td>ur-PK</td>
+		<td>0x420</td>
+		<td>1056</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uyghur</td>
+		<td>ug</td>
+		<td>0x80</td>
+		<td>128</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uyghur (PRC)</td>
+		<td>ug-CN</td>
+		<td>0x480</td>
+		<td>1152</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uzbek</td>
+		<td>uz</td>
+		<td>0x43</td>
+		<td>67</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uzbek (Cyrillic)</td>
+		<td>uz-Cyrl</td>
+		<td>0x7843</td>
+		<td>30787</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uzbek (Cyrillic, Uzbekistan)</td>
+		<td>uz-Cyrl-UZ</td>
+		<td>0x843</td>
+		<td>2115</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uzbek (Latin)</td>
+		<td>uz-Latn</td>
+		<td>0x7C43</td>
+		<td>31811</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uzbek (Latin, Uzbekistan)</td>
+		<td>uz-Latn-UZ</td>
+		<td>0x443</td>
+		<td>1091</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Uzbek (Perso-Arabic)</td>
+		<td>uz-Arab</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Uzbek (Perso-Arabic, Afghanistan)</td>
+		<td>uz-Arab-AF</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Saturday</td>
+	</tr>
+	<tr>
+		<td>Vai</td>
+		<td>vai</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vai (Latin)</td>
+		<td>vai-Latn</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vai (Latin, Liberia)</td>
+		<td>vai-Latn-LR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vai (Vai)</td>
+		<td>vai-Vaii</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vai (Vai, Liberia)</td>
+		<td>vai-Vaii-LR</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Valencian (Spain)</td>
+		<td>ca-ES-valencia</td>
+		<td>0x803</td>
+		<td>2051</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Venda</td>
+		<td>ve</td>
+		<td>0x33</td>
+		<td>51</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Venda (South Africa)</td>
+		<td>ve-ZA</td>
+		<td>0x433</td>
+		<td>1075</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Vietnamese</td>
+		<td>vi</td>
+		<td>0x2A</td>
+		<td>42</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vietnamese (Vietnam)</td>
+		<td>vi-VN</td>
+		<td>0x42A</td>
+		<td>1066</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Volapük</td>
+		<td>vo</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Volapük (World)</td>
+		<td>vo-001</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vunjo</td>
+		<td>vun</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Vunjo (Tanzania)</td>
+		<td>vun-TZ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Walser</td>
+		<td>wae</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Walser (Switzerland)</td>
+		<td>wae-CH</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Welsh</td>
+		<td>cy</td>
+		<td>0x52</td>
+		<td>82</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Welsh (United Kingdom)</td>
+		<td>cy-GB</td>
+		<td>0x452</td>
+		<td>1106</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Wolaytta</td>
+		<td>wal</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Wolaytta (Ethiopia)</td>
+		<td>wal-ET</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>Sunday</td>
+	</tr>
+	<tr>
+		<td>Wolof</td>
+		<td>wo</td>
+		<td>0x88</td>
+		<td>136</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Wolof (Senegal)</td>
+		<td>wo-SN</td>
+		<td>0x488</td>
+		<td>1160</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yangben</td>
+		<td>yav</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yangben (Cameroon)</td>
+		<td>yav-CM</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yi</td>
+		<td>ii</td>
+		<td>0x78</td>
+		<td>120</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yi (PRC)</td>
+		<td>ii-CN</td>
+		<td>0x478</td>
+		<td>1144</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yiddish</td>
+		<td>yi</td>
+		<td>0x3D</td>
+		<td>61</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yiddish (World)</td>
+		<td>yi-001</td>
+		<td>0x43D</td>
+		<td>1085</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yoruba</td>
+		<td>yo</td>
+		<td>0x6A</td>
+		<td>106</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yoruba (Benin)</td>
+		<td>yo-BJ</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Yoruba (Nigeria)</td>
+		<td>yo-NG</td>
+		<td>0x46A</td>
+		<td>1130</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Zarma</td>
+		<td>dje</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Zarma (Niger)</td>
+		<td>dje-NE</td>
+		<td>0x1000</td>
+		<td>4096</td>
+<td>&nbsp;</td>
+	</tr>
+</table>
+
+<p>Not all software packages will fully support all locales, so for example SQL database sort orders may not
+handle every locale correctly even when the OS does.
+</p>
+<p><b>Related:</b></p>
+<p> <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318693(v=vs.85).aspx">Language Identifier Constants and Strings</a> - MSDN<br>
+<a href="https://ss64.org/viewtopic.php?id=2264">PowerShell script</a> to generate this page <br>
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166</a> - Country codes<br>
+<a href="nt/chcp.html">CHCP</a> -  active console Code Page.</p><!-- #BeginLibraryItem "/Library/foot_root.lbi" --><p><script async src="../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- General300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7010419507"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div>
+<!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/locale.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:32 GMT -->
+</html>

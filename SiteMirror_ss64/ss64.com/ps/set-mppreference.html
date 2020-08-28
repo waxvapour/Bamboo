@@ -1,0 +1,463 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/set-mppreference.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Add-BitsFile - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>Set-MpPreference</h1> 
+<p>Configure preferences for Windows Defender scans and updates.</p>
+<pre>Syntax
+      Set-MpPreference [-CheckForSignaturesBeforeRunningScan <i>Boolean</i>] [-CimSession <i>CimSession[]</i>] 
+         [-DisableArchiveScanning <i>Boolean</i>] [-DisableAutoExclusions <i>Boolean</i>]
+            [-DisableBehaviorMonitoring <i>Boolean</i>] [-DisableCatchupFullScan <i>Boolean</i>]
+               [-DisableCatchupQuickScan <i>Boolean</i>] [-DisableEmailScanning <i>Boolean</i>] 
+                  [-DisableIntrusionPreventionSystem <i>Boolean</i>] [-DisableIOAVProtection <i>Boolean</i>]
+                     [-DisablePrivacyMode <i>Boolean</i>] [-DisableRealtimeMonitoring <i>Boolean</i>]
+                        [-DisableRemovableDriveScanning <i>Boolean</i>] [-DisableRestorePoint <i>Boolean</i>] 
+                           [-DisableScanningMappedNetworkDrivesForFullScan <i>Boolean</i>] [-DisableScanningNetworkFiles <i>Boolean</i>] 
+                              [-DisableScriptScanning <i>Boolean</i>] [-ExclusionExtension <i>String[]</i>]
+                                 [-ExclusionPath <i>String[]</i>] [-ExclusionProcess <i>String[]</i>] [-Force]
+                                    [-HighThreatDefaultAction {Clean | Quarantine | Remove | Allow | UserDefined | NoAction | Block}]
+         [-LowThreatDefaultAction {Clean | Quarantine | Remove | Allow | UserDefined | NoAction | Block}] 
+            [-MAPSReporting {Disabled | Basic | Advanced}]
+               [-ModerateThreatDefaultAction {Clean | Quarantine | Remove | Allow | UserDefined | NoAction | Block}]
+                  [-QuarantinePurgeItemsAfterDelay <i>UInt32</i>] [-RandomizeScheduleTaskTimes <i>Boolean</i>]
+                     [-RealTimeScanDirection {Both | Incoming | Outcoming}]
+                        [-RemediationScheduleDay {Everyday | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Never}]
+                           [-RemediationScheduleTime <i>DateTime</i>] [-ReportingAdditionalActionTimeOut <i>UInt32</i>]
+                              [-ReportingCriticalFailureTimeOut <i>UInt32</i>] [-ReportingNonCriticalTimeOut <i>UInt32</i>]
+                                 [-ScanAvgCPULoadFactor <i>Byte</i>] [-ScanOnlyIfIdleEnabled <i>Boolean</i>] 
+                                    [-ScanParameters {QuickScan | FullScan}] [-ScanPurgeItemsAfterDelay <i>UInt32</i>]
+         [-ScanScheduleDay {Everyday | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Never}]
+            [-ScanScheduleQuickScanTime <i>DateTime</i>] [-ScanScheduleTime <i>DateTime</i>]
+               [-SevereThreatDefaultAction {Clean | Quarantine | Remove | Allow | UserDefined | NoAction | Block}]
+                  [-SignatureAuGracePeriod <i>UInt32</i>] [-SignatureDefinitionUpdateFileSharesSources <i>String</i>] 
+                     [-SignatureDisableUpdateOnStartupWithoutEngine <i>Boolean</i>] [-SignatureFallbackOrder <i>String</i>] 
+                        [-SignatureFirstAuGracePeriod <i>UInt32</i>]
+                           [-SignatureScheduleDay {Everyday | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Never}]
+                              [-SignatureScheduleTime <i>DateTime</i>] [-SignatureUpdateCatchupInterval <i>UInt32</i>]
+                                 [-SignatureUpdateInterval <i>UInt32</i>] [-SubmitSamplesConsent {None | Always | Never}] 
+                                    [-ThreatIDDefaultAction_Actions <i>ThreatAction[]</i>] [-ThreatIDDefaultAction_Ids <i>Int64[]</i>]
+         [-ThrottleLimit <i>Int32</i>] [-UILockdown <i>Boolean</i>]
+            [-UnknownThreatDefaultAction {Clean | Quarantine | Remove | Allow | UserDefined | NoAction | Block}] 
+               [<a href="common.html"><i>CommonParameters</i></a>]
+
+Key
+   -CheckForSignaturesBeforeRunningScan [<i>Boolean</i>]
+        Indicates whether to check for new virus and spyware definitions before Windows Defender runs a scan. If you 
+        specify a value of $True, Windows Defender checks for new definitions. If you specify $False or do not specify 
+        a value, the scan begins with existing definitions. This value applies to scheduled scans and to scans that 
+        you start from the command line, but it does not affect scans that you start from the user interface.
+        
+    -CimSession [<i>CimSession[]</i>]
+        Runs the cmdlet in a remote session or on a remote computer. Enter a computer name or a session object, such 
+        as the output of a New-CimSession or Get-CimSession cmdlet. The default is the current session on the local 
+        computer.
+        
+    -DisableArchiveScanning [<i>Boolean</i>]
+        Indicates whether to scan archive files, such as .zip and .cab files, for malicious and unwanted software. If 
+        you specify a value of $True or do not specify a value, Windows Defender scans archive files.
+        
+    -DisableAutoExclusions [<i>Boolean</i>]
+        Indicates whether to disable the Automatic Exclusions feature for the server.
+        
+    -DisableBehaviorMonitoring [<i>Boolean</i>]
+        Indicates whether to enable behavior monitoring. If you specify a value of $True or do not specify a value, 
+        Windows Defender enables behavior monitoring.
+        
+    -DisableCatchupFullScan [<i>Boolean</i>]
+        Indicates whether Windows Defender runs catch-up scans for scheduled full scans. A computer can miss a 
+        scheduled scan, usually because the computer is turned off at the scheduled time. If you specify a value of 
+        $True, after the computer misses two scheduled full scans, Windows Defender runs a catch-up scan the next time 
+        someone logs on to the computer. If you specify a value of $False or do not specify a value, the computer does 
+        not run catch-up scans for scheduled full scans.
+        
+    -DisableCatchupQuickScan [<i>Boolean</i>]
+        Indicates whether Windows Defender runs catch-up scans for scheduled quick scans. A computer can miss a 
+        scheduled scan, usually because the computer is off at the scheduled time. If you specify a value of $True, 
+        after the computer misses two scheduled quick scans, Windows Defender runs a catch-up scan the next time 
+        someone logs onto the computer. If you specify a value of $False or do not specify a value, the computer does 
+        not run catch-up scans for scheduled quick scans.
+        
+    -DisableEmailScanning [<i>Boolean</i>]
+        Indicates whether Windows Defender parses the mailbox and mail files, according to their specific format, in 
+        order to analyze mail bodies and attachments. Windows Defender supports several formats, including .pst, .dbx, 
+        .mbx, .mime, and .binhex. If you specify a value of $True, Windows Defender performs email scanning. If you 
+        specify a value of $False or do not specify a value, Windows Defender does not perform email scanning.
+        
+    -DisableIntrusionPreventionSystem [<i>Boolean</i>]
+        Indicates whether to configure network protection against exploitation of known vulnerabilities. If you 
+        specify a value of $True or do not specify a value, network protection is enabled.
+        
+    -DisableIOAVProtection [<i>Boolean</i>]
+        Indicates whether Windows Defender scans all downloaded files and attachments. If you specify a value of $True 
+        or do not specify a value, scanning downloaded files and attachments is enabled.
+        
+    -DisablePrivacyMode [<i>Boolean</i>]
+        Indicates whether to disable privacy mode. Privacy mode prevents users, other than administrators, from 
+        displaying threat history.
+        
+    -DisableRealtimeMonitoring [<i>Boolean</i>]
+        Indicates whether to use real-time protection. If you specify a value of $True or do not specify a value, 
+        Windows Defender uses real-time protection. We recommend that you enable Windows Defender to use real-time 
+        protection.
+        
+    -DisableRemovableDriveScanning [<i>Boolean</i>]
+        Indicates whether to scan for malicious and unwanted software in removable drives, such as flash drives, 
+        during a full scan. If you specify a value of $True, Windows Defender scans removable drives during any type 
+        of scan. If you specify a value of $False or do not specify a value, Windows Defender does not scan removable 
+        drives during a full scan. Windows Defender can still scan removable drives during quick scans or custom scans.
+        
+    -DisableRestorePoint [<i>Boolean</i>]
+        Indicates whether to disable scanning of restore points.
+        
+    -DisableScanningMappedNetworkDrivesForFullScan [<i>Boolean</i>]
+        Indicates whether to scan mapped network drives. If you specify a value of $True, Windows Defender scans 
+        mapped network drives. If you specify a value of $False or do not specify a value, Windows Defender does not 
+        scan mapped network drives.
+        
+    -DisableScanningNetworkFiles [<i>Boolean</i>]
+        Indicates whether to scan for network files. If you specify a value of $True, Windows Defender scans network 
+        files. If you specify a value of $False or do not specify a value, Windows Defender does not scan network 
+        files. We do not recommend that you scan network files.
+        
+    -DisableScriptScanning [<i>Boolean</i>]
+        Specifies whether to disable the scanning of scripts during malware scans.
+        
+    -ExclusionExtension [<i>String[]</i>]
+        Specifies an array of file name extensions, such as obj or lib, to exclude from scheduled, custom, and 
+        real-time scanning.
+        
+    -ExclusionPath [<i>String[]</i>]
+        Specifies an array of file paths to exclude from scheduled and real-time scanning. You can specify a folder to 
+        exclude all the files under the folder.
+        
+    -ExclusionProcess [<i>String[]</i>]
+        Specifies an array of processes, as paths to process images. This cmdlet excludes any files opened by the 
+        processes that you specify from scheduled and real-time scanning. Specifying this parameter excludes files 
+        opened by executable programs only. The cmdlet does not exclude the processes themselves. To exclude a 
+        process, specify it by using the ExclusionPath parameter.
+        
+    -Force
+        Forces the command to run without asking for user confirmation.
+        
+    -HighThreatDefaultAction [<i>ThreatAction</i>]
+        Specifies which automatic remediation action to take for a high level threat. The acceptable values for this 
+        parameter are:
+        
+        -- Quarantine 
+        -- Remove 
+        -- Ignore
+        
+    -LowThreatDefaultAction [<i>ThreatAction</i>]
+        Specifies which automatic remediation action to take for a low level threat. The acceptable values for this 
+        parameter are:
+        
+        -- Quarantine 
+        -- Remove 
+        -- Ignore
+        
+    -MAPSReporting [<i>MAPSReportingType</i>]
+        Specifies the type of membership in Microsoft Active Protection Service. Microsoft Active Protection Service 
+        is an online community that helps you choose how to respond to potential threats. The community also helps 
+        prevent the spread of new malicious software. The acceptable values for this parameter are:
+        
+        -- 0: Disabled. Send no information to Microsoft. This is the default value. 
+        -- 1: Basic membership. Send basic information to Microsoft about detected software, including where the 
+        software came from, the actions that you apply or that apply automatically, and whether the actions succeeded. 
+        -- 2: Advanced membership. In addition to basic information, send more information to Microsoft about 
+        malicious software, spyware, and potentially unwanted software, including the location of the software, file 
+        names, how the software operates, and how it affects your computer.
+        
+        If you join this community, you can choose to automatically send basic or additional information about 
+        detected software. Additional information helps Microsoft create new definitions. In some instances, personal 
+        information might unintentionally be sent to Microsoft. However, Microsoft will not use this information to 
+        identify you or contact you.
+        
+    -ModerateThreatDefaultAction [<i>ThreatAction</i>]
+        Specifies which automatic remediation action to take for a moderate level threat. The acceptable values for 
+        this parameter are:
+        
+        -- Quarantine 
+        -- Remove 
+        -- Ignore
+        
+    -QuarantinePurgeItemsAfterDelay [<i>UInt32</i>]
+        Specifies the number of days to keep items in the Quarantine folder. If you specify a value of zero or do not 
+        specify a value for this parameter, items stay in the Quarantine folder indefinitely.
+        
+    -RandomizeScheduleTaskTimes [<i>Boolean</i>]
+        Indicates whether to select a random time for the scheduled start and scheduled update for definitions. If you 
+        specify a value of $True or do not specify a value, scheduled tasks begin within 30 minutes, before or after, 
+        the scheduled time. If you randomize the start times, it can distribute the impact of scanning. For example, 
+        if several virtual machines share the same host, randomized start times prevents all the hosts from starting 
+        the scheduled tasks at the same time.
+        
+    -RealTimeScanDirection [<ScanDirection>]
+        Specifies scanning configuration for incoming and outgoing files on NTFS volumes. The acceptable values for 
+        this parameter are:
+        
+        -- 0: Scan both incoming and outgoing files. This is the default. 
+        -- 1: Scan incoming files only. 
+        -- 2: Scan outgoing files only. 
+        
+        Specify a value for this parameter to enhance performance on servers which have a large number of file 
+        transfers, but need scanning for either incoming or outgoing files. Evaluate this configuration based on the 
+        server role. For non-NTFS volumes, Windows Defender performs full monitoring of file and program activity.
+        
+    -RemediationScheduleDay [<i>Day</i>]
+        Specifies the day of the week on which to perform a scheduled full scan in order to complete remediation. 
+        Alternatively, specify everyday for this full scan or never. The acceptable values for this parameter are:
+        
+        -- 0: Everyday
+        -- 1: Sunday
+        -- 2: Monday
+        -- 3: Tuesday 
+        -- 4: Wednesday
+        -- 5: Thursday 
+        -- 6: Friday
+        -- 7: Saturday
+        -- 8: Never 
+        
+        The default value is 8, never. If you specify a value of 8 or do not specify a value, Windows Defender 
+        performs a scheduled full scan to complete remediation by using a default frequency.
+        
+    -RemediationScheduleTime [<i>DateTime</i>]
+        Specifies the time of day, as the number of minutes after midnight, to perform a scheduled scan. The time 
+        refers to the local time on the computer. If you do not specify a value for this parameter, a scheduled scan 
+        runs at the default time of two hours after midnight.
+        
+    -ReportingAdditionalActionTimeOut [<i>UInt32</i>]
+        Specifies the number of minutes before a detection in the additional action state changes to the cleared state.
+        
+    -ReportingCriticalFailureTimeOut [<i>UInt32</i>]
+        Specifies the number of minutes before a detection in the critically failed state changes to either the 
+        additional action state or the cleared state.
+        
+    -ReportingNonCriticalTimeOut [<i>UInt32</i>]
+        Specifies the number of minutes before a detection in the non-critically failed state changes to the cleared 
+        state.
+        
+    -ScanAvgCPULoadFactor [<i>Byte</i>]
+        Specifies the maximum percentage CPU usage for a scan. The acceptable values for this parameter are: integers 
+        from 5 through 100, and the value 0, which disables CPU throttling. Windows Defender does not exceed the 
+        percentage of CPU usage that you specify. The default value is 50.
+        
+    -ScanOnlyIfIdleEnabled [<i>Boolean</i>]
+        Indicates whether to start scheduled scans only when the computer is not in use. If you specify a value of 
+        $True or do not specify a value, Windows Defender runs schedules scans when the computer is on, but not in use.
+        
+    -ScanParameters [<i>ScanType</i>]
+        Specifies the scan type to use during a scheduled scan. The acceptable values for this parameter are:
+        
+        -- 1: Quick scan
+         -- 2: Full scan 
+        
+        If you do not specify this parameter, Windows Defender uses the default value of quick scan.
+        
+    -ScanPurgeItemsAfterDelay [<i>UInt32</i>]
+        Specifies the number of days to keep items in the scan history folder. After this time, Windows Defender 
+        removes the items. If you specify a value of zero, Windows Defender does not remove items. If you do not 
+        specify a value, Windows Defender removes items from the scan history folder after the default length of time, 
+        which is 30 days.
+        
+    -ScanScheduleDay [<i>Day</i>]
+        Specifies the day of the week on which to perform a scheduled scan. Alternatively, specify everyday for a 
+        scheduled scan or never. The acceptable values for this parameter are:
+        
+        -- 0: Everyday 
+        -- 1: Sunday 
+        -- 2: Monday 
+        -- 3: Tuesday 
+        -- 4: Wednesday 
+        -- 5: Thursday 
+        -- 6: Friday 
+        -- 7: Saturday 
+        -- 8: Never
+        
+        The default value is 8, never. If you specify a value of 8 or do not specify a value, Windows Defender does 
+        not perform scheduled scans.
+        
+    -ScanScheduleQuickScanTime [<i>DateTime</i>]
+        Specifies the time of day, as the number of minutes after midnight, to perform a scheduled quick scan. The 
+        time refers to the local time on the computer. If you do not specify a value for this parameter, a scheduled 
+        quick scan runs at the time specified by the ScanScheduleTime parameter. That parameter has a default time of 
+        two hours after midnight.
+        
+    -ScanScheduleTime [<i>DateTime</i>]
+        Specifies the time of day, as the number of minutes after midnight, to perform a scheduled scan. The time 
+        refers to the local time on the computer. If you do not specify a value for this parameter, a scheduled scan 
+        runs at a default time of two hours after midnight.
+        
+    -SevereThreatDefaultAction [<i>ThreatAction</i>]
+        Specifies which automatic remediation action to take for a severe level threat. The acceptable values for this 
+        parameter are:
+        
+        -- Quarantine 
+        -- Remove 
+        -- Ignore
+        
+    -SignatureAuGracePeriod [<i>UInt32</i>]
+        Specifies a grace period, in minutes, for the definition. If a definition successfully updates within this 
+        period, Windows Defender abandons any service initiated updates.
+        
+    -SignatureDefinitionUpdateFileSharesSources [<i>String</i>]
+        Specifies file-share sources for definition updates. Specify sources as a bracketed sequence of Universal 
+        Naming Convention (UNC) locations, separated by the pipeline symbol; for example, { \\Server01\Share01 | 
+        \\Server02\Share02 | \\Server03\Share03}. If you specify a value for this parameter, Windows Defender attempts 
+        to connect to the shares in the order that you specify. After Windows Defender updates a definition, it stops 
+        attempting to connect to shares on the list. If you do not specify a value for this parameter, the list is 
+        empty.
+        
+    -SignatureDisableUpdateOnStartupWithoutEngine [<i>Boolean</i>]
+        Indicates whether to initiate definition updates even if no antimalware engine is present. If you specify a 
+        value of $True or do not specify a value, Windows Defender initiates definition updates on startup. If you 
+        specify a value of $False, and if no antimalware engine is present, Windows Defender does not initiate 
+        definition updates on startup.
+        
+    -SignatureFallbackOrder [<i>String</i>]
+        Specifies the order in which to contact different definition update sources. Specify the types of update 
+        sources in the order in which you want Windows Defender to contact them, enclosed in braces and separated by 
+        the pipeline symbol; for example, { InternalDefinitionUpdateServer | MicrosoftUpdateServer | MMPC }. The 
+        values that you can specify in the string are:
+        
+        -- InternalDefinitionUpdateServer
+        -- MicrosoftUpdateServer
+        -- MMPC
+        -- FileShares
+        
+        MMPC refers to Microsoft Malware Protection Center.
+        
+        If you specify a value for this parameter, Windows Defender contacts the definition update sources in the 
+        specified order. After Windows Defender downloads definition updates from a source, it stops attempting to 
+        connect to other sources. If you do not specify a value for this parameter, Windows Defender contacts sources 
+        in the default order of { MicrosoftUpdateServer | MMPC }.
+        
+    -SignatureFirstAuGracePeriod [<i>UInt32</i>]
+        Specifies a grace period, in minutes, for the definition. If a definition successfully updates within this 
+        period, Windows Defender abandons any service initiated updates. This parameter overrides the value of the 
+        CheckForSignaturesBeforeRunningScan parameter.
+        
+    -SignatureScheduleDay [<i>Day</i>]
+        Specifies the day of the week on which to check for definition updates. Alternatively, specify everyday for a 
+        scheduled scan or never. The acceptable values for this parameter are:
+        
+        -- 0: Everyday 
+        -- 1: Sunday 
+        -- 2: Monday 
+        -- 3: Tuesday 
+        -- 4: Wednesday 
+        -- 5: Thursday 
+        -- 6: Friday 
+        -- 7: Saturday 
+        -- 8: Never 
+        
+        The default value is 8, never. If you specify a value of 8 or do not specify a value, Windows Defender checks 
+        for definition updates by using a default frequency.
+        
+    -SignatureScheduleTime [<i>DateTime</i>]
+        Specifies the time of day, as the number of minutes after midnight, to check for definition updates. The time 
+        refers to the local time on the computer. If you do not specify a value for this parameter, Windows Defender 
+        checks for definition updates at the default time of 15 minutes before the scheduled scan time.
+        
+    -SignatureUpdateCatchupInterval [<i>UInt32</i>]
+        Specifies the number of days after which Windows Defender requires a catch-up definition update. If you do not 
+        specify a value for this parameter, Windows Defender requires a catch-up definition update after the default 
+        value of one day.
+        
+    -SignatureUpdateInterval [<i>UInt32</i>]
+        Specifies the interval, in hours, at which to check for definition updates. The acceptable values for this 
+        parameter are: integers from 1 through 24. If you do not specify a value for this parameter, Windows Defender 
+        checks at the default interval. You can use this parameter instead of the SignatureScheduleDay parameter and 
+        SignatureScheduleTime parameter.
+        
+    -SubmitSamplesConsent [<i>SubmitSamplesConsentType</i>]
+        Specifies how Windows Defender checks for user consent for certain samples. If consent has previously been 
+        granted, Windows Defender submits the samples. Otherwise, if the MAPSReporting parameter does not have a value 
+        of Disabled, Windows Defender prompts the user for consent. The acceptable values for this parameter are:
+        
+        --0: Always prompt
+        --1: Send safe samples automatically 
+        --2: Never send
+        --3: Send all samples automatically
+        
+    -ThreatIDDefaultAction_Actions [<i>ThreatAction</i>]
+        Specifies an array of the actions to take for the IDs specified by using the ThreatIDDefaultAction_Ids 
+        parameter. The acceptable values for this parameter are:
+        
+        -- 1: Clean 
+        -- 2: Quarantine 
+        -- 3: Remove 
+        -- 4: Allow 
+        -- 8: UserDefined 
+        -- 9: NoAction 
+        -- 10: Block
+        
+    -ThreatIDDefaultAction_Ids [<i>int64</i>]
+        Specifies an array of threat IDs. This cmdlet modifies the default action for the threat IDs that you specify.
+        
+    -ThrottleLimit [<i>int32</i>]
+        Specifies the maximum number of concurrent operations that can be established to run the cmdlet. If this 
+        parameter is omitted or a value of 0 is entered, then Windows PowerShell® calculates an optimum throttle limit 
+        for the cmdlet based on the number of CIM cmdlets that are running on the computer. The throttle limit applies 
+        only to the current cmdlet, not to the session or to the computer.
+        
+    -UILockdown [<i>Boolean</i>]
+        Indicates whether to disable UI lockdown mode. If you specify a value of $True, Windows Defender disables UI 
+        lockdown mode. If you specify $False or do not specify a value, UI lockdown mode is enabled.
+        
+    -UnknownThreatDefaultAction [<i>ThreatAction</i>]
+        Specifies which automatic remediation action to take for an unknown level threat. The acceptable values for 
+        this parameter are:
+        
+        -- Quarantine 
+        -- Remove 
+        -- Ignore
+
+   <a href="common.html">CommonParameters</a>:
+       -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable,
+       -OutBuffer, PipelineVariable, -OutVariable.</pre>
+<p>Set-MpPreference  configures preferences for Windows Defender scans and updates. You can modify exclusion file name extensions, paths, or processes, and specify the default action for high, moderate, and low threat levels.</p>
+<p><b>Examples</b></p>
+<p>Enable Windows Defender PUA protection:</p>
+<p><span class="code">PS C:\&gt;  Set-MpPreference -PUAProtection Enabled</span></p>
+<p>Disable Windows Defender PUA protection:</p>
+<p><span class="code">PS C:\&gt; Set-MpPreference -PUAProtection Disabled</span></p>
+<p>Set a schedule to check for definition updates everyday:</p>
+<p><span class="code">PS C:\&gt; Set-MpPreference -SignatureScheduleDay Everyday</span></p>
+<p>Schedule the time of day for definition updates to 120 minutes after midnight:</p>
+<p><span class="code">PS C:\&gt; Set-MpPreference -SignatureScheduleTime 120</span></p>
+<p class="quote"><i>&ldquo; There can be no defence like elaborate courtesy&rdquo; ~ E. V. Lucas</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p>Add-MpPreference<br>
+Get-MpComputerStatus<br>
+Get-MpPreference<br>
+Get-MpThreat<br>
+Get-MpThreatCatalog<br>
+Get-MpThreatDetection</p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/set-mppreference.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:42:58 GMT -->
+</html>

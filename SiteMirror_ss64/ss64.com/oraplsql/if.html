@@ -1,0 +1,65 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/oraplsql/if.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>IF Statement - Oracle PL/SQL - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_orapl.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PL/SQL</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1> IF Statement</h1> 
+<p>Syntax:</p>
+<pre>   IF <i>condition</i> THEN
+      <i>statements</i>;
+   [ELSIF <i>condition</i> THEN
+      <i>statements</i>;]
+   [ELSE
+      <i>statement</i>;]
+   END IF;
+</pre>
+<p>Note the spelling is ElsIF not ElseIF which you might expect from other languages. <br>
+<br>
+<i>'condition'</i> may include logical comparisons...</p>
+<pre>true AND true = true
+true OR true = true
+
+false AND false = false
+false OR false = false
+
+null AND null = null
+null OR null = null
+
+true AND false = false
+true OR false = true
+
+true AND null = null
+true OR null = true
+
+false AND null = false
+false OR null = null
+
+NOT TRUE = FALSE
+NOT FALSE = TRUE
+NOT NULL = NULL<span class="body"><b> <br>
+Related :</b></span> </pre><!-- #BeginLibraryItem "/Library/foot_ora.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- oracle-footer -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="4275490898"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/oraplsql/if.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:54:43 GMT -->
+</html>

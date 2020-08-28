@@ -1,0 +1,74 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/psboundparameters.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>PSBoundParameters - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_ps.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>$PSBoundParameters</h1> 
+<p>The <a href="syntax-automatic-variables.html">automatic variable</a> <span class="code">$PSBoundParameters</span> is a hashtable containing the parameters passed to a script or a function. <br>
+It only includes the values of parameters that were <i>explicitly</i> supplied by the caller, so it does not include any which have been left at the default value.</p>
+<p><span class="code">$PSBoundParameters</span> can be used to  call a subordinate function or cmdlet passing the same parameters - PowerShell will  automatically <a href="syntax-hash-tables.html">splat</a> the hash table's values instead of having to type  each of the parameters: <br>
+<span class="code">get-otherthing <b>@</b>PSBoundParameters</span></p>
+<p>Within the  script/function the parameters would be defined using a <span class="code">param()</span> statement.</p>
+<pre>param(
+   [string]$demoText,
+   [int]$demoNumber
+   )
+
+   # Display all the passed parameters:
+   $PSBoundParameters
+
+   # or with a <a href="switch.html">switch</a> statement:
+   switch ($PSBoundParameters.Keys) {
+            'demoText' { <span class="code">write-output</span> ' A value for demoText was supplied' }
+            'demoNumber' { <span class="code">write-output</span> ' A value for demoNumber was supplied'  }
+       }
+
+   # or looping through all the key/value pairs
+   foreach($boundparam in $PSBoundParameters.GetEnumerator()) {
+       "Key={0} Value={1}" <a href="syntax-f-operator.html">-f</a> $boundparam.Key,$boundparam.Value
+   }</pre>
+<p>You can also check for the existence of a specific key with <span class="code">$PSBoundParameters.ContainsKey('demoText')</span> or <span class="code">$PSBoundParameters['demoText']</span></p>
+<pre>   If ($PSBoundParameters.ContainsKey('demoText')) {
+      Write-Output -InputObject "Text has been included as: '$demoText'"
+   }</pre>
+<h2>Adding and Removing key/value pairs</h2>
+<blockquote>
+<p>$PSBoundParameters can be manipulated like any other <a href="syntax-hash-tables.html">hash table</a>, so it is possible to <span class="code">.add</span> or<span class="code"> .remove</span> key/value pairs.</p>
+<p><span class="code">$PSBoundParameters.Add('Key','Value')</span><br>
+<span class="code">$PSBoundParameters.Remove('Key')</span><br>
+</p>
+<p> So to add 'myDescription' and remove 'demoNumber':
+<br>
+<span class="code">$PSBoundParameters.Add('myDescription','Hello world')<br>
+$PSBoundParameters.Remove('demoNumber')</span></p>
+</blockquote>
+<p class="quote"><i>“A major advantage of age is learning to accept people without passing judgment” ~ Liz Carpenter</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="https://gist.github.com/Jaykul/72f30dce2cca55e8cd73e97670db0b09/">Get-ParameterValues.ps1</a> - Script to return both Bound Parameters and Default values.<br>
+<a href="https://www.briantist.com/how-to/splatting-psboundparameters-default-values-optional-parameters/">Test-Params.ps1</a> - function with example that returns both Bound Parameters and Default values.</p><!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/psboundparameters.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:05 GMT -->
+</html>

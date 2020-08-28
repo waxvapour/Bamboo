@@ -1,0 +1,104 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/lgpo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>LGPO - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>LGPO.exe (<a href="https://www.microsoft.com/en-us/download/details.aspx?id=55319">MS Security Compliance Toolkit</a>)</h1>
+<p> Local Group Policy Object utility.
+<pre>Syntax
+
+   Apply policy settings:
+
+      LGPO.exe <i>command</i> [...]
+
+      where "<i>command</i>" is one or more of the following (each of which can be repeated):
+
+       /g path               Import settings from one or more GPO backups under "path"
+       /m path\registry.pol  Import settings from registry.pol into machine config
+       /u path\registry.pol  Import settings from registry.pol into user config
+
+       /s path\GptTmpl.inf   Apply security template.
+
+       /a[c] path\Audit.csv  Apply an advanced auditing settings backup(CSV) file; /ac to clear policy first
+                             With /ac, LGPO.exe clears existing Advanced Auditing settings before
+                             applying the settings from the CSV file, and copies the file to the
+                             local group policy subdirectory so that the settings appear in
+                             the local group policy editor.
+
+       /t path\lgpo.txt      Apply registry commands from LGPO text.
+
+       /e <i>name</i>|<i>guid</i>          Enable GP extension for local policy processing; specify a GUID,
+                             or one of these names:
+                                 "zone"       for IE zone mapping extension
+                                 "mitigation" for mitigation options, including font blocking
+                                 "audit"      for advanced audit policy configuration
+
+       /boot                 Reboot after applying policies
+       /v                    Verbose output
+       /q                    Quiet output (no headers)
+
+   Create a GPO backup from local policy:
+
+      LGPO.exe <b>/b</b> <i>path</i> [/n <i>GPO-name</i>]
+
+        /b <i>path</i>              Create GPO backup in "<i>path</i>"
+        /n <i>GPO-name</i>          Optional GPO display name (use quotes if it contains spaces)
+
+   Parse a Registry.pol file to LGPO text (stdout):
+
+      LGPO.exe <b>/parse</b> [/q] {/m|/u} <i>path\registry.pol</i>
+
+       /m <i>path\registry.pol</i>  Parse <i>registry.pol</i> as machine config commands
+       /u <i>path\registry.pol</i>  Parse <i>registry.pol</i> as user config commands
+       /q                    Quiet output (no headers)
+
+   Build a Registry.pol file from LGPO text:
+
+      LGPO.exe <b>/r</b> <i>path\lgpo.txt</i> /w <i>path\registry.pol</i> [/v]
+
+       /r path\lgpo.txt      Read input from LGPO text file
+       /w path\registry.pol  Write new registry.pol file</pre>
+<p>Capture a backup before you apply the new settings.</p>
+<p>File locations:</p>
+<p>%Systemroot%\System32\GroupPolicy\ <br>
+%Systemroot%\System32\GroupPolicyUsers\<br>
+C:\ProgramData\registry.pol</p>
+<p><b>Examples</b></p>
+<p>Export a Local Group Policy backup:</p>
+<p><span class="code">C:\&gt; lgpo /b c:\gpobackups\</span><br>
+</p>
+<p>Import some previously saved Local Group Policy settings:</p>
+<p><span class="code">C:\&gt; lgpo  /g c:\gpobackups\</span><br>
+<br>
+<i class="quote">&ldquo;The policy of being too cautious is the greatest risk of all&rdquo; ~     Jawaharlal Nehru</i></p>
+<p><b>Related:</b></p>
+<p><a href="https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/">LGPO v1.0</a> - Microsoft Security Guidance blog.<br>
+<a href="gpresult.html">GPRESULT</a> - Display Resultant Set of Policy information.<br>
+<a href="gpupdate.html">GPUPDATE</a> - Update Group Policy settings.<br>
+</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/lgpo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:41:20 GMT -->
+</html>

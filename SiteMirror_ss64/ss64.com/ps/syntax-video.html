@@ -1,0 +1,207 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-video.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>SS64 Video Converter - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1>SS64 Video Converter</h1>
+<p>The PowerShell script below is a simple GUI front end for the FFmpeg video converter. </p>
+<p>To use it save the script as a .ps1 file and call using <a href="powershell.html">PowerShell.exe</a>, alternatively you can grab <a href="videoconverter.zip">this zip file</a>. <br>
+You will also need to place a copy of <span class="code">FFmpeg.exe</span> in the same folder.</p>
+<p>This demonstrates the use of <span class="code">System.Windows.Forms</span> to build a graphical interface with drop down lists, command buttons  etc:</p>
+<p> &nbsp;&nbsp;<img src="video.png" width="494" height="192" alt="Video Converter GUI"></p>
+<pre>
+# Requirements: Download FFmpeg.exe and place it in the same directory as the script.
+# FFmpeg source: <a href="https://ffmpeg.zeranoe.com/builds/">https://ffmpeg.zeranoe.com/builds/</a>
+
+# Requires PowerShell 3.0 or greater
+#Requires -Version 3.0
+
+# Last update: 2018-10-19,  Simon Sheppard
+# ss64.com/ps/syntax-video.html
+
+# Licence:
+# The GNU Lesser General Public License (LGPL) version 2.1 or later. 
+# However, FFmpeg incorporates several optional parts that are covered by
+# the GNU General Public License (GPL) version 2 or later.
+# If those parts get used then the GPL applies.
+
+# FFMPeg source 
+$FFMPEG = $PSScriptRoot + "\ffmpeg.exe"
+
+$Branding = "SS64 Video converter"
+$AllowScaling = $true  #change to $false to hide scaling options
+
+$QualityOptions = 10,20,25,30,40    # 0..50
+$ScaleOptions = 480,640,720,960,1280,1920
+$font = "Arial,10"
+Write-Host $Branding
+
+[void][System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+$fontBold = [System.Drawing.Font]::new("Arial", 10, [System.Drawing.FontStyle]::Bold)
+
+# Build main form
+Add-Type -AssemblyName System.Windows.Forms
+$GUIform = New-Object system.Windows.Forms.Form
+[System.Windows.Forms.Application]::EnableVisualStyles()
+$GUIform.Text = $Branding
+$GUIform.FormBorderStyle = 'FixedSingle'
+$GUIform.MaximizeBox = $false
+$GUIform.MinimizeBox = $false
+$GUIform.TopMost = $false
+$GUIform.Width = 510
+$GUIform.Height = 200
+
+$btnConvert = New-Object system.windows.Forms.Button
+$btnConvert.Text = "Convert"
+$btnConvert.Width = 100
+$btnConvert.Height = 50
+$btnConvert.Add_Click({
+    if($txtVideo.Text -and $(Test-Path $txtVideo.Text)) {
+        $lblStatus.Text = "Status: Converting Video..."
+        $audioArgument = "-b:a 192k"
+        $videoArgument = $($txtVideo.Text)
+        $outFile = "`"" + $videoArgument.Substring(0, $txtVideo.Text.LastIndexOf('.')) + "_CONVERTED_" + $(get-date -f yyyy-MM-dd-mm-ss-ms) + ".mp4"+ "`""
+        $videoArgument = "`"" + $($txtVideo.Text) + "`""
+
+        $Argument = "-i $videoArgument -c:v libx264 -crf $($cmbQuality.Text) -preset faster -vf scale=$($cmbScale.Text):-2 -strict experimental $audioArgument $outFile"
+
+        Start-Process $FFMPEG -ArgumentList $Argument -Wait
+        [System.Windows.Forms.MessageBox]::Show("Video has been converted and saved as $outFile" , $Branding) 
+    }
+    else {
+         [System.Windows.Forms.MessageBox]::Show("Video file not found." , $Branding) 
+         write-host $txtVideo.Text
+    }
+    $lblStatus.Text = "Status: Standby"
+})
+$btnConvert.location = new-object system.drawing.point(375,100)
+$btnConvert.Font = $font
+$GUIform.controls.Add($btnConvert)
+
+$txtVideo = New-Object system.windows.Forms.TextBox
+$txtVideo.Width = 470 #227
+$txtVideo.Height = 20
+$txtVideo.location = new-object system.drawing.point(15,28)
+$txtVideo.Font = $font
+$GUIform.controls.Add($txtVideo)
+
+$btnBrowse = New-Object system.windows.Forms.Button
+$btnBrowse.Text = "Browse..."
+$btnBrowse.Width = 100
+$btnBrowse.Height = 30
+$btnBrowse.Add_Click({
+    $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+    $OpenFileDialog.initialDirectory = $initialDirectory
+    $OpenFileDialog.CheckFileExists = $true
+    $OpenFileDialog.ShowDialog() | Out-Null
+    $txtVideo.Text = $OpenFileDialog.FileName
+})
+$btnBrowse.location = new-object system.drawing.point(375,60)
+$btnBrowse.Font = $font
+$GUIform.controls.Add($btnBrowse)
+
+$lblStatus = New-Object system.windows.Forms.Label
+$lblStatus.Text = "Status: Standby"
+$lblStatus.AutoSize = $true
+$lblStatus.Width = 25
+$lblStatus.Height = 10
+$lblStatus.location = new-object system.drawing.point(15,128)
+$lblStatus.Font = $fontBold
+$lblStatus.ForeColor = 'Green'
+$GUIform.controls.Add($lblStatus)
+
+$cmbQuality = New-Object system.windows.Forms.ComboBox
+$cmbQuality.Width = 90
+$cmbQuality.Height = 20
+$cmbQuality.FlatStyle = "Standard"
+$cmbQuality.location = new-object system.drawing.point(15,84)
+$cmbQuality.DropDownStyle = [System.Windows.Forms.ComboBoxStyle]::DropDownList;
+Foreach($Quality in $QualityOptions) {
+    $cmbQuality.Items.Add($Quality) | out-null
+}
+$cmbQuality.Text = "25"
+$cmbQuality.Font = $font
+$GUIform.controls.Add($cmbQuality)
+
+$lblQuality = New-Object system.windows.Forms.Label
+$lblQuality.Text = "Compress [higher=smaller]:"
+$lblQuality.AutoSize = $true
+$lblQuality.Width = 25
+$lblQuality.Height = 10
+$lblQuality.location = new-object system.drawing.point(15,61)
+$lblQuality.Font = $font
+$GUIform.controls.Add($lblQuality)
+
+$lblVideo = New-Object system.windows.Forms.Label
+$lblVideo.Text = "Video:"
+$lblVideo.AutoSize = $true
+$lblVideo.Width = 25
+$lblVideo.Height = 10
+$lblVideo.location = new-object system.drawing.point(15,8)
+$lblVideo.Font = $font
+$GUIform.controls.Add($lblVideo)
+
+$cmbScale = New-Object system.windows.Forms.ComboBox
+$cmbScale.Width = 90
+$cmbScale.Height = 20
+$cmbScale.FlatStyle = "Standard"
+$cmbScale.DropDownStyle = [System.Windows.Forms.ComboBoxStyle]::DropDownList;
+$cmbScale.location = new-object system.drawing.point(230,84)
+Foreach($Size in $ScaleOptions)
+{
+    $cmbScale.Items.Add($Size) | out-null
+}
+$cmbScale.Text = "960"
+$cmbScale.Font = $font
+$cmbScale.visible = $AllowScaling
+$GUIform.controls.Add($cmbScale)
+
+$lblScale = New-Object system.windows.Forms.Label
+$lblScale.Text = "Scale to:"
+$lblScale.AutoSize = $true
+$lblScale.Width = 25
+$lblScale.Height = 10
+$lblScale.location = new-object system.drawing.point(230,61)
+$lblScale.Font = $font
+$lblScale.visible = $AllowScaling
+$GUIform.controls.Add($lblScale)
+
+# Display completed form
+[void]$GUIform.ShowDialog()
+$GUIform.Dispose()
+</pre>
+<p>This can also be found on <a href="https://github.com/SS64/PowerShell-FFMPEG-MP4-Converter">GitHub</a>:</p>
+<p class="quote"><i>&ldquo;They say you can rap about anything except for Jesus <br>
+&nbsp;That means guns, sex, lies, video tapes, But if I talk about God my record won't get played Huh?&rdquo; ~ Kanye West</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="new-object.html">New-Object</a> - Create a new .Net object<br>
+<a href="https://trac.ffmpeg.org/wiki/Scaling">FFmpeg scaling</a> - wiki examples<br>
+<a href="https://trac.ffmpeg.org/wiki/Encode/YouTube">FFmpeg Encode Videos for YouTube</a> - wiki examples<br>
+<a href="https://www.hanselman.com/blog/UsingFFMPEGToSquishLotsOfVideosUsingPowerShell.aspx">Using FFMPEG to squish lots of videos</a> - Scott Hanselman<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></p></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-video.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:04 GMT -->
+</html>

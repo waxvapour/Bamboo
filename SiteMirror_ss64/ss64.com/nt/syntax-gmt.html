@@ -1,0 +1,90 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/syntax-gmt.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>GMT Time - Windows CMD - SS64.com</title>
+</head>
+<body><!-- #BeginLibraryItem "/Library/head_ntsyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>GMT.cmd</h1>
+<p>Display the current date and time adjusted to <a href="https://en.wikipedia.org/wiki/Gmt">Greenwich Mean Time</a>, this can be useful when comparing events across multiple time zones.</p>
+<pre>::gmt.cmd  Display the current date and time in GMT (World Time)
+@echo off
+Setlocal EnableDelayedExpansion
+call :get_local_time
+call :get_utc_time
+
+:: Add leading zeros
+Set gmt_minute=0%gmt_minute%
+Set gmt_minute=%gmt_minute:~-2%
+Set gmt_day=0%gmt_day%
+Set gmt_day=%gmt_day:~-2%
+Set gmt_month=0%gmt_month%
+Set gmt_month=%gmt_month:~-2%
+Set local_minute=0%local_minute%
+Set local_minute=%local_minute:~-2%
+Set local_day=0%local_day%
+Set local_day=%local_day:~-2%
+Set local_month=0%local_month%
+Set local_month=%local_month:~-2%
+
+:: Display result
+Echo     GMT Date/Time: %gmt_year%-%gmt_month%-%gmt_day% %gmt_hour%:%gmt_minute%
+Echo   Local Date/Time: %local_year%-%local_month%-%local_day% %local_hour%:%local_minute%
+goto :eof
+
+:get_local_time
+for /f "tokens=1,2 delims==" %%G in ('wmic path Win32_LocalTime get /value ^| find "="') do (call :setVars %%G %%H)
+goto :eof
+
+:setVars
+   Set _var=%1
+   Set _value=%2
+   Set local_!_var!=!_value!
+goto :eof
+
+:get_utc_time
+for /f "tokens=1,2 delims==" %%G in ('wmic path Win32_UTCTime get /value ^| find "="') do (call :setUTCvars %%G %%H)
+goto :eof
+
+:setUTCvars
+   Set _var=%1
+   Set _value=%2
+   Set gmt_!_var!=!_value!
+goto :eof</pre>
+<p><b>Alternatives:</b><br>
+In PowerShell, this can be done with just:<br>
+</p>
+<pre> $mydtm = Get-Date
+ $mydtm.ToUniversalTime()</pre>
+<p><i class="quote">&ldquo;Time is like money, the less we have of it to spare, the further we make it go&rdquo; ~ Josh Billings </i>
+<p><b>Related</b>
+<p><a href="../vb/syntax-getdatetime.html">datetime.vbs</a> - Get Date, Time and daylight savings (VB Script) <br>
+<a href="syntax-gettime.html">GetTime.cmd</a> - Get the time now<br>
+<a href="time.html">TIME</a> - Set the time (list of default time formats for different countries)<br>
+<a href="http://www.robvanderwoude.com/datetiment.html">Rob Vanderwoude</a> - date/time scripts
+<!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/syntax-gmt.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:50:54 GMT -->
+</html>

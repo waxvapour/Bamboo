@@ -1,0 +1,106 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/ps/syntax-concat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Concatenate - PowerShell - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_pssyntax.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">PowerShell</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/ps/"></form></div></li>
+</ul></div><!-- #EndLibraryItem -->
+<h1> Concatenating in PowerShell</h1> 
+<p>Several methods of combining variables, numbers and strings together are demonstrated below. </p>
+<p>In choosing the best method to use, consider the<i> data types</i> you will be working with carefully because PowerShell will treat string data and numbers very differently.</p>
+<p>Concatenate strings: </p>
+<p class="code">PS C:\&gt; $demo = 'abc' + 'def'<br>
+PS C:\&gt; $demo<br>
+abcdef</p>
+<p>Concatenate string variables: </p>
+<p class="code">PS C:\&gt; $string1 = 'abc'<br>
+PS C:\&gt; $string2 = 'def'<br>
+PS C:\&gt; $string1 + &quot;, &quot; + $string2<br>
+abc, def</p>
+<p class="code">PS C:\&gt; $text = 'Hello'<br>
+PS C:\&gt; $text += 'world'<br>
+PS C:\&gt; $text<br>
+Helloworld
+</p>
+<p>For longer expressions this can be spread over several lines with line breaks: </p>
+<p class="code">PS C:\&gt; $string1 +<br>
+&nbsp;&quot;, &quot; +<br>
+&nbsp;$string2<br>
+abc, def</p>
+<p>Concatenate numbers with strings: </p>
+<p class="code">PS C:\&gt; $int1 = 42<br>
+PS C:\&gt; $string2 = 'def'<br>
+PS C:\&gt; $int1 + &quot;, &quot; + $string2<br>
+Cannot convert value &quot;,&quot; to type &quot;System.Int32&quot;. Error: &quot;Input string was not in a correct format.&quot;</p>
+<p>The expression above is evaluated from left to right so converting the string to an integer fails, if we swap around the order they will both convert to a string without error:   <br>
+<span class="code">PS C:\&gt; $string2 + &quot;, &quot; + $int1<br>
+def, 42</span></p>
+<p>String substitution - surround the whole expression in quotes, everything is evaluated as a string: </p>
+<p class="code">PS C:\&gt; ”$int1, $string2”<br>
+42, def</p>
+<blockquote>
+<p>String Substitution has one important limitation: PowerShell will identify each variable  in the expression by matching  characters, that are legal for a $variable name, as soon as the first non-legal character is found (a space, comma or full stop) that matching stops.<br>
+This means that a subexpression like <span class="code">$object.property</span> will be read as just <span class="code">$object</span></p>
+</blockquote>
+<p>Explicit <a href="syntax-operators.html">sub-expression expansion</a>: </p>
+<p class="code">PS C:\&gt; &quot;$($int1), $($string2)&quot;<br>
+42, def</p>
+<p>Single or Double quoted strings can both be expanded: </p>
+<p class="code">$sq = 'a single quoted string'<br>
+$dq = &quot;a double quoted string&quot;<br>
+PS C:\&gt; &quot;$sq--$dq&quot;<br>
+a single quoted string--a double quoted string</p>
+<p>Within a single quoted expression no variables are expanded: </p>
+<p class="code">PS C:\&gt; '$sq--$dq' <br>
+$sq--$dq </p>
+<p>Substitution with the <a href="syntax-f-operator.html">-f operator</a></p>
+<p class="code">PS C:\&gt; &quot;{0}--{1}&quot; -f $sq,$dq<br>
+a single quoted string--a double quoted string</p>
+<p>Join with the -join operator:</p>
+<p class="code"> PS C:\&gt; $sq,$dq -join &quot;, &quot;<br>
+a single quoted string, a double quoted string</p>
+<p>A further nuance that often catches people out is that <a href="write-host.html">Write-host</a> by default adds a single space separator between items, to remove that you must specify an empty string '' as the separator:</p>
+<p class="code">PS C:\&gt; $one = 'one'<br>
+PS C:\&gt; $two = 'two'<br>
+PS C:\&gt; write-host $one $two<br>
+one two</p>
+<p class="code">PS C:\&gt; write-host $one $two -separator ''<br>
+onetwo</p>
+<p>Using the .Net concat() method: </p>
+<p class="code">PS C:\batch&gt; [System.String]::Concat(&quot;abc&quot;,&quot;def&quot;, &quot;ghi&quot;) <br>
+abcdefghi</p>
+<p>An alternative concatenation method is to use a <a href="https://msdn.microsoft.com/en-us/library/system.text.stringbuilder(v=vs.110).aspx">StringBuilder</a> .Net object, this has the advantage of being much faster which may be important when working with long strings or repeatedly in a loop.</p>
+<p class="code">$stringbuilder = New-Object -TypeName System.Text.StringBuilder<br>
+$null = $stringbuilder.Append(&quot;Hello&quot;)<br>
+$null = $stringbuilder.Append(&quot;World&quot;)<br>
+$stringbuilder.ToString()</p>
+<p class="quote"><i>&ldquo;I hope someday you'll join us, and the world will be as one&rdquo; ~ John Lennon</i></p>
+<p><b>Related PowerShell Commands:</b></p>
+<p><a href="syntax-methods.html">Methods</a> - ToUpper(), PadRight(), <a href="split.html">Split()</a>, Substring(), <a href="replace.html">Replace()</a> etc.<br>
+The  <a href="syntax-f-operator.html">-f operator</a> </p>
+<!-- #BeginLibraryItem "/Library/foot_ps.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- PowerShell300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="6253539900"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/ps/syntax-concat.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:51:03 GMT -->
+</html>

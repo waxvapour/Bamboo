@@ -1,0 +1,49 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/vb/unescape.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:44:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>UnEscape  - VBScript - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_vb.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">VBScript</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/vb/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>UnEscape</h1> 
+<p>Return Unicode characters from an escaped ASCII string.</p>
+<pre>Syntax 
+      UnEscape(<i>String</i>)
+
+Key
+   <i>String</i>    The encoded string of text to convert to standard Ascii text.</pre>
+<p>Example</p>
+<p class="code">Option Explicit<br>Dim strMessage, strUnescaped <br>
+<br>
+strMessage = &quot;Sample text with  (parenthesis) spaces &amp; &quot; &amp; Chr(34) &amp; &quot;quotes&quot; &amp; Chr(34)<br>
+MsgBox strMessage &amp; vbCR &amp; Escape(strMessage), 
+vbOkOnly+vbInformation, &quot;Demo&quot;<br>
+strUnEscaped = UnEscape (strMessage)<br>
+MsgBox strUnEscaped &amp; vbCR &amp; Escape(strMessage), vbOkOnly+vbInformation, &quot;UnEscaped&quot;</p>
+<p class="quote"><i>&ldquo;Writing is a form of therapy; sometimes I wonder how all those, who do not write, compose, or paint can manage to escape the madness, the melancholia, the panic fear, which is inherent in a human condition&rdquo; ~ </i>Graham Greene</p>
+<p><b>Related:</b></p>
+<p><a href="escape.html">Escape</a> -  Return only ASCII characters from a Unicode string.</p><!-- #BeginLibraryItem "/Library/foot_vb.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- VB300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="1683739502"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/vb/unescape.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:44:29 GMT -->
+</html>

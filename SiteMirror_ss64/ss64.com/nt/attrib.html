@@ -1,0 +1,126 @@
+<!doctype html><html lang="en">
+
+<!-- Mirrored from ss64.com/nt/attrib.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="UTF-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="STYLESHEET" href="../main.css" type="text/css">
+<title>Attrib - Edit file attributes - Windows CMD - SS64.com</title>
+</head><body><!-- #BeginLibraryItem "/Library/head_nt.lbi" --><div id="tnav"><ul>
+<li class="tbtn"><a href="../index.html"> ( &nbsp;SS64 &nbsp;)</a></li>
+<li class="tbtn"><a href="index.html">CMD</a></li>
+<li class="tbtn"><a href="syntax.html">Syntax</a></li>
+<li><div id="search"><form action="https://www.google.com/search" method="get">
+<input type="text" name="q" id="q" size="27" maxlength="255">
+<input class="submit" value="Search" id="btn" type="submit">
+<input type="hidden" name="sitesearch" value="ss64.com/nt/"></form></div></li>
+</ul></div><!-- #EndLibraryItem --><h1>ATTRIB.exe</h1>  
+<p>Display or change file attributes. Find Filenames.
+<pre>Syntax
+      ATTRIB [ + <i>attribute</i> | - <i>attribute</i> ] [<i>pathname</i>] [/S [/D]]
+
+Key
+     +    : Turn an attribute ON
+     -    : Clear an attribute OFF
+
+ <i>pathname</i> : Drive and/or filename e.g. C:\*.txt
+    /S    : Search the pathname including all subfolders.
+    /D    : Process folders as well
+
+   <i>attributes</i>: 
+        R  Read-only (1)
+        A  Archive (32)
+        S  System (4)
+        H  Hidden (2)
+
+   <i>extended attributes</i>:
+        E  Encrypted<br>        C  Compressed (128:read-only)<br>        I  Not content-indexed<br>        L  Symbolic link/Junction (64:read-only)<br>        N  Normal (0: cannot be used for file selection)<br>        O  Offline<br>        P  Sparse file<br>        T  Temporary 
+        X  No scrub file attribute (Windows 8+)
+        V  Integrity attribute (Windows 8+)</pre>
+<p>The numeric values can be used when changing <a href="https://msdn.microsoft.com/en-us/library/aa242866.aspx">attributes with VBS/WSH</a><br>
+If no attribute is specified attrib will return the current attribute settings. Used with just the /S option ATTRIB will quickly search 
+for a particular filename.</p>
+<h2>Hidden and System attributes take priority.</h2>
+<blockquote>
+<p>If a file has both the Hidden and System attributes set, you can clear both attributes only with a single ATTRIB command. <br>
+<br>
+For example, to clear the Hidden and System attributes for the RECORD.TXT file,  type: <br>
+<span class="code">ATTRIB -S -H RECORD.TXT</span></p>
+<p> if a file has the System or Hidden attribute set, you must clear that attribute before you can change any other attributes.</p>
+</blockquote>
+<h2>Wildcards</h2>
+<blockquote>
+<p>You can use wildcards (? and *) with the <i>pathname</i> parameter to display or change the attributes for a group of files. <br>
+</p>
+</blockquote>
+<h2>Directory Attributes</h2>
+<blockquote>
+<p> You can display or change <i>some</i> attributes for a directory/folder. </p>
+<p>The Read-only attribute (R) does <a href="https://support.microsoft.com/en-us/help/326549/">not apply</a> to a folder. This is because a unlike a file, a folder object does not contain any content that can be edited. The Name of a folder can be changed but that is a <i>rename</i> operation not an <i>edit</i> of the contents.</p>
+<p>On Windows Vista and greater, the Read-only attribute of a folder can be set or cleared in Windows Explorer as a fast method of setting/clearing the  Read-only attribute of all files within the folder. It does not actually set the attribute on the folder itself.</p>
+<p>To use ATTRIB with 
+a directory, you must explicitly specify the directory name; you cannot use 
+wildcards to work with directories.</p>
+<p>e.g. The following command would affect only files, not directories: <span class="code">ATTRIB +H C:*.* </span></p>
+<p>To hide the directory C:\SECRET,  type the following: <br>
+<br>
+<span class="code">ATTRIB +H C:\SECRET</span><br>
+</p>
+<p>The System attribute is used by Windows to determine that a folder is a <i>special</i> folder, such as My Documents, Favorites, Fonts, etc. <br>
+</p>
+</blockquote>
+<h2>View Archive attribute </h2>
+<blockquote>
+<p>  The Archive attribute (A) is used to mark files that have changed since they were previously backed up. <br>
+The (A) flag is automatically updated by Windows as the file is saved.<br>
+ If the (A) flag is present - the file is new or has been changed since the last backup.<br><br>
+The MSBACKUP, RESTORE, and XCOPY commands use these Archive attributes, as do most 3rd party backup solutions.</p>
+</blockquote>
+<h2><a id="attributes"></a>Extended Attributes</h2>
+<blockquote>
+<p>File attributes  can be read with <span class="code">fsutil usn readdata filename.ext</span> </p>
+<p>Constants - the following attribute values are returned by the <a href="https://msdn.microsoft.com/en-us/library/gg258117(v=vs.85).aspx">GetFileAttributes</a> function: </p>
+<p>FILE_ATTRIBUTE_READONLY = 1 (<span class="code">0x1</span>)<br>
+FILE_ATTRIBUTE_HIDDEN = 2 (<span class="code">0x2</span>)<br>
+FILE_ATTRIBUTE_SYSTEM = 4 (<span class="code">0x4</span>)<br>
+FILE_ATTRIBUTE_DIRECTORY = 16 (<span class="code">0x10</span>)<br>
+FILE_ATTRIBUTE_ARCHIVE = 32 (<span class="code">0x20</span>)<br>
+
+FILE_ATTRIBUTE_NORMAL = 128 (<span class="code">0x80</span>)<br>
+FILE_ATTRIBUTE_TEMPORARY = 256  (<span class="code">0x100</span>)<br>
+FILE_ATTRIBUTE_SPARSE_FILE = 512  (<span class="code">0x200</span>)<br>
+FILE_ATTRIBUTE_REPARSE_POINT = 1024  (<span class="code">0x400</span>)<br>
+FILE_ATTRIBUTE_COMPRESSED = 2048  (<span class="code">0x800</span>)<br>
+FILE_ATTRIBUTE_OFFLINE = 4096  (<span class="code">0x1000</span>)<br>
+FILE_ATTRIBUTE_NOT_CONTENT_INDEXED = 8192  (<span class="code">0x2000</span>)<br>
+FILE_ATTRIBUTE_ENCRYPTED = 16384 (<span class="code">0x4000</span>)</p>
+<p>For example, a file attribute of <span class="code">0x120</span> indicates the Temporary + Archive attributes are set (0x100 + 0x20 = 0x120.)</p>
+<p>An alternative way to display extended attributes is using <a href="syntax-args.html#attributes">FOR parameter attributes</a></p>
+<p><abbr title="Distributed File System Replication">DFSR</abbr> will <a href="https://social.technet.microsoft.com/Forums/en/winserverfiles/thread/9164f02c-b81b-477a-b9b3-e71dcd10248e">not replicate</a> files if they have the temporary attribute set.<br> 
+The temporary attribute can be removed by using PowerShell to subtract <span class="code">0x100</span>:</p>
+<p class="code">PS C:\&gt; Get-childitem D:\Data -recurse | ForEach-Object -process {if (($_.attributes -band 0x100) -eq 0x100) {$_.attributes = ($_.attributes -band 0xFEFF)}} </p>
+</blockquote>
+<p><i class="quote">&quot;The moral sense of conscience is by far the most important.. it is the most noble of all the <b>attributes</b> of man&quot; - Charles Darwin</i><br>
+<br>
+<b>Related:</b><br>
+<br>
+<a href="cacls.html">CACLS</a> - Change file permissions<br>
+<a href="fsutil.html">FSUTIL</a> - File and Volume utilities<br>
+<a href="superhidden.html">Show superhidden file extensions</a> <br>
+<a href="https://support.microsoft.com/en-us/help/326549/">Q326549</a> - Read-only &amp; System attributes for folders<br>
+Equivalent bash command (Linux): <a href="../bash/chmod.html">chmod</a> - Change access permissions</p><!-- #BeginLibraryItem "/Library/foot_nt.lbi" --><p><script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- windows300 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-6140977852749469"
+     data-ad-slot="7649547908"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+<hr>
+<div id=bl class="footer">&nbsp;</div>
+<div id=br class="footer, tagline">Copyright &copy; <a href="../index.html">SS64.com</a> 1999-2018<br>
+Some rights reserved</div><!-- #EndLibraryItem --></body>
+
+<!-- Mirrored from ss64.com/nt/attrib.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Nov 2018 11:40:52 GMT -->
+</html>
