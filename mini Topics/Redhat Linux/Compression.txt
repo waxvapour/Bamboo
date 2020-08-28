@@ -1,0 +1,28 @@
+	Compressing
+There are many formats in which we can compress our files and folders.
+* zip
+* tar
+* bzip2
+* gzip
+* xz
+* tar.gz
+* tar.bz2
+* tar.xz
+
+Create tar compress :-
+#rpm -qa tar* - to check if tar package is installed
+#mkdir /abc
+#tar -cvf /abc Desktop/ - create tar backup of abc file on Desktop
+#tar -xvf Desktop/abc.tar - extract tar backup file
+#tar -xvf Desktop/abc.tar -C /root - to extract abc.tar file on different location(here /root)
+
+Create Zip compress :-
+#rpm -qa zip* - to check if zip package is installed
+#mkdir /abc
+#zip /abc Desktop/ - create zip backup of abc file on Desktop
+#unzip Desktop/abc.zip - extract zip backup file
+
+Create xz compress :-
+#mkdir /abc
+#xz /abc Desktop/ - create xz backup of abc file on Desktop
+#unxz Desktop/abc.tar - extract xz backup file

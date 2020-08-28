@@ -1,0 +1,76 @@
+	User Management
+#useradd <option> <username>
+#usermod <option> <username>
+#userdel <option> <username>
+
+*Types of Users
+-Super User (Root User)
+-Deamon User (System Defined User)
+-Normal User (Created by Root)
+
+*User Information Files
+-/etc/passwd (user info)
+-/etc/home (user dir info)
+-/etc/group (group info)
+-/etc/shadow (user password info)
+-/etc/gshadow (group password info)
+-/var/spool/mail (user mail info)
+-UID (user id number)
+-GID (group id number)
+
+*UID & GID Range
+-UID=0 - Root
+-UID=1-200 - System Assigned Process
+-UID=201-999 - Other System Assigned Processses such as RPM  Packages, Dynamic run Program etc.
+-UID=1000+ - For Normal Users
+
+*Create New User
+#useradd abc (to create user)
+#passwd abc (to assign password)
+#id abc (to check id)
+#cat /etc/passwd (to view user info)
+abc:x:1000:1000:system admin:/home/abc:/bin/bash
+where
+abc=username
+x=passwd
+1000=uid
+1000=gid
+system admin=comment
+/home/abc=home directory
+/bin/bash=shell
+
+*Delete User
+#userdel abc (it deletes only user but no home directory and mail info)
+#userdel -rf abc (it deleets all info of user from system)
+
+*User Modification
+#usermod -L abc (to lock user)
+#usermod -U abc (to unlock user)
+#usermod -C "System Admin" (to add comment)
+#usermod -s /sbin/nologin (to assign shell)
+#usermod -l xyz abc (to change username)
+
+*Adding User but Login without Passwd
+#useradd abc
+#passwd -d abc
+
+*Adding User with a particular UID
+#useradd -u 1015 abc
+
+*Creating User Under a Directory
+#mkdir /users
+#useradd -d /users/abc
+#cd /users
+#ll
+
+*Password Policy
+#chage -l abc
+
+*Giving Root permissions to normal user
+#vim /etc/sudoers or #visudo (open sudoer file in vim)
+Add this line in file-
+abc	ALL=(ALL)	ALL (or any perticular command such as /sbin/fdisk)
+save and exit from file with :wq!
+
+*Using Permissions of root with normal user
+$sudo fdisk -l /dev/sda

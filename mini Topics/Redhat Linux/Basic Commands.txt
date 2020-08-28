@@ -1,0 +1,46 @@
+
+touch:- To create a blank file
+ll:- TO Listing Long file in Present working Directory
+ls:- TO Listing Short file in Present working Directory
+cat:- To view a certain file
+touch a {1..5}:- To create multiple blank files
+--Add a . to create a hidden file
+ls -a:- To view hidden files
+cat >a:- To edit a file
+cat >>a:- To append a file
+mkdir:- To create a Directory
+rmdir:- To remove a Directory
+cd:- To change a Directory
+cal 2016:- To view Calender
+date:- To view current date and time
+wc:- To count Words in any file
+cp:- To copy any file
+mv:- to move any file
+head:- To view lines from TOP in any file
+tail:- To view lines from END in any file
+grep:- To search a word in any file
+echo:- To echo something
+uname:- To get system info
+who:- To check logged in users
+locate :- To find location of any file
+du :- To check disk usage
+df :- To check free space on disk 
+free :- To check free ram and swap memory
+fdisk :- To edit partitons
+dmidecode :- To get system complete info
+
+
+=========================================================
+Editors:-
+vi:- Visual Editor
+vim:- Visual Improve Editor
+--In Vim press I to go to Insert mode to write in file, Esc to go in esc mode, : to go in command mode
+--:w to save a file, :q to quit, :wq to save and quit, :wq! to save and quit forcefully 
+===========================================================
+For Help:-
+man date
+date --help
+info date
+pinfo date
+whatis date
+==========================================================

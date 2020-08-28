@@ -1,0 +1,15 @@
+	Linux File System
+/root 	:- Superuser Home Directory
+/home 	:- Default Home Directory to all normal users
+/boot 	:- Contains booting files of operating system like - kernal, initrd, grub
+/etc  	:- Stores all system and server configuration files
+/var  	:- Stores all log files (Changing in run time)
+/lib  	:- Stores all library files (Every server has its own library files to manage file system)
+/Tmp  	:- Stores temporary files like  - Cookies
+/Proc 	:- Stores all process informations (PID's)
+/Opt  	:- Stores all extra applications files like - windows program files
+/Dev  	:- Stores all device info like - CDRom, PenDrives
+/Mnt  	:- Use to mount devices
+/Media	:- Default mount point for all devices
+/Usr  	:- Stores Users Documentation files
+/SELinux:- Stores all security info files

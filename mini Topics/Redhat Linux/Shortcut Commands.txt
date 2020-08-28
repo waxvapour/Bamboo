@@ -1,0 +1,16 @@
+Shortcut Commands to use in Linux:-
+Alt+F10:- To Increase Window Size
+Alt+F5:- To Decrease Window Size
+Alt+Tab:- To Restore Window Size
+Alt+F9:- To Minimize Window Size 
+Ctrl+Shift++:- To Incerease Font Size in Terminal
+Ctrl+-:- To Decerease Font Size in Terminal
+Ctrl+Shift+T:- To Open New Terminal
+Ctrl+Shift+N:- To Open New Tab in Terminal
+Ctrl+PageUp:-To Change Between Tabs
+Ctrl+PageDown:-To Change Between Tabs
+Shift+PageUp:-To Scroll Up with-in a Terminal
+Shift+PageDown:-To Scroll Down with-in a Terminal
+Ctrl+L:-To clear Termina Screen
+Ctrl+D:-To Close Terminal
+===============================================================

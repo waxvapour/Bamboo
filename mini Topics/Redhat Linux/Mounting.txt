@@ -1,0 +1,21 @@
+Mounting any Device in Linux:-
+Method 1 (used for tshooting):-
+*#mount
+*mkdir /data
+*mount /dev/sdb /data
+*cd /data
+*ls
+*cp -rvf /data
+*cd
+*unmout /dev/sdb
+
+
+
+Method 2(Automatic):-
+*mount
+*mkdir /rhel
+*cd /run/media
+*cd --
+*cp -rvf * /rhel
+*unmount /dev/sdb
+ 

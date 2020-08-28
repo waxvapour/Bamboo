@@ -1,0 +1,23 @@
+	File Linking
+There are two type of links :-
+* Hard Link :-
+		In this type of link inode number of both files is same.If by mistake main file is deleted then the linked file works as a backup file.
+* Soft Link :-
+		In this type of link inode number is different but if main file is deleted then info in linked file is also deleted  but the link would be shown.This type of link is only created for security purposes.
+
+
+To create Hard link :-
+#mkdir /Krishna
+#mkdir /Radha
+#vim /Radha/abc
+
+#ln /Radha/abc /Krishna
+done!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To create Soft link :-
+#mkdir /Krishna
+#mkdir /Radha
+#vim /Radha/abc
+
+#ln -S /Radha/abc /Krishna
+done!

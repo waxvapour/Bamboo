@@ -1,0 +1,137 @@
+enueration
+
+enum4linux -U -o 192.168.0.117
+smtp-user-enum -M VRFY -u root -t 192.168.0.117 :no run
+
+dirb http://www.iantindia.com
+
+port-scanning
+dmitry  www.iantindia.com
+masscan -p22,80,443 www.iantindia.com :no run
+
+dns
+dnsenum www.iantindia.com
+dnsrecon -d iantindia.com
+
+johnny  or password cracking tools gui 
+
+====================================================================================
+website footprinting  using kali recon-ng
+
+#recon-ng
+#show mudules
+#help
+#workspaces
+workspaces add iant
+workspaces select iant
+workspaces list
+add doamins microsoft.com
+show domains
+search netcraft
+load recon/domains-hosts/netcraft
+run
+
+using bing 
+load bing
+
+load recon/domain-hosts/bing_domain_web
+run
+=====================================================================================
+perform a reverse ip add lookup
+
+load reverse_resolve
+load rrecon/hosts-hosts/reverse_resolve
+show hosts
+back	
+
+how to make report
+
+load reporting
+load reporting/html
+show options
+set FILENAME /root/Desktop/iant_result.html
+set CREATOR ABC
+set CUSTOMER  microaoft networks
+run
+========================================================================================
+how to gain personnel info.about target
+
+recon-ng
+workspaces foopprint 
+load recon/domains-contacts/whois_procs 
+set SOURCE facebook.com : to extracts contacts 
+run
+back
+load recon/profiles-profiles/namechk
+set SOURCE MarkZuckerberg
+run
+back
+load recon/profiles-profiles/profiler
+back
+load repoting
+load repoting/html
+set FILENAME /root/Desktop/iant_result.html
+set CREATOR anita
+set customer markzuckerberg
+=====================================================================================
+collecting information from social networking sites using recon-ng
+
+workspaces select EC-Council
+
+show schema
+add locations
+press enter
+press enter
+stree_address  HOSPIS MALAYSIA 2 Jalan 4/96, off Jalan Sekuci Taman Sri Bahtera, Jalan Cheras
+               56100 Kuala Lumpur, Malaysia   
+
+show locations
+load geocode
+load recon/locations-locations/geocode
+run
+show locations
+search locations
+load picasa
+show info 
+show options
+run 
+show dashboard
+load reporting/pushpin
+ show options
+show locations
+set LATITUDE 44.25980482
+set LONGITUDE 123.0105701
+set radius 1
+set MAP_FILENAME /root/Desktop/picasa.html
+set MEDIA_FILENAME /root/Desktop/picasa_media.html
+========================================================================================
+hping3 192.168.0.157 --flood
+
+open wireshark
+
+zenmap
+
+192.168.0.157 -O 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

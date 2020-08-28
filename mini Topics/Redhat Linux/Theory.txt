@@ -1,0 +1,110 @@
+	Linux
+1969 - A kernel (Unix) written in B Language.
+After that - 
+Redhat 7
+*It is said open source.
+*Unix based kernel and OS. (Kernel starts and stops services.)
+*Developed by Linux Trovalds.
+--18 year student in 1991 in Helsinki University under GPL license.
+*Linux : GUI , CLI.
+*Free OS.
+*GNU/Linux: Linux Kernel and GNU software collection.
+==============================================================
+*Ken Thomsan wrote B. Unix written on project MULTICS. Then B is replaced by C in 1969 first relesed in 1970.
+*Unix support only CLI.
+*In 1983 GNU Project started by Richard Stallman (GNU HURD kernel under GPL)
+*Andrew Tanumbumb wrote Minix in 1987 which is also in CLI.
+=============================================================
+Linux Distributions :-
+*Redhat- 1)Fedora, 2)RHEL
+*Suse
+*Kali
+*Ubuntu
+*Mandrake
+*Debian
+*Slakeware
+*Cent OS
+*Clear OS
+*Puppy Linux
+*Turbo C
+*Android etc.
+===========================================================
+Redhat Flavours :-
+Fedora
+*Used for testing purpose.
+*Open source
+*Free
+*No support
+*Trail
+*Life cycle every 6 months
+*Upcoming version 24.
+
+Linux :-
+*Commercoal purpose.
+*Paid
+*24*7 support
+*Complete Version
+*Life cycly 18 to 24 months
+*Upcoming version RHEL 7.2
+===========================================================
+Diffrence b/w Windows and Linux:-
+Windows :-
+*Copy Right
+*Update of DOS
+*Windows (CLI+GUI):- Fortan + DOTNET framework
+*Software is in .exe format
+*File system is in FAT and NTFS
+*Boot loader is Ntldr
+
+Linux :-
+*Copy left
+*Update of Unix
+*Linux (CLI+GUI):- C and C++
+*Software is in .rpm format
+*file system is in ext-2 in RHEL 4, ext-3 in RHEL 5, ext-4 in RHEL 6, xfs in RHEL 7
+*Boot loader is LILO in RHEL 4 and GRUB in RHEL 5, 6, 7 
+--GRUB(Grand Unitfied Boot Loader
+===============================================================
+Features in linux :-
+*Multiuser
+*Multitasking
+*Multiprocessing
+*Secure
+*Free
+*Flexible
+
+Installation Methods :-
+*CLI
+Min. System Requirements--
+*Single core P4 CPU
+*512 RAM
+*6 GB of HDD
+*GUI
+Min. System Requirements--
+*Dual core with Virtual Terminal
+*1 GB RAM
+*12 GB of HDD
+
+Login-Modes:-
+*Ctrl+Alt+F1 for GUI mode
+*Ctrl+Alt+F2 to F6 for CLI mode
+*Startx command to load GUI from CLI mode
+
+Desktop Environments:-
+*GNOME--Graphical Network Object Model Environment
+*KDE--KIDGE Desktop Environment
+============================================================
+Partitions:-
+*Manditory:-
+1)/Root: All Files
+2)/Swap: Works as an internel RAM (Twice of RAM)
+*Optional:-
+1)/Boot: Booting Files
+2)/Home: User Information
+============================================================
+Login-prompts:-
+* # : Priviledge Mode (can run 100% commands)
+* $ : Unpriviledge Mode (can run only 10% commands)
+--We have to login as root user to change Unpriviledge mode to Priviledge.
+~ (Tilde) : Present Working Directory
+==============================================================  
