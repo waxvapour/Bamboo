@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="w3-display-middle w3-border" style="max-width: fit-content; margin-top: -10%; padding:2%;">
+<div class="w3-container w3-center"><h2 style="font-size: 3vw;">`+, Search</h2>
+<hr>
+    <form method="POST" action="/actor">
+    <input name="Target" class="w3-input w3-border" style="height: 4vw; font-size: 2vw; text-align: center;" type="text" placeholder="Host / IP" />
+    </form>
+    <hr>    
+</div>
+</div>
+{% endblock %}
