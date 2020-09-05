@@ -1,35 +1,30 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
 from passlib.hash import sha256_crypt
-import nmap
+import methods
 app = Flask(__name__)
 
-def nmapScann(addr):
-    begin = 75
-    end = 80
-    target = addr
-    scanner = nmap.PortScanner() 
-    ress = []
-    hostname = "NOT RESOLVED"
-    for i in range(begin,end+1): 
-        res = scanner.scan(target,str(i)) 
-        hostname = scanner[target].hostname()
-        res = res['scan'][target]['tcp'][i]['state']
-        if res =='open':
-            ress.append(i)
-        poss = {'ress': ress, 'hostname': hostname}
-    return poss
 @app.route('/')
 def root():
     return render_template('base.html')
 
-@app.route('/actor', methods=['POST'])
-def actor():
-    data = request.form['Target']
-    nmapScanResult = nmapScann(data)
-    return render_template('actor.html', data=data, nmapScanResult=nmapScanResult)
+@app.route('/scan/')
+def index():
+    return redirect(url_for('root'))
+
+@app.route('/scan/<string:ip>/')
+def actor(ip):
+    Alive = False
+    if methods.isValid(ip):
+        if methods.isAlive(ip):
+            Alive = True
+            methods.nmapPortScan(ip)
+        return render_template('actor.html', Alive=Alive, ip=ip)
+    else:
+        return redirect(url_for('root'))
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return redirect(url_for('root'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-    
+    app.run(debug=True)   
