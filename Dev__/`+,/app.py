@@ -17,8 +17,8 @@ def actor(ip):
     if methods.isValid(ip):
         if methods.isAlive(ip):
             Alive = True
-            methods.nmapPortScan(ip)
-        return render_template('actor.html', Alive=Alive, ip=ip)
+            NmapResult=methods.nmapPortScan(ip)
+        return render_template('actor.html', Alive=Alive, ip=ip, NmapResult=NmapResult)
     else:
         return redirect(url_for('root'))
 
@@ -27,4 +27,4 @@ def page_not_found(error):
     return redirect(url_for('root'))
 
 if __name__ == '__main__':
-    app.run(debug=True)   
+    app.run(host= '0.0.0.0', debug=True)
