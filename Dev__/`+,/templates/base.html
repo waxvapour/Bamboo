@@ -4,15 +4,15 @@
 <div class="w3-display-middle w3-border" style="max-width: fit-content; margin-top: -10%; padding:2%;">
 <div class="w3-container w3-center"><h2 style="font-size: 3vw;">`+, Search</h2>
 <hr>
-    <input id="Target" onKeyPress="arg(event, this)" class="w3-input w3-border" style="height: 4vw; font-size: 2vw; text-align: center;" type="text" placeholder="Host / IP" />
+    <input id="Target" onKeyPress="arg(event, this)" class="w3-input w3-border" style="height: 4vw; font-size: 2vw; text-align: center;" type="text" placeholder="IP" />
 <hr>    
 </div>
 </div>
 <script>
     function arg(e, input){
-    if((e.keyCode ? e.keyCode : e.which) == 13) {
-    window.location = window.location.href + "/scan/"+ document.getElementById("Target").value;
-    }
+        if((e.keyCode ? e.keyCode : e.which) == 13) {
+            window.location = window.location.href + "/scan/"+ document.getElementById("Target").value;
+        }
     }
 </script>
 {% endblock %}

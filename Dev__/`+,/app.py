@@ -18,7 +18,8 @@ def actor(ip):
         if methods.isAlive(ip):
             Alive = True
             NmapResult=methods.nmapPortScan(ip)
-        return render_template('actor.html', Alive=Alive, ip=ip, NmapResult=NmapResult)
+            DNSenu=methods.DNSenum(ip)
+        return render_template('actor.html', Alive=Alive, ip=ip, NmapResult=NmapResult, DNSenu=DNSenu)
     else:
         return redirect(url_for('root'))
 
