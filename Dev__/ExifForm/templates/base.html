@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!--
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dropzone.min.css') }}">
+<div class="w3-container">
+    <form action="http://localhost:5000/Form" method="POST" enctype="multipart/form-data" class="dropzone">
+        <div class="fallback">
+          <input name="file" type="file" />
+        </div>
+    </form>
+</div>
+<script src="{{ url_for('static', filename='js/dropzone.min.js') }}"></script>
+-->
+<form action = "http://localhost:5000/Form" method = "POST" enctype = "multipart/form-data">
+<input type = "file" name = "file" />
+<input type = "submit"/>
+</form> 
+{% endblock %}
