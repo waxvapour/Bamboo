@@ -5,7 +5,7 @@ import exiftool
 import simplejson
 
 UPLOAD_FOLDER = 'uploads/'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'mov'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -13,7 +13,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def root():
     return render_template('base.html')
 
-@app.route('/Form', methods=['GET', 'POST'])
+@app.route('/Form', methods=['POST'])
 def form():
     if request.method == 'POST':
         f = request.files['file']
@@ -21,6 +21,13 @@ def form():
         with exiftool.ExifTool() as et:
             metadata = et.get_metadata('uploads/'+ secure_filename(f.filename))
         return render_template('actor.html', metadata=metadata)
+
+@app.route('/Mod', methods=['POST'])
+def Mod():
+    for item in request.form:
+        print(item +'\t'+str(request.form[item])+'\n')
+    return "Mod request made"
+
 
 @app.errorhandler(404)
 def page_not_found(error):
