@@ -12,8 +12,14 @@
 </div>
 <script src="{{ url_for('static', filename='js/dropzone.min.js') }}"></script>
 -->
+<div class="w3-container w3-card-4  w3-display-middle w3-teal w3-padding">
+<h3>ExifForm</h3>
+<hr/>
 <form action = "http://localhost:5000/Form" method = "POST" enctype = "multipart/form-data">
-<input type = "file" name = "file" />
-<input type = "submit"/>
-</form> 
+<input class="w3-button" type = "file" name = "file" />
+<input class="w3-button w3-white" type = "submit"/>
+</form>
+<hr/> 
+
+</div>
 {% endblock %}

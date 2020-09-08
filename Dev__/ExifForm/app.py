@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
 from werkzeug.utils import secure_filename
 import exiftool
+import simplejson
 
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -17,10 +18,9 @@ def form():
     if request.method == 'POST':
         f = request.files['file']
         f.save('uploads/'+ secure_filename(f.filename))
-        meta = exiftool.ExifTool().get_metadata(f.filename)
-        print(str(f.filename))
-        #return 'file uploaded successfully'
-        return render_template('actor.html')
+        with exiftool.ExifTool() as et:
+            metadata = et.get_metadata('uploads/'+ secure_filename(f.filename))
+        return render_template('actor.html', metadata=metadata)
 
 @app.errorhandler(404)
 def page_not_found(error):
