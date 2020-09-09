@@ -1,0 +1,64 @@
+####	Subnetting	####
+
+Network ID
+
+192.168.1.0 /24		#CIDR
+
+#SubnetMask
+
+	#in Binary
+		8-bits . 8-bits . 8-bits . 0-bits
+		11111111.11111111.11111111.00000000
+
+	# in Decimal
+		255.255.255.0
+---------------------------------------------
+
+Mask: 255.255.248.0
+
+
+
+		Network Bits 						Host Bits
+			|									|
+|-------------------------------|       |---------------|
+
+128		64		32		16		8		4		2		1
+	\ /		  /			|		|
+	192		32			16		8
+		\  /		   /		/
+		224			16		   8
+			\		/		  /
+			   240			8
+			   	  \		  /
+			   	  	 248
+
+
+	8-bits.8-bits.5bits.0bits
+								8+8+5+0 = 21
+								CIDR= /21
+
+
+IP: 192.168.40.55/21 - what is network ID?
+			|	
+		/	   \
+		00101000
+
+
+40 is 32+8 so those bits will be turned on : 00101000
+
+subnet mask is 255.255.248.0 and third octate is 11111000 as 128+64+32+16+8 = 248
+
+NetPart
+|---|
+00101000
+11111000
+	 |-|
+	 host part is 0
+
+192.168.40.0 /21
+255.255.248.0
+
+
+128		64		32		16		8		4		2		1
+
+good refrence video:	https://www.youtube.com/watch?v=XQ3T14SIlV4

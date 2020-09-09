@@ -26,6 +26,8 @@ def form():
 def Mod():
     for item in request.form:
         print(item +'\t'+str(request.form[item])+'\n')
+    with exiftool.ExifTool() as et:
+        et.execute("File:FileModifyDate=2000:01:01 10:10:00+05:30".encode('utf-8'), "uploads/sprit.png".encode('utf-8'))
     return "Mod request made"
 
 
