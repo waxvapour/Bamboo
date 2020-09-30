@@ -1,0 +1,28 @@
+Active vs Passive Scanning
+
+Humans
+    Network scanners (Nmap, ZenMap, AngryIpScanner)
+    Vulneravility scanners (Nessus, wpscan, sqlmap, dirbuster, Passive Vulnerability Scanner)
+    Pinging (commandline Utility, Windows Troubleshooter)
+
+Networking Devices
+    Routers (Network Discovery protocols - ARP, ICMP, NDP, NTP, OSPF, CDP)
+    L2 Switches (L2TP, LLDP, CDP)
+    L3 Switches (CDP)
+    Hub
+    IOT Devices (Smart Home appliances, casting Devices)
+    SCADA/ICS (Passive Asset Detection System)
+    Bluetooth Devices
+    GSM communications with Phone
+
+Applications / Services
+    NTP
+    DNS Lookups
+    WINS / SMB
+    Spiders / Automated Scanners / Bots (Search Engines, Network Discovery Services, Shodan, Domain Registeries, internet Archive)
+    Application pipelines (skype, Hangout, etc)
+    APIs
+    CDNs
+    Web Recivers (Google Cast- Chromecast emits special Wi-Fi beacon, and when the application is launched in phone, it detects that beacon and cast icon is shown in app.)
+    
+    
