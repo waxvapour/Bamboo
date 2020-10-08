@@ -24,3 +24,5 @@ transation limit:
 	each transation cannot exceed 20000 and max 1 lakh per day transfer
 
 UPI is based on IMPS and it is based on NFS (national financial switch)
+
+APIs are done using XML over HTTPS whereas all APIs behind the existing systems at NPCI are done over ISO 8583 Messages (0200/0210).
